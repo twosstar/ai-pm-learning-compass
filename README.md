@@ -1,80 +1,93 @@
-# AI PM Learning Copilot — Public Edition
+# AI PM Learning Copilot｜AI 产品经理学习助手
 
-[中文项目介绍](docs/PROJECT_INTRO.zh-CN.md) · [English introduction](docs/PROJECT_INTRO.en.md) · [发布素材 / Launch kit](docs/LAUNCH_KIT.md)
+**公开版 · 中文优先 · 本地运行**
 
-![Local learning workspace with resumable progress](docs/images/learning-dashboard.png)
+[English README](README.en.md) · [中文项目介绍](docs/PROJECT_INTRO.zh-CN.md) · [English project introduction](docs/PROJECT_INTRO.en.md) · [发布素材 / Launch kit](docs/LAUNCH_KIT.md)
 
-Screenshots use temporary demo records, not private learning data. The current UI/content are primarily Chinese; bilingual project introductions are provided.
+![本地学习工作台与可继续的学习进度](docs/images/learning-dashboard.png)
 
-An independent, local-first learning companion for AI product-management concepts. This first release contains only smart learning, a concept map, answer feedback, and locally persisted progress through a public sample path.
+截图使用临时演示记录，不包含私人学习数据。产品界面和课程内容以中文为主，项目说明提供中英文版本。
 
-## Scope and content
+AI PM Learning Copilot 是一款独立、以本地运行为主的 AI 产品经理学习助手。公开首发版聚焦智能学习、概念地图、答题反馈，以及保存在本机的学习进度，课程采用公开版示例路径。
 
-The included sample curriculum and concept cards were written for this public edition. They are general educational examples, not reproductions of a paid course. The project does not include course videos, slides, handouts, transcripts, proprietary question banks, course captures, browser profiles, databases, or learning records from the private application.
+## 项目范围与课程内容
 
-The authoritative curriculum is `app/data/public_curriculum.json`: 60 lessons in 10 independently arranged modules, with 120 fixed knowledge points. It preserves the first three public lesson IDs (101–103) and six original public knowledge-point IDs (1001–1006). `sample_curriculum.json` remains only as the historical sample/ID reference. No private course outline or private database is imported.
+本项目中的示例课程和概念卡片均为公开版独立编写的通用学习材料，不是付费课程的复刻。项目不包含课程视频、课件、讲义、逐字稿、专有题库、课程采集内容、浏览器个人资料、数据库或私人应用中的学习记录。
 
-46 lessons have publicly readable textbook chapter references; the other 14 identify guides, official documentation, research papers or author chapter summaries. Each lesson shows learning objectives, explanations, original business examples, and an original practice task before starting questions. Detailed lesson/knowledge-point source panels are not rendered in the reader; provenance remains in the curriculum JSON and API for maintenance. See `CURRICULUM_SOURCES.md` for source scope and limitations. Source links are references, not redistributed books or a claim of authorization to copy their prose.
+正式课程数据位于 `app/data/public_curriculum.json`：共 10 个独立编排模块、60 节课和 120 个固定知识点，并保留前三节公开课程 ID（101–103）及六个原有公开知识点 ID（1001–1006）。`sample_curriculum.json` 仅作为历史示例和 ID 参考，不导入私人课程大纲或私人数据库。
 
-## Features
+其中 46 节课标注了可公开阅读的教材章节参考；其余 14 节参考指南、官方文档、研究论文或作者章节摘要。每节课包含学习目标、讲解、原创业务示例和原创练习任务，进入答题前可先学习知识点。学习页面不展示详细来源面板；来源信息仍保存在课程 JSON 和 API 中供维护。来源链接仅作延伸阅读参考，不代表重新发布书籍内容，也不构成对复制原文的授权。来源范围与限制见 [CURRICULUM_SOURCES.md](CURRICULUM_SOURCES.md)。
 
-- Smart learning along the included public path.
-- Generated or fallback questions, answer evaluation, feedback, and remediation.
-- Persistent attempts, mastery scores, and progress in a local SQLite database.
-- A local concept map with 150 independently authored cards, 10 topic filters, Chinese/English search, examples, related reading, and reference links. Browsing does not call a model API.
-- A continue action that advances to the next eligible knowledge point.
+## 功能
 
-The public HTTP surface intentionally exposes only health, catalog, concept-map reads, and the learning start/answer/continue flow. Course collection, browser control, file import, interview practice, question-bank import, and V2 training are not mounted in this edition.
+- 沿公开课程路径进行智能学习。
+- 生成题目或使用备用题目，提交回答、获得反馈并进行补充学习。
+- 将练习记录、掌握度和进度保存到本地 SQLite 数据库。
+- 概念地图包含 150 张独立编写的概念卡、10 个主题筛选、中文/英文搜索、示例、关联阅读和参考链接；浏览概念不会调用模型 API。
+- “继续学习”可前往下一个符合条件的知识点。
 
-## Setup and launch
+公开版 HTTP 接口仅开放健康检查、课程目录、概念地图读取，以及学习开始/答题/继续流程。课程采集、浏览器控制、文件导入、面试练习、题库导入和 V2 训练功能均未挂载。
 
-Requires Python 3.11 or later. On Windows, double-click `Start Learning Copilot.bat`. On first run it creates a local virtual environment and installs the app's dependencies; this can take a few minutes and requires an internet connection. It creates `.env` from `.env.example` only if `.env` does not already exist, then starts the app and opens the browser at <http://127.0.0.1:8001/>. Keep the console window open while using the app; press Ctrl+C in that window to stop it.
+## 安装与启动
 
-To enable scoring, open **模型设置** at the top of the page. Enter your trusted provider's HTTPS OpenAI-compatible API base URL, exact model name and your own key, acknowledge provider access/cost, then save. Saving performs no provider request and needs no restart. Start a practice or retry a pending evaluation to make the first real call. Never send keys in chat. If port 8001 is already occupied, close the other app and launch again.
+需要 Python 3.11 或更新版本。Windows 用户双击 `Start Learning Copilot.bat` 即可启动。首次运行会创建本地虚拟环境并安装依赖，可能需要几分钟且需要联网。启动器仅在 `.env` 不存在时从 `.env.example` 创建 `.env`，随后启动服务并打开 [http://127.0.0.1:8001/](http://127.0.0.1:8001/)。使用期间请保持控制台窗口开启；需要停止时，在该窗口按 `Ctrl+C`。
 
-The public edition does not inherit the original application's model key. Page-entered keys live only in the local server process: not in files, the learning database, localStorage or sessionStorage. They are not returned by the settings API. Password fields clear on save/close. Restarting the server requires re-entry. Clearing settings disables future calls; already in-flight requests may still complete. The settings API accepts loopback/same-origin access only and requires a process token for changes; provider URLs must use HTTPS without embedded credentials or query parameters. This is for trusted local use, not public multi-user hosting or an untrusted-device security boundary. Use only providers you trust with lesson excerpts, questions and your answers; starting practice and grading may incur charges.
+## 配置答题评分
 
-Legacy environment configuration remains supported for advanced use: never commit `.env`. Clearing runtime configuration does not delete a legacy environment key; a restart can reload it. No environment key is bundled in this release. If no working model is configured, your answer is saved with **待评价**, never a fabricated score. Authentication, quota, connection and response-format errors produce safe messages; correct the settings and retry the same pending answer. HTML/static assets use no-store and content-versioned URLs.
+1. 在页面顶部打开“模型设置”。
+2. 填入你信任的服务商所提供的 HTTPS、OpenAI 兼容 API 地址，准确的模型名称，以及你自己的 API 密钥。
+3. 阅读并确认服务商访问与费用提示，然后保存。
+4. 开始练习，或对尚未评价的答案重新评价，以触发首次实际模型请求。
 
-### 自己上手测试评分
+保存设置本身不会请求服务商，也不需要重启。请勿在聊天中发送密钥。若 8001 端口被占用，请关闭占用该端口的其他程序后再启动。
 
-1. 一键启动后，打开页面顶部“模型设置”，填写供应商地址、模型名称和自己的密钥并保存。
-2. 选第二节课程，读完精简知识点，点击“开始练习”，用自己的话回答并提交。
-3. 配置可用时显示模型评分、分项反馈与改进表达；未成功时保留回答并显示“待评价”和安全错误提示。保存配置成功不等于供应商已验证。
-4. 修改配置后，对尚未评分的原回答点击“重新评价”，无需重启。已正式评分的记录不被重复覆盖。
-5. 测试结束可点“清除当前配置”；学习进度保留。关闭服务后，页面输入的密钥不保留。
+公开版不会继承原应用的模型密钥。通过页面输入的密钥只保存在本地服务进程内，不写入文件、学习数据库、`localStorage` 或 `sessionStorage`，设置 API 也不会返回密钥。保存或关闭设置时密码框会清空；重启服务后需要重新输入。清除配置会停止后续模型调用，但已发出的请求仍可能完成。修改设置的 API 仅接受回环/同源访问，并要求进程令牌；服务商地址必须使用 HTTPS，且不能在地址中嵌入账号凭据或查询参数。
 
-## Data and privacy
+这是为可信的个人本机使用设计的版本，不适合直接作为多用户公网服务，也不是针对不可信设备的安全边界。请只使用你信任的模型服务商；开始练习和评分时，课程片段、题目及回答可能发送给该服务商并产生费用。
 
-The learning dashboard separates explicit read markers, evaluated practice, completed learning flows and mastery. `public_reading_bookmarks` stores per-lesson reading positions/read IDs, and `public_answer_drafts` stores unsent drafts by attempt. These are local-only SQLite tables created additively on upgrade; existing sessions, answers and scores are not replaced. Restoring a lesson/question/evaluation makes no model call. Browser close uses a best-effort checkpoint; wait for “已保存到本机” before closing when possible. A forced shutdown before saving can lose the latest unsaved changes. Historical sessions can supply prior practice location, but unrecorded historical reading positions cannot be reconstructed.
+高级用户仍可使用旧版环境变量配置，但不要提交 `.env`。清除页面运行时配置不会删除旧环境变量中的密钥，重启后可能重新加载。此公开版本不捆绑 API 密钥。若模型不可用，答案会保存为“待评价”，不会伪造分数。遇到身份验证、额度、连接或返回格式错误时，页面会给出安全提示；修正设置后可重试同一条待评价答案。HTML 和静态资源使用不缓存策略及带版本号的资源地址。
 
-This installation assumes one trusted local learner; it has no account isolation/cloud sync, and concurrent tabs use last-write-wins checkpoints rather than conflict merging. Drafts and reading records are private data and must not be published. Restarting the local server retains database records but clears page-entered model credentials.
+### 亲自测试答题评分
 
-The first run creates `data/app.db` and seeds the public learning path. Subsequent starts synchronize owned curriculum content without deleting sessions, answers or mastery scores. Legacy extra rows are preserved but are not included in the managed public catalog. Learning records remain in that local database. Before upgrading, make a private backup; `data/backups/` is ignored by Git. Do not add course materials unless you own them or have permission to redistribute them.
+1. 一键启动后，打开“模型设置”，填写服务商地址、模型名称和自己的密钥并保存。
+2. 选择课程，先阅读知识点，再点击“开始练习”，用自己的话回答并提交。
+3. 模型配置可用时，页面会显示模型评分、分项反馈和改进表达。调用失败时，答案仍会保存并显示“待评价”；保存配置成功不代表服务商连接已验证。
+4. 修正配置后，可对尚未评价的原答案点击“重新评价”，无需重启。已经完成的评分不会被重复覆盖。
+5. 测试结束可清除当前配置；学习进度会保留。关闭服务后，页面输入的密钥不会保留。
 
-## Maintaining lessons
+## 数据与隐私
 
-All 60 lessons / 120 knowledge points now use the compact teaching layout established by lesson 102: three essentials (what, use, boundary), a five-step application/judgment diagram and recovery branch, one original short example, and a job-interview takeaway. Required prose is capped at 350 Chinese/ASCII characters per point (diagram labels are checked separately). Detailed principles, examples, counterexamples, application steps and interview depth are optional, collapsed by default. This cap bounds content length, not a guaranteed reading time or educational outcome.
+学习面板会区分显式阅读标记、已评价练习、已完成学习流程和知识掌握度。`public_reading_bookmarks` 按课程保存阅读位置和已读知识点；`public_answer_drafts` 按作答记录保存未提交草稿。这些本地 SQLite 表会以增量方式创建，不会替换已有会话、答案或分数。恢复课程、题目或评价记录不会调用模型。浏览器关闭时会尽力保存进度；如页面显示“已保存到本机”，再关闭更稳妥。若强制关闭发生在保存之前，最新未保存的修改可能丢失。历史会话可帮助恢复此前的练习位置，但无法还原当时未记录的阅读位置。
 
-`app/data/lesson102_teaching.json` retains the original pilot's two richer seven-section explanations. `app/data/teaching/M01.json` through `M10.json` provide individually authored meaning/action/boundary/flow/recovery/counterexample notes for the other 118 points. `app/services/compact_teaching.py` combines these with the existing original explanations, examples and product relevance without changing their text, IDs or source mapping. Each other point has five deeper sections. This is a common teaching structure, not a claim that all explanations now have identical depth or newly re-verified textbook support. New notes are original teaching organization, not source quotations. No new book access/review claims were added.
+此安装假设由一位可信的本地学习者使用，不提供账号隔离或云同步。多个标签页同时操作时采用最后写入生效的进度保存方式，不做冲突合并。草稿和阅读记录属于私人数据，不应发布。重启本地服务会保留学习数据库，但会清除页面输入的运行时模型密钥。
 
-The course list includes an employment-direction selector (general AI PM or AI+education PM), stored as a browser preference. A newly started session snapshots that direction, including retests and continuation. Existing sessions retain their original direction. Lesson 102 has distinct original general/education cases with explicit scenario, constraints, decision request, interviewer rationale and task-specific scoring points. Its questions are curated rather than generated on each start; feedback and supporting services may still use the configured model. Other lessons keep their current questions and receive the role context; they do not yet all have bespoke two-track case sets.
+首次运行会创建 `data/app.db` 并写入公开课程路径。之后启动时会同步本项目管理的课程内容，但不会删除学习会话、答案或掌握度。旧数据库中的额外课程行会保留，但不会出现在公开目录中。学习记录仅保存在本地数据库。升级前请自行创建私人备份；Git 会忽略 `data/backups/`。只有在拥有相关内容或获得再分发许可时，才可添加课程材料。
 
-Edit the base content in `app/data/public_curriculum.json` and compact teaching in the corresponding module note file, run `python scripts/check_curriculum.py`, and restart the app. Keep existing lesson and knowledge-point IDs when revising content. New lessons need unique IDs, module membership, objectives, at least two complete knowledge points, an original practice scenario, valid source references with section/version information, and corresponding compact notes. The loader rejects missing/extra note IDs, duplicate IDs across modules and malformed notes/flows. Keep independently authored examples distinct from source-backed explanations. Do not label a table of contents or author summary as a book chapter that was read. Changes to existing ID ownership stop synchronization rather than overwrite unrelated data. Restarting also clears page-entered runtime model credentials; re-enter them only in local model settings.
+## 维护课程内容
 
-The content checker validates completeness and provenance metadata, not factual correctness or copyright clearance. Human review of the actual sources remains necessary. Reading a lesson or browsing concepts makes no model call; starting and answering practice may use the configured API.
+目前 60 节课、120 个知识点均采用以第 102 节试点为基础的精简教学结构：三个要点（是什么、如何使用、边界）、五步应用/判断图与失败恢复分支、一个原创短例子，以及求职面试要点。每个知识点的必读正文限制在 350 个中英文字符以内（流程图标签另计）；更深入的原理、例子、反例、应用步骤和面试拓展默认折叠。此长度限制仅用于控制篇幅，不保证具体阅读时长或学习效果。
 
-Feedback follows the submitted question, even when the top of the page has switched to a retest: the question and saved answer are inspectable, strengths and the two most important gaps are visible, followed by a coherent optimized answer. The framework, expert answer and dimension scores are optional. Lesson 102 has 12 exact-case reference guides in `app/data/lesson102_feedback.json`; these are examples, not a unique keyword-based answer key.
+`app/data/lesson102_teaching.json` 保留试点课程原有的两份七段式详细讲解；`app/data/teaching/M01.json` 至 `M10.json` 为其余 118 个知识点提供独立编写的含义、行动、边界、流程、恢复和反例说明。`app/services/compact_teaching.py` 将这些内容与既有讲解、示例和产品关联组合展示，不改变其原文、ID 或来源映射。这是统一的教学结构，不代表所有讲解深度完全相同，也不表示重新核验了所有教材。新增说明是原创教学组织内容，不是来源摘录；未新增“已阅读或核验新书”的声明。
 
-If model evaluation is unavailable or falls back, the public API returns `evaluation_source=offline`, `total_score=null`, `pass_status=UNASSESSED` and `next_action=retry_evaluation`. The user's answer is saved, but no evaluation, weakness, review or mastery update is created. The same unassessed attempt may be submitted again after restoring model access. Offline reference guidance must not be presented as a personalized critique. The previous length-based fallback scoring has been removed; historical scores are not silently deleted, inflated or retrospectively regraded. A real evaluation is needed to reassess them.
+课程目录提供求职方向选择（通用 AI PM 或 AI+教育 PM），并保存在浏览器偏好中。新建学习会话会记录当时选择的方向；旧会话继续保留原有方向。第 102 节含通用版与教育版的原创案例，明确场景、限制、决策任务、面试官关注点和对应评分点；题目为精选题，不会在每次开始时重新生成。反馈及配套服务仍可能使用已配置的模型。其他课程会带入方向上下文，但目前尚未全部拥有两套专属场景题。
 
-## Maintaining the concept library
+修改内容请直接编辑 `app/data/public_curriculum.json`，以及对应模块的教学笔记文件，然后运行 `python scripts/check_curriculum.py` 并重启应用。修改内容时保留现有课程和知识点 ID。新增课程必须使用唯一 ID、指定所属模块、包含学习目标、至少两个完整知识点、原创练习场景、带章节/版本信息的有效来源引用，以及对应的精简教学笔记。加载器会检查笔记 ID 是否缺失或多余、跨模块 ID 是否重复，以及笔记/流程结构是否有效。请区分独立编写的例子与有来源支持的解释。不要把目录或作者摘要标成已阅读的书籍章节。修改现有 ID 的归属会触发同步停止，避免覆盖无关数据。重启也会清除页面填写的运行时模型密钥；仅在本地模型设置页面重新填写。
 
-`app/data/concept_library.json` is the authoritative public concept content file. Each card contains a stable public ID, Chinese name, English aliases, category, definition, mechanism, usage, pitfalls, AI PM relevance, example, same-topic reading links, and reference IDs. The 150 concepts are an editorial selection for AI PM learning, not an official universal list. Explanations and examples are independently written; links point to public reference reading from Google, Hugging Face, Microsoft, Anthropic, MCP, scikit-learn, NIST, and OWASP, among others.
+课程检查器验证的是内容完整性和来源元数据，不验证事实正确性，也不提供版权许可结论。仍需人工核对实际来源。阅读课程或浏览概念不会调用模型；开始答题及提交回答可能使用已配置的 API。
 
-To revise or add cards, edit this JSON and restart the app. Startup synchronizes the owned public cards into an existing database, so existing installations receive additions without deleting course data or learning progress. Keep an existing card's ID when editing it. A new card needs a unique ID and name and valid category, related names, and source IDs. The original three public concept IDs (2001–2003) are preserved. These owned public cards are refreshed from the content file; edit that file rather than their database text. Removing a card requires an explicit content migration; synchronization does not delete stored cards.
+反馈会绑定到实际提交的题目，即使页面顶部已切换到复测题，也能检查对应题目和已保存答案。反馈优先显示优点、最重要的两个缺口和连贯的优化答案；答题框架、专家答案和维度分数为可选内容。第 102 节在 `app/data/lesson102_feedback.json` 中提供 12 个对应具体案例的参考指南，它们是示例，不是按关键词唯一匹配的标准答案。
 
-## Checks
+若模型评价不可用或转入离线模式，公开 API 会返回 `evaluation_source=offline`、`total_score=null`、`pass_status=UNASSESSED` 和 `next_action=retry_evaluation`。答案会保存，但不会生成模型评价、薄弱项、复习安排或掌握度更新。恢复模型服务后可以重新提交同一条未评价记录。离线参考指导不得冒充针对个人答案的评价。旧版基于答案长度的备用评分已移除；历史分数不会被悄悄删除、抬高或追溯重评，需通过真实模型评价重新评估。
+
+## 维护概念库
+
+`app/data/concept_library.json` 是公开概念内容的唯一权威文件。每张卡片包含稳定的公开 ID、中文名称、英文别名、类别、定义、机制、用途、陷阱、AI PM 关联、示例、同主题阅读链接和来源 ID。150 个概念是为 AI PM 学习整理的编辑选编，不是官方或普遍公认的唯一清单。解释和示例均为独立编写；链接指向 Google、Hugging Face、Microsoft、Anthropic、MCP、scikit-learn、NIST、OWASP 等公开参考资料。
+
+新增或修改概念卡时编辑该 JSON 并重启应用。启动时会把本项目管理的公开概念同步到现有数据库；新增内容不会删除课程数据或学习进度。修改现有概念时保留其 ID。新卡片需要唯一 ID 和名称，以及有效类别、关联概念和来源 ID。原有三个公开概念 ID（2001–2003）会保留。概念卡由内容文件刷新，因此应编辑 JSON，而不是数据库中的文字。移除概念需要明确的数据迁移；同步过程不会自动删除已存储的卡片。
+
+## 检查与发布
+
+在 Windows PowerShell 中运行：
 
 ```powershell
 python scripts/release_check.py
@@ -84,12 +97,12 @@ pytest -q
 node --test tests/test_start_practice_ui.cjs
 ```
 
-Optional browser acceptance: `python scripts/verify_compact_teaching_browser.py` (requires Playwright and Edge). This uses a temporary database and no model key; it opens all 60 lesson readers, expands/collapses all 120 points, checks four representative mobile readers and exercises offline practice/return plus concept search. It does not call a paid provider.
+可选浏览器验收：`python scripts/verify_compact_teaching_browser.py`（需要 Playwright 和 Edge）。该检查使用临时数据库和离线测试模型，不使用模型密钥；会打开全部 60 节课的学习页、展开/收起 120 个知识点、检查 4 个代表性移动端页面，并测试离线练习/返回和概念搜索。不会调用付费模型服务。
 
-The release check rejects common local secrets, databases, browser state, course media, logs, and private feature routes. The privacy audit reads the actual Git index and committed blobs, checks common credential patterns, private paths, local configured secret matches and PNG metadata, and reports locations without echoing matched values. Internal `MEMORY.md` notes and local environment variants are ignored. Pattern checks do not guarantee detection of every possible secret or establish copyright clearance. See `docs/RELEASE_AUDIT.md` and review `RELEASE_CHECKLIST.md` before creating a public GitHub repository. This folder is a project copy; the original application is separate.
+发布检查会拦截常见本地密钥、数据库、浏览器状态、课程媒体、日志和私人功能路由。隐私审计会读取 Git 索引和已提交文件，检查常见凭据模式、私人路径、本地已配置密钥的匹配情况和 PNG 元数据；报告位置时不会输出匹配到的密钥内容。内部 `MEMORY.md` 和本地环境文件变体会被 Git 忽略。模式检查不能保证发现所有秘密，也不能证明内容已获得版权许可。创建公开 GitHub 仓库前请阅读 [RELEASE_CHECKLIST.md](RELEASE_CHECKLIST.md) 和 [docs/RELEASE_AUDIT.md](docs/RELEASE_AUDIT.md)。此目录是独立项目副本，与原应用分开。
 
-Python tests automatically use a temporary database/storage directory and an empty model key, never the user's learning database or API key. Browser acceptance checks use separate temporary data and an offline test model; passing them does not establish real-provider grading quality or employment outcomes.
+Python 测试会自动使用临时数据库/存储目录和空模型密钥，不会使用真实学习数据库或 API 密钥。浏览器验收也使用独立临时数据和离线测试模型。测试通过不代表已验证真实服务商的评分质量或求职效果。
 
-## License
+## 许可证
 
-No license has been selected for this edition. Do not assume the software is available for reuse until a license is added after confirming ownership and third-party dependency terms.
+本公开版尚未选择软件许可证。在确认代码所有权及第三方依赖条款前，请勿假设他人可以复用本项目。

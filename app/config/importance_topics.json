@@ -1,0 +1,22 @@
+[
+  {"id":"Math Derivation","keywords":["推导","数学证明","矩阵计算","公式推演","反向传播证明","算法证明"],"base_importance":2,"interview_value":1,"practical_product_value":1,"prerequisite_importance":3},
+  {"id":"Agent Memory","keywords":["agent memory","智能体记忆","长期记忆","短期记忆","成长档案"],"base_importance":3,"interview_value":5,"practical_product_value":4,"prerequisite_importance":3},
+  {"id":"Tool Calling","keywords":["tool calling","function calling","工具调用"],"base_importance":4,"interview_value":5,"practical_product_value":5,"prerequisite_importance":4},
+  {"id":"Model Evaluation","keywords":["模型评估","模型评测","评估体系","precision","recall","准确率","召回率"],"base_importance":5,"interview_value":5,"practical_product_value":5,"prerequisite_importance":4},
+  {"id":"RAG","keywords":["rag","检索增强","知识库","retrieval","rerank","重排","chunk"],"base_importance":4,"interview_value":5,"practical_product_value":5,"prerequisite_importance":4},
+  {"id":"Agent Architecture","keywords":["agent","智能体","多智能体","planning","任务规划"],"base_importance":4,"interview_value":5,"practical_product_value":5,"prerequisite_importance":4},
+  {"id":"Prompt","keywords":["prompt","提示词"],"base_importance":4,"interview_value":4,"practical_product_value":5,"prerequisite_importance":3},
+  {"id":"Transformer","keywords":["transformer","attention","注意力机制"],"base_importance":4,"interview_value":4,"practical_product_value":4,"prerequisite_importance":5},
+  {"id":"LLM","keywords":["大语言模型","大模型","llm","文生文","微调","sft","rlhf","基础模型","预训练","aigc"],"base_importance":4,"interview_value":5,"practical_product_value":5,"prerequisite_importance":4},
+  {"id":"Education AI","keywords":["教育","学习效果","个性化学习","育儿","故事工坊"],"base_importance":3,"interview_value":4,"practical_product_value":5,"prerequisite_importance":3},
+  {"id":"Product Design","keywords":["产品设计","用户体验","竞品","需求分析","流程图","原型","prd","产品经理概述","岗位定位","产品经理岗位","产品思维"],"base_importance":5,"interview_value":5,"practical_product_value":5,"prerequisite_importance":4},
+  {"id":"Project Practice","keywords":["项目","案例","实战","方案设计","智能问答","语音交互","销量预测","人脸认证"],"base_importance":4,"interview_value":4,"practical_product_value":5,"prerequisite_importance":3},
+  {"id":"ML Mathematics","keywords":["gini","基尼","信息熵","信息增益","卷积运算"],"base_importance":2,"interview_value":2,"practical_product_value":2,"prerequisite_importance":4},
+  {"id":"Computer Vision","keywords":["图像识别","卷积神经网络","cnn","文生图","扩散模型","生成对抗","gan"],"base_importance":2,"interview_value":2,"practical_product_value":3,"prerequisite_importance":2},
+  {"id":"NLP","keywords":["nlp","文本处理","循环神经网络","rnn","自然语言"],"base_importance":3,"interview_value":3,"practical_product_value":4,"prerequisite_importance":3},
+  {"id":"Deep Learning","keywords":["深度学习","神经网络","感知机"],"base_importance":3,"interview_value":3,"practical_product_value":3,"prerequisite_importance":4},
+  {"id":"ML Algorithm","keywords":["线性回归","逻辑回归","k近邻","朴素贝叶斯","决策树","随机森林","支持向量机","k-means","聚类算法","机器学习算法"],"base_importance":2,"interview_value":2,"practical_product_value":3,"prerequisite_importance":3},
+  {"id":"Machine Learning","keywords":["机器学习","过拟合","欠拟合","训练集","验证集","测试集","分类问题","回归问题","特征工程"],"base_importance":3,"interview_value":3,"practical_product_value":4,"prerequisite_importance":4},
+  {"id":"General AI PM","keywords":["ai产品经理","课程导论","前沿技术","名词概念"],"base_importance":4,"interview_value":4,"practical_product_value":4,"prerequisite_importance":4},
+  {"id":"Other","keywords":[],"base_importance":3,"interview_value":3,"practical_product_value":3,"prerequisite_importance":2}
+]

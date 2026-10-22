@@ -1,0 +1,4779 @@
+{
+  "version": "curriculum60_v1",
+  "reviewed_at": "2026-10-15",
+  "course": {
+    "id": 1,
+    "name": "AI 产品经理公开学习路径"
+  },
+  "editorial_note": "60 节独立编排的公开学习路径。优先核对教材章节与公开原始资料，再整理知识原理；教材全文、图表和原题不打包。AI Engineering 使用作者公开摘要的部分已明确标注，SLP 未完成的 Agent 章不作为知识来源。原创例子与产品迁移单独标注。",
+  "modules": [
+    {
+      "id": "M01",
+      "label": "产品问题与学习总览",
+      "order": 1,
+      "lesson_ids": [
+        101,
+        102,
+        103,
+        104,
+        105,
+        106
+      ]
+    },
+    {
+      "id": "M02",
+      "label": "机器学习与评估基础",
+      "order": 2,
+      "lesson_ids": [
+        107,
+        108,
+        109,
+        110,
+        111,
+        112
+      ]
+    },
+    {
+      "id": "M03",
+      "label": "数据与实验设计",
+      "order": 3,
+      "lesson_ids": [
+        113,
+        114,
+        115,
+        116,
+        117,
+        118
+      ]
+    },
+    {
+      "id": "M04",
+      "label": "语言模型与 Transformer",
+      "order": 4,
+      "lesson_ids": [
+        119,
+        120,
+        121,
+        122,
+        123,
+        124
+      ]
+    },
+    {
+      "id": "M05",
+      "label": "提示、上下文与模型适配",
+      "order": 5,
+      "lesson_ids": [
+        125,
+        126,
+        127,
+        128,
+        129,
+        130
+      ]
+    },
+    {
+      "id": "M06",
+      "label": "知识检索与 RAG",
+      "order": 6,
+      "lesson_ids": [
+        131,
+        132,
+        133,
+        134,
+        135,
+        136
+      ]
+    },
+    {
+      "id": "M07",
+      "label": "Agent、工具与流程控制",
+      "order": 7,
+      "lesson_ids": [
+        137,
+        138,
+        139,
+        140,
+        141,
+        142
+      ]
+    },
+    {
+      "id": "M08",
+      "label": "多模态与业务应用",
+      "order": 8,
+      "lesson_ids": [
+        143,
+        144,
+        145,
+        146,
+        147,
+        148
+      ]
+    },
+    {
+      "id": "M09",
+      "label": "部署、性能与持续运维",
+      "order": 9,
+      "lesson_ids": [
+        149,
+        150,
+        151,
+        152,
+        153,
+        154
+      ]
+    },
+    {
+      "id": "M10",
+      "label": "信任、治理与上线决策",
+      "order": 10,
+      "lesson_ids": [
+        155,
+        156,
+        157,
+        158,
+        159,
+        160
+      ]
+    }
+  ],
+  "outline_sources": [
+    {
+      "title": "Dive into Deep Learning 目录",
+      "url": "https://d2l.ai/",
+      "usage": "选题与教材章节定位"
+    },
+    {
+      "title": "Introduction to Information Retrieval 目录",
+      "url": "https://nlp.stanford.edu/IR-book/html/htmledition/contents-1.html",
+      "usage": "检索基础与评估章节定位"
+    },
+    {
+      "title": "Speech and Language Processing 目录",
+      "url": "https://web.stanford.edu/~jurafsky/slp3/",
+      "usage": "使用已完成且可访问的章节，保留草稿版本说明"
+    },
+    {
+      "title": "AI Engineering 作者公开目录",
+      "url": "https://github.com/chiphuyen/aie-book/blob/main/ToC.md",
+      "usage": "仅目录选题参考；知识证据另行使用作者公开摘要或已核对资料"
+    },
+    {
+      "title": "An Introduction to Statistical Learning 官方目录",
+      "url": "https://www.statlearning.com/",
+      "usage": "仅目录选题参考，未把无法访问核对的 PDF 正文用于课程知识证据"
+    }
+  ],
+  "sources": {
+    "d2l_intro": {
+      "title": "《动手学深度学习》 / Dive into Deep Learning",
+      "section": "第 1 章 Introduction",
+      "url": "https://d2l.ai/chapter_introduction/index.html",
+      "kind": "textbook",
+      "kind_label": "教材正文",
+      "edition": "在线版 1.0.3",
+      "authors": "Aston Zhang, Zack C. Lipton, Mu Li, Alexander J. Smola",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "d2l_regression": {
+      "title": "《动手学深度学习》 / Dive into Deep Learning",
+      "section": "3.1 Linear Regression",
+      "url": "https://d2l.ai/chapter_linear-regression/linear-regression.html",
+      "kind": "textbook",
+      "kind_label": "教材正文",
+      "edition": "在线版 1.0.3",
+      "authors": "Aston Zhang, Zack C. Lipton, Mu Li, Alexander J. Smola",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "d2l_softmax": {
+      "title": "《动手学深度学习》 / Dive into Deep Learning",
+      "section": "4.1 Softmax Regression",
+      "url": "https://d2l.ai/chapter_linear-classification/softmax-regression.html",
+      "kind": "textbook",
+      "kind_label": "教材正文",
+      "edition": "在线版 1.0.3",
+      "authors": "Aston Zhang, Zack C. Lipton, Mu Li, Alexander J. Smola",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "d2l_generalization": {
+      "title": "《动手学深度学习》 / Dive into Deep Learning",
+      "section": "3.6 Generalization",
+      "url": "https://d2l.ai/chapter_linear-regression/generalization.html",
+      "kind": "textbook",
+      "kind_label": "教材正文",
+      "edition": "在线版 1.0.3",
+      "authors": "Aston Zhang, Zack C. Lipton, Mu Li, Alexander J. Smola",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "d2l_decay": {
+      "title": "《动手学深度学习》 / Dive into Deep Learning",
+      "section": "3.7 Weight Decay",
+      "url": "https://d2l.ai/chapter_linear-regression/weight-decay.html",
+      "kind": "textbook",
+      "kind_label": "教材正文",
+      "edition": "在线版 1.0.3",
+      "authors": "Aston Zhang, Zack C. Lipton, Mu Li, Alexander J. Smola",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "d2l_shift": {
+      "title": "《动手学深度学习》 / Dive into Deep Learning",
+      "section": "4.7 Environment and Distribution Shift",
+      "url": "https://d2l.ai/chapter_linear-classification/environment-and-distribution-shift.html",
+      "kind": "textbook",
+      "kind_label": "教材正文",
+      "edition": "在线版 1.0.3",
+      "authors": "Aston Zhang, Zack C. Lipton, Mu Li, Alexander J. Smola",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "d2l_preprocess": {
+      "title": "《动手学深度学习》 / Dive into Deep Learning",
+      "section": "2.2 Data Preprocessing",
+      "url": "https://d2l.ai/chapter_preliminaries/pandas.html",
+      "kind": "textbook",
+      "kind_label": "教材正文",
+      "edition": "在线版 1.0.3",
+      "authors": "Aston Zhang, Zack C. Lipton, Mu Li, Alexander J. Smola",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "d2l_mlp": {
+      "title": "《动手学深度学习》 / Dive into Deep Learning",
+      "section": "5.1 Multilayer Perceptrons",
+      "url": "https://d2l.ai/chapter_multilayer-perceptrons/mlp.html",
+      "kind": "textbook",
+      "kind_label": "教材正文",
+      "edition": "在线版 1.0.3",
+      "authors": "Aston Zhang, Zack C. Lipton, Mu Li, Alexander J. Smola",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "d2l_embeddings": {
+      "title": "《动手学深度学习》 / Dive into Deep Learning",
+      "section": "15.1 Word Embedding (word2vec)",
+      "url": "https://d2l.ai/chapter_natural-language-processing-pretraining/word2vec.html",
+      "kind": "textbook",
+      "kind_label": "教材正文",
+      "edition": "在线版 1.0.3",
+      "authors": "Aston Zhang, Zack C. Lipton, Mu Li, Alexander J. Smola",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "d2l_language": {
+      "title": "《动手学深度学习》 / Dive into Deep Learning",
+      "section": "9.3 Language Models",
+      "url": "https://d2l.ai/chapter_recurrent-neural-networks/language-model.html",
+      "kind": "textbook",
+      "kind_label": "教材正文",
+      "edition": "在线版 1.0.3",
+      "authors": "Aston Zhang, Zack C. Lipton, Mu Li, Alexander J. Smola",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "d2l_attention": {
+      "title": "《动手学深度学习》 / Dive into Deep Learning",
+      "section": "11.1 Queries, Keys, and Values",
+      "url": "https://d2l.ai/chapter_attention-mechanisms-and-transformers/queries-keys-values.html",
+      "kind": "textbook",
+      "kind_label": "教材正文",
+      "edition": "在线版 1.0.3",
+      "authors": "Aston Zhang, Zack C. Lipton, Mu Li, Alexander J. Smola",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "d2l_self_attention": {
+      "title": "《动手学深度学习》 / Dive into Deep Learning",
+      "section": "11.6 Self-Attention and Positional Encoding",
+      "url": "https://d2l.ai/chapter_attention-mechanisms-and-transformers/self-attention-and-positional-encoding.html",
+      "kind": "textbook",
+      "kind_label": "教材正文",
+      "edition": "在线版 1.0.3",
+      "authors": "Aston Zhang, Zack C. Lipton, Mu Li, Alexander J. Smola",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "d2l_transformer": {
+      "title": "《动手学深度学习》 / Dive into Deep Learning",
+      "section": "11.7 The Transformer Architecture",
+      "url": "https://d2l.ai/chapter_attention-mechanisms-and-transformers/transformer.html",
+      "kind": "textbook",
+      "kind_label": "教材正文",
+      "edition": "在线版 1.0.3",
+      "authors": "Aston Zhang, Zack C. Lipton, Mu Li, Alexander J. Smola",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "d2l_bert": {
+      "title": "《动手学深度学习》 / Dive into Deep Learning",
+      "section": "15.8 Bidirectional Encoder Representations from Transformers (BERT)",
+      "url": "https://d2l.ai/chapter_natural-language-processing-pretraining/bert.html",
+      "kind": "textbook",
+      "kind_label": "教材正文",
+      "edition": "在线版 1.0.3",
+      "authors": "Aston Zhang, Zack C. Lipton, Mu Li, Alexander J. Smola",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "d2l_fine_tuning": {
+      "title": "《动手学深度学习》 / Dive into Deep Learning",
+      "section": "14.2 Fine-Tuning",
+      "url": "https://d2l.ai/chapter_computer-vision/fine-tuning.html",
+      "kind": "textbook",
+      "kind_label": "教材正文",
+      "edition": "在线版 1.0.3",
+      "authors": "Aston Zhang, Zack C. Lipton, Mu Li, Alexander J. Smola",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "d2l_cnn": {
+      "title": "《动手学深度学习》 / Dive into Deep Learning",
+      "section": "7.2 Convolutions for Images",
+      "url": "https://d2l.ai/chapter_convolutional-neural-networks/conv-layer.html",
+      "kind": "textbook",
+      "kind_label": "教材正文",
+      "edition": "在线版 1.0.3",
+      "authors": "Aston Zhang, Zack C. Lipton, Mu Li, Alexander J. Smola",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "d2l_detection": {
+      "title": "《动手学深度学习》 / Dive into Deep Learning",
+      "section": "14.3 Object Detection and Bounding Boxes",
+      "url": "https://d2l.ai/chapter_computer-vision/bounding-box.html",
+      "kind": "textbook",
+      "kind_label": "教材正文",
+      "edition": "在线版 1.0.3",
+      "authors": "Aston Zhang, Zack C. Lipton, Mu Li, Alexander J. Smola",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "d2l_segmentation": {
+      "title": "《动手学深度学习》 / Dive into Deep Learning",
+      "section": "14.9 Semantic Segmentation and the Dataset",
+      "url": "https://d2l.ai/chapter_computer-vision/semantic-segmentation-and-dataset.html",
+      "kind": "textbook",
+      "kind_label": "教材正文",
+      "edition": "在线版 1.0.3",
+      "authors": "Aston Zhang, Zack C. Lipton, Mu Li, Alexander J. Smola",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "d2l_vit": {
+      "title": "《动手学深度学习》 / Dive into Deep Learning",
+      "section": "11.8 Transformers for Vision",
+      "url": "https://d2l.ai/chapter_attention-mechanisms-and-transformers/vision-transformer.html",
+      "kind": "textbook",
+      "kind_label": "教材正文",
+      "edition": "在线版 1.0.3",
+      "authors": "Aston Zhang, Zack C. Lipton, Mu Li, Alexander J. Smola",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "d2l_recommender": {
+      "title": "《动手学深度学习》 / Dive into Deep Learning",
+      "section": "21.1 Overview of Recommender Systems",
+      "url": "https://d2l.ai/chapter_recommender-systems/recsys-intro.html",
+      "kind": "textbook",
+      "kind_label": "教材正文",
+      "edition": "在线版 1.0.3",
+      "authors": "Aston Zhang, Zack C. Lipton, Mu Li, Alexander J. Smola",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "d2l_ranking": {
+      "title": "《动手学深度学习》 / Dive into Deep Learning",
+      "section": "21.5 Personalized Ranking for Recommender Systems",
+      "url": "https://d2l.ai/chapter_recommender-systems/ranking.html",
+      "kind": "textbook",
+      "kind_label": "教材正文",
+      "edition": "在线版 1.0.3",
+      "authors": "Aston Zhang, Zack C. Lipton, Mu Li, Alexander J. Smola",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "d2l_hardware": {
+      "title": "《动手学深度学习》 / Dive into Deep Learning",
+      "section": "13.4 Hardware",
+      "url": "https://d2l.ai/chapter_computational-performance/hardware.html",
+      "kind": "textbook",
+      "kind_label": "教材正文",
+      "edition": "在线版 1.0.3",
+      "authors": "Aston Zhang, Zack C. Lipton, Mu Li, Alexander J. Smola",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "slp_intro": {
+      "title": "Speech and Language Processing",
+      "section": "第 1 章 Introduction，指令与少样本提示",
+      "url": "https://web.stanford.edu/~jurafsky/slp3/1.pdf",
+      "kind": "textbook",
+      "kind_label": "教材正文",
+      "edition": "第 3 版在线草稿，2026-08-19；非完成的正式出版版",
+      "authors": "Daniel Jurafsky, James H. Martin",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "slp_tokens": {
+      "title": "Speech and Language Processing",
+      "section": "第 2 章 Words and Tokens，分词与编辑距离",
+      "url": "https://web.stanford.edu/~jurafsky/slp3/2.pdf",
+      "kind": "textbook",
+      "kind_label": "教材正文",
+      "edition": "第 3 版在线草稿，2026-08-19；非完成的正式出版版",
+      "authors": "Daniel Jurafsky, James H. Martin",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "slp_classification": {
+      "title": "Speech and Language Processing",
+      "section": "第 4 章 Logistic Regression and Text Classification，分类与评估",
+      "url": "https://web.stanford.edu/~jurafsky/slp3/4.pdf",
+      "kind": "textbook",
+      "kind_label": "教材正文",
+      "edition": "第 3 版在线草稿，2026-08-19；非完成的正式出版版",
+      "authors": "Daniel Jurafsky, James H. Martin",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "slp_transformer": {
+      "title": "Speech and Language Processing",
+      "section": "第 7 章 Transformers and Pretraining，注意力、预训练与解码",
+      "url": "https://web.stanford.edu/~jurafsky/slp3/7.pdf",
+      "kind": "textbook",
+      "kind_label": "教材正文",
+      "edition": "第 3 版在线草稿，2026-08-19；非完成的正式出版版",
+      "authors": "Daniel Jurafsky, James H. Martin",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "slp_post_training": {
+      "title": "Speech and Language Processing",
+      "section": "第 8 章 Post-training，SFT、LoRA 与偏好学习",
+      "url": "https://web.stanford.edu/~jurafsky/slp3/8.pdf",
+      "kind": "textbook",
+      "kind_label": "教材正文",
+      "edition": "第 3 版在线草稿，2026-08-19；非完成的正式出版版",
+      "authors": "Daniel Jurafsky, James H. Martin",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "slp_rag": {
+      "title": "Speech and Language Processing",
+      "section": "第 11 章 Information Retrieval and RAG",
+      "url": "https://web.stanford.edu/~jurafsky/slp3/11.pdf",
+      "kind": "textbook",
+      "kind_label": "教材正文",
+      "edition": "第 3 版在线草稿，2026-08-19；非完成的正式出版版",
+      "authors": "Daniel Jurafsky, James H. Martin",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "slp_asr": {
+      "title": "Speech and Language Processing",
+      "section": "第 16 章 Automatic Speech Recognition，转写与 WER",
+      "url": "https://web.stanford.edu/~jurafsky/slp3/16.pdf",
+      "kind": "textbook",
+      "kind_label": "教材正文",
+      "edition": "第 3 版在线草稿，2026-08-19；非完成的正式出版版",
+      "authors": "Daniel Jurafsky, James H. Martin",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "slp_extraction": {
+      "title": "Speech and Language Processing",
+      "section": "第 21 章 Information Extraction: Relations, Events, and Time",
+      "url": "https://web.stanford.edu/~jurafsky/slp3/21.pdf",
+      "kind": "textbook",
+      "kind_label": "教材正文",
+      "edition": "第 3 版在线草稿，2026-08-19；非完成的正式出版版",
+      "authors": "Daniel Jurafsky, James H. Martin",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "ir_document_unit": {
+      "title": "Introduction to Information Retrieval",
+      "section": "2.1.2 Choosing a document unit",
+      "url": "https://nlp.stanford.edu/IR-book/html/htmledition/choosing-a-document-unit-1.html",
+      "kind": "textbook",
+      "kind_label": "教材正文",
+      "edition": "Cambridge University Press, 2008 在线版",
+      "authors": "Christopher D. Manning, Prabhakar Raghavan, Hinrich Schütze",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "ir_tf": {
+      "title": "Introduction to Information Retrieval",
+      "section": "6.2 Term frequency and weighting",
+      "url": "https://nlp.stanford.edu/IR-book/html/htmledition/term-frequency-and-weighting-1.html",
+      "kind": "textbook",
+      "kind_label": "教材正文",
+      "edition": "Cambridge University Press, 2008 在线版",
+      "authors": "Christopher D. Manning, Prabhakar Raghavan, Hinrich Schütze",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "ir_vector": {
+      "title": "Introduction to Information Retrieval",
+      "section": "6.3 The vector space model for scoring",
+      "url": "https://nlp.stanford.edu/IR-book/html/htmledition/the-vector-space-model-for-scoring-1.html",
+      "kind": "textbook",
+      "kind_label": "教材正文",
+      "edition": "Cambridge University Press, 2008 在线版",
+      "authors": "Christopher D. Manning, Prabhakar Raghavan, Hinrich Schütze",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "ir_bm25": {
+      "title": "Introduction to Information Retrieval",
+      "section": "11.4.3 Okapi BM25: a non-binary model",
+      "url": "https://nlp.stanford.edu/IR-book/html/htmledition/okapi-bm25-a-non-binary-model-1.html",
+      "kind": "textbook",
+      "kind_label": "教材正文",
+      "edition": "Cambridge University Press, 2008 在线版",
+      "authors": "Christopher D. Manning, Prabhakar Raghavan, Hinrich Schütze",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "ir_eval": {
+      "title": "Introduction to Information Retrieval",
+      "section": "第 8 章 Evaluation in information retrieval",
+      "url": "https://nlp.stanford.edu/IR-book/html/htmledition/evaluation-in-information-retrieval-1.html",
+      "kind": "textbook",
+      "kind_label": "教材正文",
+      "edition": "Cambridge University Press, 2008 在线版",
+      "authors": "Christopher D. Manning, Prabhakar Raghavan, Hinrich Schütze",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "ir_unranked": {
+      "title": "Introduction to Information Retrieval",
+      "section": "8.3 Evaluation of unranked retrieval sets",
+      "url": "https://nlp.stanford.edu/IR-book/html/htmledition/evaluation-of-unranked-retrieval-sets-1.html",
+      "kind": "textbook",
+      "kind_label": "教材正文",
+      "edition": "Cambridge University Press, 2008 在线版",
+      "authors": "Christopher D. Manning, Prabhakar Raghavan, Hinrich Schütze",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "ir_ranked": {
+      "title": "Introduction to Information Retrieval",
+      "section": "8.4 Evaluation of ranked retrieval results",
+      "url": "https://nlp.stanford.edu/IR-book/html/htmledition/evaluation-of-ranked-retrieval-results-1.html",
+      "kind": "textbook",
+      "kind_label": "教材正文",
+      "edition": "Cambridge University Press, 2008 在线版",
+      "authors": "Christopher D. Manning, Prabhakar Raghavan, Hinrich Schütze",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "ir_feedback": {
+      "title": "Introduction to Information Retrieval",
+      "section": "9.1 Relevance feedback and pseudo relevance feedback",
+      "url": "https://nlp.stanford.edu/IR-book/html/htmledition/relevance-feedback-and-pseudo-relevance-feedback-1.html",
+      "kind": "textbook",
+      "kind_label": "教材正文",
+      "edition": "Cambridge University Press, 2008 在线版",
+      "authors": "Christopher D. Manning, Prabhakar Raghavan, Hinrich Schütze",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "ir_utility": {
+      "title": "Introduction to Information Retrieval",
+      "section": "8.6.2 User utility",
+      "url": "https://nlp.stanford.edu/IR-book/html/htmledition/user-utility-1.html",
+      "kind": "textbook",
+      "kind_label": "教材正文",
+      "edition": "Cambridge University Press, 2008 在线版",
+      "authors": "Christopher D. Manning, Prabhakar Raghavan, Hinrich Schütze",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "chip_setup": {
+      "title": "Machine Learning Systems Design（作者公开在线教材）",
+      "section": "Project setup",
+      "url": "https://huyenchip.com/machine-learning-systems-design/design-a-machine-learning-system.html#project-setup",
+      "kind": "textbook",
+      "kind_label": "教材正文",
+      "edition": "在线教材；与付费书 Designing Machine Learning Systems 不同",
+      "authors": "Chip Huyen",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "chip_data": {
+      "title": "Machine Learning Systems Design（作者公开在线教材）",
+      "section": "Data pipeline",
+      "url": "https://huyenchip.com/machine-learning-systems-design/design-a-machine-learning-system.html#data-pipeline",
+      "kind": "textbook",
+      "kind_label": "教材正文",
+      "edition": "在线教材；与付费书 Designing Machine Learning Systems 不同",
+      "authors": "Chip Huyen",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "chip_model": {
+      "title": "Machine Learning Systems Design（作者公开在线教材）",
+      "section": "Model selection",
+      "url": "https://huyenchip.com/machine-learning-systems-design/design-a-machine-learning-system.html#model-selection",
+      "kind": "textbook",
+      "kind_label": "教材正文",
+      "edition": "在线教材；与付费书 Designing Machine Learning Systems 不同",
+      "authors": "Chip Huyen",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "chip_serving": {
+      "title": "Machine Learning Systems Design（作者公开在线教材）",
+      "section": "Serving",
+      "url": "https://huyenchip.com/machine-learning-systems-design/design-a-machine-learning-system.html#serving",
+      "kind": "textbook",
+      "kind_label": "教材正文",
+      "edition": "在线教材；与付费书 Designing Machine Learning Systems 不同",
+      "authors": "Chip Huyen",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "pair_needs": {
+      "title": "People + AI Guidebook",
+      "section": "User Needs + Defining Success",
+      "url": "https://pair.withgoogle.com/guidebook-v2/chapter/user-needs/",
+      "kind": "guide",
+      "kind_label": "公开实践指南",
+      "edition": "公开在线指南 v2",
+      "authors": "Google PAIR",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "pair_data": {
+      "title": "People + AI Guidebook",
+      "section": "Data Collection + Evaluation",
+      "url": "https://pair.withgoogle.com/guidebook-v2/chapter/data-collection/",
+      "kind": "guide",
+      "kind_label": "公开实践指南",
+      "edition": "公开在线指南 v2",
+      "authors": "Google PAIR",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "pair_mental": {
+      "title": "People + AI Guidebook",
+      "section": "Mental Models",
+      "url": "https://pair.withgoogle.com/guidebook-v2/chapter/mental-models/",
+      "kind": "guide",
+      "kind_label": "公开实践指南",
+      "edition": "公开在线指南 v2",
+      "authors": "Google PAIR",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "pair_trust": {
+      "title": "People + AI Guidebook",
+      "section": "Explainability + Trust",
+      "url": "https://pair.withgoogle.com/guidebook-v2/chapter/explainability-trust/",
+      "kind": "guide",
+      "kind_label": "公开实践指南",
+      "edition": "公开在线指南 v2",
+      "authors": "Google PAIR",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "pair_controls": {
+      "title": "People + AI Guidebook",
+      "section": "Feedback + Control",
+      "url": "https://pair.withgoogle.com/guidebook-v2/chapter/feedback-controls/",
+      "kind": "guide",
+      "kind_label": "公开实践指南",
+      "edition": "公开在线指南 v2",
+      "authors": "Google PAIR",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "pair_errors": {
+      "title": "People + AI Guidebook",
+      "section": "Errors + Graceful Failure",
+      "url": "https://pair.withgoogle.com/guidebook-v2/chapter/errors-failing/",
+      "kind": "guide",
+      "kind_label": "公开实践指南",
+      "edition": "公开在线指南 v2",
+      "authors": "Google PAIR",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "openstax_research": {
+      "title": "Principles of Marketing",
+      "section": "6.3 Steps in a Successful Marketing Research Plan",
+      "url": "https://openstax.org/books/principles-marketing/pages/6-3-steps-in-a-successful-marketing-research-plan",
+      "kind": "textbook",
+      "kind_label": "教材正文",
+      "edition": "OpenStax 公开在线教材",
+      "authors": "OpenStax / Rice University",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "openstax_compet": {
+      "title": "Entrepreneurship",
+      "section": "5.3 Competitive Analysis",
+      "url": "https://openstax.org/books/entrepreneurship/pages/5-3-competitive-analysis",
+      "kind": "textbook",
+      "kind_label": "教材正文",
+      "edition": "OpenStax 公开在线教材",
+      "authors": "OpenStax / Rice University",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "aie_model_summary": {
+      "title": "AI Engineering（作者公开章节摘要）",
+      "section": "第 2 章 Understanding Foundation Models；仅使用作者公开摘要范围",
+      "url": "https://github.com/chiphuyen/aie-book/blob/main/chapter-summaries.md#chapter-2-understanding-foundation-models",
+      "kind": "author_summary",
+      "kind_label": "作者公开摘要",
+      "edition": "2025 书籍配套公开摘要；非书籍全文",
+      "authors": "Chip Huyen",
+      "checked_at": "2026-10-15",
+      "access_scope": "作者发布的章节摘要，非整章正文"
+    },
+    "aie_prompt_summary": {
+      "title": "AI Engineering（作者公开章节摘要）",
+      "section": "第 5 章 Prompt Engineering；仅使用作者公开摘要范围",
+      "url": "https://github.com/chiphuyen/aie-book/blob/main/chapter-summaries.md#chapter-5-prompt-engineering",
+      "kind": "author_summary",
+      "kind_label": "作者公开摘要",
+      "edition": "2025 书籍配套公开摘要；非书籍全文",
+      "authors": "Chip Huyen",
+      "checked_at": "2026-10-15",
+      "access_scope": "作者发布的章节摘要，非整章正文"
+    },
+    "aie_agent_summary": {
+      "title": "AI Engineering（作者公开章节摘要）",
+      "section": "第 6 章 RAG and Agents；仅使用作者公开摘要范围",
+      "url": "https://github.com/chiphuyen/aie-book/blob/main/chapter-summaries.md#chapter-6-rag-and-agents",
+      "kind": "author_summary",
+      "kind_label": "作者公开摘要",
+      "edition": "2025 书籍配套公开摘要；非书籍全文",
+      "authors": "Chip Huyen",
+      "checked_at": "2026-10-15",
+      "access_scope": "作者发布的章节摘要，非整章正文"
+    },
+    "aie_finetune_summary": {
+      "title": "AI Engineering（作者公开章节摘要）",
+      "section": "第 7 章 Finetuning；仅使用作者公开摘要范围",
+      "url": "https://github.com/chiphuyen/aie-book/blob/main/chapter-summaries.md#chapter-7-finetuning",
+      "kind": "author_summary",
+      "kind_label": "作者公开摘要",
+      "edition": "2025 书籍配套公开摘要；非书籍全文",
+      "authors": "Chip Huyen",
+      "checked_at": "2026-10-15",
+      "access_scope": "作者发布的章节摘要，非整章正文"
+    },
+    "aie_inference_summary": {
+      "title": "AI Engineering（作者公开章节摘要）",
+      "section": "第 9 章 Inference Optimization；仅使用作者公开摘要范围",
+      "url": "https://github.com/chiphuyen/aie-book/blob/main/chapter-summaries.md#chapter-9-inference-optimization",
+      "kind": "author_summary",
+      "kind_label": "作者公开摘要",
+      "edition": "2025 书籍配套公开摘要；非书籍全文",
+      "authors": "Chip Huyen",
+      "checked_at": "2026-10-15",
+      "access_scope": "作者发布的章节摘要，非整章正文"
+    },
+    "anthropic_agents": {
+      "title": "Anthropic · Building Effective Agents",
+      "section": "工作流、路由、并行和 Agent 循环",
+      "url": "https://www.anthropic.com/engineering/building-effective-agents",
+      "kind": "official_doc",
+      "kind_label": "官方工程资料",
+      "edition": "公开网页，核对日期 2026-10-15",
+      "authors": "",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "azure_agent_patterns": {
+      "title": "Microsoft · AI Agent Orchestration Patterns",
+      "section": "协调、分工与协作取舍",
+      "url": "https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/ai-agent-design-patterns",
+      "kind": "official_doc",
+      "kind_label": "官方工程资料",
+      "edition": "公开网页，核对日期 2026-10-15",
+      "authors": "",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "mcp_tools": {
+      "title": "Model Context Protocol · Tools",
+      "section": "工具发现、输入模式、错误与安全考虑（2025-06-18）",
+      "url": "https://modelcontextprotocol.io/specification/2025-06-18/server/tools",
+      "kind": "official_doc",
+      "kind_label": "官方工程资料",
+      "edition": "公开网页，核对日期 2026-10-15",
+      "authors": "",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "json_schema": {
+      "title": "JSON Schema · What is a schema?",
+      "section": "数据结构、验证与描述",
+      "url": "https://json-schema.org/understanding-json-schema/about",
+      "kind": "official_doc",
+      "kind_label": "官方工程资料",
+      "edition": "公开网页，核对日期 2026-10-15",
+      "authors": "",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "mdn_idempotency": {
+      "title": "MDN · Idempotent",
+      "section": "重复请求与副作用",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/Idempotent",
+      "kind": "official_doc",
+      "kind_label": "官方工程资料",
+      "edition": "公开网页，核对日期 2026-10-15",
+      "authors": "",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "microsoft_rag": {
+      "title": "Microsoft Learn · RAG and Generative AI",
+      "section": "资料处理、索引、检索和生成",
+      "url": "https://learn.microsoft.com/en-us/azure/search/retrieval-augmented-generation-overview",
+      "kind": "official_doc",
+      "kind_label": "官方工程资料",
+      "edition": "公开网页，核对日期 2026-10-15",
+      "authors": "",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "microsoft_hybrid": {
+      "title": "Microsoft Learn · Hybrid Search Overview",
+      "section": "全文与向量检索融合",
+      "url": "https://learn.microsoft.com/en-us/azure/search/hybrid-search-overview",
+      "kind": "official_doc",
+      "kind_label": "官方工程资料",
+      "edition": "公开网页，核对日期 2026-10-15",
+      "authors": "",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "microsoft_rerank": {
+      "title": "Microsoft Learn · Semantic Ranking Overview",
+      "section": "对已有结果重排序",
+      "url": "https://learn.microsoft.com/en-us/azure/search/semantic-search-overview",
+      "kind": "official_doc",
+      "kind_label": "官方工程资料",
+      "edition": "公开网页，核对日期 2026-10-15",
+      "authors": "",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "sklearn_validation": {
+      "title": "scikit-learn · Cross-validation",
+      "section": "训练测试划分、分组与时间序列验证",
+      "url": "https://scikit-learn.org/stable/modules/cross_validation.html",
+      "kind": "official_doc",
+      "kind_label": "官方工程资料",
+      "edition": "公开网页，核对日期 2026-10-15",
+      "authors": "",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "sklearn_pitfalls": {
+      "title": "scikit-learn · Common pitfalls",
+      "section": "不一致预处理与数据泄漏",
+      "url": "https://scikit-learn.org/stable/common_pitfalls.html",
+      "kind": "official_doc",
+      "kind_label": "官方工程资料",
+      "edition": "公开网页，核对日期 2026-10-15",
+      "authors": "",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "hf_generation": {
+      "title": "Hugging Face · Generation strategies",
+      "section": "采样与解码策略",
+      "url": "https://huggingface.co/docs/transformers/en/generation_strategies",
+      "kind": "official_doc",
+      "kind_label": "官方工程资料",
+      "edition": "公开网页，核对日期 2026-10-15",
+      "authors": "",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "hf_lora": {
+      "title": "Hugging Face · LoRA",
+      "section": "冻结基础权重与低秩更新",
+      "url": "https://huggingface.co/docs/peft/main/en/conceptual_guides/lora",
+      "kind": "official_doc",
+      "kind_label": "官方工程资料",
+      "edition": "公开网页，核对日期 2026-10-15",
+      "authors": "",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "hf_dpo": {
+      "title": "Hugging Face · DPO Trainer",
+      "section": "直接偏好优化与偏好数据",
+      "url": "https://huggingface.co/docs/trl/en/dpo_trainer",
+      "kind": "official_doc",
+      "kind_label": "官方工程资料",
+      "edition": "公开网页，核对日期 2026-10-15",
+      "authors": "",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "hf_cache": {
+      "title": "Hugging Face · Cache strategies",
+      "section": "KV 缓存与资源取舍",
+      "url": "https://huggingface.co/docs/transformers/en/kv_cache",
+      "kind": "official_doc",
+      "kind_label": "官方工程资料",
+      "edition": "公开网页，核对日期 2026-10-15",
+      "authors": "",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "hf_quantization": {
+      "title": "Hugging Face · Quantization overview",
+      "section": "低精度表示与量化方案",
+      "url": "https://huggingface.co/docs/transformers/en/quantization/overview",
+      "kind": "official_doc",
+      "kind_label": "官方工程资料",
+      "edition": "公开网页，核对日期 2026-10-15",
+      "authors": "",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "hf_pipeline": {
+      "title": "Hugging Face · Pipeline",
+      "section": "批量推理与速度、资源取舍",
+      "url": "https://huggingface.co/docs/transformers/en/pipeline_tutorial",
+      "kind": "official_doc",
+      "kind_label": "官方工程资料",
+      "edition": "公开网页，核对日期 2026-10-15",
+      "authors": "",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "google_mlops": {
+      "title": "Google Cloud · MLOps pipelines",
+      "section": "数据验证、模型发布和持续监测",
+      "url": "https://docs.cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning",
+      "kind": "official_doc",
+      "kind_label": "官方工程资料",
+      "edition": "公开网页，核对日期 2026-10-15",
+      "authors": "",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "google_genai_ops": {
+      "title": "Google Cloud · Deploy and operate generative AI applications",
+      "section": "生成式应用缓存、监测与运行流程",
+      "url": "https://docs.cloud.google.com/architecture/deploy-operate-generative-ai-applications",
+      "kind": "official_doc",
+      "kind_label": "官方工程资料",
+      "edition": "公开网页，核对日期 2026-10-15",
+      "authors": "",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "google_ab": {
+      "title": "Google · Machine Learning Glossary",
+      "section": "A/B testing，实验与指标",
+      "url": "https://developers.google.com/machine-learning/glossary#AB_testing",
+      "kind": "official_doc",
+      "kind_label": "官方工程资料",
+      "edition": "公开网页，核对日期 2026-10-15",
+      "authors": "",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "nvidia_metrics": {
+      "title": "NVIDIA · NIM Benchmarking Metrics",
+      "section": "TTFT、端到端延迟与系统吞吐",
+      "url": "https://docs.nvidia.com/nim/benchmarking/llm/metrics",
+      "kind": "official_doc",
+      "kind_label": "官方工程资料",
+      "edition": "公开网页，核对日期 2026-10-15",
+      "authors": "",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "owasp_agency": {
+      "title": "OWASP · LLM06:2025 Excessive Agency",
+      "section": "工具功能、权限与自治控制",
+      "url": "https://genai.owasp.org/llmrisk/llm062025-excessive-agency/",
+      "kind": "official_doc",
+      "kind_label": "官方工程资料",
+      "edition": "公开网页，核对日期 2026-10-15",
+      "authors": "",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "owasp_injection": {
+      "title": "OWASP · LLM01:2025 Prompt Injection",
+      "section": "直接与间接提示注入",
+      "url": "https://genai.owasp.org/llmrisk/llm01-prompt-injection/",
+      "kind": "official_doc",
+      "kind_label": "官方工程资料",
+      "edition": "公开网页，核对日期 2026-10-15",
+      "authors": "",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "owasp_sensitive": {
+      "title": "OWASP · LLM02:2025 Sensitive Information Disclosure",
+      "section": "敏感信息、访问范围与数据处理",
+      "url": "https://genai.owasp.org/llmrisk/llm022025-sensitive-information-disclosure/",
+      "kind": "official_doc",
+      "kind_label": "官方工程资料",
+      "edition": "公开网页，核对日期 2026-10-15",
+      "authors": "",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "nist_core": {
+      "title": "NIST · AI RMF Core",
+      "section": "GOVERN、MAP、MEASURE、MANAGE",
+      "url": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/",
+      "kind": "official_doc",
+      "kind_label": "官方工程资料",
+      "edition": "公开网页，核对日期 2026-10-15",
+      "authors": "",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "clip_paper": {
+      "title": "Learning Transferable Visual Models From Natural Language Supervision",
+      "section": "图文对比学习、共享表示与迁移评估",
+      "url": "https://arxiv.org/abs/2103.00020",
+      "kind": "research_paper",
+      "kind_label": "研究论文",
+      "edition": "2021 论文",
+      "authors": "Alec Radford 等",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    },
+    "distillation_paper": {
+      "title": "Distilling the Knowledge in a Neural Network",
+      "section": "教师学生模型与软目标",
+      "url": "https://arxiv.org/abs/1503.02531",
+      "kind": "research_paper",
+      "kind_label": "研究论文",
+      "edition": "2015 论文",
+      "authors": "Geoffrey Hinton, Oriol Vinyals, Jeff Dean",
+      "checked_at": "2026-10-15",
+      "access_scope": "对应章节或资料正文"
+    }
+  },
+  "lessons": [
+    {
+      "id": 101,
+      "order": 1,
+      "module_id": "M01",
+      "chapter": "产品问题与学习总览",
+      "title": "从用户问题到 AI 产品机会",
+      "topic": "AI产品",
+      "content": "先证明问题值得解决，再比较 AI 与现有方案，避免把新技术能力直接当作用户价值。",
+      "objectives": [
+        "解释“用户任务与问题证据”，能说明机制、使用边界与一个产品取舍。",
+        "解释“AI 适用性与基线比较”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "为客服查询场景制定一个问题证据清单，并比较规则方案与模型方案。",
+      "source_ids": [
+        "pair_needs",
+        "chip_setup"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 1001,
+          "name": "用户任务与问题证据",
+          "description": "用户需求应还原为特定情境中的任务和障碍。",
+          "category": "AI_PRODUCT",
+          "core_explanation": "用户需求应还原为特定情境中的任务和障碍。通过观察、访谈与使用数据核查发生频率、现有流程和结果，再判断 AI 是否有独特贡献。愿望描述与可观察的问题证据需要分开记录。",
+          "why_explanation": "单靠用户说喜欢 AI，不能证明它能改善任务结果。",
+          "teaching_example": "客服人员每次都要查三份政策；先记录查询耗时和返工原因，再提出助手方案。",
+          "ai_pm_relevance": "先界定任务、受益者与成功标准，再写功能需求。",
+          "source_ids": [
+            "pair_needs",
+            "chip_setup"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释用户任务与问题证据的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 1002,
+          "name": "AI 适用性与基线比较",
+          "description": "AI 与规则、搜索和人工都应在同一任务上比较。",
+          "category": "AI_PRODUCT",
+          "core_explanation": "AI 与规则、搜索和人工都应在同一任务上比较。优先识别非结构化信息和不易穷举的判断；稳定、明确的业务规则可以保持确定性实现，新增模型能力需要证明实际增益。",
+          "why_explanation": "简单基线能暴露模型方案是否只是增加复杂度。",
+          "teaching_example": "固定退货期限使用规则；含糊投诉由模型辅助分类，并保留人工复核。",
+          "ai_pm_relevance": "同时比较正确率、时间、成本和错误代价。",
+          "source_ids": [
+            "pair_needs",
+            "chip_setup"
+          ],
+          "prerequisite": "用户任务与问题证据",
+          "interview_requirements": [
+            "能解释AI 适用性与基线比较的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 102,
+      "order": 2,
+      "module_id": "M01",
+      "chapter": "产品问题与学习总览",
+      "title": "工作流、模型与知识检索的组合",
+      "topic": "AI产品",
+      "content": "理解程序、模型、检索和工具的职责，把 AI 能力放到有明确输入输出的产品流程中。",
+      "objectives": [
+        "解释“确定性流程与模型步骤”，能说明机制、使用边界与一个产品取舍。",
+        "解释“检索增强生成的证据链”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "画出政策问答的输入、检索、回答与人工升级流程，并标出权限检查的位置。",
+      "source_ids": [
+        "chip_setup",
+        "slp_rag",
+        "anthropic_agents"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 1003,
+          "name": "确定性流程与模型步骤",
+          "description": "系统流程负责顺序、权限与失败处理，模型承担语言理解或生成任务。",
+          "category": "AI_PRODUCT",
+          "core_explanation": "系统流程负责顺序、权限与失败处理，模型承担语言理解或生成任务。把固定步骤写成工作流，只有路径需要动态决策时再考虑智能体；模型提出的动作仍须由执行层验证。",
+          "why_explanation": "职责混在一起时，错误原因与责任边界都难以定位。",
+          "teaching_example": "报销助手用程序检查金额和审批人，用模型归纳票据说明。",
+          "ai_pm_relevance": "写清每个节点的输入、输出、失败出口和责任人。",
+          "source_ids": [
+            "chip_setup",
+            "slp_rag",
+            "anthropic_agents"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释确定性流程与模型步骤的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 1004,
+          "name": "检索增强生成的证据链",
+          "description": "RAG 在生成前找出相关外部资料，把资料和问题一起交给模型。",
+          "category": "AI_PRODUCT",
+          "core_explanation": "RAG 在生成前找出相关外部资料，把资料和问题一起交给模型。它能补充参数知识没有覆盖的事实，但召回遗漏、陈旧资料和答案误读仍会造成失败，引用也需核验。",
+          "why_explanation": "检索到资料与答案被资料支持是两项不同要求。",
+          "teaching_example": "政策助手只检索当前版本条款，答案标明来源；找不到适用条款时转人工。",
+          "ai_pm_relevance": "分别验收检索覆盖、答案支持程度与资料时效。",
+          "source_ids": [
+            "chip_setup",
+            "slp_rag",
+            "anthropic_agents"
+          ],
+          "prerequisite": "确定性流程与模型步骤",
+          "interview_requirements": [
+            "能解释检索增强生成的证据链的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 103,
+      "order": 3,
+      "module_id": "M01",
+      "chapter": "产品问题与学习总览",
+      "title": "质量评估、风险控制与产品指标",
+      "topic": "AI产品",
+      "content": "把质量验收放在真实任务上，并用风险和用户后续行动设计失败处理。",
+      "objectives": [
+        "解释“任务型评估集与回归测试”，能说明机制、使用边界与一个产品取舍。",
+        "解释“风险分级与人工兜底”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "为政策助手列出正常、无答案和高风险问题，并定义通过标准与兜底动作。",
+      "source_ids": [
+        "pair_data",
+        "pair_errors",
+        "ir_eval"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 1005,
+          "name": "任务型评估集与回归测试",
+          "description": "评估要用代表用户信息需求的样本、相关证据与明确判分标准。",
+          "category": "AI_PRODUCT",
+          "core_explanation": "评估要用代表用户信息需求的样本、相关证据与明确判分标准。保留高频任务、边界和历史错误，系统修改后复测；检索相关性指标和用户完成任务的结果应同时检查。",
+          "why_explanation": "一次成功演示无法代表不同输入与版本的稳定表现。",
+          "teaching_example": "修改检索后重测同义问法、过期政策和库中没有答案的问题。",
+          "ai_pm_relevance": "定义发布门槛，记录失败样本而非只报平均分。",
+          "source_ids": [
+            "pair_data",
+            "pair_errors",
+            "ir_eval"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释任务型评估集与回归测试的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 1006,
+          "name": "风险分级与人工兜底",
+          "description": "用户感受到的失败与任务影响有关。",
+          "category": "AI_PRODUCT",
+          "core_explanation": "用户感受到的失败与任务影响有关。按错误后果、可逆性和用户能否纠正设置预览、确认、撤销与人工接管，让系统出错后仍有可继续的路径，不能仅显示笼统报错。",
+          "why_explanation": "同一模型错误在低风险草稿与实际交易中影响不同。",
+          "teaching_example": "回复草稿可自动生成，退款动作需确认；查不到资料时保留问题并转交人工。",
+          "ai_pm_relevance": "为每种失败定义可执行的下一步与处理责任。",
+          "source_ids": [
+            "pair_data",
+            "pair_errors",
+            "ir_eval"
+          ],
+          "prerequisite": "任务型评估集与回归测试",
+          "interview_requirements": [
+            "能解释风险分级与人工兜底的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 104,
+      "order": 4,
+      "module_id": "M01",
+      "chapter": "产品问题与学习总览",
+      "title": "用户研究：从访谈到可检验需求",
+      "topic": "AI产品",
+      "content": "研究先明确需要解决的问题，再选择观察、访谈或调查，区分真实行为与态度表达。",
+      "objectives": [
+        "解释“研究问题与信息需求”，能说明机制、使用边界与一个产品取舍。",
+        "解释“行为证据与样本范围”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "为 AI 学习助手写三个不诱导答案的访谈问题，再说明如何核对受访者的行为。",
+      "source_ids": [
+        "openstax_research",
+        "pair_needs"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411041,
+          "name": "研究问题与信息需求",
+          "description": "市场研究先确定问题和研究目标，再决定方法与数据需求。",
+          "category": "AI_PRODUCT",
+          "core_explanation": "市场研究先确定问题和研究目标，再决定方法与数据需求。描述性、探索性或因果性问题要求不同证据；不能先发问卷，再把已有结果包装成任何想要的结论。",
+          "why_explanation": "方法与研究问题不匹配时，样本再多也难支持决策。",
+          "teaching_example": "想知道作业卡点先做观察和访谈；想比较界面效果再设计对照实验。",
+          "ai_pm_relevance": "写明待验证假设、所需证据与可能推翻它的结果。",
+          "source_ids": [
+            "openstax_research",
+            "pair_needs"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释研究问题与信息需求的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411042,
+          "name": "行为证据与样本范围",
+          "description": "用户说愿意使用，与实际能否完成任务是不同证据。",
+          "category": "AI_PRODUCT",
+          "core_explanation": "用户说愿意使用，与实际能否完成任务是不同证据。研究应记录具体事件、现有替代办法和样本来源，检查不同用户情境；便利样本不能不加说明地代表全部目标人群。",
+          "why_explanation": "态度偏差与样本偏差会把局部需求误当作普遍需求。",
+          "teaching_example": "学生说想要更快答案，但观察发现真正困难是理解错题原因。",
+          "ai_pm_relevance": "让需求结论附带适用人群、情境及证据限制。",
+          "source_ids": [
+            "openstax_research",
+            "pair_needs"
+          ],
+          "prerequisite": "研究问题与信息需求",
+          "interview_requirements": [
+            "能解释行为证据与样本范围的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 105,
+      "order": 5,
+      "module_id": "M01",
+      "chapter": "产品问题与学习总览",
+      "title": "竞品分析：比较用户价值而非功能数量",
+      "topic": "AI产品",
+      "content": "同时分析直接竞品与替代方案，把差异放到用户重视的价值和实际使用条件中。",
+      "objectives": [
+        "解释“竞争范围与替代方案”，能说明机制、使用边界与一个产品取舍。",
+        "解释“差异价值与取舍依据”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "比较两款答疑工具和人工辅导，指出一个值得保留的能力与一个暂缓的功能。",
+      "source_ids": [
+        "openstax_compet"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411051,
+          "name": "竞争范围与替代方案",
+          "description": "竞品不只是在同一品类中卖类似功能的产品，也包括完成相同任务的替代方式。",
+          "category": "AI_PRODUCT",
+          "core_explanation": "竞品不只是在同一品类中卖类似功能的产品，也包括完成相同任务的替代方式。比较服务对象、价格、质量和使用条件，识别用户为什么选择某种方案，避免只抄界面菜单。",
+          "why_explanation": "竞争边界过窄时，会漏掉用户真正采用的解决办法。",
+          "teaching_example": "AI 答疑不仅与其他助手竞争，还与搜索、教师答疑和同学讨论竞争。",
+          "ai_pm_relevance": "先写共同用户任务，再选择比较对象与维度。",
+          "source_ids": [
+            "openstax_compet"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释竞争范围与替代方案的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411052,
+          "name": "差异价值与取舍依据",
+          "description": "竞争分析要寻找用户重视但供给不足的价值，同时区分自有能力和外部机会。",
+          "category": "AI_PRODUCT",
+          "core_explanation": "竞争分析要寻找用户重视但供给不足的价值，同时区分自有能力和外部机会。差异化必须由目标用户证据支撑；竞品具备某功能，只能说明其选择，不能证明你的产品也需要。",
+          "why_explanation": "功能复制可能消耗资源，却没有形成用户可感知优势。",
+          "teaching_example": "先做好逐步纠错，不做华丽排行榜，因为首要任务是独立理解解法。",
+          "ai_pm_relevance": "把功能优先级连接到价值差距、成本和当前目标。",
+          "source_ids": [
+            "openstax_compet"
+          ],
+          "prerequisite": "竞争范围与替代方案",
+          "interview_requirements": [
+            "能解释差异价值与取舍依据的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 106,
+      "order": 6,
+      "module_id": "M01",
+      "chapter": "产品问题与学习总览",
+      "title": "需求落地：目标、约束与验收契约",
+      "topic": "AI产品",
+      "content": "把用户价值转成有输入输出、约束和验收标准的需求说明，让工程与业务对成功达成一致。",
+      "objectives": [
+        "解释“问题定义与系统约束”，能说明机制、使用边界与一个产品取舍。",
+        "解释“业务指标与训练目标”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "为工单摘要功能写出输入、输出、质量要求、时延约束和失败出口。",
+      "source_ids": [
+        "chip_setup",
+        "pair_needs"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411061,
+          "name": "问题定义与系统约束",
+          "description": "机器学习项目起点是目标、使用体验、性能要求和资源约束。",
+          "category": "AI_PRODUCT",
+          "core_explanation": "机器学习项目起点是目标、使用体验、性能要求和资源约束。明确谁在何时使用结果，什么错误更昂贵，以及可用数据和交付时间；这些条件共同决定问题应如何建模。",
+          "why_explanation": "先选模型后补问题，容易得到技术可行但业务无用的方案。",
+          "teaching_example": "客服摘要必须在坐席接单前可用，遗漏退款诉求比措辞不优美更严重。",
+          "ai_pm_relevance": "需求文档描述可核验结果与限制，不用模型名称替代目标。",
+          "source_ids": [
+            "chip_setup",
+            "pair_needs"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释问题定义与系统约束的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411062,
+          "name": "业务指标与训练目标",
+          "description": "训练损失是优化信号，业务成功可能体现为效率、质量或用户采用。",
+          "category": "AI_PRODUCT",
+          "core_explanation": "训练损失是优化信号，业务成功可能体现为效率、质量或用户采用。二者不自动一致；应说明离线指标如何关联线上结果，并设置防止牺牲重要用户利益的检查条件。",
+          "why_explanation": "优化方便测量的分数可能偏离用户真正需要的结果。",
+          "teaching_example": "摘要损失下降，但坐席修改时间未降低，说明产品收益仍需重新验证。",
+          "ai_pm_relevance": "为每个技术指标说明业务作用及其不能证明的事情。",
+          "source_ids": [
+            "chip_setup",
+            "pair_needs"
+          ],
+          "prerequisite": "问题定义与系统约束",
+          "interview_requirements": [
+            "能解释业务指标与训练目标的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 107,
+      "order": 7,
+      "module_id": "M02",
+      "chapter": "机器学习与评估基础",
+      "title": "机器学习任务：监督、无监督与生成",
+      "topic": "AI基础",
+      "content": "按数据与输出目标区分任务类型，再把业务请求转成可以训练和评测的问题。",
+      "objectives": [
+        "解释“监督信号与学习目标”，能说明机制、使用边界与一个产品取舍。",
+        "解释“预测与生成的区别”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "为工单分类、用户分群与回复草稿分别说明输入、输出和所需数据。",
+      "source_ids": [
+        "d2l_intro",
+        "chip_model"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411071,
+          "name": "监督信号与学习目标",
+          "description": "监督学习使用输入与目标标签学习映射，无监督学习从未标注数据寻找结构。",
+          "category": "FOUNDATION",
+          "core_explanation": "监督学习使用输入与目标标签学习映射，无监督学习从未标注数据寻找结构。先判断业务是否有可靠目标、目标在什么时候可获得，再决定训练信号；没有人工标签也不等于完全没有学习目标。",
+          "why_explanation": "任务定义决定数据成本和可验证的效果。",
+          "teaching_example": "工单部门有历史标签，适合监督分类；新用户群探索可先做聚类。",
+          "ai_pm_relevance": "确认目标标签的口径、形成时间及覆盖范围。",
+          "source_ids": [
+            "d2l_intro",
+            "chip_model"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释监督信号与学习目标的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411072,
+          "name": "预测与生成的区别",
+          "description": "预测通常输出类别、分数或数值，生成则构造文本等新内容。",
+          "category": "FOUNDATION",
+          "core_explanation": "预测通常输出类别、分数或数值，生成则构造文本等新内容。两类任务的验收不同：分类可以对照标签，生成常需要检查事实、完整性和可用性，不能用同一个分数替代全部质量维度。",
+          "why_explanation": "生成流畅与结果正确并不是同一件事。",
+          "teaching_example": "投诉分流检查类别，回复草稿还要检查政策、语气和是否承诺过度。",
+          "ai_pm_relevance": "按输出类型设计验收方法，而非统一追求准确率。",
+          "source_ids": [
+            "d2l_intro",
+            "chip_model"
+          ],
+          "prerequisite": "监督信号与学习目标",
+          "interview_requirements": [
+            "能解释预测与生成的区别的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 108,
+      "order": 8,
+      "module_id": "M02",
+      "chapter": "机器学习与评估基础",
+      "title": "回归与分类：把输出定义清楚",
+      "topic": "AI基础",
+      "content": "了解连续目标与离散类别的建模差异，理解误差函数为何随任务改变。",
+      "objectives": [
+        "解释“连续数值与回归误差”，能说明机制、使用边界与一个产品取舍。",
+        "解释“类别概率与分类决策”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "把预计处理时长与是否超时拆成两个任务，说明两者标签和误差代价的区别。",
+      "source_ids": [
+        "d2l_regression",
+        "d2l_softmax"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411081,
+          "name": "连续数值与回归误差",
+          "description": "回归预测连续目标，通过输入特征估计数值，再用误差函数比较预测与实际。",
+          "category": "FOUNDATION",
+          "core_explanation": "回归预测连续目标，通过输入特征估计数值，再用误差函数比较预测与实际。平方误差会更重地惩罚较大偏差；数据噪声和缺失因素使预测不可能总是精确，结果要与简单基线比较。",
+          "why_explanation": "只看平均值可能掩盖业务不能接受的大误差。",
+          "teaching_example": "预测工单用时五分钟而实际三十分钟，需要单独检查长尾原因。",
+          "ai_pm_relevance": "明确误差单位、可接受范围与高代价样本。",
+          "source_ids": [
+            "d2l_regression",
+            "d2l_softmax"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释连续数值与回归误差的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411082,
+          "name": "类别概率与分类决策",
+          "description": "分类模型可为多个类别输出分数或归一化概率。",
+          "category": "FOUNDATION",
+          "core_explanation": "分类模型可为多个类别输出分数或归一化概率。概率是模型给出的判断，最终标签还涉及最大值选择或业务阈值；类别定义应清楚且能被一致标注，否则模型难以学到稳定边界。",
+          "why_explanation": "类别口径不一致会让训练和验收相互矛盾。",
+          "teaching_example": "同一售后工单可能涉及退款和物流，先决定单标签还是多标签处理。",
+          "ai_pm_relevance": "先确定类别体系与决策方式，再比较模型分数。",
+          "source_ids": [
+            "d2l_regression",
+            "d2l_softmax"
+          ],
+          "prerequisite": "连续数值与回归误差",
+          "interview_requirements": [
+            "能解释类别概率与分类决策的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 109,
+      "order": 9,
+      "module_id": "M02",
+      "chapter": "机器学习与评估基础",
+      "title": "误报、漏报与分类指标",
+      "topic": "AI基础",
+      "content": "从混淆矩阵理解准确率、精确率和召回率，按错误后果选指标。",
+      "objectives": [
+        "解释“混淆矩阵与错误类型”，能说明机制、使用边界与一个产品取舍。",
+        "解释“精确率与召回率权衡”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "用一组内容审核结果说明为什么提高召回可能增加人工复核量。",
+      "source_ids": [
+        "slp_classification",
+        "ir_unranked"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411091,
+          "name": "混淆矩阵与错误类型",
+          "description": "把真实正负例和预测正负例交叉，可以得到正确识别、正确排除、误报和漏报。",
+          "category": "FOUNDATION",
+          "core_explanation": "把真实正负例和预测正负例交叉，可以得到正确识别、正确排除、误报和漏报。模型总准确率可能被多数类主导，应查看重要类别分别怎样出错，并把这些错误连接到业务后果。",
+          "why_explanation": "整体平均分无法告诉团队最昂贵的错误在哪里。",
+          "teaching_example": "绝大多数内容正常，全判正常也可能准确率很高，却漏掉全部违规内容。",
+          "ai_pm_relevance": "明确正例定义、误报损失与漏报损失。",
+          "source_ids": [
+            "slp_classification",
+            "ir_unranked"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释混淆矩阵与错误类型的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411092,
+          "name": "精确率与召回率权衡",
+          "description": "精确率关注判为正的结果有多少是真的，召回率关注真实正例有多少被找到。",
+          "category": "FOUNDATION",
+          "core_explanation": "精确率关注判为正的结果有多少是真的，召回率关注真实正例有多少被找到。阈值和候选范围会改变二者；F1 综合两项，但不表达所有业务成本，不能自动决定最合适方案。",
+          "why_explanation": "不同任务对误报和遗漏的容忍度不同。",
+          "teaching_example": "降低审核阈值可发现更多违规，也可能把更多正常内容送人工。",
+          "ai_pm_relevance": "同时报告指标、样本基数与复核容量。",
+          "source_ids": [
+            "slp_classification",
+            "ir_unranked"
+          ],
+          "prerequisite": "混淆矩阵与错误类型",
+          "interview_requirements": [
+            "能解释精确率与召回率权衡的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 110,
+      "order": 10,
+      "module_id": "M02",
+      "chapter": "机器学习与评估基础",
+      "title": "分类阈值、置信度与用户决策",
+      "topic": "AI基础",
+      "content": "区分概率输出、阈值动作和用户信任，避免把高分直接理解为保证正确。",
+      "objectives": [
+        "解释“分数转行动的业务阈值”，能说明机制、使用边界与一个产品取舍。",
+        "解释“置信度呈现与信任校准”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "为工单自动分流设置自动处理、人工复核两个区间，并说明需要怎样验证。",
+      "source_ids": [
+        "slp_classification",
+        "pair_trust"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411101,
+          "name": "分数转行动的业务阈值",
+          "description": "预测分数不是动作本身。",
+          "category": "FOUNDATION",
+          "core_explanation": "预测分数不是动作本身。依据验证样本、误报漏报代价和人工容量选择阈值，将分数映射为自动处理、复核或拒绝；默认阈值不是所有业务的最优答案，变化后需要重新测量。",
+          "why_explanation": "错误代价变化时，沿用旧阈值可能破坏任务效果。",
+          "teaching_example": "对难以撤回的账户操作提高自动执行要求，低确定结果转人工。",
+          "ai_pm_relevance": "把阈值选择与具体损失和处理流程一同评审。",
+          "source_ids": [
+            "slp_classification",
+            "pair_trust"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释分数转行动的业务阈值的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411102,
+          "name": "置信度呈现与信任校准",
+          "description": "置信度显示要帮助用户采取正确行动，而不只是让界面显得精确。",
+          "category": "FOUNDATION",
+          "core_explanation": "置信度显示要帮助用户采取正确行动，而不只是让界面显得精确。用户可能误读百分比，应测试提示、备选结果或高低分级是否改善判断；模型自信也不代表结果必然真实。",
+          "why_explanation": "无说明的高百分比容易造成盲目信任。",
+          "teaching_example": "展示两个可能的工单类型，并让坐席核对原始诉求后选择。",
+          "ai_pm_relevance": "确定置信度提示对应的行动与复核入口。",
+          "source_ids": [
+            "slp_classification",
+            "pair_trust"
+          ],
+          "prerequisite": "分数转行动的业务阈值",
+          "interview_requirements": [
+            "能解释置信度呈现与信任校准的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 111,
+      "order": 11,
+      "module_id": "M02",
+      "chapter": "机器学习与评估基础",
+      "title": "泛化、过拟合与正则化",
+      "topic": "AI基础",
+      "content": "把训练表现与未见数据表现区分，理解控制复杂度为何可能改善泛化。",
+      "objectives": [
+        "解释“训练误差与泛化误差”，能说明机制、使用边界与一个产品取舍。",
+        "解释“复杂度约束与过度约束”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "训练分数升高而验证分数下降时，列出要核查的数据、复杂度与训练停止条件。",
+      "source_ids": [
+        "d2l_generalization",
+        "d2l_decay"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411111,
+          "name": "训练误差与泛化误差",
+          "description": "训练误差来自已经用于学习的数据，泛化关注未见样本。",
+          "category": "FOUNDATION",
+          "core_explanation": "训练误差来自已经用于学习的数据，泛化关注未见样本。有限数据中既有规律也有噪声；模型对训练细节拟合得更好，未必对真实分布更好，应使用独立样本评估，而非把记忆当理解。",
+          "why_explanation": "上线处理的是新任务，不是重做训练样本。",
+          "teaching_example": "模型认得旧投诉模板，但用户换种表达就频繁分错。",
+          "ai_pm_relevance": "同时查看训练与验证表现，并定位失败人群或情境。",
+          "source_ids": [
+            "d2l_generalization",
+            "d2l_decay"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释训练误差与泛化误差的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411112,
+          "name": "复杂度约束与过度约束",
+          "description": "正则化通过限制参数或训练行为减少过拟合，权重衰减是其中一种方式。",
+          "category": "FOUNDATION",
+          "core_explanation": "正则化通过限制参数或训练行为减少过拟合，权重衰减是其中一种方式。约束太弱可能记住噪声，太强又会损失有效规律；需要用验证表现选择强度，不按复杂模型一定更好的假设决策。",
+          "why_explanation": "可靠泛化需要在能力与约束之间做验证。",
+          "teaching_example": "增加权重衰减后，旧模板成绩稍降，新表达的分类表现反而改善。",
+          "ai_pm_relevance": "用跨样本结果和资源成本选择模型复杂度。",
+          "source_ids": [
+            "d2l_generalization",
+            "d2l_decay"
+          ],
+          "prerequisite": "训练误差与泛化误差",
+          "interview_requirements": [
+            "能解释复杂度约束与过度约束的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 112,
+      "order": 12,
+      "module_id": "M02",
+      "chapter": "机器学习与评估基础",
+      "title": "模型选型：简单方法与神经网络",
+      "topic": "AI基础",
+      "content": "理解模型容量与数据、解释和资源的关系，按任务约束逐步增加复杂度。",
+      "objectives": [
+        "解释“有效基线与复杂度增益”，能说明机制、使用边界与一个产品取舍。",
+        "解释“神经网络与非线性表示”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "为小样本分类任务拟定规则、传统模型和神经网络的比较实验。",
+      "source_ids": [
+        "chip_model",
+        "d2l_mlp"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411121,
+          "name": "有效基线与复杂度增益",
+          "description": "模型选型先建立随机、人工或简单启发式等基线，再比较复杂方案是否显著改善目标。",
+          "category": "FOUNDATION",
+          "core_explanation": "模型选型先建立随机、人工或简单启发式等基线，再比较复杂方案是否显著改善目标。某些任务可以用传统机器学习处理；深度模型要有质量、规模或输入复杂性上的理由。",
+          "why_explanation": "没有基线时，团队很难说明新增复杂度的价值。",
+          "teaching_example": "最近常用应用推荐已能满足大部分需求，先测新模型能改善哪些任务。",
+          "ai_pm_relevance": "同时比较质量、解释、维护和总体成本。",
+          "source_ids": [
+            "chip_model",
+            "d2l_mlp"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释有效基线与复杂度增益的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411122,
+          "name": "神经网络与非线性表示",
+          "description": "多层感知机以线性变换和非线性激活组合输入，学习较复杂的关系。",
+          "category": "FOUNDATION",
+          "core_explanation": "多层感知机以线性变换和非线性激活组合输入，学习较复杂的关系。增加层和参数提供更多表达能力，却也需要合适数据与训练；架构名称不能替代领域任务验证。",
+          "why_explanation": "更多参数并不自动消除数据不足和任务定义错误。",
+          "teaching_example": "工单类型由词语组合决定，可比较文本表示加分类器与更复杂网络。",
+          "ai_pm_relevance": "用实际样本证明能力提升，并说明部署代价。",
+          "source_ids": [
+            "chip_model",
+            "d2l_mlp"
+          ],
+          "prerequisite": "有效基线与复杂度增益",
+          "interview_requirements": [
+            "能解释神经网络与非线性表示的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 113,
+      "order": 13,
+      "module_id": "M03",
+      "chapter": "数据与实验设计",
+      "title": "训练、验证和测试的分工",
+      "topic": "AI数据",
+      "content": "让数据承担不同角色，防止调参过程把最终验收集逐渐变成训练信号。",
+      "objectives": [
+        "解释“学习、调参与最终验收”，能说明机制、使用边界与一个产品取舍。",
+        "解释“按对象和时间划分”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "给重复用户和跨时间数据制定划分方案，并说明为什么不能只随机拆行。",
+      "source_ids": [
+        "d2l_generalization",
+        "sklearn_validation"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411131,
+          "name": "学习、调参与最终验收",
+          "description": "训练集用于拟合参数，验证集用于选择配置，测试集用于较独立的最终检验。",
+          "category": "DATA",
+          "core_explanation": "训练集用于拟合参数，验证集用于选择配置，测试集用于较独立的最终检验。反复查看测试结果再改模型会侵蚀独立性；预处理和参数选择也必须遵守这种数据边界。",
+          "why_explanation": "独立验收才能估计新样本上的真实表现。",
+          "teaching_example": "模型选择只使用验证工单，最终发布前才评测保留的测试批次。",
+          "ai_pm_relevance": "规定各数据集用途、访问规则与更新责任。",
+          "source_ids": [
+            "d2l_generalization",
+            "sklearn_validation"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释学习、调参与最终验收的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411132,
+          "name": "按对象和时间划分",
+          "description": "当同一用户、同一文档或相邻时间样本相关时，随机拆行可能让类似信息同时出现在训练和测试中。",
+          "category": "DATA",
+          "core_explanation": "当同一用户、同一文档或相邻时间样本相关时，随机拆行可能让类似信息同时出现在训练和测试中。划分应对应未来使用方式，可按用户分组或按时间滚动，避免乐观估计泛化。",
+          "why_explanation": "样本独立的假设不成立时，随机测试分数会虚高。",
+          "teaching_example": "同一投诉的原文与改写放到同一侧，而不是一份训练、一份测试。",
+          "ai_pm_relevance": "列出潜在重叠单位，并用合适划分模拟上线环境。",
+          "source_ids": [
+            "d2l_generalization",
+            "sklearn_validation"
+          ],
+          "prerequisite": "学习、调参与最终验收",
+          "interview_requirements": [
+            "能解释按对象和时间划分的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 114,
+      "order": 14,
+      "module_id": "M03",
+      "chapter": "数据与实验设计",
+      "title": "数据清洗、缺失值与泄漏",
+      "topic": "AI数据",
+      "content": "清洗规则要可追溯，区分数据本身错误与真实业务现象，处理过程也应遵守验收边界。",
+      "objectives": [
+        "解释“缺失处理与可用信息”，能说明机制、使用边界与一个产品取舍。",
+        "解释“预处理边界与数据泄漏”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "说明什么时候可以填补缺失值，以及为什么不能用全部数据先算标准化参数。",
+      "source_ids": [
+        "d2l_preprocess",
+        "sklearn_pitfalls"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411141,
+          "name": "缺失处理与可用信息",
+          "description": "缺失值可能来自未采集、用户拒绝或流程不适用。",
+          "category": "DATA",
+          "core_explanation": "缺失值可能来自未采集、用户拒绝或流程不适用。可以按字段意义选择填补、缺失指示或保留，但需检查是否改变样本含义；模型所用信息必须在实际预测时能取得。",
+          "why_explanation": "缺失不是一种统一错误，盲目填零可能制造虚假规律。",
+          "teaching_example": "订单未完成时退款金额为空，不能把它当作已经发生的零退款。",
+          "ai_pm_relevance": "让清洗规则注明业务含义和异常来源。",
+          "source_ids": [
+            "d2l_preprocess",
+            "sklearn_pitfalls"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释缺失处理与可用信息的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411142,
+          "name": "预处理边界与数据泄漏",
+          "description": "归一化、词表或特征筛选等步骤可能从数据中学习信息。",
+          "category": "DATA",
+          "core_explanation": "归一化、词表或特征筛选等步骤可能从数据中学习信息。应只在训练数据上拟合，再应用到验证和测试；未来结果或重复样本进入特征，也会让离线指标高估可用能力。",
+          "why_explanation": "流程里隐蔽的泄漏比明显模型错误更难发现。",
+          "teaching_example": "用全体数据先选最相关词，再拆测试集，会把测试标签信息带入训练。",
+          "ai_pm_relevance": "审查整个流水线的数据边界，不只审查模型。",
+          "source_ids": [
+            "d2l_preprocess",
+            "sklearn_pitfalls"
+          ],
+          "prerequisite": "缺失处理与可用信息",
+          "interview_requirements": [
+            "能解释预处理边界与数据泄漏的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 115,
+      "order": 15,
+      "module_id": "M03",
+      "chapter": "数据与实验设计",
+      "title": "标注指南与数据质量",
+      "topic": "AI数据",
+      "content": "把目标转换成标注员能执行的判断规则，记录分歧与质量，而不只是追求样本数量。",
+      "objectives": [
+        "解释“标签口径与一致性”，能说明机制、使用边界与一个产品取舍。",
+        "解释“数据覆盖与有效数量”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "为“需要人工升级”的工单标签写判定标准、反例和争议处理方式。",
+      "source_ids": [
+        "chip_data",
+        "pair_data"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411151,
+          "name": "标签口径与一致性",
+          "description": "标注前需定义目标、类别边界和例外，提供真实例子与复核流程。",
+          "category": "DATA",
+          "core_explanation": "标注前需定义目标、类别边界和例外，提供真实例子与复核流程。多个标注员对同一输入有分歧时，可能反映指南含糊或任务本身不确定，应讨论口径而不是机械多数投票。",
+          "why_explanation": "含糊目标会让模型学习相互矛盾的答案。",
+          "teaching_example": "“客户情绪激烈”与“操作高风险”是否都需要升级，先明确分开标注。",
+          "ai_pm_relevance": "要求标注指南包含边界案例、争议记录和质量抽查。",
+          "source_ids": [
+            "chip_data",
+            "pair_data"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释标签口径与一致性的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411152,
+          "name": "数据覆盖与有效数量",
+          "description": "数据数量不能替代覆盖和正确性。",
+          "category": "DATA",
+          "core_explanation": "数据数量不能替代覆盖和正确性。检查高频输入、关键群体、语言和罕见高影响场景是否包含在内，再评估新增样本的价值；复制相似样本可能只增加体积而不增加有效信息。",
+          "why_explanation": "数据缺少关键情境时，平均效果容易掩盖局部失败。",
+          "teaching_example": "多数工单来自城市用户，但乡镇地址表达缺少覆盖，物流分类可能失准。",
+          "ai_pm_relevance": "把采集预算优先投向已识别的覆盖缺口。",
+          "source_ids": [
+            "chip_data",
+            "pair_data"
+          ],
+          "prerequisite": "标签口径与一致性",
+          "interview_requirements": [
+            "能解释数据覆盖与有效数量的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 116,
+      "order": 16,
+      "module_id": "M03",
+      "chapter": "数据与实验设计",
+      "title": "不平衡数据与错误切片",
+      "topic": "AI数据",
+      "content": "在多数类之外单独检查关键少数类，并理解采样与权重改变什么、不能改变什么。",
+      "objectives": [
+        "解释“少数类覆盖与训练策略”，能说明机制、使用边界与一个产品取舍。",
+        "解释“按情境切片的评估”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "解释为什么高准确率不足以证明罕见风险识别有效，并设计至少两种切片。",
+      "source_ids": [
+        "slp_classification",
+        "pair_data"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411161,
+          "name": "少数类覆盖与训练策略",
+          "description": "少数类样本不足时，训练可能偏向多数类。",
+          "category": "DATA",
+          "core_explanation": "少数类样本不足时，训练可能偏向多数类。采样或类别权重可改变学习关注，但不会凭空补出真实少数场景；要保证独立评估仍反映目标使用分布，并检查少数类标签质量。",
+          "why_explanation": "改变训练比例不等于改变真实业务中的风险发生率。",
+          "teaching_example": "为罕见退款欺诈补采可靠案例，同时在自然比例数据上验收。",
+          "ai_pm_relevance": "区分训练策略、实际基率和线上处理量。",
+          "source_ids": [
+            "slp_classification",
+            "pair_data"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释少数类覆盖与训练策略的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411162,
+          "name": "按情境切片的评估",
+          "description": "把指标按地区、语言、输入长度或问题类型拆开，能发现总体平均分掩盖的质量差异。",
+          "category": "DATA",
+          "core_explanation": "把指标按地区、语言、输入长度或问题类型拆开，能发现总体平均分掩盖的质量差异。切片需要足够样本和稳定定义；差异出现后应追查数据、标签与流程，而非直接归因于用户。",
+          "why_explanation": "平均成绩好也可能对重要人群持续失效。",
+          "teaching_example": "普通中文工单分类良好，但夹杂产品代码的工单误报较多。",
+          "ai_pm_relevance": "报告切片样本数、误差影响和改善优先级。",
+          "source_ids": [
+            "slp_classification",
+            "pair_data"
+          ],
+          "prerequisite": "少数类覆盖与训练策略",
+          "interview_requirements": [
+            "能解释按情境切片的评估的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 117,
+      "order": 17,
+      "module_id": "M03",
+      "chapter": "数据与实验设计",
+      "title": "分布变化与模型失效",
+      "topic": "AI数据",
+      "content": "区分输入变化、类别比例变化和输入输出关系变化，把监测结果与质量影响连接起来。",
+      "objectives": [
+        "解释“数据分布与环境变化”，能说明机制、使用边界与一个产品取舍。",
+        "解释“漂移信号与业务质量”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "产品新增业务后，分析输入分布变化会怎样影响原分类模型，并提出验证方案。",
+      "source_ids": [
+        "d2l_shift"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411171,
+          "name": "数据分布与环境变化",
+          "description": "训练和部署环境未必同分布。",
+          "category": "DATA",
+          "core_explanation": "训练和部署环境未必同分布。输入特征变化、目标类别比例变化，以及相同输入对应的结果关系变化，属于不同漂移情形；修正方法依赖假设，不能把所有变化都用一次重训处理。",
+          "why_explanation": "相同离线模型可能因使用环境变化而失效。",
+          "teaching_example": "新增售后渠道带来更多语音转写工单，原文本模型的输入特点发生变化。",
+          "ai_pm_relevance": "先判断变化类型，再选择数据补充、阈值或模型调整。",
+          "source_ids": [
+            "d2l_shift"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释数据分布与环境变化的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411172,
+          "name": "漂移信号与业务质量",
+          "description": "输入统计变化是预警，不必然等于质量下降；有时统计稳定但规则变化已造成错误。",
+          "category": "DATA",
+          "core_explanation": "输入统计变化是预警，不必然等于质量下降；有时统计稳定但规则变化已造成错误。应同时观察关键特征、真实标签或人工抽检和用户结果，把告警连接到可执行的诊断流程。",
+          "why_explanation": "只监测分布或只监测投诉，都可能发现得太晚。",
+          "teaching_example": "政策改变后，相同退款诉求的正确处理结果改变，需核验规则与答案。",
+          "ai_pm_relevance": "为告警设调查责任、质量证据和恢复条件。",
+          "source_ids": [
+            "d2l_shift"
+          ],
+          "prerequisite": "数据分布与环境变化",
+          "interview_requirements": [
+            "能解释漂移信号与业务质量的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 118,
+      "order": 18,
+      "module_id": "M03",
+      "chapter": "数据与实验设计",
+      "title": "交叉验证与可复现实验",
+      "topic": "AI数据",
+      "content": "在数据有限时更稳健地比较方案，并保存数据、配置和判分条件，避免凭单次结果选型。",
+      "objectives": [
+        "解释“交叉验证的作用与边界”，能说明机制、使用边界与一个产品取舍。",
+        "解释“实验记录与公平比较”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "设计比较两种分类方案的实验记录表，并解释分组交叉验证适用的情境。",
+      "source_ids": [
+        "sklearn_validation",
+        "chip_model"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411181,
+          "name": "交叉验证的作用与边界",
+          "description": "交叉验证在不同训练和验证分组上重复评测，减少某一次划分对选型的影响。",
+          "category": "DATA",
+          "core_explanation": "交叉验证在不同训练和验证分组上重复评测，减少某一次划分对选型的影响。分组或时序约束仍需保留；最终测试集不能通过多次试验变成选型工具，数据少也可能导致估计不稳定。",
+          "why_explanation": "一次随机拆分的好成绩可能只是样本运气。",
+          "teaching_example": "按客户分组做多折验证，防止同一客户的表达同时进入训练与验证。",
+          "ai_pm_relevance": "报告折间变化，并说明样本独立和使用环境假设。",
+          "source_ids": [
+            "sklearn_validation",
+            "chip_model"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释交叉验证的作用与边界的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411182,
+          "name": "实验记录与公平比较",
+          "description": "比较模型时应固定任务样本和标准，记录数据版本、预处理、配置与资源。",
+          "category": "DATA",
+          "core_explanation": "比较模型时应固定任务样本和标准，记录数据版本、预处理、配置与资源。每次尽量控制变化因素，并保存失败结果；无法复现的改进不能可靠地指导发布或解释回退。",
+          "why_explanation": "隐藏的配置变化会让团队误判哪个组件带来收益。",
+          "teaching_example": "只更换嵌入模型，其他分块与问题集保持不变，记录质量和延迟差异。",
+          "ai_pm_relevance": "为实验保存完整版本信息和可追溯的判断依据。",
+          "source_ids": [
+            "sklearn_validation",
+            "chip_model"
+          ],
+          "prerequisite": "交叉验证的作用与边界",
+          "interview_requirements": [
+            "能解释实验记录与公平比较的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 119,
+      "order": 19,
+      "module_id": "M04",
+      "chapter": "语言模型与 Transformer",
+      "title": "从文字到 token 与向量",
+      "topic": "大模型",
+      "content": "理解文本如何进入模型，区分离散切分单位和连续语义表示，建立长度与检索的基础。",
+      "objectives": [
+        "解释“分词与子词单位”，能说明机制、使用边界与一个产品取舍。",
+        "解释“语义表示与向量相似性”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "说明中文产品型号为什么可能被切成多个 token，以及这对输入预算与检索的影响。",
+      "source_ids": [
+        "slp_tokens",
+        "d2l_embeddings"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411191,
+          "name": "分词与子词单位",
+          "description": "模型不能直接按人类理解读取原始文字。",
+          "category": "LLM",
+          "core_explanation": "模型不能直接按人类理解读取原始文字。分词器把字符序列转换成词、子词等 token 及其 ID，词表与切分方法会影响长度和未知表达；token 数不固定等于字数，也不等于自然语言词数。",
+          "why_explanation": "输入容量与计费依赖具体分词器，不能只按字符估算。",
+          "teaching_example": "同一产品型号在两种分词器里被分为不同数量的片段。",
+          "ai_pm_relevance": "用目标模型统计真实输入，并测试领域词和多语言。",
+          "source_ids": [
+            "slp_tokens",
+            "d2l_embeddings"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释分词与子词单位的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411192,
+          "name": "语义表示与向量相似性",
+          "description": "嵌入把对象表示为连续向量，让统计或语义相关的对象具有可计算关系。",
+          "category": "LLM",
+          "core_explanation": "嵌入把对象表示为连续向量，让统计或语义相关的对象具有可计算关系。向量相近可支持检索和聚类，却不保证事实等价、逻辑蕴含或答案正确；模型与任务改变后需要重新验证。",
+          "why_explanation": "近义搜索与事实核查是不同问题。",
+          "teaching_example": "退款和退货表达可能相近，但二者的资格条件并不相同。",
+          "ai_pm_relevance": "以真实问题和相关性标注验证嵌入的业务用途。",
+          "source_ids": [
+            "slp_tokens",
+            "d2l_embeddings"
+          ],
+          "prerequisite": "分词与子词单位",
+          "interview_requirements": [
+            "能解释语义表示与向量相似性的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 120,
+      "order": 20,
+      "module_id": "M04",
+      "chapter": "语言模型与 Transformer",
+      "title": "语言模型、预训练与知识边界",
+      "topic": "大模型",
+      "content": "理解语言模型学习和生成的目标，分清参数中的统计知识与外部可信资料。",
+      "objectives": [
+        "解释“序列概率与后续 token 预测”，能说明机制、使用边界与一个产品取舍。",
+        "解释“预训练数据与更新边界”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "解释为什么模型能续写流畅文本，却可能不知道企业今天刚更新的政策。",
+      "source_ids": [
+        "d2l_language",
+        "slp_transformer"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411201,
+          "name": "序列概率与后续 token 预测",
+          "description": "语言模型估计文本序列或下一 token 的概率。",
+          "category": "LLM",
+          "core_explanation": "语言模型估计文本序列或下一 token 的概率。生成时根据已有上下文逐步预测后续内容；训练目标要求学会语言分布中的规律，不直接保证每个输出都符合当前任务的事实与规则。",
+          "why_explanation": "自然的表达不等于核验过的答案。",
+          "teaching_example": "助手可以生成格式正确的退款解释，却可能采用过时条件。",
+          "ai_pm_relevance": "将语言质量、事实性和业务有效性分别验收。",
+          "source_ids": [
+            "d2l_language",
+            "slp_transformer"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释序列概率与后续 token 预测的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411202,
+          "name": "预训练数据与更新边界",
+          "description": "预训练把大量数据中的模式写入参数，能力与知识受到训练数据、目标和覆盖限制。",
+          "category": "LLM",
+          "core_explanation": "预训练把大量数据中的模式写入参数，能力与知识受到训练数据、目标和覆盖限制。新的私有资料或最近变化不自动进入模型参数，应通过输入证据、检索或有明确目标的适配补充。",
+          "why_explanation": "知识更新需求不能靠假设模型已经知道来满足。",
+          "teaching_example": "公司昨日新增报销类别，需提供现行制度资料才能可靠回答。",
+          "ai_pm_relevance": "记录资料更新流程，避免用模型知识替代现行依据。",
+          "source_ids": [
+            "d2l_language",
+            "slp_transformer"
+          ],
+          "prerequisite": "序列概率与后续 token 预测",
+          "interview_requirements": [
+            "能解释预训练数据与更新边界的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 121,
+      "order": 21,
+      "module_id": "M04",
+      "chapter": "语言模型与 Transformer",
+      "title": "注意力、自注意力与位置信息",
+      "topic": "大模型",
+      "content": "理解模型怎样关联输入内容，并区分相关信息聚合与真实解释。",
+      "objectives": [
+        "解释“查询、键和值的聚合”，能说明机制、使用边界与一个产品取舍。",
+        "解释“顺序信息与因果约束”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "用包含代词的客服对话，说明上下文关系和顺序变化为什么会影响理解。",
+      "source_ids": [
+        "d2l_attention",
+        "d2l_self_attention"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411211,
+          "name": "查询、键和值的聚合",
+          "description": "注意力用查询与键的匹配计算权重，再聚合对应的值。",
+          "category": "LLM",
+          "core_explanation": "注意力用查询与键的匹配计算权重，再聚合对应的值。自注意力让同一序列的各位置交换上下文信息；权重表示一种计算上的关联，不应直接视为决策真实因果或用户可用解释。",
+          "why_explanation": "把内部权重当作原因会过度解释模型行为。",
+          "teaching_example": "“它没到货”中的“它”需要联系前面谈到的商品与订单。",
+          "ai_pm_relevance": "测试跨句关联和指代，而非只看孤立关键词。",
+          "source_ids": [
+            "d2l_attention",
+            "d2l_self_attention"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释查询、键和值的聚合的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411212,
+          "name": "顺序信息与因果约束",
+          "description": "序列任务需要保留位置和顺序，位置编码等方法帮助模型区分排列。",
+          "category": "LLM",
+          "core_explanation": "序列任务需要保留位置和顺序，位置编码等方法帮助模型区分排列。自回归生成通常遮住未来位置，只使用已知上下文预测；输入组织变化可能影响结果，不代表模型忽略一切顺序。",
+          "why_explanation": "相同词语换序后可能表达相反含义。",
+          "teaching_example": "“先退款再退货”与“先退货再退款”包含相同词，却对应不同流程。",
+          "ai_pm_relevance": "在评估集中加入顺序、否定和远距离依赖案例。",
+          "source_ids": [
+            "d2l_attention",
+            "d2l_self_attention"
+          ],
+          "prerequisite": "查询、键和值的聚合",
+          "interview_requirements": [
+            "能解释顺序信息与因果约束的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 122,
+      "order": 22,
+      "module_id": "M04",
+      "chapter": "语言模型与 Transformer",
+      "title": "Transformer 的结构与能力取舍",
+      "topic": "大模型",
+      "content": "理解注意力、前馈层和编码解码结构，建立选择模型而非背架构名的判断框架。",
+      "objectives": [
+        "解释“注意力与前馈模块的分工”，能说明机制、使用边界与一个产品取舍。",
+        "解释“编码器、解码器与任务匹配”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "分别为文本分类和逐字生成说明需要什么输出，并解释模型结构不等于任务表现。",
+      "source_ids": [
+        "d2l_transformer",
+        "slp_transformer"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411221,
+          "name": "注意力与前馈模块的分工",
+          "description": "Transformer 通过注意力交换上下文，再用前馈网络变换每个位置的表示，通常配合残差和归一化。",
+          "category": "LLM",
+          "core_explanation": "Transformer 通过注意力交换上下文，再用前馈网络变换每个位置的表示，通常配合残差和归一化。多层堆叠提高表达能力，但结构只是能力的基础，实际效果还依赖数据、训练与任务适配。",
+          "why_explanation": "只比较参数或层数无法预测实际产品质量。",
+          "teaching_example": "同为 Transformer 的两个模型，在专业术语分类上可能表现不同。",
+          "ai_pm_relevance": "以场景任务验证质量，并解释输入长度与资源限制。",
+          "source_ids": [
+            "d2l_transformer",
+            "slp_transformer"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释注意力与前馈模块的分工的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411222,
+          "name": "编码器、解码器与任务匹配",
+          "description": "编码器常用于形成输入表示，解码器常用于逐步生成，编码器解码器结构适合条件序列生成。",
+          "category": "LLM",
+          "core_explanation": "编码器常用于形成输入表示，解码器常用于逐步生成，编码器解码器结构适合条件序列生成。实际模型可以有不同组合；应根据任务输出、上下文要求和部署条件比较，不把聊天当成唯一使用方式。",
+          "why_explanation": "合适任务结构可能比追求统一大模型更高效。",
+          "teaching_example": "批量意图分类可使用编码表示加分类头，不必生成长段解释。",
+          "ai_pm_relevance": "比较任务专用方案与通用生成方案的收益和成本。",
+          "source_ids": [
+            "d2l_transformer",
+            "slp_transformer"
+          ],
+          "prerequisite": "注意力与前馈模块的分工",
+          "interview_requirements": [
+            "能解释编码器、解码器与任务匹配的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 123,
+      "order": 23,
+      "module_id": "M04",
+      "chapter": "语言模型与 Transformer",
+      "title": "生成采样与稳定性",
+      "topic": "大模型",
+      "content": "理解温度与采样范围怎样改变输出分布，避免把参数调小误当作事实保障。",
+      "objectives": [
+        "解释“温度与候选采样”，能说明机制、使用边界与一个产品取舍。",
+        "解释“随机性与可复现评测”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "为事实摘要和创意草稿设计不同采样实验，说明怎样检查质量而非只看多样性。",
+      "source_ids": [
+        "slp_transformer",
+        "hf_generation"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411231,
+          "name": "温度与候选采样",
+          "description": "温度改变候选 token 概率分布的集中程度，top-k 或 top-p 限制采样范围。",
+          "category": "LLM",
+          "core_explanation": "温度改变候选 token 概率分布的集中程度，top-k 或 top-p 限制采样范围。它们影响多样性、重复性和错误倾向，但不会为输出提供额外事实依据；组合参数需要控制变量验证。",
+          "why_explanation": "参数设置的效果依赖任务和模型，不能照搬统一数值。",
+          "teaching_example": "用同一批商品资料比较不同温度下摘要的一致性与事实遗漏。",
+          "ai_pm_relevance": "同时记录多次输出波动、质量、时延与成本。",
+          "source_ids": [
+            "slp_transformer",
+            "hf_generation"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释温度与候选采样的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411232,
+          "name": "随机性与可复现评测",
+          "description": "生成含采样时，同一输入可能得到不同结果。",
+          "category": "LLM",
+          "core_explanation": "生成含采样时，同一输入可能得到不同结果。评测应固定相关配置并在必要时重复生成，报告分布与失败案例；单次幸运输出不能证明稳定性，低温设置也未必在所有运行环境下完全复现。",
+          "why_explanation": "产品承诺需要依据稳定表现，而不是最好的一次回答。",
+          "teaching_example": "同一政策问题重复生成，检查是否偶尔错误承诺无条件退款。",
+          "ai_pm_relevance": "明确重复测试口径与对偶发严重错误的处理。",
+          "source_ids": [
+            "slp_transformer",
+            "hf_generation"
+          ],
+          "prerequisite": "温度与候选采样",
+          "interview_requirements": [
+            "能解释随机性与可复现评测的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 124,
+      "order": 24,
+      "module_id": "M04",
+      "chapter": "语言模型与 Transformer",
+      "title": "预训练模型与领域适配路线",
+      "topic": "大模型",
+      "content": "理解通用表示为什么可以迁移，也明确行业任务需要独立验收。",
+      "objectives": [
+        "解释“通用表示与迁移能力”，能说明机制、使用边界与一个产品取舍。",
+        "解释“场景选型与约束对齐”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "为领域工单分类比较现成嵌入、提示分类与任务微调，并说明选择依据。",
+      "source_ids": [
+        "d2l_bert",
+        "chip_model"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411241,
+          "name": "通用表示与迁移能力",
+          "description": "预训练学习的表示可以作为下游任务起点，减少每个任务从零训练的负担。",
+          "category": "LLM",
+          "core_explanation": "预训练学习的表示可以作为下游任务起点，减少每个任务从零训练的负担。不同预训练目标形成不同能力，迁移到特定任务仍需数据与评测；通用数据覆盖不意味着专业表达都得到良好表示。",
+          "why_explanation": "复用模型能降低起步成本，但不能跳过领域验证。",
+          "teaching_example": "通用模型能识别常见情感，却不一定区分专业设备故障术语。",
+          "ai_pm_relevance": "先测领域样本，再决定增加示例、检索或训练。",
+          "source_ids": [
+            "d2l_bert",
+            "chip_model"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释通用表示与迁移能力的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411242,
+          "name": "场景选型与约束对齐",
+          "description": "选模型要同时考虑任务、数据、质量、时延、解释和资源。",
+          "category": "LLM",
+          "core_explanation": "选模型要同时考虑任务、数据、质量、时延、解释和资源。建立有效简单基线，逐步增加复杂度，并核查供应、许可和维护条件；更大的通用模型只有带来需要的增益才值得采用。",
+          "why_explanation": "模型排行榜不能替代产品环境中的取舍。",
+          "teaching_example": "工单分类的小模型满足目标且更快，就未必需要昂贵通用模型。",
+          "ai_pm_relevance": "形成可复查的选型表，记录收益、限制和备选方案。",
+          "source_ids": [
+            "d2l_bert",
+            "chip_model"
+          ],
+          "prerequisite": "通用表示与迁移能力",
+          "interview_requirements": [
+            "能解释场景选型与约束对齐的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 125,
+      "order": 25,
+      "module_id": "M05",
+      "chapter": "提示、上下文与模型适配",
+      "title": "清晰指令与少样本学习",
+      "topic": "AI工程",
+      "content": "用任务说明与示例减少歧义，把临时上下文适配与训练更新区分开。",
+      "objectives": [
+        "解释“任务说明与可执行标准”，能说明机制、使用边界与一个产品取舍。",
+        "解释“示例引导与上下文学习”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "给工单分类写一条清晰指令和两个边界示例，并指出仍需验收的失败情况。",
+      "source_ids": [
+        "slp_intro",
+        "aie_prompt_summary"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411251,
+          "name": "任务说明与可执行标准",
+          "description": "提示应说明输入、需要完成的任务、输出约束及如何判断结果。",
+          "category": "AI_ENGINEERING",
+          "core_explanation": "提示应说明输入、需要完成的任务、输出约束及如何判断结果。含糊要求如“好一点”难以验收，应转成可检查标准；明确指令能改善任务适配，但不是保证模型遵从的安全机制。",
+          "why_explanation": "口径明确后才能公平比较提示是否改善结果。",
+          "teaching_example": "要求摘要保留诉求、时间和未解决事项，而不是笼统要求简洁。",
+          "ai_pm_relevance": "把提示与判分规则一起版本化和测试。",
+          "source_ids": [
+            "slp_intro",
+            "aie_prompt_summary"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释任务说明与可执行标准的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411252,
+          "name": "示例引导与上下文学习",
+          "description": "少样本提示在输入中提供任务示例，让模型推断格式和判断口径，通常不更新参数。",
+          "category": "AI_ENGINEERING",
+          "core_explanation": "少样本提示在输入中提供任务示例，让模型推断格式和判断口径，通常不更新参数。示例应覆盖代表性与边界情况，避免只展示简单成功案例；示例选择也可能带来偏差。",
+          "why_explanation": "会话中看懂示例不等于永久获得新能力。",
+          "teaching_example": "展示退款与物流混合诉求的分类例子，再检查相近新表达。",
+          "ai_pm_relevance": "比较零样本与少样本收益，并计入额外输入成本。",
+          "source_ids": [
+            "slp_intro",
+            "aie_prompt_summary"
+          ],
+          "prerequisite": "任务说明与可执行标准",
+          "interview_requirements": [
+            "能解释示例引导与上下文学习的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 126,
+      "order": 26,
+      "module_id": "M05",
+      "chapter": "提示、上下文与模型适配",
+      "title": "上下文组织与长文处理",
+      "topic": "AI工程",
+      "content": "把任务所需信息组织到有限上下文中，先保留有效证据而非一味塞入所有资料。",
+      "objectives": [
+        "解释“上下文预算与信息选择”，能说明机制、使用边界与一个产品取舍。",
+        "解释“分段、检索与证据保留”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "为多版本制度问答选择输入资料，说明应保留什么、删除什么及如何处理冲突。",
+      "source_ids": [
+        "slp_tokens",
+        "slp_transformer",
+        "microsoft_rag"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411261,
+          "name": "上下文预算与信息选择",
+          "description": "上下文包括任务要求、历史消息、外部资料和输出预算。",
+          "category": "AI_ENGINEERING",
+          "core_explanation": "上下文包括任务要求、历史消息、外部资料和输出预算。输入长度受具体模型约束，保留信息应服务当前问题；重复、无关或相互冲突的内容可能干扰生成，更多 token 不等于更多可靠知识。",
+          "why_explanation": "长输入增加成本，也可能让关键依据难以被有效使用。",
+          "teaching_example": "问差旅标准时只提供现行地区条款，不附全部旧版制度和无关附件。",
+          "ai_pm_relevance": "为每类任务制定资料选择、版本与长度规则。",
+          "source_ids": [
+            "slp_tokens",
+            "slp_transformer",
+            "microsoft_rag"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释上下文预算与信息选择的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411262,
+          "name": "分段、检索与证据保留",
+          "description": "长资料可先按章节或语义组织，再检索相关部分或汇总中间结果。",
+          "category": "AI_ENGINEERING",
+          "core_explanation": "长资料可先按章节或语义组织，再检索相关部分或汇总中间结果。压缩时需保留限制、例外和来源，不能只留下结论；若证据横跨多段，应验证组合后没有丢失必要条件。",
+          "why_explanation": "摘要可能抹掉决定答案的边界信息。",
+          "teaching_example": "退货条款摘要保留时限及特殊商品例外，避免只留下“可退货”。",
+          "ai_pm_relevance": "测试跨段证据、不同位置与冲突版本的表现。",
+          "source_ids": [
+            "slp_tokens",
+            "slp_transformer",
+            "microsoft_rag"
+          ],
+          "prerequisite": "上下文预算与信息选择",
+          "interview_requirements": [
+            "能解释分段、检索与证据保留的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 127,
+      "order": 27,
+      "module_id": "M05",
+      "chapter": "提示、上下文与模型适配",
+      "title": "结构化结果与语义校验",
+      "topic": "AI工程",
+      "content": "让模型结果可被系统读取，同时用确定性规则检查字段含义与执行条件。",
+      "objectives": [
+        "解释“输出结构与模式约束”，能说明机制、使用边界与一个产品取舍。",
+        "解释“字段含义与确定性规则”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "为退款建议定义字段、必填项和枚举，再列出格式正确但业务错误的两种情况。",
+      "source_ids": [
+        "json_schema",
+        "aie_model_summary"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411271,
+          "name": "输出结构与模式约束",
+          "description": "结构化输出规定字段、类型与允许值，JSON Schema 等规范可用于验证。",
+          "category": "AI_ENGINEERING",
+          "core_explanation": "结构化输出规定字段、类型与允许值，JSON Schema 等规范可用于验证。输出结构正确仅说明格式契约满足，不能证明事实正确、金额合理或权限充足；生成结果进入执行前仍需业务校验。",
+          "why_explanation": "机器可解析的错误同样会被自动传递到下游。",
+          "teaching_example": "退款建议 JSON 合法，但订单并不具备退款资格，执行层必须拒绝。",
+          "ai_pm_relevance": "把格式、语义、权限三种检查分别定义清楚。",
+          "source_ids": [
+            "json_schema",
+            "aie_model_summary"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释输出结构与模式约束的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411272,
+          "name": "字段含义与确定性规则",
+          "description": "每个模型字段都要有明确业务含义和可接受范围。",
+          "category": "AI_ENGINEERING",
+          "core_explanation": "每个模型字段都要有明确业务含义和可接受范围。关键动作应核对真实系统状态、枚举和约束，未知值需有显式表示；不能让模型任意猜测缺失信息来凑齐看似完整的结构。",
+          "why_explanation": "完整结构容易让团队误以为信息已经核实。",
+          "teaching_example": "客户没有提供订单号时输出待补充状态，不编造一个看似合法编号。",
+          "ai_pm_relevance": "设计缺失值、错误值和执行拒绝的反馈路径。",
+          "source_ids": [
+            "json_schema",
+            "aie_model_summary"
+          ],
+          "prerequisite": "输出结构与模式约束",
+          "interview_requirements": [
+            "能解释字段含义与确定性规则的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 128,
+      "order": 28,
+      "module_id": "M05",
+      "chapter": "提示、上下文与模型适配",
+      "title": "监督微调与 LoRA",
+      "topic": "AI工程",
+      "content": "把稳定的任务行为适配与事实更新分开，理解训练样本和参数高效方法的作用。",
+      "objectives": [
+        "解释“指令与答案样本的适配”，能说明机制、使用边界与一个产品取舍。",
+        "解释“低秩增量与资源节省”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "判断固定摘要格式是否需要 SFT，并比较 LoRA 与不训练方案的验收和维护成本。",
+      "source_ids": [
+        "slp_post_training",
+        "hf_lora"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411281,
+          "name": "指令与答案样本的适配",
+          "description": "监督微调用输入和期望输出更新模型，使其更适应任务行为或回答格式。",
+          "category": "AI_ENGINEERING",
+          "core_explanation": "监督微调用输入和期望输出更新模型，使其更适应任务行为或回答格式。示例必须有一致口径和真实覆盖，训练效果要在未见样本验证；输入示例本身质量差时，训练会固化错误。",
+          "why_explanation": "训练能改变行为，却不能替代可靠任务定义。",
+          "teaching_example": "使用审核通过的工单摘要样本，训练保留诉求与未解决事项的格式。",
+          "ai_pm_relevance": "先验证提示方案，只有稳定收益需要训练时才增加成本。",
+          "source_ids": [
+            "slp_post_training",
+            "hf_lora"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释指令与答案样本的适配的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411282,
+          "name": "低秩增量与资源节省",
+          "description": "LoRA 通常冻结基础参数，训练低秩矩阵形成增量更新，从而减少可训练参数和资源需求。",
+          "category": "AI_ENGINEERING",
+          "core_explanation": "LoRA 通常冻结基础参数，训练低秩矩阵形成增量更新，从而减少可训练参数和资源需求。它是适配技术，不是新的事实库；节省显存不保证所有任务都达到全参数微调的效果。",
+          "why_explanation": "训练效率与产品质量需要分别评估。",
+          "teaching_example": "为特定售后语气维护适配器，同时继续用检索提供最新政策。",
+          "ai_pm_relevance": "比较实际质量、训练预算、部署方式与版本回退。",
+          "source_ids": [
+            "slp_post_training",
+            "hf_lora"
+          ],
+          "prerequisite": "指令与答案样本的适配",
+          "interview_requirements": [
+            "能解释低秩增量与资源节省的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 129,
+      "order": 29,
+      "module_id": "M05",
+      "chapter": "提示、上下文与模型适配",
+      "title": "人类偏好与后训练目标",
+      "topic": "AI工程",
+      "content": "区分学习示例答案与学习回答偏好，注意偏好提高不等于事实更可靠。",
+      "objectives": [
+        "解释“偏好数据与对齐目标”，能说明机制、使用边界与一个产品取舍。",
+        "解释“RLHF 与 DPO 的方法区别”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "为摘要质量制定偏好比较标准，并列出一种看起来讨喜却事实错误的回答。",
+      "source_ids": [
+        "slp_post_training",
+        "hf_dpo"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411291,
+          "name": "偏好数据与对齐目标",
+          "description": "偏好数据通常比较同一输入下的回答，说明哪种更符合要求。",
+          "category": "AI_ENGINEERING",
+          "core_explanation": "偏好数据通常比较同一输入下的回答，说明哪种更符合要求。与单一标准答案不同，偏好反映评审准则及标注者判断；需明确看重事实、完整性还是风格，避免单纯奖励迎合用户。",
+          "why_explanation": "含糊偏好可能让模型优化语气而损害真实帮助。",
+          "teaching_example": "简短肯定的错误政策回答不应优于指出资料不足的准确回答。",
+          "ai_pm_relevance": "让评审标准区分事实、任务效果和表达风格。",
+          "source_ids": [
+            "slp_post_training",
+            "hf_dpo"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释偏好数据与对齐目标的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411292,
+          "name": "RLHF 与 DPO 的方法区别",
+          "description": "常见 RLHF 路线先学习奖励，再优化模型策略；DPO 可直接利用偏好回答对构建训练损失。",
+          "category": "AI_ENGINEERING",
+          "core_explanation": "常见 RLHF 路线先学习奖励，再优化模型策略；DPO 可直接利用偏好回答对构建训练损失。二者依赖偏好质量和覆盖，不能仅按方法名称承诺可靠性，还需检查其他能力与安全结果。",
+          "why_explanation": "偏好优化可能改变能力分布，也可能继承标注偏差。",
+          "teaching_example": "新版本更礼貌，却在无答案问题上更爱作肯定答复，应回归检查。",
+          "ai_pm_relevance": "验收偏好收益、事实性变化和关键失败场景。",
+          "source_ids": [
+            "slp_post_training",
+            "hf_dpo"
+          ],
+          "prerequisite": "偏好数据与对齐目标",
+          "interview_requirements": [
+            "能解释RLHF 与 DPO 的方法区别的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 130,
+      "order": 30,
+      "module_id": "M05",
+      "chapter": "提示、上下文与模型适配",
+      "title": "提示、检索和微调怎样选",
+      "topic": "AI工程",
+      "content": "按缺口类型选择适配方式：任务说明、外部事实和稳定行为是不同问题。",
+      "objectives": [
+        "解释“能力缺口与工具匹配”，能说明机制、使用边界与一个产品取舍。",
+        "解释“增益验证与持续维护”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "把政策更新、固定文风、复杂步骤三个需求分配到合适方案，并说明可组合的位置。",
+      "source_ids": [
+        "slp_post_training",
+        "slp_rag",
+        "aie_finetune_summary"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411301,
+          "name": "能力缺口与工具匹配",
+          "description": "指令含糊可以先改提示，资料缺失或时效变化可以用检索补证据，稳定任务行为可考虑微调。",
+          "category": "AI_ENGINEERING",
+          "core_explanation": "指令含糊可以先改提示，资料缺失或时效变化可以用检索补证据，稳定任务行为可考虑微调。方法可以组合，但应先定位失败来源；不能用一轮训练掩盖没有资料治理或验收口径的问题。",
+          "why_explanation": "错用适配手段会增加成本而保留真正的缺口。",
+          "teaching_example": "新政策用资料更新与检索，固定摘要字段先用模式与提示，再评估训练。",
+          "ai_pm_relevance": "以失败样本分类决定投资方向，而非先选最热技术。",
+          "source_ids": [
+            "slp_post_training",
+            "slp_rag",
+            "aie_finetune_summary"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释能力缺口与工具匹配的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411302,
+          "name": "增益验证与持续维护",
+          "description": "适配方案应与现有基线比较，并记录质量、资源和维护负担。",
+          "category": "AI_ENGINEERING",
+          "core_explanation": "适配方案应与现有基线比较，并记录质量、资源和维护负担。任务、资料和模型都可能变化，需保留评估集、版本与回退路径；一次提升不说明未来更新无需再验证。",
+          "why_explanation": "维护成本常在首次演示之后才暴露。",
+          "teaching_example": "微调后重新跑无答案、专业术语和格式约束测试，检查有没有回退。",
+          "ai_pm_relevance": "评审上线收益的同时估算数据更新与版本管理成本。",
+          "source_ids": [
+            "slp_post_training",
+            "slp_rag",
+            "aie_finetune_summary"
+          ],
+          "prerequisite": "能力缺口与工具匹配",
+          "interview_requirements": [
+            "能解释增益验证与持续维护的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 131,
+      "order": 31,
+      "module_id": "M06",
+      "chapter": "知识检索与 RAG",
+      "title": "资料入库：文档单元与分块",
+      "topic": "RAG",
+      "content": "先定义检索的资料单元与版本，再决定分块规则，保证证据和来源可以一起找到。",
+      "objectives": [
+        "解释“文档单元与上下文粒度”，能说明机制、使用边界与一个产品取舍。",
+        "解释“来源、版本与入库质量”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "对一份含正文、表格和例外条款的制度设计分块与元数据方案。",
+      "source_ids": [
+        "ir_document_unit",
+        "microsoft_rag"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411311,
+          "name": "文档单元与上下文粒度",
+          "description": "索引可以以整篇、章节或更小片段为单元，粒度影响检索精度与上下文完整性。",
+          "category": "RAG",
+          "core_explanation": "索引可以以整篇、章节或更小片段为单元，粒度影响检索精度与上下文完整性。选择时考虑问题通常需要多大证据范围，不能只按统一字符长度切断定义、条件或表格之间的联系。",
+          "why_explanation": "过小丢语义，过大把无关内容带进答案。",
+          "teaching_example": "退货条件和同段例外放在同一块，章节标题作为可检索上下文保留。",
+          "ai_pm_relevance": "用真实问法测试粒度，记录证据遗漏和冗余。",
+          "source_ids": [
+            "ir_document_unit",
+            "microsoft_rag"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释文档单元与上下文粒度的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411312,
+          "name": "来源、版本与入库质量",
+          "description": "资料应携带文档标识、位置、时间、版本和访问范围。",
+          "category": "RAG",
+          "core_explanation": "资料应携带文档标识、位置、时间、版本和访问范围。清洗时核验正文、表格和重复内容，更新或删除后同步索引；向量化只是表示转换，不能修复错误来源或被截断的正文。",
+          "why_explanation": "错误或过期资料会让回答有引用却仍然不可靠。",
+          "teaching_example": "政策换版后停用旧块，引用继续指向可访问的新条款位置。",
+          "ai_pm_relevance": "为资料生命周期建立可追溯的更新与撤销机制。",
+          "source_ids": [
+            "ir_document_unit",
+            "microsoft_rag"
+          ],
+          "prerequisite": "文档单元与上下文粒度",
+          "interview_requirements": [
+            "能解释来源、版本与入库质量的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 132,
+      "order": 32,
+      "module_id": "M06",
+      "chapter": "知识检索与 RAG",
+      "title": "词法检索、TF-IDF 与 BM25",
+      "topic": "RAG",
+      "content": "理解词频、区分度和文档长度怎样参与排序，把关键词方案作为可靠基线。",
+      "objectives": [
+        "解释“词项权重与区分度”，能说明机制、使用边界与一个产品取舍。",
+        "解释“BM25 的相关性估计”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "比较精确产品型号和自然语言投诉两类查询，说明词法检索各自的优势与局限。",
+      "source_ids": [
+        "ir_tf",
+        "ir_bm25",
+        "ir_vector"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411321,
+          "name": "词项权重与区分度",
+          "description": "词频反映词在文档中的出现，逆文档频率强调较少见词的区分作用。",
+          "category": "RAG",
+          "core_explanation": "词频反映词在文档中的出现，逆文档频率强调较少见词的区分作用。常见词频高并不一定更有用，排序依赖查询与文档的匹配；词袋表示本身不完整表达词序和句间关系。",
+          "why_explanation": "区分词项的重要性比机械计数更能改善检索。",
+          "teaching_example": "“售后”很多资料都有，独特型号或故障代码更能定位目标说明。",
+          "ai_pm_relevance": "保留精确实体，并验证词项归一化是否破坏含义。",
+          "source_ids": [
+            "ir_tf",
+            "ir_bm25",
+            "ir_vector"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释词项权重与区分度的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411322,
+          "name": "BM25 的相关性估计",
+          "description": "BM25 结合词项区分度、词频饱和与文档长度等因素估计相关性。",
+          "category": "RAG",
+          "core_explanation": "BM25 结合词项区分度、词频饱和与文档长度等因素估计相关性。多出现几次同一词不会无限增加收益；它在术语与精确名称上可形成强基线，但缺少字面交集的同义表达可能漏召回。",
+          "why_explanation": "词法与语义检索擅长的输入不同。",
+          "teaching_example": "产品代码精确搜索用 BM25，口语退款问法再比较语义检索。",
+          "ai_pm_relevance": "按问题类型报告效果，不直接宣布某一算法全面更好。",
+          "source_ids": [
+            "ir_tf",
+            "ir_bm25",
+            "ir_vector"
+          ],
+          "prerequisite": "词项权重与区分度",
+          "interview_requirements": [
+            "能解释BM25 的相关性估计的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 133,
+      "order": 33,
+      "module_id": "M06",
+      "chapter": "知识检索与 RAG",
+      "title": "向量召回、近邻搜索与重排",
+      "topic": "RAG",
+      "content": "把初步找到证据与精细排序分开，知道哪些错误可以由重排修复。",
+      "objectives": [
+        "解释“稠密表示与候选召回”，能说明机制、使用边界与一个产品取舍。",
+        "解释“重排收益与召回边界”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "证据在候选中但不在前列时，说明如何验证重排是否值得增加。",
+      "source_ids": [
+        "slp_rag",
+        "microsoft_rerank"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411331,
+          "name": "稠密表示与候选召回",
+          "description": "稠密检索把问题和资料转换成嵌入，按相似度找候选。",
+          "category": "RAG",
+          "core_explanation": "稠密检索把问题和资料转换成嵌入，按相似度找候选。大规模向量集合可用近似近邻索引降低搜索成本，但近似方式可能漏掉目标；向量相近只是相关线索，不等于资料能够回答问题。",
+          "why_explanation": "召回不足时，下游生成无法使用不存在的证据。",
+          "teaching_example": "先检查真实退款条款是否进入候选，再评判生成模型是否读错。",
+          "ai_pm_relevance": "用相关性标注测召回、时延与索引资源。",
+          "source_ids": [
+            "slp_rag",
+            "microsoft_rerank"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释稠密表示与候选召回的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411332,
+          "name": "重排收益与召回边界",
+          "description": "重排对已经取得的候选进行更精细比较，改善前列结果的相关性。",
+          "category": "RAG",
+          "core_explanation": "重排对已经取得的候选进行更精细比较，改善前列结果的相关性。它可能增加延迟和处理成本，也无法恢复初次检索没有找到的资料；应把召回和排序错误分开诊断。",
+          "why_explanation": "盲目加重排可能掩盖入库或召回阶段的根本问题。",
+          "teaching_example": "政策依据排在第十八位，重排可能提升；完全没被召回则先改检索。",
+          "ai_pm_relevance": "用有无重排的对照验证答案质量与资源取舍。",
+          "source_ids": [
+            "slp_rag",
+            "microsoft_rerank"
+          ],
+          "prerequisite": "稠密表示与候选召回",
+          "interview_requirements": [
+            "能解释重排收益与召回边界的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 134,
+      "order": 34,
+      "module_id": "M06",
+      "chapter": "知识检索与 RAG",
+      "title": "混合搜索与查询改写",
+      "topic": "RAG",
+      "content": "组合字面与语义检索，并在不改变原意的前提下补全查询，防止召回噪声扩散。",
+      "objectives": [
+        "解释“多路召回与排序融合”，能说明机制、使用边界与一个产品取舍。",
+        "解释“改写、反馈与意图保真”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "为“它多久能退回来”设计可检索表达，并说明怎样验证没有误改退款对象。",
+      "source_ids": [
+        "microsoft_hybrid",
+        "ir_feedback"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411341,
+          "name": "多路召回与排序融合",
+          "description": "混合检索同时使用词法和向量等路径，再融合候选分数或排名。",
+          "category": "RAG",
+          "core_explanation": "混合检索同时使用词法和向量等路径，再融合候选分数或排名。两路可互补，但相似度与词法分数的量纲不同，融合方式需验证；结果更多不等于给生成的有效证据更多。",
+          "why_explanation": "未经评估的多路组合可能把噪声提升到前列。",
+          "teaching_example": "型号查询依赖字面匹配，口语描述依赖语义匹配，合并后再检查排序。",
+          "ai_pm_relevance": "按问题切片比较覆盖、前列精度、成本与延迟。",
+          "source_ids": [
+            "microsoft_hybrid",
+            "ir_feedback"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释多路召回与排序融合的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411342,
+          "name": "改写、反馈与意图保真",
+          "description": "查询改写可以补全指代、规范实体或拆分问题，相关反馈可进一步改善检索。",
+          "category": "RAG",
+          "core_explanation": "查询改写可以补全指代、规范实体或拆分问题，相关反馈可进一步改善检索。改写必须保留原始意图与条件，不能从没有依据的前提生成更多查询；反馈也要防止错误结果自我强化。",
+          "why_explanation": "改写越具体，越需要检查新增条件是否真实。",
+          "teaching_example": "“它多久回来”先确认谈的是退款到账还是退货物流，再发起检索。",
+          "ai_pm_relevance": "保留原问题与改写记录，检查误解和新增假设。",
+          "source_ids": [
+            "microsoft_hybrid",
+            "ir_feedback"
+          ],
+          "prerequisite": "多路召回与排序融合",
+          "interview_requirements": [
+            "能解释改写、反馈与意图保真的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 135,
+      "order": 35,
+      "module_id": "M06",
+      "chapter": "知识检索与 RAG",
+      "title": "答案依据、引用与无答案处理",
+      "topic": "RAG",
+      "content": "检查答案是否由证据支持，区分资料缺失、冲突和用户问题不明确，并提供下一步。",
+      "objectives": [
+        "解释“证据支持与引用正确性”，能说明机制、使用边界与一个产品取舍。",
+        "解释“资料不足与安全继续”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "库中只有旧版退款条款时，设计助手怎样回答及如何让用户继续办理。",
+      "source_ids": [
+        "slp_rag",
+        "pair_errors"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411351,
+          "name": "证据支持与引用正确性",
+          "description": "RAG 给模型提供资料后，还要核验每个关键结论是否被资料支持。",
+          "category": "RAG",
+          "core_explanation": "RAG 给模型提供资料后，还要核验每个关键结论是否被资料支持。引用应对应确切内容和可访问位置；资料存在、链接真实或语言自信，都不能替代对条件、例外与结论的核对。",
+          "why_explanation": "错误引用会让用户更难发现看似有依据的错误。",
+          "teaching_example": "回答称所有商品可退，但引用只适用未拆封普通商品，必须纠正范围。",
+          "ai_pm_relevance": "将证据一致性和引用可核验性纳入质量标准。",
+          "source_ids": [
+            "slp_rag",
+            "pair_errors"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释证据支持与引用正确性的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411352,
+          "name": "资料不足与安全继续",
+          "description": "当检索没有有效证据、资料冲突或问题缺少条件时，系统应说明限制，提出必要澄清或转交，不随意补出答案。",
+          "category": "RAG",
+          "core_explanation": "当检索没有有效证据、资料冲突或问题缺少条件时，系统应说明限制，提出必要澄清或转交，不随意补出答案。失败提示应让用户知道怎样继续任务，同时保留可用上下文。",
+          "why_explanation": "沉默、泛泛报错与编造答案都会增加用户负担。",
+          "teaching_example": "找不到现行条款时说明资料版本不足，收集订单信息后转人工核查。",
+          "ai_pm_relevance": "设计澄清、资料补充与升级路径，跟踪无答案比例。",
+          "source_ids": [
+            "slp_rag",
+            "pair_errors"
+          ],
+          "prerequisite": "证据支持与引用正确性",
+          "interview_requirements": [
+            "能解释资料不足与安全继续的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 136,
+      "order": 36,
+      "module_id": "M06",
+      "chapter": "知识检索与 RAG",
+      "title": "RAG 评估：召回、排序与任务结果",
+      "topic": "RAG",
+      "content": "用分层评估定位检索与生成的问题，并让技术分数回到用户是否解决问题。",
+      "objectives": [
+        "解释“相关性集合与排序指标”，能说明机制、使用边界与一个产品取舍。",
+        "解释“组件诊断与用户效用”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "检索分数改善但用户更难找答案时，提出分层诊断和对照评测计划。",
+      "source_ids": [
+        "ir_unranked",
+        "ir_ranked",
+        "ir_utility"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411361,
+          "name": "相关性集合与排序指标",
+          "description": "检索评估需要问题、相关资料标注和清晰任务定义。",
+          "category": "RAG",
+          "core_explanation": "检索评估需要问题、相关资料标注和清晰任务定义。召回检查覆盖，精确率检查返回结果的相关程度，排序指标关注有用资料出现的位置；评判口径与候选数量改变会影响可比性。",
+          "why_explanation": "没有相关性标注，检索分数就缺少明确参照。",
+          "teaching_example": "同一问题的两条有效条款都要标出，避免漏标导致错误评价。",
+          "ai_pm_relevance": "明确相关标准、截断位置和样本覆盖范围。",
+          "source_ids": [
+            "ir_unranked",
+            "ir_ranked",
+            "ir_utility"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释相关性集合与排序指标的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411362,
+          "name": "组件诊断与用户效用",
+          "description": "端到端质量同时受入库、召回、排序、证据组装和生成影响。",
+          "category": "RAG",
+          "core_explanation": "端到端质量同时受入库、召回、排序、证据组装和生成影响。先固定组件检查错误，再评测用户完成任务、耗时与返工；技术相关性提升可能没有带来更易理解或更正确的最终回答。",
+          "why_explanation": "用户收益不能用某个中间指标直接替代。",
+          "teaching_example": "候选排序更好，但答案过长掩盖例外条款，用户仍办理失败。",
+          "ai_pm_relevance": "将组件指标、答案质量与用户结果关联分析。",
+          "source_ids": [
+            "ir_unranked",
+            "ir_ranked",
+            "ir_utility"
+          ],
+          "prerequisite": "相关性集合与排序指标",
+          "interview_requirements": [
+            "能解释组件诊断与用户效用的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 137,
+      "order": 37,
+      "module_id": "M07",
+      "chapter": "Agent、工具与流程控制",
+      "title": "什么时候使用工作流或 Agent",
+      "topic": "Agent",
+      "content": "区分固定编排与模型动态决策，按路径不确定性和错误成本选择自治程度。",
+      "objectives": [
+        "解释“预定路径与动态路径”，能说明机制、使用边界与一个产品取舍。",
+        "解释“自治范围与产品责任”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "比较固定报销流程和开放调研任务，解释各自为何适合不同运行方式。",
+      "source_ids": [
+        "anthropic_agents",
+        "aie_agent_summary"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411371,
+          "name": "预定路径与动态路径",
+          "description": "工作流由代码定义步骤与分支，Agent 由模型依据状态和反馈决定下一步。",
+          "category": "AGENT",
+          "core_explanation": "工作流由代码定义步骤与分支，Agent 由模型依据状态和反馈决定下一步。任务能清楚分解时，固定流程通常更容易测试；开放路径可能需要动态决策，但应先确认灵活性确有业务价值。",
+          "why_explanation": "自治不是越高越好，会带来更多错误和成本。",
+          "teaching_example": "报销检查走固定节点，跨来源调研可根据证据缺口调整搜索步骤。",
+          "ai_pm_relevance": "按任务特点选结构，并保留简单方案作为基线。",
+          "source_ids": [
+            "anthropic_agents",
+            "aie_agent_summary"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释预定路径与动态路径的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411372,
+          "name": "自治范围与产品责任",
+          "description": "Agent 的能力取决于可用环境和工具，授权范围决定它能产生哪些影响。",
+          "category": "AGENT",
+          "core_explanation": "Agent 的能力取决于可用环境和工具，授权范围决定它能产生哪些影响。模型会选择动作不等于动作应被自动执行；要把可读、可写和高影响操作分层，给用户明确知情与接管方式。",
+          "why_explanation": "越复杂的工具组合，越需要清晰责任与防护。",
+          "teaching_example": "助手可自主比较库存，但购买和付款由用户确认后执行。",
+          "ai_pm_relevance": "逐项定义权限、确认点和终止预算。",
+          "source_ids": [
+            "anthropic_agents",
+            "aie_agent_summary"
+          ],
+          "prerequisite": "预定路径与动态路径",
+          "interview_requirements": [
+            "能解释自治范围与产品责任的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 138,
+      "order": 38,
+      "module_id": "M07",
+      "chapter": "Agent、工具与流程控制",
+      "title": "工具描述、参数与执行契约",
+      "topic": "Agent",
+      "content": "让工具调用可被理解与验证，明确模型请求和系统执行是两个环节。",
+      "objectives": [
+        "解释“工具发现与参数模式”，能说明机制、使用边界与一个产品取舍。",
+        "解释“执行结果与错误反馈”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "为订单查询和退款工具分别定义输入模式、结果状态和业务检查。",
+      "source_ids": [
+        "mcp_tools",
+        "json_schema"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411381,
+          "name": "工具发现与参数模式",
+          "description": "工具接口应说明名称、用途、参数和输出，模型据此提出调用请求。",
+          "category": "AGENT",
+          "core_explanation": "工具接口应说明名称、用途、参数和输出，模型据此提出调用请求。模式可以约束结构，但执行层还需验证参数与访问范围；不可信输入不能借工具描述变成任意系统指令。",
+          "why_explanation": "含糊工具会增加误选与错参，格式正确也可能越权。",
+          "teaching_example": "订单查询需要有效订单标识与用户权限，不接受任意文件路径参数。",
+          "ai_pm_relevance": "把用途、输入、结果和副作用写成可检查契约。",
+          "source_ids": [
+            "mcp_tools",
+            "json_schema"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释工具发现与参数模式的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411382,
+          "name": "执行结果与错误反馈",
+          "description": "工具执行可能成功、业务拒绝、找不到数据或技术失败，结果应明确区分。",
+          "category": "AGENT",
+          "core_explanation": "工具执行可能成功、业务拒绝、找不到数据或技术失败，结果应明确区分。模型必须依据真实工具反馈继续，而非把计划当成完成；重试也需考虑是否会重复产生业务动作。",
+          "why_explanation": "不区分状态会让助手误报成功或不断重复操作。",
+          "teaching_example": "退款已被业务规则拒绝，助手说明拒绝原因，而不是继续宣称办理完成。",
+          "ai_pm_relevance": "设计状态码、用户提示与可恢复动作。",
+          "source_ids": [
+            "mcp_tools",
+            "json_schema"
+          ],
+          "prerequisite": "工具发现与参数模式",
+          "interview_requirements": [
+            "能解释执行结果与错误反馈的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 139,
+      "order": 39,
+      "module_id": "M07",
+      "chapter": "Agent、工具与流程控制",
+      "title": "会话状态与跨会话记忆",
+      "topic": "Agent",
+      "content": "区分当前任务状态、历史信息与长期偏好，保存时考虑范围、时效及用户修改权。",
+      "objectives": [
+        "解释“任务状态与进展记录”，能说明机制、使用边界与一个产品取舍。",
+        "解释“长期记忆的范围与更新”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "为学习助手设计哪些信息仅本次保存、哪些经用户控制可以长期保留。",
+      "source_ids": [
+        "aie_agent_summary",
+        "pair_controls",
+        "mcp_tools"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411391,
+          "name": "任务状态与进展记录",
+          "description": "任务状态记录已完成动作、待办步骤、工具结果和当前限制。",
+          "category": "AGENT",
+          "core_explanation": "任务状态记录已完成动作、待办步骤、工具结果和当前限制。它用于恢复与避免重复，不应被一段自由生成的总结完全替代；关键结果应保持结构化、可追溯，并说明计划与实际完成的差别。",
+          "why_explanation": "状态丢失可能造成重复动作或把未完成任务报告为完成。",
+          "teaching_example": "调研助手保存已核验来源清单，重启后继续处理尚未验证的主张。",
+          "ai_pm_relevance": "定义状态字段、完成证据与恢复检查。",
+          "source_ids": [
+            "aie_agent_summary",
+            "pair_controls",
+            "mcp_tools"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释任务状态与进展记录的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411392,
+          "name": "长期记忆的范围与更新",
+          "description": "长期记忆可以保存偏好或有用事实，但需要明确来源、用户范围、时效和删除方式。",
+          "category": "AGENT",
+          "core_explanation": "长期记忆可以保存偏好或有用事实，但需要明确来源、用户范围、时效和删除方式。历史信息可能错误或过期；使用前应按当前任务核对，不能把一次推测永久当作用户真实偏好。",
+          "why_explanation": "记忆功能增加便利，也增加错误沿时间传播的风险。",
+          "teaching_example": "用户曾要求简短答案，后来改为详细讲解，应允许查看和更新偏好。",
+          "ai_pm_relevance": "给用户编辑、关闭与删除记忆的入口。",
+          "source_ids": [
+            "aie_agent_summary",
+            "pair_controls",
+            "mcp_tools"
+          ],
+          "prerequisite": "任务状态与进展记录",
+          "interview_requirements": [
+            "能解释长期记忆的范围与更新的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 140,
+      "order": 40,
+      "module_id": "M07",
+      "chapter": "Agent、工具与流程控制",
+      "title": "任务拆解、反馈循环与停止条件",
+      "topic": "Agent",
+      "content": "让每一步行动有完成标准，并根据真实结果迭代，而非无条件延长模型思考。",
+      "objectives": [
+        "解释“可执行子任务与中间验收”，能说明机制、使用边界与一个产品取舍。",
+        "解释“轮次、成本与终止”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "为调研任务设计三步计划、每步验收条件和无法获得证据时的停止动作。",
+      "source_ids": [
+        "anthropic_agents",
+        "mcp_tools"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411401,
+          "name": "可执行子任务与中间验收",
+          "description": "计划把目标拆成带输入、输出和依赖的子任务，每步需要观察工具返回或可核验产出。",
+          "category": "AGENT",
+          "core_explanation": "计划把目标拆成带输入、输出和依赖的子任务，每步需要观察工具返回或可核验产出。执行结果可能推翻原计划，应根据证据调整，不能把写出步骤本身当作任务已完成。",
+          "why_explanation": "没有中间验收，错误可能在长链条中持续累积。",
+          "teaching_example": "先找到政策来源，再确认版本，再写回答；来源失效时先换证据。",
+          "ai_pm_relevance": "对每步定义完成证据、失败出口与可重规划范围。",
+          "source_ids": [
+            "anthropic_agents",
+            "mcp_tools"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释可执行子任务与中间验收的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411402,
+          "name": "轮次、成本与终止",
+          "description": "循环应在目标完成、预算达到、重复失败或需要用户决定时停止。",
+          "category": "AGENT",
+          "core_explanation": "循环应在目标完成、预算达到、重复失败或需要用户决定时停止。轮次限制只是其中一种约束，还要控制时间、调用成本与业务副作用；停止后应报告完成部分与尚缺信息。",
+          "why_explanation": "无限尝试会消耗预算而不一定增加可信结果。",
+          "teaching_example": "调研五轮仍无权威证据时，列出缺口而不是继续编造结论。",
+          "ai_pm_relevance": "将终止规则与用户预期、成本上限和交接方式对齐。",
+          "source_ids": [
+            "anthropic_agents",
+            "mcp_tools"
+          ],
+          "prerequisite": "可执行子任务与中间验收",
+          "interview_requirements": [
+            "能解释轮次、成本与终止的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 141,
+      "order": 41,
+      "module_id": "M07",
+      "chapter": "Agent、工具与流程控制",
+      "title": "路由、并行与多 Agent 协作",
+      "topic": "Agent",
+      "content": "把复杂系统拆成有价值的专门路径或可独立任务，验证协作是否提高结果。",
+      "objectives": [
+        "解释“任务路由与专门流程”，能说明机制、使用边界与一个产品取舍。",
+        "解释“并行分工与协调开销”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "比较单助手与研究、审查两个 Agent 方案，指出收益、交接信息和新增成本。",
+      "source_ids": [
+        "anthropic_agents",
+        "azure_agent_patterns"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411411,
+          "name": "任务路由与专门流程",
+          "description": "路由按请求类别、复杂度或条件选择后续路径，使不同任务使用适合的模型与提示。",
+          "category": "AGENT",
+          "core_explanation": "路由按请求类别、复杂度或条件选择后续路径，使不同任务使用适合的模型与提示。路由本身可能错，需检查兜底与分配标准；便宜模型处理简单任务是否有效，要看端到端成功而非价格。",
+          "why_explanation": "错误分流可能让下游高质量流程也无法完成任务。",
+          "teaching_example": "普通政策问答走知识库，需账户变更的请求转受限操作流程。",
+          "ai_pm_relevance": "评估路由准确率、下游结果和回退成本。",
+          "source_ids": [
+            "anthropic_agents",
+            "azure_agent_patterns"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释任务路由与专门流程的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411412,
+          "name": "并行分工与协调开销",
+          "description": "可独立子任务可以并行处理，再汇总或由评审检查。",
+          "category": "AGENT",
+          "core_explanation": "可独立子任务可以并行处理，再汇总或由评审检查。多 Agent 需要职责边界、共享信息和冲突解决；更多节点也增加调用、沟通和错误传播，不应假定分工自动提高质量。",
+          "why_explanation": "协作收益必须超过额外延迟、资源与协调负担。",
+          "teaching_example": "研究员收集来源，审查员核对证据；两者共享同一版本资料。",
+          "ai_pm_relevance": "用单 Agent 基线比较正确率、总成本和完成时间。",
+          "source_ids": [
+            "anthropic_agents",
+            "azure_agent_patterns"
+          ],
+          "prerequisite": "任务路由与专门流程",
+          "interview_requirements": [
+            "能解释并行分工与协调开销的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 142,
+      "order": 42,
+      "module_id": "M07",
+      "chapter": "Agent、工具与流程控制",
+      "title": "权限、确认与重复动作防护",
+      "topic": "Agent",
+      "content": "把动作控制落实到系统权限和交易流程，为重试、接管与故障设置明确边界。",
+      "objectives": [
+        "解释“最小权限与敏感动作确认”，能说明机制、使用边界与一个产品取舍。",
+        "解释“幂等、状态查询与恢复”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "网络超时后退款工具不确定是否执行，说明助手应怎样检查状态和避免重复退款。",
+      "source_ids": [
+        "mcp_tools",
+        "owasp_agency",
+        "mdn_idempotency"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411421,
+          "name": "最小权限与敏感动作确认",
+          "description": "模型提出操作请求后，系统仍须校验主体、目标资源和权限。",
+          "category": "AGENT",
+          "core_explanation": "模型提出操作请求后，系统仍须校验主体、目标资源和权限。高影响动作需按业务要求确认，工具只开放必需能力；提示中的“不要越权”不能代替真实授权与资源限制。",
+          "why_explanation": "外部文本或错误规划都可能触发本不该执行的动作。",
+          "teaching_example": "助手可以查订单与生成建议，实际退款只在授权用户确认后提交。",
+          "ai_pm_relevance": "逐工具限制能力，并为敏感动作记录确认和执行证据。",
+          "source_ids": [
+            "mcp_tools",
+            "owasp_agency",
+            "mdn_idempotency"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释最小权限与敏感动作确认的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411422,
+          "name": "幂等、状态查询与恢复",
+          "description": "同一操作重试应避免产生额外副作用，可用幂等标识与实际状态检查识别已处理请求。",
+          "category": "AGENT",
+          "core_explanation": "同一操作重试应避免产生额外副作用，可用幂等标识与实际状态检查识别已处理请求。超时不是失败的充分证据，可能已经执行但回执丢失；恢复流程应先核实再决定重试或交人工。",
+          "why_explanation": "重复交易常由错误地把网络失败当作业务未执行造成。",
+          "teaching_example": "退款超时后先查原操作状态，使用同一幂等键恢复，而不重新发一笔。",
+          "ai_pm_relevance": "为写操作明确去重、查询、撤销与人工处理规则。",
+          "source_ids": [
+            "mcp_tools",
+            "owasp_agency",
+            "mdn_idempotency"
+          ],
+          "prerequisite": "最小权限与敏感动作确认",
+          "interview_requirements": [
+            "能解释幂等、状态查询与恢复的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 143,
+      "order": 43,
+      "module_id": "M08",
+      "chapter": "多模态与业务应用",
+      "title": "视觉识别与卷积特征",
+      "topic": "多模态",
+      "content": "理解局部特征与共享参数，知道图像分类为什么仍需场景数据验证。",
+      "objectives": [
+        "解释“局部连接与共享参数”，能说明机制、使用边界与一个产品取舍。",
+        "解释“视觉迁移与领域验收”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "为包装破损识别定义输入条件、类别和领域测试集，而不是只报告公开数据集成绩。",
+      "source_ids": [
+        "d2l_cnn",
+        "d2l_fine_tuning"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411431,
+          "name": "局部连接与共享参数",
+          "description": "卷积用局部窗口提取图像模式，并在不同位置共享参数。",
+          "category": "MULTIMODAL",
+          "core_explanation": "卷积用局部窗口提取图像模式，并在不同位置共享参数。逐层组合可形成更复杂特征；这减少了某些全连接结构的参数负担，但模型仍受训练数据、图像质量和场景变化影响。",
+          "why_explanation": "架构适合视觉输入，不代表自动认识业务里的所有对象。",
+          "teaching_example": "仓库照片光照与背景不同，破损识别需在真实场景重新检查。",
+          "ai_pm_relevance": "定义拍摄条件、对象范围和关键失败例。",
+          "source_ids": [
+            "d2l_cnn",
+            "d2l_fine_tuning"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释局部连接与共享参数的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411432,
+          "name": "视觉迁移与领域验收",
+          "description": "预训练视觉模型可以作为新任务的初始化，复用已学习特征并进行微调。",
+          "category": "MULTIMODAL",
+          "core_explanation": "预训练视觉模型可以作为新任务的初始化，复用已学习特征并进行微调。任务差异、样本量与标注质量会影响迁移；应保留未见领域图片，比较直接使用、局部适配与其他基线。",
+          "why_explanation": "公开图片表现不能直接证明仓库或票据场景可靠。",
+          "teaching_example": "通用识别模型再用企业实际货箱照片适配，并测试新批次包装。",
+          "ai_pm_relevance": "验证领域增益、采集代价及上线环境限制。",
+          "source_ids": [
+            "d2l_cnn",
+            "d2l_fine_tuning"
+          ],
+          "prerequisite": "局部连接与共享参数",
+          "interview_requirements": [
+            "能解释视觉迁移与领域验收的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 144,
+      "order": 44,
+      "module_id": "M08",
+      "chapter": "多模态与业务应用",
+      "title": "分类、检测与分割怎样区分",
+      "topic": "多模态",
+      "content": "按产品输出选择视觉任务：识别类别、找到对象位置或区分像素区域是不同需求。",
+      "objectives": [
+        "解释“对象类别与边界框”，能说明机制、使用边界与一个产品取舍。",
+        "解释“像素区域与精细边界”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "为质检助手分别说明什么时候只要类别，什么时候需要框或掩码。",
+      "source_ids": [
+        "d2l_detection",
+        "d2l_segmentation"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411441,
+          "name": "对象类别与边界框",
+          "description": "图像分类给出整体类别，目标检测还需定位对象并识别类别，常用边界框表示。",
+          "category": "MULTIMODAL",
+          "core_explanation": "图像分类给出整体类别，目标检测还需定位对象并识别类别，常用边界框表示。多对象、小目标与遮挡会影响检测；框的位置和漏检也需要验收，不能只看类别是否对。",
+          "why_explanation": "要操作具体物体时，只有图片级判断通常不足。",
+          "teaching_example": "一张仓库照片有多件货箱，需要标出哪件破损而不只是说存在破损。",
+          "ai_pm_relevance": "定义对象级标注、定位误差和遗漏后果。",
+          "source_ids": [
+            "d2l_detection",
+            "d2l_segmentation"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释对象类别与边界框的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411442,
+          "name": "像素区域与精细边界",
+          "description": "语义分割为像素分配类别，适合需要精细区域的任务；它与给出矩形框不同。",
+          "category": "MULTIMODAL",
+          "core_explanation": "语义分割为像素分配类别，适合需要精细区域的任务；它与给出矩形框不同。更精细输出通常增加标注与计算要求，边界模糊或类别覆盖不足时，掩码可能不满足实际操作需要。",
+          "why_explanation": "输出粒度应该由用户下一步动作决定。",
+          "teaching_example": "商品抠图需要主体轮廓，而数量统计可能只需要检测框。",
+          "ai_pm_relevance": "用边界质量和目标动作验证精细输出的必要性。",
+          "source_ids": [
+            "d2l_detection",
+            "d2l_segmentation"
+          ],
+          "prerequisite": "对象类别与边界框",
+          "interview_requirements": [
+            "能解释像素区域与精细边界的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 145,
+      "order": 45,
+      "module_id": "M08",
+      "chapter": "多模态与业务应用",
+      "title": "语音识别与转写评估",
+      "topic": "多模态",
+      "content": "把音频转换为文字，并在统一文本规范下衡量错误，同时检查关键业务信息。",
+      "objectives": [
+        "解释“音频到文字的任务边界”，能说明机制、使用边界与一个产品取舍。",
+        "解释“词错误率与业务关键错误”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "比较两种会议转写方案，说明 WER 较低为什么仍可能把负责人或金额转错。",
+      "source_ids": [
+        "slp_asr",
+        "slp_tokens"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411451,
+          "name": "音频到文字的任务边界",
+          "description": "自动语音识别将声学输入转成文字，结果受噪声、口音、重叠讲话和领域词影响。",
+          "category": "MULTIMODAL",
+          "core_explanation": "自动语音识别将声学输入转成文字，结果受噪声、口音、重叠讲话和领域词影响。转写不是自动理解全部对话含义，人物角色、事件关系和行动项通常还需要后续处理与验证。",
+          "why_explanation": "把转写等同于业务理解会遗漏关键语义步骤。",
+          "teaching_example": "通话文字正确，但“谁承诺退款”仍需结合说话人和上下文判断。",
+          "ai_pm_relevance": "按真实录音环境、语言和关键实体构建测试。",
+          "source_ids": [
+            "slp_asr",
+            "slp_tokens"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释音频到文字的任务边界的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411452,
+          "name": "词错误率与业务关键错误",
+          "description": "WER 以替换、删除和插入的词数除以参考转写词数衡量错误，插入较多时可超过百分之百。",
+          "category": "MULTIMODAL",
+          "core_explanation": "WER 以替换、删除和插入的词数除以参考转写词数衡量错误，插入较多时可超过百分之百。评估应统一规范化口径，且一般词错误与金额、人名等关键字段错误需分别检查。",
+          "why_explanation": "总体文字准确不保证关键业务信息可信。",
+          "teaching_example": "少错几个语气词，却把“十五日”写成“五日”，业务影响可能更大。",
+          "ai_pm_relevance": "同时记录通用转写指标和关键字段可用性。",
+          "source_ids": [
+            "slp_asr",
+            "slp_tokens"
+          ],
+          "prerequisite": "音频到文字的任务边界",
+          "interview_requirements": [
+            "能解释词错误率与业务关键错误的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 146,
+      "order": 46,
+      "module_id": "M08",
+      "chapter": "多模态与业务应用",
+      "title": "图文表示与多模态理解",
+      "topic": "多模态",
+      "content": "理解图文对齐和视觉序列表示，区分匹配能力与需要精细关系的理解任务。",
+      "objectives": [
+        "解释“图文对比学习与检索”，能说明机制、使用边界与一个产品取舍。",
+        "解释“图像块与视觉注意力”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "用商品图文检索例子说明相似图像检索成功与精细属性判断成功的区别。",
+      "source_ids": [
+        "clip_paper",
+        "d2l_vit"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411461,
+          "name": "图文对比学习与检索",
+          "description": "图文对比学习用配对信息把相关图像和文字映射到可比较表示，支持跨模态匹配。",
+          "category": "MULTIMODAL",
+          "core_explanation": "图文对比学习用配对信息把相关图像和文字映射到可比较表示，支持跨模态匹配。相似分数说明表示关系，不自动证明细节、数量、否定或空间关系理解；专业类目仍需真实样本测试。",
+          "why_explanation": "检索相似对象与判断所有属性是不同能力。",
+          "teaching_example": "“红鞋”能找到相似图片，但是否左右各一只仍需要额外验证。",
+          "ai_pm_relevance": "区分跨模态召回与细粒度业务验收。",
+          "source_ids": [
+            "clip_paper",
+            "d2l_vit"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释图文对比学习与检索的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411462,
+          "name": "图像块与视觉注意力",
+          "description": "视觉 Transformer 将图像分成块并编码，再用注意力整合信息。",
+          "category": "MULTIMODAL",
+          "core_explanation": "视觉 Transformer 将图像分成块并编码，再用注意力整合信息。它改变视觉特征建模方式，但任务效果仍依赖分辨率、训练和数据；看不清的小字或被压缩细节不能靠架构名得到保障。",
+          "why_explanation": "输入质量限制可能比模型结构更直接决定失败。",
+          "teaching_example": "低分辨率票据数字模糊，即使模型支持图文也不能可靠恢复原金额。",
+          "ai_pm_relevance": "明确图像质量要求和无法判断时的补拍路径。",
+          "source_ids": [
+            "clip_paper",
+            "d2l_vit"
+          ],
+          "prerequisite": "图文对比学习与检索",
+          "interview_requirements": [
+            "能解释图像块与视觉注意力的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 147,
+      "order": 47,
+      "module_id": "M08",
+      "chapter": "多模态与业务应用",
+      "title": "推荐系统、冷启动与排序",
+      "topic": "多模态",
+      "content": "理解用户与物品信息如何用于候选排序，把点击偏好与长期学习价值区分。",
+      "objectives": [
+        "解释“协同信息与内容信息”，能说明机制、使用边界与一个产品取舍。",
+        "解释“排序目标与长期价值”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "为学习助手设计新用户推荐策略，并说明点击率之外应该检查的结果。",
+      "source_ids": [
+        "d2l_recommender",
+        "d2l_ranking",
+        "pair_needs"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411471,
+          "name": "协同信息与内容信息",
+          "description": "推荐可使用用户与物品交互，也可使用内容属性或二者结合。",
+          "category": "MULTIMODAL",
+          "core_explanation": "推荐可使用用户与物品交互，也可使用内容属性或二者结合。交互稀疏、新用户和新物品会限制协同信息，需要其他可用信号；推荐结果反映数据与策略，不自动表达用户长期需要。",
+          "why_explanation": "没有行为记录时，个性化不能凭空了解用户。",
+          "teaching_example": "新学习者先选择目标和基础水平，再结合课程属性推荐入门材料。",
+          "ai_pm_relevance": "为冷启动明确可采集信息与用户控制方式。",
+          "source_ids": [
+            "d2l_recommender",
+            "d2l_ranking",
+            "pair_needs"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释协同信息与内容信息的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411472,
+          "name": "排序目标与长期价值",
+          "description": "排序把候选按目标相关性安排，隐式行为可以作为反馈但不等同于真实价值。",
+          "category": "MULTIMODAL",
+          "core_explanation": "排序把候选按目标相关性安排，隐式行为可以作为反馈但不等同于真实价值。选择目标需考虑用户结果、覆盖与潜在负面影响；让容易点击的内容总排前面可能损害长期学习。",
+          "why_explanation": "业务目标不应被方便统计的短期行为完全替代。",
+          "teaching_example": "趣味课程点击高，但补齐基础短板的课程更能提高后续答题质量。",
+          "ai_pm_relevance": "同时测排序质量、任务结果与用户长期收益。",
+          "source_ids": [
+            "d2l_recommender",
+            "d2l_ranking",
+            "pair_needs"
+          ],
+          "prerequisite": "协同信息与内容信息",
+          "interview_requirements": [
+            "能解释排序目标与长期价值的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 148,
+      "order": 48,
+      "module_id": "M08",
+      "chapter": "多模态与业务应用",
+      "title": "信息抽取：从文本到业务记录",
+      "topic": "多模态",
+      "content": "把实体、关系、事件与时间分开定义，让抽取结果可核对而不是只看结构完整。",
+      "objectives": [
+        "解释“实体关系与事件字段”，能说明机制、使用边界与一个产品取舍。",
+        "解释“时间表达与实际业务口径”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "从一段售后记录中定义投诉对象、处理承诺和时间字段，并列出未说明信息的处理方式。",
+      "source_ids": [
+        "slp_extraction",
+        "slp_classification"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411481,
+          "name": "实体关系与事件字段",
+          "description": "信息抽取把非结构化文本中的实体、关系或事件转成结构化数据。",
+          "category": "MULTIMODAL",
+          "core_explanation": "信息抽取把非结构化文本中的实体、关系或事件转成结构化数据。先定义字段和含义，再检查是否有文本依据；实体出现不代表关系已经成立，未陈述信息不能为了填满模板而猜测。",
+          "why_explanation": "可解析字段如果语义错误，会污染后续统计与行动。",
+          "teaching_example": "客户提到商家和物流公司，需区分谁承担何种承诺，不能只提名字。",
+          "ai_pm_relevance": "为每个字段要求可追溯证据和未知值。",
+          "source_ids": [
+            "slp_extraction",
+            "slp_classification"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释实体关系与事件字段的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411482,
+          "name": "时间表达与实际业务口径",
+          "description": "事件抽取常涉及日期、相对时间和发生顺序。",
+          "category": "MULTIMODAL",
+          "core_explanation": "事件抽取常涉及日期、相对时间和发生顺序。规范化需要参照时间与语境，承诺、计划与实际完成也要分开；格式化成日期不说明解释正确，应核验关键时间和状态关系。",
+          "why_explanation": "时序错误可能导致错误提醒或不当业务结论。",
+          "teaching_example": "“明天会退款”是计划而非已经退款，应保留原话时间与待完成状态。",
+          "ai_pm_relevance": "让结果支持人工复核，并明示推断条件。",
+          "source_ids": [
+            "slp_extraction",
+            "slp_classification"
+          ],
+          "prerequisite": "实体关系与事件字段",
+          "interview_requirements": [
+            "能解释时间表达与实际业务口径的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 149,
+      "order": 49,
+      "module_id": "M09",
+      "chapter": "部署、性能与持续运维",
+      "title": "线上推理：首字、总时延与吞吐",
+      "topic": "AI部署",
+      "content": "用清晰口径分别测用户等待和系统容量，理解平均值不能覆盖高峰体验。",
+      "objectives": [
+        "解释“首输出与完整任务时延”，能说明机制、使用边界与一个产品取舍。",
+        "解释“并发吞吐与尾部等待”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "对两个助手服务比较 TTFT、总完成时间和并发吞吐，说明不能只选首字最快者。",
+      "source_ids": [
+        "nvidia_metrics",
+        "chip_serving"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411491,
+          "name": "首输出与完整任务时延",
+          "description": "首 token 延迟描述开始收到内容的时间，总时延描述请求完成的等待；排队、网络、检索和模型计算都可能影响体验。",
+          "category": "DEPLOYMENT",
+          "core_explanation": "首 token 延迟描述开始收到内容的时间，总时延描述请求完成的等待；排队、网络、检索和模型计算都可能影响体验。流式展示改善可感知等待，但不证明答案更早完成或任务更可靠。",
+          "why_explanation": "只优化首字可能让用户仍然长时间等关键结果。",
+          "teaching_example": "助手很快说“正在处理”，但真正有用答案很晚才出现，不能算完成更快。",
+          "ai_pm_relevance": "定义计时起点与用户可用结果，再比较不同方案。",
+          "source_ids": [
+            "nvidia_metrics",
+            "chip_serving"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释首输出与完整任务时延的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411492,
+          "name": "并发吞吐与尾部等待",
+          "description": "吞吐是在明确负载下单位时间完成的请求或 token 数，尾部时延反映较慢请求。",
+          "category": "DEPLOYMENT",
+          "core_explanation": "吞吐是在明确负载下单位时间完成的请求或 token 数，尾部时延反映较慢请求。提高并发或组批可能增加吞吐也增加等待，平均值不能代替高分位表现，必须在真实输入长度分布下测量。",
+          "why_explanation": "容量好看不意味着每个用户都能及时获得结果。",
+          "teaching_example": "高峰总处理量提升，但长文请求频繁超时，应检查排队与资源分配。",
+          "ai_pm_relevance": "为并发、输入规模和慢请求设可验收目标。",
+          "source_ids": [
+            "nvidia_metrics",
+            "chip_serving"
+          ],
+          "prerequisite": "首输出与完整任务时延",
+          "interview_requirements": [
+            "能解释并发吞吐与尾部等待的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 150,
+      "order": 50,
+      "module_id": "M09",
+      "chapter": "部署、性能与持续运维",
+      "title": "KV 缓存与应用缓存",
+      "topic": "AI部署",
+      "content": "区分复用模型中间计算与复用业务答案，明确资源、权限及更新边界。",
+      "objectives": [
+        "解释“历史注意力状态复用”，能说明机制、使用边界与一个产品取舍。",
+        "解释“答案缓存的有效范围”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "说明长会话为什么增加 KV 缓存占用，以及政策更新后哪些答案缓存需要失效。",
+      "source_ids": [
+        "hf_cache",
+        "google_genai_ops"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411501,
+          "name": "历史注意力状态复用",
+          "description": "自回归生成可以缓存已计算的注意力键和值，减少处理新 token 时的重复计算。",
+          "category": "DEPLOYMENT",
+          "core_explanation": "自回归生成可以缓存已计算的注意力键和值，减少处理新 token 时的重复计算。KV 缓存通常随上下文与并发占用资源；它是计算状态，不是对用户信息的永久记忆，也不是业务答案库。",
+          "why_explanation": "长输入和多人并发可能先触及缓存显存限制。",
+          "teaching_example": "每位用户会话都较长时，模型权重能放下也可能没有足够缓存空间。",
+          "ai_pm_relevance": "一起规划输入长度、输出预算、并发和显存。",
+          "source_ids": [
+            "hf_cache",
+            "google_genai_ops"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释历史注意力状态复用的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411502,
+          "name": "答案缓存的有效范围",
+          "description": "应用缓存复用稳定请求的结果，应把用户权限、参数与资料版本计入范围，并设置更新失效。",
+          "category": "DEPLOYMENT",
+          "core_explanation": "应用缓存复用稳定请求的结果，应把用户权限、参数与资料版本计入范围，并设置更新失效。缓存命中节省调用不代表内容仍然有效，个性化或敏感结果不能无条件跨用户复用。",
+          "why_explanation": "陈旧或越权缓存可能把错误快速扩散给更多用户。",
+          "teaching_example": "公开制度换版后清理旧答案缓存，个人订单回答只在合法用户范围内复用。",
+          "ai_pm_relevance": "明确定义缓存键、期限、撤销和权限检查。",
+          "source_ids": [
+            "hf_cache",
+            "google_genai_ops"
+          ],
+          "prerequisite": "历史注意力状态复用",
+          "interview_requirements": [
+            "能解释答案缓存的有效范围的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 151,
+      "order": 51,
+      "module_id": "M09",
+      "chapter": "部署、性能与持续运维",
+      "title": "量化、蒸馏与质量回退",
+      "topic": "AI部署",
+      "content": "理解压缩技术改变什么，按实际设备与任务验证资源节省和能力损失。",
+      "objectives": [
+        "解释“低精度表示与量化取舍”，能说明机制、使用边界与一个产品取舍。",
+        "解释“教师学生与知识蒸馏”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "评审一个更小模型替代方案，给出必须保留的任务能力与性能验收项。",
+      "source_ids": [
+        "hf_quantization",
+        "distillation_paper"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411511,
+          "name": "低精度表示与量化取舍",
+          "description": "量化使用较低精度表示权重或计算值，以减少存储和内存需求。",
+          "category": "DEPLOYMENT",
+          "core_explanation": "量化使用较低精度表示权重或计算值，以减少存储和内存需求。速度收益取决于方法、硬件和实现；误差可能影响某些任务，不能只用模型尺寸下降推断成本和质量同时改善。",
+          "why_explanation": "更省资源的模型仍可能在关键任务上回退。",
+          "teaching_example": "低比特模型普通摘要可用，却遗漏专业条款，需单独验证高影响样本。",
+          "ai_pm_relevance": "在目标设备测真实时延、内存与任务质量。",
+          "source_ids": [
+            "hf_quantization",
+            "distillation_paper"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释低精度表示与量化取舍的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411512,
+          "name": "教师学生与知识蒸馏",
+          "description": "蒸馏让学生模型学习教师输出、软目标或相关表示，用较小模型近似部分能力。",
+          "category": "DEPLOYMENT",
+          "core_explanation": "蒸馏让学生模型学习教师输出、软目标或相关表示，用较小模型近似部分能力。学生受训练任务覆盖限制，也可能继承教师错误；教师得分高不意味着学生获得了全部复杂推理能力。",
+          "why_explanation": "压缩后的能力要重新证明，而不是继承教师的报告。",
+          "teaching_example": "为高频工单蒸馏小模型，复杂多步骤请求保留更强方案或人工处理。",
+          "ai_pm_relevance": "建立任务覆盖、回退策略与实际成功成本比较。",
+          "source_ids": [
+            "hf_quantization",
+            "distillation_paper"
+          ],
+          "prerequisite": "低精度表示与量化取舍",
+          "interview_requirements": [
+            "能解释教师学生与知识蒸馏的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 152,
+      "order": 52,
+      "module_id": "M09",
+      "chapter": "部署、性能与持续运维",
+      "title": "资源、批量与运行位置",
+      "topic": "AI部署",
+      "content": "按内存、计算、网络和用户等待约束规划部署，区分离线处理与即时交互。",
+      "objectives": [
+        "解释“计算、内存与数据传输”，能说明机制、使用边界与一个产品取舍。",
+        "解释“组批与本地云端取舍”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "说明本地与云端推理的不同限制，并为批量摘要和实时答疑选处理方式。",
+      "source_ids": [
+        "d2l_hardware",
+        "hf_pipeline",
+        "chip_serving"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411521,
+          "name": "计算、内存与数据传输",
+          "description": "推理性能不只由计算量决定，还受模型与缓存内存、带宽及传输影响。",
+          "category": "DEPLOYMENT",
+          "core_explanation": "推理性能不只由计算量决定，还受模型与缓存内存、带宽及传输影响。不同设备的瓶颈不同，不能按参数数量或标称算力直接估计真实速度；要用符合输入与并发特点的负载测试。",
+          "why_explanation": "资源采购若忽略实际瓶颈，可能增加费用却不改善体验。",
+          "teaching_example": "长会话显存不足，而短请求受排队限制，二者需要不同优化。",
+          "ai_pm_relevance": "先定位瓶颈，再比较设备、输入策略和服务配置。",
+          "source_ids": [
+            "d2l_hardware",
+            "hf_pipeline",
+            "chip_serving"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释计算、内存与数据传输的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411522,
+          "name": "组批与本地云端取舍",
+          "description": "批量处理可改善硬件利用，但等待组批会影响即时任务。",
+          "category": "DEPLOYMENT",
+          "core_explanation": "批量处理可改善硬件利用，但等待组批会影响即时任务。端侧推理受到设备资源与电量约束，云端涉及网络和服务资源；两种位置的隐私、运维与用户体验需要按场景权衡。",
+          "why_explanation": "处理效率与单用户等待是不同目标。",
+          "teaching_example": "夜间工单摘要可以组批，课堂答疑需低等待；弱网络用户另设离线能力。",
+          "ai_pm_relevance": "分别定义批任务与交互任务的资源和体验要求。",
+          "source_ids": [
+            "d2l_hardware",
+            "hf_pipeline",
+            "chip_serving"
+          ],
+          "prerequisite": "计算、内存与数据传输",
+          "interview_requirements": [
+            "能解释组批与本地云端取舍的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 153,
+      "order": 53,
+      "module_id": "M09",
+      "chapter": "部署、性能与持续运维",
+      "title": "发布、监测与版本回滚",
+      "topic": "AI部署",
+      "content": "将数据、模型、提示和检索配置作为可追溯版本，持续检查实际任务质量。",
+      "objectives": [
+        "解释“版本组成与发布验收”，能说明机制、使用边界与一个产品取舍。",
+        "解释“运行质量与反馈闭环”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "设计一次模型升级的发布门槛、线上监测和回滚条件。",
+      "source_ids": [
+        "google_mlops",
+        "chip_serving",
+        "d2l_shift"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411531,
+          "name": "版本组成与发布验收",
+          "description": "线上结果由数据、预处理、模型、提示和服务配置共同决定。",
+          "category": "DEPLOYMENT",
+          "core_explanation": "线上结果由数据、预处理、模型、提示和服务配置共同决定。发布需要保存组合版本与评估结果，确认资源和依赖满足运行条件；只记录模型名会遗漏导致质量变化的重要部分。",
+          "why_explanation": "无法重建旧版本，就难以比较或可靠回退。",
+          "teaching_example": "检索分块改动与模型升级分开验证，发布记录保留完整配置和问题集。",
+          "ai_pm_relevance": "为版本建立可复查的验收证据与恢复路径。",
+          "source_ids": [
+            "google_mlops",
+            "chip_serving",
+            "d2l_shift"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释版本组成与发布验收的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411532,
+          "name": "运行质量与反馈闭环",
+          "description": "部署后持续监测质量、时延、成本和使用环境变化，结合实际结果与用户反馈识别退化。",
+          "category": "DEPLOYMENT",
+          "core_explanation": "部署后持续监测质量、时延、成本和使用环境变化，结合实际结果与用户反馈识别退化。报警应触发调查与处理，而非自动认为需要重训；反馈也应核验后进入数据和评估更新。",
+          "why_explanation": "服务健康并不说明答案与业务结果仍然正确。",
+          "teaching_example": "接口一直正常，但新业务工单误分率上升，应检查数据与类别变化。",
+          "ai_pm_relevance": "给质量告警设责任人、诊断步骤和回滚标准。",
+          "source_ids": [
+            "google_mlops",
+            "chip_serving",
+            "d2l_shift"
+          ],
+          "prerequisite": "版本组成与发布验收",
+          "interview_requirements": [
+            "能解释运行质量与反馈闭环的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 154,
+      "order": 54,
+      "module_id": "M09",
+      "chapter": "部署、性能与持续运维",
+      "title": "单位任务成本与优化优先级",
+      "topic": "AI部署",
+      "content": "把多次调用、检索、重试和人工环节计入成功任务成本，用对照判断优化收益。",
+      "objectives": [
+        "解释“完整任务与费用口径”，能说明机制、使用边界与一个产品取舍。",
+        "解释“性能优化与质量护栏”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "比较一次廉价调用但高返工方案与多步可靠方案，说明应该收集哪些成本和结果数据。",
+      "source_ids": [
+        "aie_inference_summary",
+        "nvidia_metrics",
+        "chip_model"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411541,
+          "name": "完整任务与费用口径",
+          "description": "用户任务可能包含多次模型调用、检索、工具、失败重试和人工复核。",
+          "category": "DEPLOYMENT",
+          "core_explanation": "用户任务可能包含多次模型调用、检索、工具、失败重试和人工复核。应分别记录资源用量与费用，并以成功完成的任务为参照；单次 API 便宜，不代表最终服务的总成本更低。",
+          "why_explanation": "高失败率会把便宜调用转化为昂贵返工。",
+          "teaching_example": "一个摘要便宜但需人工重写，另一方案稍贵却直接可用，要比较整体投入。",
+          "ai_pm_relevance": "统一成本口径并记录失败、人工处理与真实收益。",
+          "source_ids": [
+            "aie_inference_summary",
+            "nvidia_metrics",
+            "chip_model"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释完整任务与费用口径的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411542,
+          "name": "性能优化与质量护栏",
+          "description": "优化可以减少无效上下文、复用计算、选择适合模型或改进执行，但每次改动都要检查关键质量。",
+          "category": "DEPLOYMENT",
+          "core_explanation": "优化可以减少无效上下文、复用计算、选择适合模型或改进执行，但每次改动都要检查关键质量。先识别成本和等待的主要来源，再控制变量比较；不能以响应变快掩盖遗漏与业务错误。",
+          "why_explanation": "局部提速可能牺牲端到端任务成功。",
+          "teaching_example": "缩短输入后速度提高，却漏掉例外条款，必须检查质量护栏再决定上线。",
+          "ai_pm_relevance": "要求优化同时满足任务质量、资源和用户体验目标。",
+          "source_ids": [
+            "aie_inference_summary",
+            "nvidia_metrics",
+            "chip_model"
+          ],
+          "prerequisite": "完整任务与费用口径",
+          "interview_requirements": [
+            "能解释性能优化与质量护栏的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 155,
+      "order": 55,
+      "module_id": "M10",
+      "chapter": "信任、治理与上线决策",
+      "title": "用户心智模型与首次使用",
+      "topic": "AI安全",
+      "content": "让用户理解系统的输入、能力和限制，通过实际任务建立合适期待。",
+      "objectives": [
+        "解释“能力边界与用户期待”，能说明机制、使用边界与一个产品取舍。",
+        "解释“渐进披露与能力变化”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "为 AI 学习助手设计首次引导，说明哪些承诺应避免，以及怎样让用户试用和纠错。",
+      "source_ids": [
+        "pair_mental",
+        "pair_needs"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411551,
+          "name": "能力边界与用户期待",
+          "description": "用户会依据外观、措辞和过往经验推断系统能力。",
+          "category": "AI_SAFETY",
+          "core_explanation": "用户会依据外观、措辞和过往经验推断系统能力。首次引导应说明能完成的任务、使用哪些信息及哪些场景需要核验，并让用户通过可代表实际能力的任务体验，而非只看理想演示。",
+          "why_explanation": "期待过高会把正常限制体验成突然失败。",
+          "teaching_example": "告诉学习者助手能解释资料并辅助练习，但不能保证每题判断绝对正确。",
+          "ai_pm_relevance": "检验用户是否正确理解功能范围和责任边界。",
+          "source_ids": [
+            "pair_mental",
+            "pair_needs"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释能力边界与用户期待的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411552,
+          "name": "渐进披露与能力变化",
+          "description": "技术细节应按用户任务逐步提供，优先展示有助于行动的信息。",
+          "category": "AI_SAFETY",
+          "core_explanation": "技术细节应按用户任务逐步提供，优先展示有助于行动的信息。系统更新改变可见能力时，需要重新解释影响与限制；一段长期不变的欢迎文案不能覆盖后续版本差异。",
+          "why_explanation": "系统变了而用户模型没变，会导致误用或不信任。",
+          "teaching_example": "新增资料引用后引导用户打开依据核查，而不是只展示新增按钮。",
+          "ai_pm_relevance": "用任务观察验证引导是否提高正确使用和纠错。",
+          "source_ids": [
+            "pair_mental",
+            "pair_needs"
+          ],
+          "prerequisite": "能力边界与用户期待",
+          "interview_requirements": [
+            "能解释渐进披露与能力变化的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 156,
+      "order": 56,
+      "module_id": "M10",
+      "chapter": "信任、治理与上线决策",
+      "title": "解释、信任与反馈设计",
+      "topic": "AI安全",
+      "content": "使解释帮助用户作决定，并把反馈变成可核对的质量信息，而非单纯积累点赞。",
+      "objectives": [
+        "解释“行动导向的解释”，能说明机制、使用边界与一个产品取舍。",
+        "解释“明确反馈与使用行为”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "为一个错误答案设计证据展示、纠错输入与状态反馈，说明如何核验用户建议。",
+      "source_ids": [
+        "pair_trust",
+        "pair_controls"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411561,
+          "name": "行动导向的解释",
+          "description": "解释可以展示资料来源、相关因素或备选结果，重点是支持用户何时信任、何时复核。",
+          "category": "AI_SAFETY",
+          "core_explanation": "解释可以展示资料来源、相关因素或备选结果，重点是支持用户何时信任、何时复核。模型生成的理由不必然代表真实机制；过细的置信数字也可能被误读，应测试对用户行动的影响。",
+          "why_explanation": "解释看起来丰富不等于用户能作出更正确决定。",
+          "teaching_example": "显示政策来源与适用条件，让坐席核对，而不是只说模型很有把握。",
+          "ai_pm_relevance": "选择与风险和任务匹配的解释方式。",
+          "source_ids": [
+            "pair_trust",
+            "pair_controls"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释行动导向的解释的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411562,
+          "name": "明确反馈与使用行为",
+          "description": "点赞、修改、放弃或再次提问都可能提供反馈，但含义不同。",
+          "category": "AI_SAFETY",
+          "core_explanation": "点赞、修改、放弃或再次提问都可能提供反馈，但含义不同。反馈机制应允许用户说明错误位置与预期，并给出处理状态；行为数据和意见要核验，不能直接作为正确标签更新系统。",
+          "why_explanation": "用户继续点击不一定意味着上一次结果有用。",
+          "teaching_example": "用户改掉错误退款时限，记录原答案、修改和依据，再由审核确认。",
+          "ai_pm_relevance": "定义反馈含义、核验流程和后续质量改进。",
+          "source_ids": [
+            "pair_trust",
+            "pair_controls"
+          ],
+          "prerequisite": "行动导向的解释",
+          "interview_requirements": [
+            "能解释明确反馈与使用行为的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 157,
+      "order": 57,
+      "module_id": "M10",
+      "chapter": "信任、治理与上线决策",
+      "title": "提示注入、敏感信息与数据范围",
+      "topic": "AI安全",
+      "content": "将外部文本视为不可信资料，限制模型与工具接触的数据，防止引用资料变成执行指令。",
+      "objectives": [
+        "解释“外部资料与指令隔离”，能说明机制、使用边界与一个产品取舍。",
+        "解释“最小数据与敏感结果处理”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "资料网页要求助手发送用户文件时，说明为什么不能照做，并设计必要的权限限制。",
+      "source_ids": [
+        "owasp_injection",
+        "owasp_sensitive",
+        "pair_data"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411571,
+          "name": "外部资料与指令隔离",
+          "description": "提示注入可把恶意要求藏在用户输入、网页或文件里，诱导模型改变行为。",
+          "category": "AI_SAFETY",
+          "core_explanation": "提示注入可把恶意要求藏在用户输入、网页或文件里，诱导模型改变行为。资料供回答取证，不应获得系统权限；防护需结合工具限制、输入输出处理与监测，不能只增加一句防注入提示。",
+          "why_explanation": "检索到的文本不因来自网页就成为可信操作要求。",
+          "teaching_example": "政策页面夹带发送私人记录的命令，助手仍只把它当作不可信内容。",
+          "ai_pm_relevance": "在评估中加入间接注入，核查真实执行权限。",
+          "source_ids": [
+            "owasp_injection",
+            "owasp_sensitive",
+            "pair_data"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释外部资料与指令隔离的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411572,
+          "name": "最小数据与敏感结果处理",
+          "description": "进入模型、日志或共享缓存的数据应限定为任务所需，并按用户范围控制。",
+          "category": "AI_SAFETY",
+          "core_explanation": "进入模型、日志或共享缓存的数据应限定为任务所需，并按用户范围控制。移除姓名未必消除可识别性，敏感输出也可能暴露原记录；应评估来源、存储、保留与访问过程。",
+          "why_explanation": "信息保护覆盖整个流程，而不是只覆盖界面输入。",
+          "teaching_example": "咨询政策不需要完整身份证，调试日志也不应保存无关个人详情。",
+          "ai_pm_relevance": "逐环节标明需要的数据、访问主体和保留期限。",
+          "source_ids": [
+            "owasp_injection",
+            "owasp_sensitive",
+            "pair_data"
+          ],
+          "prerequisite": "外部资料与指令隔离",
+          "interview_requirements": [
+            "能解释最小数据与敏感结果处理的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 158,
+      "order": 58,
+      "module_id": "M10",
+      "chapter": "信任、治理与上线决策",
+      "title": "用户控制、人工审核与失败恢复",
+      "topic": "AI安全",
+      "content": "给用户可用的确认、编辑和接管方式，按风险设计人工环节并让失败后的任务可以继续。",
+      "objectives": [
+        "解释“人机分工与可用控制”，能说明机制、使用边界与一个产品取舍。",
+        "解释“可恢复失败与任务连续性”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "为自动生成并发送客服回复设计预览、撤销、转人工和故障恢复。",
+      "source_ids": [
+        "pair_controls",
+        "pair_errors",
+        "owasp_agency"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411581,
+          "name": "人机分工与可用控制",
+          "description": "自动化可以减少重复工作，辅助可以保留人的判断与责任。",
+          "category": "AI_SAFETY",
+          "core_explanation": "自动化可以减少重复工作，辅助可以保留人的判断与责任。控制必须在用户需要时可发现、可理解和可操作；高影响动作要有合适确认与接管，不能用“用户可以自行检查”替代实际审核条件。",
+          "why_explanation": "人工环节如果无信息或无时间，也可能只是形式。",
+          "teaching_example": "发送前让坐席查看原始诉求、政策证据和草稿，并能修改或取消。",
+          "ai_pm_relevance": "定义人工输入、负荷、时限及最终决策责任。",
+          "source_ids": [
+            "pair_controls",
+            "pair_errors",
+            "owasp_agency"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释人机分工与可用控制的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411582,
+          "name": "可恢复失败与任务连续性",
+          "description": "失败处理应告诉用户发生什么、有哪些完成结果及下一步如何继续。",
+          "category": "AI_SAFETY",
+          "core_explanation": "失败处理应告诉用户发生什么、有哪些完成结果及下一步如何继续。保留合法上下文和执行状态，防止重试重复动作；对不可自动解决情况设置人工交接，而不是让用户重做所有步骤。",
+          "why_explanation": "错误消息之外还需要恢复任务的实际路径。",
+          "teaching_example": "查询超时后保留订单号和已取得信息，允许重试或交客服继续处理。",
+          "ai_pm_relevance": "验证错误、重试和接管场景下的任务完成率。",
+          "source_ids": [
+            "pair_controls",
+            "pair_errors",
+            "owasp_agency"
+          ],
+          "prerequisite": "人机分工与可用控制",
+          "interview_requirements": [
+            "能解释可恢复失败与任务连续性的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 159,
+      "order": 59,
+      "module_id": "M10",
+      "chapter": "信任、治理与上线决策",
+      "title": "上线验收、实验与风险管理",
+      "topic": "AI安全",
+      "content": "把质量证据、小范围实验与风险责任结合，建立可继续迭代的发布判断。",
+      "objectives": [
+        "解释“风险识别与验收责任”，能说明机制、使用边界与一个产品取舍。",
+        "解释“对照实验与质量护栏”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "为学习助手新版本制定发布门槛、实验主指标、护栏和暂停条件。",
+      "source_ids": [
+        "nist_core",
+        "google_ab",
+        "pair_needs"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411591,
+          "name": "风险识别与验收责任",
+          "description": "风险管理需要明确任务环境、受影响者、可能损害和责任，再测量并处理风险。",
+          "category": "AI_SAFETY",
+          "core_explanation": "风险管理需要明确任务环境、受影响者、可能损害和责任，再测量并处理风险。NIST AI RMF 以治理、映射、测量和管理组织活动；框架是工作指导，不等于系统获得安全保证或合规认证。",
+          "why_explanation": "风险没有负责人和处理动作时，报告不能降低真实影响。",
+          "teaching_example": "学习助手对错题判断出错时，明确用户纠正、审核和内容修订的负责人。",
+          "ai_pm_relevance": "把风险、证据、缓解措施与发布决策关联。",
+          "source_ids": [
+            "nist_core",
+            "google_ab",
+            "pair_needs"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释风险识别与验收责任的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411592,
+          "name": "对照实验与质量护栏",
+          "description": "A/B 实验用随机分组比较方案，需要预定任务指标、护栏和一致观测条件。",
+          "category": "AI_SAFETY",
+          "core_explanation": "A/B 实验用随机分组比较方案，需要预定任务指标、护栏和一致观测条件。样本不足、组间相互影响或随意挑指标会误导结论；实验收益也不能覆盖严重失败，需要规定停止和回退条件。",
+          "why_explanation": "提高参与度不应以错误讲解或高成本为代价。",
+          "teaching_example": "比较两种辅导界面对学习结果的影响，同时监测错误反馈与用户负担。",
+          "ai_pm_relevance": "事前记录指标、样本范围和异常处理标准。",
+          "source_ids": [
+            "nist_core",
+            "google_ab",
+            "pair_needs"
+          ],
+          "prerequisite": "风险识别与验收责任",
+          "interview_requirements": [
+            "能解释对照实验与质量护栏的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    },
+    {
+      "id": 160,
+      "order": 60,
+      "module_id": "M10",
+      "chapter": "信任、治理与上线决策",
+      "title": "综合实战：设计可核查的知识助手",
+      "topic": "AI安全",
+      "content": "贯通用户问题、资料、方案、权限、评估和运维，用可核验结果说明产品为何值得上线。",
+      "objectives": [
+        "解释“端到端方案与证据链”，能说明机制、使用边界与一个产品取舍。",
+        "解释“发布论证与持续改进”，能说明机制、使用边界与一个产品取舍。"
+      ],
+      "practice_task": "设计企业政策助手：提交用户任务、资料流程、系统边界、评估集、成本口径与发布方案。",
+      "source_ids": [
+        "chip_setup",
+        "chip_serving",
+        "ir_utility",
+        "nist_core"
+      ],
+      "content_basis": "知识原理与边界依据所列资料正文或明确标注的作者摘要独立整理；教学例子、产品迁移与练习任务为原创补充，不是教材原例。",
+      "knowledge_points": [
+        {
+          "id": 411601,
+          "name": "端到端方案与证据链",
+          "description": "系统方案应从用户目标出发，说明输入资料、处理步骤、结果与限制。",
+          "category": "AI_SAFETY",
+          "core_explanation": "系统方案应从用户目标出发，说明输入资料、处理步骤、结果与限制。把业务要求对应到数据、模型、流程和人工职责，逐组件检查假设；复杂图不代表方案更好，每个环节要说明价值与依据。",
+          "why_explanation": "端到端可追溯才能解释失败并判断改进方向。",
+          "teaching_example": "政策助手维护现行资料、检索有效条款、生成带依据回答，并限制账户操作。",
+          "ai_pm_relevance": "交付包含验收口径、职责与风险控制的完整方案。",
+          "source_ids": [
+            "chip_setup",
+            "chip_serving",
+            "ir_utility",
+            "nist_core"
+          ],
+          "prerequisite": "",
+          "interview_requirements": [
+            "能解释端到端方案与证据链的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        },
+        {
+          "id": 411602,
+          "name": "发布论证与持续改进",
+          "description": "上线判断应综合任务质量、用户效用、资源与风险，说明基线比较和仍未验证的问题。",
+          "category": "AI_SAFETY",
+          "core_explanation": "上线判断应综合任务质量、用户效用、资源与风险，说明基线比较和仍未验证的问题。发布后保存版本、用户反馈和失败案例，持续核验假设；首次上线不是证明任务永远可靠。",
+          "why_explanation": "真实使用变化要求产品持续更新证据和决策。",
+          "teaching_example": "新增政策后重跑相关问题，监测投诉并回查引用和资料更新过程。",
+          "ai_pm_relevance": "用真实结果解释取舍，给出监测、更新和回退计划。",
+          "source_ids": [
+            "chip_setup",
+            "chip_serving",
+            "ir_utility",
+            "nist_core"
+          ],
+          "prerequisite": "端到端方案与证据链",
+          "interview_requirements": [
+            "能解释发布论证与持续改进的机制与适用边界",
+            "能用业务例子说明指标、成本和失败处理"
+          ],
+          "example_basis": "原创教学例子，不来自教材原例"
+        }
+      ]
+    }
+  ]
+}

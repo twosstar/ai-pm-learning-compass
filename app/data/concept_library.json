@@ -1,0 +1,3553 @@
+{
+  "version": "public150_v1",
+  "reviewed_at": "2026-10-15",
+  "editorial_note": "面向 AI 产品经理自主选编的 150 个概念。中文讲解与业务例子为公开版独立编写；参考链接用于延伸学习，不表示存在统一官方必备名单。同主题概念是阅读导航，不表示先修依赖。",
+  "categories": [
+    {
+      "id": "FOUNDATION",
+      "label": "AI 与机器学习基础"
+    },
+    {
+      "id": "TRAINING",
+      "label": "数据与模型训练"
+    },
+    {
+      "id": "LLM",
+      "label": "大模型与架构"
+    },
+    {
+      "id": "PROMPT",
+      "label": "提示词与生成控制"
+    },
+    {
+      "id": "RAG",
+      "label": "RAG 与知识检索"
+    },
+    {
+      "id": "AGENT",
+      "label": "Agent 与工具协作"
+    },
+    {
+      "id": "EVALUATION",
+      "label": "质量评估与指标"
+    },
+    {
+      "id": "MULTIMODAL",
+      "label": "多模态与应用"
+    },
+    {
+      "id": "DEPLOYMENT",
+      "label": "部署、性能与成本"
+    },
+    {
+      "id": "PRODUCT_SAFETY",
+      "label": "产品决策与安全"
+    }
+  ],
+  "sources": {
+    "google_glossary": {
+      "title": "Google · Machine Learning Glossary",
+      "url": "https://developers.google.com/machine-learning/glossary"
+    },
+    "hf_course": {
+      "title": "Hugging Face · LLM Course",
+      "url": "https://huggingface.co/learn/llm-course/en/chapter1/1"
+    },
+    "sklearn_validation": {
+      "title": "scikit-learn · Cross-validation",
+      "url": "https://scikit-learn.org/stable/modules/cross_validation.html"
+    },
+    "hf_lora": {
+      "title": "Hugging Face · LoRA",
+      "url": "https://huggingface.co/docs/peft/main/en/conceptual_guides/lora"
+    },
+    "hf_dpo": {
+      "title": "Hugging Face · DPO Trainer",
+      "url": "https://huggingface.co/docs/trl/en/dpo_trainer"
+    },
+    "microsoft_rag": {
+      "title": "Microsoft Learn · RAG and Generative AI",
+      "url": "https://learn.microsoft.com/en-us/azure/search/retrieval-augmented-generation-overview"
+    },
+    "anthropic_agents": {
+      "title": "Anthropic · Building Effective Agents",
+      "url": "https://www.anthropic.com/engineering/building-effective-agents"
+    },
+    "mcp_intro": {
+      "title": "MCP · Introduction",
+      "url": "https://modelcontextprotocol.io/docs/getting-started/intro"
+    },
+    "sklearn_metrics": {
+      "title": "scikit-learn · Metrics and scoring",
+      "url": "https://scikit-learn.org/stable/modules/model_evaluation.html"
+    },
+    "google_metrics": {
+      "title": "Google · Machine Learning Metrics",
+      "url": "https://developers.google.com/machine-learning/glossary/metrics"
+    },
+    "code_eval": {
+      "title": "Evaluating Large Language Models Trained on Code",
+      "url": "https://arxiv.org/abs/2107.03374"
+    },
+    "hf_pipeline": {
+      "title": "Hugging Face · Multimodal pipelines",
+      "url": "https://huggingface.co/docs/transformers/en/pipeline_tutorial"
+    },
+    "hf_quantization": {
+      "title": "Hugging Face · Quantization overview",
+      "url": "https://huggingface.co/docs/transformers/main/en/quantization/overview"
+    },
+    "hf_cache": {
+      "title": "Hugging Face · KV cache strategies",
+      "url": "https://huggingface.co/docs/transformers/en/kv_cache"
+    },
+    "google_mlops": {
+      "title": "Google Cloud · MLOps pipelines",
+      "url": "https://docs.cloud.google.com/architecture/mlops-continuous-delivery-and-automation-pipelines-in-machine-learning"
+    },
+    "pair_needs": {
+      "title": "Google PAIR · User Needs + Defining Success",
+      "url": "https://pair.withgoogle.com/guidebook-v2/chapter/user-needs/"
+    },
+    "nist_rmf": {
+      "title": "NIST · AI Risk Management Framework",
+      "url": "https://www.nist.gov/itl/ai-risk-management-framework"
+    },
+    "owasp": {
+      "title": "OWASP · Gen AI risks",
+      "url": "https://genai.owasp.org/llm-top-10/"
+    },
+    "json_schema": {
+      "title": "JSON Schema · What is a schema?",
+      "url": "https://json-schema.org/understanding-json-schema/about"
+    },
+    "mdn_idempotency": {
+      "title": "MDN · Idempotent",
+      "url": "https://developer.mozilla.org/en-US/docs/Glossary/Idempotent"
+    }
+  },
+  "concepts": [
+    {
+      "id": 2004,
+      "name": "人工智能",
+      "aliases": [
+        "Artificial Intelligence",
+        "AI"
+      ],
+      "category": "FOUNDATION",
+      "definition": "让计算机执行识别、预测、生成或决策等需要智能能力的任务。",
+      "mechanism": "通过规则或学习模型，把输入转成任务结果。",
+      "when_to_use": "判断业务是否需要智能能力。",
+      "when_not_to_use": "不能把所有自动化都当作机器学习。",
+      "ai_pm_relevance": "先确定用户任务与成功标准。",
+      "example": "客服助手识别用户意图并给出处理建议。",
+      "related_names": [
+        "机器学习"
+      ],
+      "source_ids": [
+        "google_glossary"
+      ]
+    },
+    {
+      "id": 2005,
+      "name": "机器学习",
+      "aliases": [
+        "Machine Learning",
+        "ML"
+      ],
+      "category": "FOUNDATION",
+      "definition": "从数据中学习规律，并用这些规律处理新样本的方法。",
+      "mechanism": "训练调整参数，推理用参数生成预测。",
+      "when_to_use": "规则难以穷举的预测任务。",
+      "when_not_to_use": "历史相关性不等于因果关系。",
+      "ai_pm_relevance": "评估数据来源和泛化能力。",
+      "example": "用历史工单预测新工单应分配的部门。",
+      "related_names": [
+        "人工智能",
+        "深度学习"
+      ],
+      "source_ids": [
+        "google_glossary"
+      ]
+    },
+    {
+      "id": 2006,
+      "name": "深度学习",
+      "aliases": [
+        "Deep Learning",
+        "DL"
+      ],
+      "category": "FOUNDATION",
+      "definition": "使用多层神经网络学习复杂表示的机器学习方法。",
+      "mechanism": "逐层转换输入，利用训练损失优化网络参数。",
+      "when_to_use": "复杂的图像、语音和文本任务。",
+      "when_not_to_use": "不是每个小数据任务都需要大网络。",
+      "ai_pm_relevance": "比较质量增益与算力成本。",
+      "example": "识别拍照上传的票据类型。",
+      "related_names": [
+        "机器学习",
+        "生成式 AI"
+      ],
+      "source_ids": [
+        "google_glossary"
+      ]
+    },
+    {
+      "id": 2007,
+      "name": "生成式 AI",
+      "aliases": [
+        "Generative AI",
+        "AIGC"
+      ],
+      "category": "FOUNDATION",
+      "definition": "根据输入条件生成文本、图像、声音等内容的技术。",
+      "mechanism": "学习数据分布，并根据条件产生新的输出。",
+      "when_to_use": "草拟、创作和内容转换。",
+      "when_not_to_use": "生成内容不天然真实或原创无风险。",
+      "ai_pm_relevance": "设计审核与编辑流程。",
+      "example": "根据商品属性草拟介绍，人工确认后发布。",
+      "related_names": [
+        "深度学习",
+        "自然语言处理"
+      ],
+      "source_ids": [
+        "google_glossary"
+      ]
+    },
+    {
+      "id": 2008,
+      "name": "自然语言处理",
+      "aliases": [
+        "Natural Language Processing",
+        "NLP"
+      ],
+      "category": "FOUNDATION",
+      "definition": "让计算机分析、理解或生成自然语言的一类任务与方法。",
+      "mechanism": "把语言转为机器表示，再进行分类、抽取或生成。",
+      "when_to_use": "处理用户语言与文本资料。",
+      "when_not_to_use": "行业术语和方言可能降低效果。",
+      "ai_pm_relevance": "定义语言范围和错误处理。",
+      "example": "从投诉中提取商品名与问题类型。",
+      "related_names": [
+        "生成式 AI",
+        "监督学习"
+      ],
+      "source_ids": [
+        "google_glossary"
+      ]
+    },
+    {
+      "id": 2009,
+      "name": "监督学习",
+      "aliases": [
+        "Supervised Learning"
+      ],
+      "category": "FOUNDATION",
+      "definition": "利用具有目标标签的样本训练输入到输出的映射。",
+      "mechanism": "比较预测与标签的差异，更新模型参数。",
+      "when_to_use": "有可靠标签的预测任务。",
+      "when_not_to_use": "错误标签会成为错误学习信号。",
+      "ai_pm_relevance": "评估标注成本与标签口径。",
+      "example": "用已标注的垃圾邮件训练分类器。",
+      "related_names": [
+        "自然语言处理",
+        "无监督学习"
+      ],
+      "source_ids": [
+        "google_glossary"
+      ]
+    },
+    {
+      "id": 2010,
+      "name": "无监督学习",
+      "aliases": [
+        "Unsupervised Learning"
+      ],
+      "category": "FOUNDATION",
+      "definition": "从没有任务标签的数据中发现结构或规律。",
+      "mechanism": "通过相似性、分布或重建目标学习表示。",
+      "when_to_use": "探索分群和隐藏模式。",
+      "when_not_to_use": "分群结果不自动具有业务意义。",
+      "ai_pm_relevance": "核验分组是否可用于行动。",
+      "example": "根据用户行为发现相似使用群体。",
+      "related_names": [
+        "监督学习",
+        "自监督学习"
+      ],
+      "source_ids": [
+        "google_glossary"
+      ]
+    },
+    {
+      "id": 2011,
+      "name": "自监督学习",
+      "aliases": [
+        "Self-supervised Learning",
+        "SSL"
+      ],
+      "category": "FOUNDATION",
+      "definition": "从数据本身构造监督信号来学习表示的方法。",
+      "mechanism": "例如遮住部分输入，训练模型预测被遮住的内容。",
+      "when_to_use": "有大量数据但缺少人工标签。",
+      "when_not_to_use": "自监督表示仍需下游任务验证。",
+      "ai_pm_relevance": "判断预训练能力是否匹配场景。",
+      "example": "通过预测缺失文本学习语言表示。",
+      "related_names": [
+        "无监督学习",
+        "强化学习"
+      ],
+      "source_ids": [
+        "google_glossary"
+      ]
+    },
+    {
+      "id": 2012,
+      "name": "强化学习",
+      "aliases": [
+        "Reinforcement Learning",
+        "RL"
+      ],
+      "category": "FOUNDATION",
+      "definition": "通过与环境交互及奖励反馈学习行动策略。",
+      "mechanism": "执行行动、观察结果，再优化长期累计奖励。",
+      "when_to_use": "需要连续决策且有可用反馈。",
+      "when_not_to_use": "错误奖励可能诱导投机行为。",
+      "ai_pm_relevance": "检查奖励与真实业务目标是否一致。",
+      "example": "在模拟环境中训练机器人避障。",
+      "related_names": [
+        "自监督学习",
+        "分类"
+      ],
+      "source_ids": [
+        "google_glossary"
+      ]
+    },
+    {
+      "id": 2013,
+      "name": "分类",
+      "aliases": [
+        "Classification"
+      ],
+      "category": "FOUNDATION",
+      "definition": "预测样本属于哪个类别的任务。",
+      "mechanism": "输出类别分数，再用阈值或规则确定类别。",
+      "when_to_use": "意图识别、风控和内容分流。",
+      "when_not_to_use": "概率高不代表分类一定正确。",
+      "ai_pm_relevance": "明确误报与漏报成本。",
+      "example": "把工单分为退款、物流和售后。",
+      "related_names": [
+        "强化学习",
+        "回归"
+      ],
+      "source_ids": [
+        "google_glossary"
+      ]
+    },
+    {
+      "id": 2014,
+      "name": "回归",
+      "aliases": [
+        "Regression"
+      ],
+      "category": "FOUNDATION",
+      "definition": "预测连续数值而不是离散类别的任务。",
+      "mechanism": "学习输入与数值目标的关系，并最小化预测误差。",
+      "when_to_use": "需求量和处理时间预测。",
+      "when_not_to_use": "外推到未见范围可能失准。",
+      "ai_pm_relevance": "设置误差容忍度和业务基线。",
+      "example": "预测一张工单需要多少分钟处理。",
+      "related_names": [
+        "分类",
+        "聚类"
+      ],
+      "source_ids": [
+        "google_glossary"
+      ]
+    },
+    {
+      "id": 2015,
+      "name": "聚类",
+      "aliases": [
+        "Clustering",
+        "K-means"
+      ],
+      "category": "FOUNDATION",
+      "definition": "按相似性把数据分组，通常不依赖人工类别标签。",
+      "mechanism": "K-means 等方法迭代分配样本与更新群中心。",
+      "when_to_use": "用户分群与资料探索。",
+      "when_not_to_use": "距离定义会影响分组结果。",
+      "ai_pm_relevance": "先解释群体差异再制定策略。",
+      "example": "把相似投诉聚为几类，发现高频问题。",
+      "related_names": [
+        "回归",
+        "特征"
+      ],
+      "source_ids": [
+        "google_glossary"
+      ]
+    },
+    {
+      "id": 2016,
+      "name": "特征",
+      "aliases": [
+        "Feature"
+      ],
+      "category": "FOUNDATION",
+      "definition": "模型用于预测或表示样本的输入属性。",
+      "mechanism": "把原始信息转成数值、类别或向量等输入。",
+      "when_to_use": "组织预测模型的输入。",
+      "when_not_to_use": "目标结果泄露为特征会使评估虚高。",
+      "ai_pm_relevance": "核查特征在预测时是否可获得。",
+      "example": "用订单金额和退货次数预测风险。",
+      "related_names": [
+        "聚类",
+        "标签"
+      ],
+      "source_ids": [
+        "google_glossary"
+      ]
+    },
+    {
+      "id": 2017,
+      "name": "标签",
+      "aliases": [
+        "Label",
+        "Target"
+      ],
+      "category": "FOUNDATION",
+      "definition": "监督学习中用于说明正确目标的值。",
+      "mechanism": "以人工标注或真实结果定义模型训练目标。",
+      "when_to_use": "构建训练集和验收集。",
+      "when_not_to_use": "含糊口径会造成标注分歧。",
+      "ai_pm_relevance": "给标注团队明确可执行的标准。",
+      "example": "把真实违约结果作为风险预测标签。",
+      "related_names": [
+        "特征",
+        "过拟合"
+      ],
+      "source_ids": [
+        "google_glossary"
+      ]
+    },
+    {
+      "id": 2018,
+      "name": "过拟合",
+      "aliases": [
+        "Overfitting"
+      ],
+      "category": "FOUNDATION",
+      "definition": "模型记住训练细节，却难以处理新数据的现象。",
+      "mechanism": "模型容量或训练过程拟合了噪声与偶然规律。",
+      "when_to_use": "训练好但验证差时排查。",
+      "when_not_to_use": "训练指标高不能证明上线有效。",
+      "ai_pm_relevance": "关注未见样本和跨时间表现。",
+      "example": "模型记住旧工单用词，新说法就分类失败。",
+      "related_names": [
+        "标签"
+      ],
+      "source_ids": [
+        "google_glossary"
+      ]
+    },
+    {
+      "id": 2019,
+      "name": "训练集",
+      "aliases": [
+        "Training Set"
+      ],
+      "category": "TRAINING",
+      "definition": "实际用于优化模型参数的数据。",
+      "mechanism": "模型根据训练样本与学习目标反复更新参数。",
+      "when_to_use": "训练和微调模型。",
+      "when_not_to_use": "训练集不能代替独立测试集。",
+      "ai_pm_relevance": "检查代表性与数据权限。",
+      "example": "用历史已标注工单训练分类模型。",
+      "related_names": [
+        "验证集"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "sklearn_validation",
+        "hf_lora"
+      ]
+    },
+    {
+      "id": 2020,
+      "name": "验证集",
+      "aliases": [
+        "Validation Set",
+        "Dev Set"
+      ],
+      "category": "TRAINING",
+      "definition": "用于选择模型配置和调整超参数的数据。",
+      "mechanism": "比较候选配置的验证表现，再选择较合适方案。",
+      "when_to_use": "选模型、阈值与训练设置。",
+      "when_not_to_use": "反复调整会逐渐适应验证集。",
+      "ai_pm_relevance": "保留最终测试数据不参与调参。",
+      "example": "用验证集选择风控分类阈值。",
+      "related_names": [
+        "训练集",
+        "测试集"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "sklearn_validation",
+        "hf_lora"
+      ]
+    },
+    {
+      "id": 2021,
+      "name": "测试集",
+      "aliases": [
+        "Test Set",
+        "Holdout Set"
+      ],
+      "category": "TRAINING",
+      "definition": "用于相对独立地检验最终模型能力的数据。",
+      "mechanism": "冻结模型与判分口径后评测未用于调参的样本。",
+      "when_to_use": "估计最终版本表现。",
+      "when_not_to_use": "数据重叠会破坏独立性。",
+      "ai_pm_relevance": "为测试集设访问和更新规则。",
+      "example": "在另一时间段工单上检验模型泛化。",
+      "related_names": [
+        "验证集",
+        "数据泄漏"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "sklearn_validation",
+        "hf_lora"
+      ]
+    },
+    {
+      "id": 2022,
+      "name": "数据泄漏",
+      "aliases": [
+        "Data Leakage"
+      ],
+      "category": "TRAINING",
+      "definition": "训练或评测使用了预测时不可获得的信息。",
+      "mechanism": "标签、未来信息或重复样本进入特征和数据划分。",
+      "when_to_use": "评测异常好时排查。",
+      "when_not_to_use": "不能只按随机划分保证独立性。",
+      "ai_pm_relevance": "要求按用户或时间检查重叠。",
+      "example": "训练退货预测时误用了实际退款结果。",
+      "related_names": [
+        "测试集",
+        "数据标注"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "sklearn_validation",
+        "hf_lora"
+      ]
+    },
+    {
+      "id": 2023,
+      "name": "数据标注",
+      "aliases": [
+        "Data Annotation",
+        "Labeling"
+      ],
+      "category": "TRAINING",
+      "definition": "为数据赋予类别、位置或参考答案等监督信息。",
+      "mechanism": "制定指南、分配标注任务，再复核一致性与质量。",
+      "when_to_use": "训练监督模型和构建评估集。",
+      "when_not_to_use": "没有统一标准时多标也未必可靠。",
+      "ai_pm_relevance": "测量一致性、成本与争议比例。",
+      "example": "两位标注员按同一指南判断投诉类型。",
+      "related_names": [
+        "数据泄漏",
+        "类别不平衡"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "sklearn_validation",
+        "hf_lora"
+      ]
+    },
+    {
+      "id": 2024,
+      "name": "类别不平衡",
+      "aliases": [
+        "Class Imbalance"
+      ],
+      "category": "TRAINING",
+      "definition": "不同目标类别的样本数量差异很大。",
+      "mechanism": "训练可能偏向多数类，需结合采样、权重和指标处理。",
+      "when_to_use": "欺诈、罕见故障等任务。",
+      "when_not_to_use": "高准确率可能掩盖少数类漏检。",
+      "ai_pm_relevance": "重点看关键类别召回和成本。",
+      "example": "欺诈只占少数，全部判正常仍很准。",
+      "related_names": [
+        "数据标注",
+        "损失函数"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "sklearn_validation",
+        "hf_lora"
+      ]
+    },
+    {
+      "id": 2025,
+      "name": "损失函数",
+      "aliases": [
+        "Loss Function"
+      ],
+      "category": "TRAINING",
+      "definition": "量化模型预测与学习目标差异的函数。",
+      "mechanism": "把误差转成优化信号，指导参数更新。",
+      "when_to_use": "定义训练目标。",
+      "when_not_to_use": "训练损失低未必带来业务价值。",
+      "ai_pm_relevance": "区分训练目标和产品验收指标。",
+      "example": "分类模型用交叉熵惩罚错误预测。",
+      "related_names": [
+        "类别不平衡",
+        "梯度下降"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "sklearn_validation",
+        "hf_lora"
+      ]
+    },
+    {
+      "id": 2026,
+      "name": "梯度下降",
+      "aliases": [
+        "Gradient Descent"
+      ],
+      "category": "TRAINING",
+      "definition": "沿着损失下降方向调整模型参数的优化方法。",
+      "mechanism": "计算或估计梯度，再按学习率更新参数。",
+      "when_to_use": "理解模型如何训练。",
+      "when_not_to_use": "复杂损失面不保证找到全局最优。",
+      "ai_pm_relevance": "用验证结果判断训练是否有效。",
+      "example": "每一批样本后调整分类器参数。",
+      "related_names": [
+        "损失函数",
+        "学习率"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "sklearn_validation",
+        "hf_lora"
+      ]
+    },
+    {
+      "id": 2027,
+      "name": "学习率",
+      "aliases": [
+        "Learning Rate"
+      ],
+      "category": "TRAINING",
+      "definition": "控制一次参数更新幅度的训练超参数。",
+      "mechanism": "学习率与梯度共同决定参数移动的距离。",
+      "when_to_use": "训练收敛与稳定性调试。",
+      "when_not_to_use": "过大可能震荡，过小可能学习慢。",
+      "ai_pm_relevance": "了解训练成本与效果的取舍。",
+      "example": "微调不稳定时降低学习率并重新验证。",
+      "related_names": [
+        "梯度下降",
+        "训练轮次"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "sklearn_validation",
+        "hf_lora"
+      ]
+    },
+    {
+      "id": 2028,
+      "name": "训练轮次",
+      "aliases": [
+        "Epoch"
+      ],
+      "category": "TRAINING",
+      "definition": "训练集被完整遍历一次所对应的训练单位。",
+      "mechanism": "多轮训练让模型反复从样本中更新参数。",
+      "when_to_use": "控制训练时长与停止时机。",
+      "when_not_to_use": "轮次越多不一定越好。",
+      "ai_pm_relevance": "结合验证表现避免过度训练。",
+      "example": "训练三轮后验证分数下降，停止继续训练。",
+      "related_names": [
+        "学习率",
+        "批大小"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "sklearn_validation",
+        "hf_lora"
+      ]
+    },
+    {
+      "id": 2029,
+      "name": "批大小",
+      "aliases": [
+        "Batch Size"
+      ],
+      "category": "TRAINING",
+      "definition": "每次参数更新共同处理的训练样本数量。",
+      "mechanism": "聚合一批样本的梯度后执行更新。",
+      "when_to_use": "权衡训练吞吐、显存与稳定性。",
+      "when_not_to_use": "更大的批次不保证效果更好。",
+      "ai_pm_relevance": "估算训练资源需求。",
+      "example": "显存不足时减小批大小。",
+      "related_names": [
+        "训练轮次",
+        "正则化"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "sklearn_validation",
+        "hf_lora"
+      ]
+    },
+    {
+      "id": 2030,
+      "name": "正则化",
+      "aliases": [
+        "Regularization"
+      ],
+      "category": "TRAINING",
+      "definition": "限制模型复杂度或训练行为以减少过拟合的方法。",
+      "mechanism": "通过参数惩罚、随机失活等约束学习过程。",
+      "when_to_use": "训练好而验证差的场景。",
+      "when_not_to_use": "过强约束也可能导致欠拟合。",
+      "ai_pm_relevance": "比较泛化改善与能力损失。",
+      "example": "用权重衰减减少对少量工单的记忆。",
+      "related_names": [
+        "批大小",
+        "微调"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "sklearn_validation",
+        "hf_lora"
+      ]
+    },
+    {
+      "id": 2031,
+      "name": "微调",
+      "aliases": [
+        "Fine-tuning",
+        "Finetuning"
+      ],
+      "category": "TRAINING",
+      "definition": "在预训练模型上继续训练，使其适应特定任务或数据。",
+      "mechanism": "以新样本和训练目标更新全部或部分参数。",
+      "when_to_use": "稳定的格式、风格或任务适配。",
+      "when_not_to_use": "动态事实通常不能只靠微调维护。",
+      "ai_pm_relevance": "先比较提示词、检索和微调成本。",
+      "example": "训练模型按企业固定格式归纳工单。",
+      "related_names": [
+        "正则化",
+        "监督微调"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "sklearn_validation",
+        "hf_lora"
+      ]
+    },
+    {
+      "id": 2032,
+      "name": "监督微调",
+      "aliases": [
+        "Supervised Fine-tuning",
+        "SFT"
+      ],
+      "category": "TRAINING",
+      "definition": "用输入与期望输出样本进行的模型微调。",
+      "mechanism": "让模型学习示例答案的生成模式。",
+      "when_to_use": "明确任务和高质量示例充足时。",
+      "when_not_to_use": "错误或单一答案会固化偏差。",
+      "ai_pm_relevance": "评估示例质量和任务覆盖。",
+      "example": "用审核通过的摘要样本训练摘要助手。",
+      "related_names": [
+        "微调",
+        "低秩适配"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "sklearn_validation",
+        "hf_lora"
+      ]
+    },
+    {
+      "id": 2033,
+      "name": "低秩适配",
+      "aliases": [
+        "Low-rank Adaptation",
+        "LoRA",
+        "PEFT"
+      ],
+      "category": "TRAINING",
+      "definition": "以低秩可训练矩阵适配模型的参数高效微调方法。",
+      "mechanism": "通常冻结基础权重，只训练较少的增量参数。",
+      "when_to_use": "降低微调显存和存储开销。",
+      "when_not_to_use": "省参数不保证达到全量微调效果。",
+      "ai_pm_relevance": "测量资源节省与实际任务质量。",
+      "example": "为售后语气训练一个独立 LoRA 适配器。",
+      "related_names": [
+        "监督微调"
+      ],
+      "source_ids": [
+        "hf_lora"
+      ]
+    },
+    {
+      "id": 2034,
+      "name": "大语言模型",
+      "aliases": [
+        "Large Language Model",
+        "LLM"
+      ],
+      "category": "LLM",
+      "definition": "以大量语言数据训练、具有语言理解和生成能力的模型。",
+      "mechanism": "常见生成式 LLM 根据上下文预测后续 token。",
+      "when_to_use": "语言理解、归纳和生成任务。",
+      "when_not_to_use": "语言流畅不能证明事实准确。",
+      "ai_pm_relevance": "用真实任务评测模型选择。",
+      "example": "把冗长会议记录整理成待办事项。",
+      "related_names": [
+        "基础模型"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "hf_course"
+      ]
+    },
+    {
+      "id": 2035,
+      "name": "基础模型",
+      "aliases": [
+        "Foundation Model"
+      ],
+      "category": "LLM",
+      "definition": "通过广泛数据预训练、可适配多类下游任务的模型。",
+      "mechanism": "先学习通用表示，再通过提示、检索或训练适配。",
+      "when_to_use": "复用模型能力构建多个应用。",
+      "when_not_to_use": "通用能力不等于领域可靠性。",
+      "ai_pm_relevance": "核查许可、领域效果与适配成本。",
+      "example": "在同一模型上构建摘要与分类功能。",
+      "related_names": [
+        "大语言模型",
+        "Transformer"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "hf_course"
+      ]
+    },
+    {
+      "id": 2036,
+      "name": "Transformer",
+      "aliases": [
+        "Transformer"
+      ],
+      "category": "LLM",
+      "definition": "以注意力机制组织序列信息的神经网络架构。",
+      "mechanism": "多个注意力与前馈模块逐层更新 token 表示。",
+      "when_to_use": "理解主流语言模型的基础。",
+      "when_not_to_use": "不是所有 Transformer 都是聊天模型。",
+      "ai_pm_relevance": "理解上下文处理的资源限制。",
+      "example": "模型关联合同不同位置的条款。",
+      "related_names": [
+        "基础模型",
+        "注意力机制"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "hf_course"
+      ]
+    },
+    {
+      "id": 2037,
+      "name": "注意力机制",
+      "aliases": [
+        "Attention"
+      ],
+      "category": "LLM",
+      "definition": "根据任务上下文为不同输入位置分配权重的机制。",
+      "mechanism": "比较查询与键，按权重聚合值表示。",
+      "when_to_use": "理解模型如何利用上下文。",
+      "when_not_to_use": "注意力权重不等于可靠的因果解释。",
+      "ai_pm_relevance": "避免把内部权重当作用户解释。",
+      "example": "翻译时聚焦与当前词有关的原文片段。",
+      "related_names": [
+        "Transformer",
+        "自注意力"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "hf_course"
+      ]
+    },
+    {
+      "id": 2038,
+      "name": "自注意力",
+      "aliases": [
+        "Self-attention"
+      ],
+      "category": "LLM",
+      "definition": "在同一序列内部建立各位置之间联系的注意力。",
+      "mechanism": "序列本身提供查询、键和值来更新表示。",
+      "when_to_use": "理解上下文关系建模。",
+      "when_not_to_use": "全量注意力在长序列上成本较高。",
+      "ai_pm_relevance": "评估长输入的成本与效果。",
+      "example": "把“它”与前文提及的商品联系起来。",
+      "related_names": [
+        "注意力机制",
+        "词元"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "hf_course"
+      ]
+    },
+    {
+      "id": 2039,
+      "name": "词元",
+      "aliases": [
+        "Token"
+      ],
+      "category": "LLM",
+      "definition": "模型处理文本时使用的离散单位，可以是字、子词或符号。",
+      "mechanism": "分词器把文本映射为 token ID，模型逐步处理。",
+      "when_to_use": "估算长度、计费和上下文容量。",
+      "when_not_to_use": "一个 token 不固定等于一个汉字或词。",
+      "ai_pm_relevance": "按具体模型估算预算。",
+      "example": "同一句中文在不同模型中 token 数不同。",
+      "related_names": [
+        "自注意力",
+        "分词器"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "hf_course"
+      ]
+    },
+    {
+      "id": 2040,
+      "name": "分词器",
+      "aliases": [
+        "Tokenizer",
+        "Tokenization"
+      ],
+      "category": "LLM",
+      "definition": "把文本转换为 token 序列及反向解码的组件。",
+      "mechanism": "按词表和切分规则生成 ID，输出时再解码。",
+      "when_to_use": "处理长度、语言覆盖和特殊符号。",
+      "when_not_to_use": "不同分词器的统计不能直接互换。",
+      "ai_pm_relevance": "检查专有词和多语言支持。",
+      "example": "产品型号被拆成多个子词。",
+      "related_names": [
+        "词元",
+        "向量嵌入"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "hf_course"
+      ]
+    },
+    {
+      "id": 2041,
+      "name": "向量嵌入",
+      "aliases": [
+        "Embedding",
+        "Embeddings"
+      ],
+      "category": "LLM",
+      "definition": "将文本或其他对象映射为可计算相似性的稠密向量。",
+      "mechanism": "模型学习表示，让相关对象在向量空间较接近。",
+      "when_to_use": "语义检索、聚类与推荐。",
+      "when_not_to_use": "相似不等于事实相同或逻辑等价。",
+      "ai_pm_relevance": "用业务样本验证检索质量。",
+      "example": "“退货流程”与“如何退款”可有相近表示。",
+      "related_names": [
+        "分词器",
+        "位置编码"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "hf_course"
+      ]
+    },
+    {
+      "id": 2042,
+      "name": "位置编码",
+      "aliases": [
+        "Positional Encoding",
+        "RoPE"
+      ],
+      "category": "LLM",
+      "definition": "向模型提供序列位置和顺序信息的表示方法。",
+      "mechanism": "将位置信息加入表示或注意力计算。",
+      "when_to_use": "理解模型对顺序和长文本的处理。",
+      "when_not_to_use": "扩展位置范围不自动保证长文本质量。",
+      "ai_pm_relevance": "实测长文不同位置的信息利用。",
+      "example": "模型区分“甲胜乙”和“乙胜甲”。",
+      "related_names": [
+        "向量嵌入",
+        "上下文窗口"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "hf_course"
+      ]
+    },
+    {
+      "id": 2043,
+      "name": "上下文窗口",
+      "aliases": [
+        "Context Window"
+      ],
+      "category": "LLM",
+      "definition": "一次模型调用可处理的上下文容量上限。",
+      "mechanism": "输入资料、对话与输出预算受模型具体限制。",
+      "when_to_use": "设计长文输入和多轮会话。",
+      "when_not_to_use": "容量大不代表每处信息都能有效利用。",
+      "ai_pm_relevance": "为关键资料与答案预留预算。",
+      "example": "对超长手册先检索相关部分再回答。",
+      "related_names": [
+        "位置编码",
+        "预训练"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "hf_course"
+      ]
+    },
+    {
+      "id": 2044,
+      "name": "预训练",
+      "aliases": [
+        "Pre-training"
+      ],
+      "category": "LLM",
+      "definition": "在大规模数据上学习通用能力的初始训练阶段。",
+      "mechanism": "以自监督等目标优化模型参数。",
+      "when_to_use": "理解模型知识与能力来源。",
+      "when_not_to_use": "预训练知识可能过时或不适用。",
+      "ai_pm_relevance": "区分模型固有能力和应用补充资料。",
+      "example": "语言模型通过预测文本学习语言规律。",
+      "related_names": [
+        "上下文窗口",
+        "生成式预训练 Transformer"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "hf_course"
+      ]
+    },
+    {
+      "id": 2045,
+      "name": "生成式预训练 Transformer",
+      "aliases": [
+        "Generative Pre-trained Transformer",
+        "GPT"
+      ],
+      "category": "LLM",
+      "definition": "采用 Transformer 和生成式预训练思路的一类语言模型。",
+      "mechanism": "常见形式按已有序列自回归预测后续 token。",
+      "when_to_use": "理解 GPT 类模型的生成方式。",
+      "when_not_to_use": "架构名称不能代替版本能力评测。",
+      "ai_pm_relevance": "比较实际模型的任务表现。",
+      "example": "根据前面的句子继续生成文本。",
+      "related_names": [
+        "预训练",
+        "混合专家模型"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "hf_course"
+      ]
+    },
+    {
+      "id": 2046,
+      "name": "混合专家模型",
+      "aliases": [
+        "Mixture of Experts",
+        "MoE"
+      ],
+      "category": "LLM",
+      "definition": "让不同专家子网络处理输入的模型架构。",
+      "mechanism": "路由器通常只激活部分专家参与一次计算。",
+      "when_to_use": "理解稀疏模型的参数和计算量。",
+      "when_not_to_use": "总参数量不等于每次激活参数量。",
+      "ai_pm_relevance": "比较部署显存、吞吐和质量。",
+      "example": "不同 token 被分配给不同专家模块。",
+      "related_names": [
+        "生成式预训练 Transformer",
+        "人类反馈强化学习"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "hf_course"
+      ]
+    },
+    {
+      "id": 2047,
+      "name": "人类反馈强化学习",
+      "aliases": [
+        "Reinforcement Learning from Human Feedback",
+        "RLHF"
+      ],
+      "category": "LLM",
+      "definition": "利用人类偏好反馈改进模型行为的训练路线。",
+      "mechanism": "典型流程学习奖励模型，再优化生成策略。",
+      "when_to_use": "提升回答偏好和指令遵循。",
+      "when_not_to_use": "偏好高分不一定代表事实正确。",
+      "ai_pm_relevance": "同时评测满意度与真实可靠性。",
+      "example": "标注员比较两种回答，模型学习偏好。",
+      "related_names": [
+        "混合专家模型",
+        "直接偏好优化"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "hf_course"
+      ]
+    },
+    {
+      "id": 2048,
+      "name": "直接偏好优化",
+      "aliases": [
+        "Direct Preference Optimization",
+        "DPO"
+      ],
+      "category": "LLM",
+      "definition": "直接利用偏好回答对优化模型的训练方法。",
+      "mechanism": "通过偏好损失提高被选答案相对概率，常约束参考模型。",
+      "when_to_use": "有成对偏好数据的行为适配。",
+      "when_not_to_use": "依赖偏好数据质量与覆盖。",
+      "ai_pm_relevance": "比较对齐收益和其他能力变化。",
+      "example": "用“更好摘要／较差摘要”对进行训练。",
+      "related_names": [
+        "人类反馈强化学习"
+      ],
+      "source_ids": [
+        "hf_dpo"
+      ]
+    },
+    {
+      "id": 2049,
+      "name": "提示词工程",
+      "aliases": [
+        "Prompt Engineering",
+        "Prompt"
+      ],
+      "category": "PROMPT",
+      "definition": "设计模型输入，使其更可靠地完成目标任务的方法。",
+      "mechanism": "明确任务、上下文、示例、约束与验收方式。",
+      "when_to_use": "快速适配模型到具体任务。",
+      "when_not_to_use": "提示词不能保证权限或事实安全。",
+      "ai_pm_relevance": "版本化提示并用评估集检验。",
+      "example": "要求摘要输出决策、负责人和截止日。",
+      "related_names": [
+        "系统提示词"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "hf_course",
+        "anthropic_agents"
+      ]
+    },
+    {
+      "id": 2050,
+      "name": "系统提示词",
+      "aliases": [
+        "System Prompt",
+        "System Message"
+      ],
+      "category": "PROMPT",
+      "definition": "在应用中设置模型角色和总体行为要求的提示信息。",
+      "mechanism": "与用户请求一起进入上下文，优先级由平台规则定义。",
+      "when_to_use": "设置全局任务边界和语气。",
+      "when_not_to_use": "它不代替实际权限校验。",
+      "ai_pm_relevance": "把安全控制放到系统执行层。",
+      "example": "客服助手默认只处理售后问题。",
+      "related_names": [
+        "提示词工程",
+        "零样本提示"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "hf_course",
+        "anthropic_agents"
+      ]
+    },
+    {
+      "id": 2051,
+      "name": "零样本提示",
+      "aliases": [
+        "Zero-shot Prompting"
+      ],
+      "category": "PROMPT",
+      "definition": "没有任务示例，仅凭任务描述要求模型完成任务。",
+      "mechanism": "模型利用已有能力理解指令并输出结果。",
+      "when_to_use": "明确且模型熟悉的简单任务。",
+      "when_not_to_use": "复杂口径可能需要更多说明。",
+      "ai_pm_relevance": "先测简单方案再增加示例。",
+      "example": "直接要求把工单分成指定的三类。",
+      "related_names": [
+        "系统提示词",
+        "少样本提示"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "hf_course",
+        "anthropic_agents"
+      ]
+    },
+    {
+      "id": 2052,
+      "name": "少样本提示",
+      "aliases": [
+        "Few-shot Prompting",
+        "Few-Shot"
+      ],
+      "category": "PROMPT",
+      "definition": "在提示中提供少量示例来展示任务格式与标准。",
+      "mechanism": "示例影响当前上下文中的输出模式。",
+      "when_to_use": "格式或分类口径不够明确时。",
+      "when_not_to_use": "示例偏差会影响未见输入。",
+      "ai_pm_relevance": "选择代表性与边界示例。",
+      "example": "给出三种工单和对应标签。",
+      "related_names": [
+        "零样本提示",
+        "上下文学习"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "hf_course",
+        "anthropic_agents"
+      ]
+    },
+    {
+      "id": 2053,
+      "name": "上下文学习",
+      "aliases": [
+        "In-context Learning",
+        "ICL"
+      ],
+      "category": "PROMPT",
+      "definition": "模型通过当前输入中的示例或说明适应任务的现象。",
+      "mechanism": "通常不更新权重，而是在本次上下文中改变行为。",
+      "when_to_use": "临时任务和格式适配。",
+      "when_not_to_use": "不是一次对话就永久学会。",
+      "ai_pm_relevance": "区分会话提示与参数训练。",
+      "example": "提供新标签示例后完成同类分类。",
+      "related_names": [
+        "少样本提示",
+        "思维链提示"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "hf_course",
+        "anthropic_agents"
+      ]
+    },
+    {
+      "id": 2054,
+      "name": "思维链提示",
+      "aliases": [
+        "Chain-of-thought",
+        "CoT"
+      ],
+      "category": "PROMPT",
+      "definition": "通过中间步骤引导模型处理复杂推理的提示方式。",
+      "mechanism": "把复杂问题分成步骤或可检查的中间结果。",
+      "when_to_use": "可分解的多步任务。",
+      "when_not_to_use": "生成的推理文本不保证正确，也不等于内部真实过程。",
+      "ai_pm_relevance": "验收可核验结果而非推理长度。",
+      "example": "分步核对发票金额后再给结论。",
+      "related_names": [
+        "上下文学习",
+        "上下文工程"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "hf_course",
+        "anthropic_agents"
+      ]
+    },
+    {
+      "id": 2055,
+      "name": "上下文工程",
+      "aliases": [
+        "Context Engineering"
+      ],
+      "category": "PROMPT",
+      "definition": "组织模型调用所需指令、证据、状态与工具结果的方法。",
+      "mechanism": "选择、压缩和排列上下文，控制来源与预算。",
+      "when_to_use": "复杂助手和长流程。",
+      "when_not_to_use": "更多上下文可能带来干扰与成本。",
+      "ai_pm_relevance": "定义哪些信息何时进入模型。",
+      "example": "只给本次售后问题相关的订单和政策。",
+      "related_names": [
+        "思维链提示",
+        "结构化输出"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "hf_course",
+        "anthropic_agents"
+      ]
+    },
+    {
+      "id": 2056,
+      "name": "结构化输出",
+      "aliases": [
+        "Structured Output",
+        "JSON Output"
+      ],
+      "category": "PROMPT",
+      "definition": "让模型按预定字段和数据结构生成结果。",
+      "mechanism": "用格式约束、模式或后处理检查输出结构。",
+      "when_to_use": "系统要继续解析模型结果。",
+      "when_not_to_use": "结构合法不代表字段值正确。",
+      "ai_pm_relevance": "同时验收结构、语义和业务规则。",
+      "example": "输出含类别、原因和置信度的 JSON。",
+      "related_names": [
+        "上下文工程",
+        "温度"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "hf_course",
+        "anthropic_agents"
+      ]
+    },
+    {
+      "id": 2057,
+      "name": "温度",
+      "aliases": [
+        "Temperature"
+      ],
+      "category": "PROMPT",
+      "definition": "控制生成采样分布平滑程度的参数。",
+      "mechanism": "常通过缩放 logits 调整候选 token 的概率差距。",
+      "when_to_use": "比较稳定输出与创作多样性。",
+      "when_not_to_use": "低温度不能消除幻觉或完全保证复现。",
+      "ai_pm_relevance": "按任务评测，不套统一最优值。",
+      "example": "摘要使用较低温度，创意草稿适度提高。",
+      "related_names": [
+        "结构化输出",
+        "核采样"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "hf_course",
+        "anthropic_agents"
+      ]
+    },
+    {
+      "id": 2058,
+      "name": "核采样",
+      "aliases": [
+        "Top-p",
+        "Nucleus Sampling"
+      ],
+      "category": "PROMPT",
+      "definition": "从累计概率达到指定范围的候选 token 中采样。",
+      "mechanism": "动态截取高概率候选集合再采样。",
+      "when_to_use": "调整生成内容的多样性。",
+      "when_not_to_use": "参数与温度可能相互影响。",
+      "ai_pm_relevance": "做控制变量实验观察质量。",
+      "example": "缩小候选范围减少罕见续写。",
+      "related_names": [
+        "温度",
+        "幻觉"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "hf_course",
+        "anthropic_agents"
+      ]
+    },
+    {
+      "id": 2059,
+      "name": "幻觉",
+      "aliases": [
+        "Hallucination"
+      ],
+      "category": "PROMPT",
+      "definition": "模型生成看似合理却缺乏依据或事实错误的内容。",
+      "mechanism": "生成模式和证据约束不足可能产生无依据断言。",
+      "when_to_use": "设计事实可靠性控制。",
+      "when_not_to_use": "检索和低温度都不能保证完全消除。",
+      "ai_pm_relevance": "跟踪无依据回答率与错误影响。",
+      "example": "助手编造公司根本没有的退款条款。",
+      "related_names": [
+        "核采样",
+        "依据约束"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "hf_course",
+        "anthropic_agents"
+      ]
+    },
+    {
+      "id": 2060,
+      "name": "依据约束",
+      "aliases": [
+        "Grounding"
+      ],
+      "category": "PROMPT",
+      "definition": "让回答建立在可核验资料或环境事实上的设计。",
+      "mechanism": "为生成提供证据，并校验答案与证据是否一致。",
+      "when_to_use": "事实性问答与企业知识助手。",
+      "when_not_to_use": "有来源链接也可能曲解资料。",
+      "ai_pm_relevance": "检查证据支持程度与时效。",
+      "example": "根据当前退货条款回答并标明适用条件。",
+      "related_names": [
+        "幻觉",
+        "长上下文处理"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "hf_course",
+        "anthropic_agents"
+      ]
+    },
+    {
+      "id": 2061,
+      "name": "长上下文处理",
+      "aliases": [
+        "Long-context Processing"
+      ],
+      "category": "PROMPT",
+      "definition": "在较长输入中提取和使用相关信息的能力与策略。",
+      "mechanism": "组织资料、分段检索或摘要后组合关键上下文。",
+      "when_to_use": "合同、长报告和多轮任务。",
+      "when_not_to_use": "关键内容可能在长输入中被忽略。",
+      "ai_pm_relevance": "测试不同位置的证据和冲突信息。",
+      "example": "对长报告分段检查后汇总风险。",
+      "related_names": [
+        "依据约束",
+        "提示词链"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "hf_course",
+        "anthropic_agents"
+      ]
+    },
+    {
+      "id": 2062,
+      "name": "提示词链",
+      "aliases": [
+        "Prompt Chaining"
+      ],
+      "category": "PROMPT",
+      "definition": "把任务拆成预定顺序的多次模型调用。",
+      "mechanism": "前一步输出成为后一步输入，并设置中间检查。",
+      "when_to_use": "可清晰拆分的固定任务。",
+      "when_not_to_use": "错误可能沿链条传递，调用也增加延迟。",
+      "ai_pm_relevance": "测量每一步价值和失败兜底。",
+      "example": "先抽取事实，再生成摘要，最后检查遗漏。",
+      "related_names": [
+        "长上下文处理",
+        "提示词版本管理"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "hf_course",
+        "anthropic_agents"
+      ]
+    },
+    {
+      "id": 2063,
+      "name": "提示词版本管理",
+      "aliases": [
+        "Prompt Versioning"
+      ],
+      "category": "PROMPT",
+      "definition": "记录提示词及其配置变更并追踪效果的实践。",
+      "mechanism": "每个发布版本关联模板、模型、评测结果和回滚点。",
+      "when_to_use": "持续迭代线上 AI 功能。",
+      "when_not_to_use": "只改文案不留记录难以解释效果变化。",
+      "ai_pm_relevance": "把提示词变更纳入发布管理。",
+      "example": "新摘要模板先跑回归集再小范围上线。",
+      "related_names": [
+        "提示词链"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "hf_course",
+        "anthropic_agents"
+      ]
+    },
+    {
+      "id": 2002,
+      "name": "检索增强生成",
+      "aliases": [
+        "Retrieval-augmented Generation",
+        "RAG"
+      ],
+      "category": "RAG",
+      "definition": "先检索外部资料，再让模型基于相关资料生成答案的方式。",
+      "mechanism": "资料索引、检索和上下文组装组成生成前的证据流程。",
+      "when_to_use": "回答依赖动态或私有资料时。",
+      "when_not_to_use": "检索错误会传入答案，仍需核验。",
+      "ai_pm_relevance": "设计资料更新、权限和无答案路径。",
+      "example": "制度助手先查最新版报销条款再回答。",
+      "related_names": [
+        "文本分块"
+      ],
+      "source_ids": [
+        "microsoft_rag"
+      ]
+    },
+    {
+      "id": 2064,
+      "name": "文本分块",
+      "aliases": [
+        "Chunking",
+        "Text Splitting"
+      ],
+      "category": "RAG",
+      "definition": "把资料切成适合索引和检索的小段落。",
+      "mechanism": "按长度、段落或语义边界切分，并保留元数据。",
+      "when_to_use": "建立长文档检索库。",
+      "when_not_to_use": "块太小丢上下文，太大增加噪声。",
+      "ai_pm_relevance": "用真实问题选择分块策略。",
+      "example": "按合同条款切块，同时保留章节标题。",
+      "related_names": [
+        "检索增强生成",
+        "分块重叠"
+      ],
+      "source_ids": [
+        "microsoft_rag"
+      ]
+    },
+    {
+      "id": 2065,
+      "name": "分块重叠",
+      "aliases": [
+        "Chunk Overlap"
+      ],
+      "category": "RAG",
+      "definition": "让相邻文本块共享一部分内容的分块策略。",
+      "mechanism": "保留边界附近的信息以减少切分造成的断裂。",
+      "when_to_use": "证据容易跨块边界时。",
+      "when_not_to_use": "重叠过多造成冗余和索引成本。",
+      "ai_pm_relevance": "比较检索收益与重复内容。",
+      "example": "前后两块都保留同一条款的末尾说明。",
+      "related_names": [
+        "文本分块",
+        "向量数据库"
+      ],
+      "source_ids": [
+        "microsoft_rag"
+      ]
+    },
+    {
+      "id": 2066,
+      "name": "向量数据库",
+      "aliases": [
+        "Vector Database",
+        "Vector Store"
+      ],
+      "category": "RAG",
+      "definition": "存储向量并支持近邻检索的数据库或存储系统。",
+      "mechanism": "建立向量索引，按相似度寻找候选对象。",
+      "when_to_use": "大规模语义检索。",
+      "when_not_to_use": "它不自动解决资料质量和权限问题。",
+      "ai_pm_relevance": "比较过滤、更新、成本与运维能力。",
+      "example": "检索与用户问题相近的知识片段。",
+      "related_names": [
+        "分块重叠",
+        "语义搜索"
+      ],
+      "source_ids": [
+        "microsoft_rag"
+      ]
+    },
+    {
+      "id": 2067,
+      "name": "语义搜索",
+      "aliases": [
+        "Semantic Search",
+        "Dense Retrieval"
+      ],
+      "category": "RAG",
+      "definition": "按含义相似程度检索资料，而非只按字面匹配。",
+      "mechanism": "把问题和资料转成表示，再比较相似度。",
+      "when_to_use": "用户措辞与资料用词不同。",
+      "when_not_to_use": "精确编号和专有词可能更适合词法检索。",
+      "ai_pm_relevance": "区分模糊语义与精确匹配需求。",
+      "example": "搜索“钱什么时候退”找到退款到账说明。",
+      "related_names": [
+        "向量数据库",
+        "BM25 词法检索"
+      ],
+      "source_ids": [
+        "microsoft_rag"
+      ]
+    },
+    {
+      "id": 2068,
+      "name": "BM25 词法检索",
+      "aliases": [
+        "BM25",
+        "Keyword Search",
+        "Sparse Retrieval"
+      ],
+      "category": "RAG",
+      "definition": "根据词频、逆文档频率和长度等因素排序文档的方法。",
+      "mechanism": "估计关键词对查询的重要性并计算相关分数。",
+      "when_to_use": "精确术语、名称与编号检索。",
+      "when_not_to_use": "同义改写可能没有字面交集。",
+      "ai_pm_relevance": "保留关键词检索作为基线或补充。",
+      "example": "搜索型号名称找到对应说明书。",
+      "related_names": [
+        "语义搜索",
+        "混合检索"
+      ],
+      "source_ids": [
+        "microsoft_rag"
+      ]
+    },
+    {
+      "id": 2069,
+      "name": "混合检索",
+      "aliases": [
+        "Hybrid Search",
+        "Hybrid Retrieval"
+      ],
+      "category": "RAG",
+      "definition": "结合词法与向量等多种检索结果的方式。",
+      "mechanism": "分别召回候选，再融合分数或排名。",
+      "when_to_use": "同时存在精确词与语义改写。",
+      "when_not_to_use": "多路结果融合后仍需评估排序。",
+      "ai_pm_relevance": "测试对不同问题类型的增益。",
+      "example": "工单检索同时匹配订单号和问题语义。",
+      "related_names": [
+        "BM25 词法检索",
+        "余弦相似度"
+      ],
+      "source_ids": [
+        "microsoft_rag"
+      ]
+    },
+    {
+      "id": 2070,
+      "name": "余弦相似度",
+      "aliases": [
+        "Cosine Similarity"
+      ],
+      "category": "RAG",
+      "definition": "通过向量夹角衡量方向接近程度的指标。",
+      "mechanism": "计算点积与向量长度的比值。",
+      "when_to_use": "比较适用嵌入模型的表示。",
+      "when_not_to_use": "不同模型分数与阈值不能直接通用。",
+      "ai_pm_relevance": "用标注样本选择检索阈值。",
+      "example": "比较问题向量与资料向量的接近程度。",
+      "related_names": [
+        "混合检索",
+        "近似近邻检索"
+      ],
+      "source_ids": [
+        "microsoft_rag"
+      ]
+    },
+    {
+      "id": 2071,
+      "name": "近似近邻检索",
+      "aliases": [
+        "Approximate Nearest Neighbor",
+        "ANN"
+      ],
+      "category": "RAG",
+      "definition": "以一定精度取舍加速大规模近邻搜索的方法。",
+      "mechanism": "利用索引结构减少需要比较的向量数量。",
+      "when_to_use": "向量集合很大且需低延迟。",
+      "when_not_to_use": "近似算法可能漏掉真实近邻。",
+      "ai_pm_relevance": "平衡召回、延迟和索引资源。",
+      "example": "在百万段资料中快速取出候选片段。",
+      "related_names": [
+        "余弦相似度",
+        "检索候选数"
+      ],
+      "source_ids": [
+        "microsoft_rag"
+      ]
+    },
+    {
+      "id": 2072,
+      "name": "检索候选数",
+      "aliases": [
+        "Retrieval Top-k",
+        "Top-k Retrieval",
+        "Retrieval"
+      ],
+      "category": "RAG",
+      "definition": "指定检索阶段返回多少个候选结果的设置。",
+      "mechanism": "先取得若干候选，再按排序和上下文预算筛选。",
+      "when_to_use": "调整检索覆盖与处理成本。",
+      "when_not_to_use": "它与生成采样的 top-k 含义不同。",
+      "ai_pm_relevance": "同时看召回、噪声、延迟与 token 成本。",
+      "example": "召回二十段资料，再重排选取五段。",
+      "related_names": [
+        "近似近邻检索",
+        "重排序"
+      ],
+      "source_ids": [
+        "microsoft_rag"
+      ]
+    },
+    {
+      "id": 2073,
+      "name": "重排序",
+      "aliases": [
+        "Reranking",
+        "Rerank"
+      ],
+      "category": "RAG",
+      "definition": "对初步检索候选进行更精细的相关性排序。",
+      "mechanism": "用重排模型等方法联合比较问题和候选内容。",
+      "when_to_use": "初步召回够但排序不理想。",
+      "when_not_to_use": "无法恢复初始召回里不存在的证据。",
+      "ai_pm_relevance": "先测召回，再决定是否加重排。",
+      "example": "把真正回答退货条件的片段排到最前。",
+      "related_names": [
+        "检索候选数",
+        "查询改写"
+      ],
+      "source_ids": [
+        "microsoft_rag"
+      ]
+    },
+    {
+      "id": 2074,
+      "name": "查询改写",
+      "aliases": [
+        "Query Rewriting"
+      ],
+      "category": "RAG",
+      "definition": "将用户问题改成更适合检索的表达。",
+      "mechanism": "补全指代、拆开复合问题或增加明确实体。",
+      "when_to_use": "多轮省略和模糊问法。",
+      "when_not_to_use": "改写可能误解原意或编造条件。",
+      "ai_pm_relevance": "对比原始问题和改写结果。",
+      "example": "把“那它多久到账”补全为退款到账时间。",
+      "related_names": [
+        "重排序",
+        "多查询检索"
+      ],
+      "source_ids": [
+        "microsoft_rag"
+      ]
+    },
+    {
+      "id": 2075,
+      "name": "多查询检索",
+      "aliases": [
+        "Multi-query Retrieval"
+      ],
+      "category": "RAG",
+      "definition": "为同一需求生成多个查询以扩大检索覆盖。",
+      "mechanism": "不同措辞或子问题分别检索，再合并去重。",
+      "when_to_use": "一个问题包含多个角度。",
+      "when_not_to_use": "额外查询增加成本，也可能引入噪声。",
+      "ai_pm_relevance": "测量新增证据是否真的有用。",
+      "example": "分别检索退款条件、手续费与到账时间。",
+      "related_names": [
+        "查询改写",
+        "元数据过滤"
+      ],
+      "source_ids": [
+        "microsoft_rag"
+      ]
+    },
+    {
+      "id": 2076,
+      "name": "元数据过滤",
+      "aliases": [
+        "Metadata Filtering"
+      ],
+      "category": "RAG",
+      "definition": "用版本、日期、部门或权限等属性限制检索范围。",
+      "mechanism": "在检索前后施加结构化条件筛选候选资料。",
+      "when_to_use": "资料有时效或访问范围要求。",
+      "when_not_to_use": "过滤条件错误可能漏证据或越权。",
+      "ai_pm_relevance": "让权限检查与查询一起生效。",
+      "example": "只检索用户所在地区的现行政策。",
+      "related_names": [
+        "多查询检索",
+        "引用与溯源"
+      ],
+      "source_ids": [
+        "microsoft_rag"
+      ]
+    },
+    {
+      "id": 2077,
+      "name": "引用与溯源",
+      "aliases": [
+        "Citation",
+        "Provenance",
+        "Source Attribution"
+      ],
+      "category": "RAG",
+      "definition": "展示答案来源并追踪证据形成路径的机制。",
+      "mechanism": "把答案中的结论关联到资料位置与版本。",
+      "when_to_use": "用户需要核查依据时。",
+      "when_not_to_use": "附链接不代表结论确由资料支持。",
+      "ai_pm_relevance": "评测引用正确性与可访问性。",
+      "example": "回答显示条款位置、资料日期和原文链接。",
+      "related_names": [
+        "元数据过滤"
+      ],
+      "source_ids": [
+        "microsoft_rag"
+      ]
+    },
+    {
+      "id": 2078,
+      "name": "智能体",
+      "aliases": [
+        "Agent",
+        "AI Agent",
+        "Agentic AI"
+      ],
+      "category": "AGENT",
+      "definition": "根据目标和环境反馈规划并执行行动的 AI 系统。",
+      "mechanism": "模型选择下一步，工具执行动作，结果回到循环中。",
+      "when_to_use": "路径难以预先穷举的多步任务。",
+      "when_not_to_use": "自治程度高会增加错误、成本与延迟。",
+      "ai_pm_relevance": "明确权限、停止条件和人工接管。",
+      "example": "助手查库存、比较选择，再申请用户确认下单。",
+      "related_names": [
+        "工作流"
+      ],
+      "source_ids": [
+        "anthropic_agents",
+        "mcp_intro"
+      ]
+    },
+    {
+      "id": 2079,
+      "name": "工作流",
+      "aliases": [
+        "Workflow",
+        "AI Workflow"
+      ],
+      "category": "AGENT",
+      "definition": "按预先定义的步骤、条件和依赖完成任务的流程。",
+      "mechanism": "程序控制顺序和分支，必要环节调用模型。",
+      "when_to_use": "过程稳定、可明确编排的任务。",
+      "when_not_to_use": "固定流程对未知路径缺乏灵活性。",
+      "ai_pm_relevance": "先明确流程再决定是否需要 Agent。",
+      "example": "工单依次分类、查政策、生成草稿和审核。",
+      "related_names": [
+        "智能体",
+        "工具调用"
+      ],
+      "source_ids": [
+        "anthropic_agents",
+        "mcp_intro"
+      ]
+    },
+    {
+      "id": 2080,
+      "name": "工具调用",
+      "aliases": [
+        "Tool Calling",
+        "Function Calling"
+      ],
+      "category": "AGENT",
+      "definition": "模型请求由外部程序执行特定功能的机制。",
+      "mechanism": "模型生成工具名和参数，系统校验执行并回传结果。",
+      "when_to_use": "获取实时信息或执行动作。",
+      "when_not_to_use": "模型提出调用不代表具备执行权限。",
+      "ai_pm_relevance": "设计参数校验、确认与失败提示。",
+      "example": "模型请求订单查询工具读取最新配送状态。",
+      "related_names": [
+        "工作流",
+        "模型上下文协议"
+      ],
+      "source_ids": [
+        "anthropic_agents",
+        "mcp_intro"
+      ]
+    },
+    {
+      "id": 2081,
+      "name": "模型上下文协议",
+      "aliases": [
+        "Model Context Protocol",
+        "MCP"
+      ],
+      "category": "AGENT",
+      "definition": "用于连接 AI 应用与工具、资源等能力的开放协议。",
+      "mechanism": "客户端与服务器通过约定接口发现和使用能力。",
+      "when_to_use": "统一接入多种外部能力。",
+      "when_not_to_use": "协议连接不等于自动授权或可信。",
+      "ai_pm_relevance": "评估连接范围、认证和权限控制。",
+      "example": "同一助手通过 MCP 接入文档与日历服务。",
+      "related_names": [
+        "工具调用",
+        "记忆"
+      ],
+      "source_ids": [
+        "mcp_intro"
+      ]
+    },
+    {
+      "id": 2082,
+      "name": "记忆",
+      "aliases": [
+        "Memory",
+        "Agent Memory"
+      ],
+      "category": "AGENT",
+      "definition": "让系统保存并在后续任务中使用信息的能力。",
+      "mechanism": "区分会话状态与跨会话记录，按需要检索或摘要。",
+      "when_to_use": "连续任务与个性化体验。",
+      "when_not_to_use": "记错、过期或跨用户泄露会造成风险。",
+      "ai_pm_relevance": "设计范围、删除、时效和用户控制。",
+      "example": "经同意保存用户偏好，并允许用户修改。",
+      "related_names": [
+        "模型上下文协议",
+        "任务拆解"
+      ],
+      "source_ids": [
+        "anthropic_agents",
+        "mcp_intro"
+      ]
+    },
+    {
+      "id": 2083,
+      "name": "任务拆解",
+      "aliases": [
+        "Task Decomposition",
+        "Planning"
+      ],
+      "category": "AGENT",
+      "definition": "将整体目标划分为有依赖关系的可执行子任务。",
+      "mechanism": "明确每步输入、产出、工具和完成标准。",
+      "when_to_use": "复杂目标需要多个动作时。",
+      "when_not_to_use": "计划合理不代表工具执行一定成功。",
+      "ai_pm_relevance": "对中间结果设置验收与重规划。",
+      "example": "调研任务拆为搜资料、核对证据与写报告。",
+      "related_names": [
+        "记忆",
+        "智能体循环"
+      ],
+      "source_ids": [
+        "anthropic_agents",
+        "mcp_intro"
+      ]
+    },
+    {
+      "id": 2084,
+      "name": "智能体循环",
+      "aliases": [
+        "Agent Loop",
+        "Observe Reason Act"
+      ],
+      "category": "AGENT",
+      "definition": "持续观察结果、选择行动并执行的运行过程。",
+      "mechanism": "环境反馈更新状态，直到完成或满足停止条件。",
+      "when_to_use": "任务需要试探与迭代。",
+      "when_not_to_use": "缺少停止条件容易无限循环。",
+      "ai_pm_relevance": "限制轮次、预算和高风险动作。",
+      "example": "搜索结果不足时调整查询再继续查找。",
+      "related_names": [
+        "任务拆解",
+        "多智能体协作"
+      ],
+      "source_ids": [
+        "anthropic_agents",
+        "mcp_intro"
+      ]
+    },
+    {
+      "id": 2085,
+      "name": "多智能体协作",
+      "aliases": [
+        "Multi-agent",
+        "Multi-Agent"
+      ],
+      "category": "AGENT",
+      "definition": "多个智能体分工或协同完成目标的系统设计。",
+      "mechanism": "分配职责、传递结果并由协调者汇总或裁决。",
+      "when_to_use": "可独立分解且需多种专长的任务。",
+      "when_not_to_use": "更多 Agent 可能放大沟通成本和错误。",
+      "ai_pm_relevance": "用单 Agent 基线验证增益。",
+      "example": "研究员整理资料，审查员核对结论。",
+      "related_names": [
+        "智能体循环",
+        "路由"
+      ],
+      "source_ids": [
+        "anthropic_agents",
+        "mcp_intro"
+      ]
+    },
+    {
+      "id": 2086,
+      "name": "路由",
+      "aliases": [
+        "Routing",
+        "Model Routing"
+      ],
+      "category": "AGENT",
+      "definition": "依据请求特点选择合适流程、工具或模型。",
+      "mechanism": "分类器或规则把输入分配到不同处理路径。",
+      "when_to_use": "任务类型和模型成本差异明显。",
+      "when_not_to_use": "路由错会让下游方案不适合请求。",
+      "ai_pm_relevance": "测量路由准确率与端到端成功率。",
+      "example": "简单问题用小模型，复杂问题送人工或强模型。",
+      "related_names": [
+        "多智能体协作",
+        "智能体运行框架"
+      ],
+      "source_ids": [
+        "anthropic_agents",
+        "mcp_intro"
+      ]
+    },
+    {
+      "id": 2087,
+      "name": "智能体运行框架",
+      "aliases": [
+        "Agent Harness",
+        "Harness"
+      ],
+      "category": "AGENT",
+      "definition": "管理智能体运行所需状态、工具、循环和约束的软件层。",
+      "mechanism": "组织模型调用、执行记录、错误恢复与运行预算。",
+      "when_to_use": "把 Agent 稳定运行在真实环境。",
+      "when_not_to_use": "术语没有唯一标准，能力需逐项核实。",
+      "ai_pm_relevance": "检查可观测性、恢复和权限能力。",
+      "example": "框架记录每步工具结果并在超时后停止任务。",
+      "related_names": [
+        "路由",
+        "应用接口"
+      ],
+      "source_ids": [
+        "anthropic_agents",
+        "mcp_intro"
+      ]
+    },
+    {
+      "id": 2088,
+      "name": "应用接口",
+      "aliases": [
+        "Application Programming Interface",
+        "API"
+      ],
+      "category": "AGENT",
+      "definition": "软件向其他程序开放的调用约定。",
+      "mechanism": "按请求和响应契约交换数据或执行功能。",
+      "when_to_use": "连接模型服务与业务系统。",
+      "when_not_to_use": "接口可调用不等于数据可公开。",
+      "ai_pm_relevance": "明确认证、费用和接口失败行为。",
+      "example": "助手通过订单 API 查询物流。",
+      "related_names": [
+        "智能体运行框架",
+        "命令行接口"
+      ],
+      "source_ids": [
+        "anthropic_agents",
+        "mcp_intro"
+      ]
+    },
+    {
+      "id": 2089,
+      "name": "命令行接口",
+      "aliases": [
+        "Command-line Interface",
+        "CLI"
+      ],
+      "category": "AGENT",
+      "definition": "通过文本命令和参数操作程序的接口。",
+      "mechanism": "程序解析命令后执行操作，并返回输出和状态码。",
+      "when_to_use": "开发、批处理和自动化运维。",
+      "when_not_to_use": "模型生成的命令需受执行范围约束。",
+      "ai_pm_relevance": "让普通用户使用界面并限制命令权限。",
+      "example": "维护脚本批量校验公开概念数据。",
+      "related_names": [
+        "应用接口",
+        "JSON 模式"
+      ],
+      "source_ids": [
+        "anthropic_agents",
+        "mcp_intro"
+      ]
+    },
+    {
+      "id": 2090,
+      "name": "JSON 模式",
+      "aliases": [
+        "JSON Schema"
+      ],
+      "category": "AGENT",
+      "definition": "描述 JSON 字段、类型及约束的结构规范。",
+      "mechanism": "定义必填字段、枚举和格式，再校验数据。",
+      "when_to_use": "验证工具参数和结构化结果。",
+      "when_not_to_use": "类型正确仍可能越权或语义错误。",
+      "ai_pm_relevance": "把结构校验和业务校验结合。",
+      "example": "退款工具只接受合法订单号与正数金额。",
+      "related_names": [
+        "命令行接口",
+        "幂等性"
+      ],
+      "source_ids": [
+        "json_schema"
+      ]
+    },
+    {
+      "id": 2091,
+      "name": "幂等性",
+      "aliases": [
+        "Idempotency"
+      ],
+      "category": "AGENT",
+      "definition": "重复执行同一请求不会造成额外业务副作用的性质。",
+      "mechanism": "用幂等键或状态判断识别已经处理的请求。",
+      "when_to_use": "网络重试、付款和任务恢复。",
+      "when_not_to_use": "并非所有操作天然具备幂等性。",
+      "ai_pm_relevance": "要求有副作用的工具提供去重机制。",
+      "example": "重试提交退款请求仍只产生一次退款。",
+      "related_names": [
+        "JSON 模式",
+        "停止条件"
+      ],
+      "source_ids": [
+        "mdn_idempotency"
+      ]
+    },
+    {
+      "id": 2092,
+      "name": "停止条件",
+      "aliases": [
+        "Termination Condition",
+        "Stop Condition"
+      ],
+      "category": "AGENT",
+      "definition": "决定智能体何时完成、暂停或放弃的规则。",
+      "mechanism": "检查目标、预算、轮次、错误和人工确认状态。",
+      "when_to_use": "所有可迭代任务。",
+      "when_not_to_use": "只靠模型自行判断可能无法停止。",
+      "ai_pm_relevance": "定义成本上限和失败交接。",
+      "example": "最多检索五轮，证据仍不足则提示用户。",
+      "related_names": [
+        "幂等性"
+      ],
+      "source_ids": [
+        "anthropic_agents",
+        "mcp_intro"
+      ]
+    },
+    {
+      "id": 2093,
+      "name": "任务型评估",
+      "aliases": [
+        "Evaluation",
+        "Evals",
+        "Task Evaluation"
+      ],
+      "category": "EVALUATION",
+      "definition": "用代表真实任务的样本和标准检验 AI 系统能力。",
+      "mechanism": "覆盖正常、边界和失败场景，记录可复查结果。",
+      "when_to_use": "比较模型与发布验收。",
+      "when_not_to_use": "公开榜单成绩不等于自家场景表现。",
+      "ai_pm_relevance": "把成功标准转成固定验收任务。",
+      "example": "用真实售后问题测正确答案与人工接管率。",
+      "related_names": [
+        "准确率"
+      ],
+      "source_ids": [
+        "sklearn_metrics",
+        "google_metrics",
+        "code_eval"
+      ]
+    },
+    {
+      "id": 2094,
+      "name": "准确率",
+      "aliases": [
+        "Accuracy",
+        "ACC"
+      ],
+      "category": "EVALUATION",
+      "definition": "分类预测正确的样本占全部样本的比例。",
+      "mechanism": "以正确数除以样本总数计算整体命中。",
+      "when_to_use": "类别较均衡的整体分类评估。",
+      "when_not_to_use": "多数类占比高时可能误导判断。",
+      "ai_pm_relevance": "配合类别指标和错误代价看结果。",
+      "example": "一百条工单正确分类九十条，准确率为 90%。",
+      "related_names": [
+        "任务型评估",
+        "精确率"
+      ],
+      "source_ids": [
+        "sklearn_metrics",
+        "google_metrics",
+        "code_eval"
+      ]
+    },
+    {
+      "id": 2095,
+      "name": "精确率",
+      "aliases": [
+        "Precision"
+      ],
+      "category": "EVALUATION",
+      "definition": "预测为正的样本中真正为正的比例。",
+      "mechanism": "计算 TP／(TP＋FP)，衡量正向判断的可靠程度。",
+      "when_to_use": "误报成本较高的任务。",
+      "when_not_to_use": "高精确率可能伴随大量漏检。",
+      "ai_pm_relevance": "评估自动执行动作是否可靠。",
+      "example": "拦截十笔交易，其中八笔确有风险，精确率为 80%。",
+      "related_names": [
+        "准确率",
+        "召回率"
+      ],
+      "source_ids": [
+        "sklearn_metrics",
+        "google_metrics",
+        "code_eval"
+      ]
+    },
+    {
+      "id": 2096,
+      "name": "召回率",
+      "aliases": [
+        "Recall",
+        "Sensitivity"
+      ],
+      "category": "EVALUATION",
+      "definition": "所有真实正例中被成功识别的比例。",
+      "mechanism": "计算 TP／(TP＋FN)，衡量漏检程度。",
+      "when_to_use": "漏报代价较高的任务。",
+      "when_not_to_use": "高召回可能引入更多误报。",
+      "ai_pm_relevance": "决定遗漏关键对象的可接受范围。",
+      "example": "十条违规内容识别出九条，召回率为 90%。",
+      "related_names": [
+        "精确率",
+        "F1 分数"
+      ],
+      "source_ids": [
+        "sklearn_metrics",
+        "google_metrics",
+        "code_eval"
+      ]
+    },
+    {
+      "id": 2097,
+      "name": "F1 分数",
+      "aliases": [
+        "F1 Score",
+        "F1"
+      ],
+      "category": "EVALUATION",
+      "definition": "精确率与召回率的调和平均数。",
+      "mechanism": "计算 2PR／(P＋R)，综合两者而不直接计入真负例。",
+      "when_to_use": "同时关心误报与漏报的分类。",
+      "when_not_to_use": "不能代替真实的业务成本函数。",
+      "ai_pm_relevance": "说明为什么需要平衡两个指标。",
+      "example": "比较工单分类模型时兼顾分类可靠性与覆盖。",
+      "related_names": [
+        "召回率",
+        "混淆矩阵"
+      ],
+      "source_ids": [
+        "sklearn_metrics",
+        "google_metrics",
+        "code_eval"
+      ]
+    },
+    {
+      "id": 2098,
+      "name": "混淆矩阵",
+      "aliases": [
+        "Confusion Matrix"
+      ],
+      "category": "EVALUATION",
+      "definition": "按真实类别和预测类别交叉统计结果的表。",
+      "mechanism": "呈现各类正确、误报和漏报数量。",
+      "when_to_use": "定位分类错误集中在哪里。",
+      "when_not_to_use": "不同类别样本数可能影响直接比较。",
+      "ai_pm_relevance": "检查重要类别之间的混淆。",
+      "example": "发现售后工单常被误判成物流问题。",
+      "related_names": [
+        "F1 分数",
+        "ROC-AUC"
+      ],
+      "source_ids": [
+        "sklearn_metrics",
+        "google_metrics",
+        "code_eval"
+      ]
+    },
+    {
+      "id": 2099,
+      "name": "ROC-AUC",
+      "aliases": [
+        "ROC AUC",
+        "Area under ROC"
+      ],
+      "category": "EVALUATION",
+      "definition": "衡量跨阈值区分正负样本能力的排序指标。",
+      "mechanism": "以假正例率和真正例率形成 ROC 曲线并计算面积。",
+      "when_to_use": "比较二分类模型排序能力。",
+      "when_not_to_use": "不能单独反映极不平衡场景的精确率。",
+      "ai_pm_relevance": "选择阈值时仍看具体错误代价。",
+      "example": "风控模型在不同阈值下比较区分能力。",
+      "related_names": [
+        "混淆矩阵",
+        "PR-AUC"
+      ],
+      "source_ids": [
+        "sklearn_metrics",
+        "google_metrics",
+        "code_eval"
+      ]
+    },
+    {
+      "id": 2100,
+      "name": "PR-AUC",
+      "aliases": [
+        "PR AUC",
+        "Area under PR"
+      ],
+      "category": "EVALUATION",
+      "definition": "精确率与召回率曲线下的面积指标。",
+      "mechanism": "改变阈值得到 P-R 曲线；面积算法需明确。",
+      "when_to_use": "重点关注少数正类的任务。",
+      "when_not_to_use": "受正例比例影响，且不应混同所有 AP 算法。",
+      "ai_pm_relevance": "在相同数据与口径下比较。",
+      "example": "比较罕见欺诈任务对正例的识别质量。",
+      "related_names": [
+        "ROC-AUC",
+        "平均倒数排名"
+      ],
+      "source_ids": [
+        "sklearn_metrics",
+        "google_metrics",
+        "code_eval"
+      ]
+    },
+    {
+      "id": 2101,
+      "name": "平均倒数排名",
+      "aliases": [
+        "Mean Reciprocal Rank",
+        "MRR"
+      ],
+      "category": "EVALUATION",
+      "definition": "衡量首个相关结果在排序中出现位置的指标。",
+      "mechanism": "每个查询取首个相关结果排名的倒数，再求平均。",
+      "when_to_use": "希望相关答案尽早出现的检索。",
+      "when_not_to_use": "不充分反映多个相关结果的整体排序。",
+      "ai_pm_relevance": "看用户是否很快找到首个有用结果。",
+      "example": "首个相关资料排第二，该查询倒数排名为 0.5。",
+      "related_names": [
+        "PR-AUC",
+        "归一化折损累计增益"
+      ],
+      "source_ids": [
+        "sklearn_metrics",
+        "google_metrics",
+        "code_eval"
+      ]
+    },
+    {
+      "id": 2102,
+      "name": "归一化折损累计增益",
+      "aliases": [
+        "Normalized Discounted Cumulative Gain",
+        "NDCG"
+      ],
+      "category": "EVALUATION",
+      "definition": "考虑位置折损与分级相关性的排序质量指标。",
+      "mechanism": "计算位置加权相关收益，并除以理想排序收益。",
+      "when_to_use": "有多个相关等级的检索与推荐。",
+      "when_not_to_use": "相关性标注与截断位置需一致。",
+      "ai_pm_relevance": "用一致标注比较重排方案。",
+      "example": "高度相关政策放首位比放第五位得分高。",
+      "related_names": [
+        "平均倒数排名",
+        "检索召回率"
+      ],
+      "source_ids": [
+        "sklearn_metrics",
+        "google_metrics",
+        "code_eval"
+      ]
+    },
+    {
+      "id": 2103,
+      "name": "检索召回率",
+      "aliases": [
+        "Recall@k",
+        "Retrieval Recall"
+      ],
+      "category": "EVALUATION",
+      "definition": "前 k 个检索结果覆盖相关资料的比例。",
+      "mechanism": "以找到的相关资料数除以已标注相关资料总数。",
+      "when_to_use": "检查检索是否漏掉证据。",
+      "when_not_to_use": "需要尽量完整的相关性标注。",
+      "ai_pm_relevance": "先保证证据进入候选集合。",
+      "example": "四段相关证据中召回三段，召回率为 75%。",
+      "related_names": [
+        "归一化折损累计增益",
+        "多次生成通过率"
+      ],
+      "source_ids": [
+        "sklearn_metrics",
+        "google_metrics",
+        "code_eval"
+      ]
+    },
+    {
+      "id": 2104,
+      "name": "多次生成通过率",
+      "aliases": [
+        "pass@k"
+      ],
+      "category": "EVALUATION",
+      "definition": "在 k 个生成候选中至少一个通过测试的概率指标。",
+      "mechanism": "对多次采样结果估计至少一个正确候选的概率。",
+      "when_to_use": "代码生成等有可执行验收的任务。",
+      "when_not_to_use": "不代表第一次回答成功，也依赖测试充分性。",
+      "ai_pm_relevance": "把采样与筛选成本计入产品效果。",
+      "example": "生成五段代码，观察是否有一段通过全部测试。",
+      "related_names": [
+        "检索召回率",
+        "模型评审"
+      ],
+      "source_ids": [
+        "code_eval"
+      ]
+    },
+    {
+      "id": 2105,
+      "name": "模型评审",
+      "aliases": [
+        "LLM-as-judge",
+        "LLM Judge"
+      ],
+      "category": "EVALUATION",
+      "definition": "用语言模型按明确标准评判其他模型输出的方式。",
+      "mechanism": "提供评分规则和答案，生成评分与理由，再抽样复核。",
+      "when_to_use": "大规模、部分主观的质量评估。",
+      "when_not_to_use": "可能有偏好、位置偏差与不稳定性。",
+      "ai_pm_relevance": "用人工标注校准评审一致性。",
+      "example": "批量评估客服回答是否遗漏退款限制。",
+      "related_names": [
+        "多次生成通过率",
+        "回归评估"
+      ],
+      "source_ids": [
+        "sklearn_metrics",
+        "google_metrics",
+        "code_eval"
+      ]
+    },
+    {
+      "id": 2003,
+      "name": "回归评估",
+      "aliases": [
+        "Regression Evaluation",
+        "Regression Testing"
+      ],
+      "category": "EVALUATION",
+      "definition": "重复检查固定代表性任务，发现版本改动造成的退步。",
+      "mechanism": "冻结样本与标准，对比新旧版本通过率和失败例。",
+      "when_to_use": "修改模型、提示词、检索或流程。",
+      "when_not_to_use": "只测旧样本可能漏掉新需求。",
+      "ai_pm_relevance": "把历史失败用例加入发布门槛。",
+      "example": "模型升级后重新检查常见问题与无答案请求。",
+      "related_names": [
+        "模型评审",
+        "消融实验"
+      ],
+      "source_ids": [
+        "sklearn_metrics",
+        "google_metrics",
+        "code_eval"
+      ]
+    },
+    {
+      "id": 2106,
+      "name": "消融实验",
+      "aliases": [
+        "Ablation Study",
+        "Ablation"
+      ],
+      "category": "EVALUATION",
+      "definition": "移除或替换组件以判断其贡献的实验。",
+      "mechanism": "控制其他条件，比较有无组件时的效果。",
+      "when_to_use": "判断复杂功能是否真的有收益。",
+      "when_not_to_use": "组件相互作用可能让结论不适合直接推广。",
+      "ai_pm_relevance": "要求新增复杂度带来可测增益。",
+      "example": "去掉重排模块，看答案质量和延迟怎样变化。",
+      "related_names": [
+        "回归评估"
+      ],
+      "source_ids": [
+        "sklearn_metrics",
+        "google_metrics",
+        "code_eval"
+      ]
+    },
+    {
+      "id": 2107,
+      "name": "多模态模型",
+      "aliases": [
+        "Multimodal Model",
+        "VLM"
+      ],
+      "category": "MULTIMODAL",
+      "definition": "能够处理两种或更多信息模态的模型。",
+      "mechanism": "编码文字、图像或音频等输入，再进行关联或生成。",
+      "when_to_use": "任务同时依赖图文或声音。",
+      "when_not_to_use": "支持某模态不等于在所有该类任务都可靠。",
+      "ai_pm_relevance": "明确模态范围和专门验收集。",
+      "example": "同时阅读发票图片和用户提出的问题。",
+      "related_names": [
+        "卷积神经网络"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "hf_pipeline"
+      ]
+    },
+    {
+      "id": 2108,
+      "name": "卷积神经网络",
+      "aliases": [
+        "Convolutional Neural Network",
+        "CNN"
+      ],
+      "category": "MULTIMODAL",
+      "definition": "通过局部卷积和共享权重提取特征的神经网络。",
+      "mechanism": "多层卷积把局部模式逐渐组合成更复杂表示。",
+      "when_to_use": "理解视觉识别与局部模式建模。",
+      "when_not_to_use": "复杂视觉任务也可能采用其他架构。",
+      "ai_pm_relevance": "按任务质量与部署成本选模型。",
+      "example": "检测图片中是否存在破损包装。",
+      "related_names": [
+        "多模态模型",
+        "循环神经网络"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "hf_pipeline"
+      ]
+    },
+    {
+      "id": 2109,
+      "name": "循环神经网络",
+      "aliases": [
+        "Recurrent Neural Network",
+        "RNN"
+      ],
+      "category": "MULTIMODAL",
+      "definition": "通过循环状态处理序列信息的神经网络。",
+      "mechanism": "按顺序更新隐藏状态，传递已有输入信息。",
+      "when_to_use": "理解传统序列和时序建模。",
+      "when_not_to_use": "长距离依赖与并行计算可能受限。",
+      "ai_pm_relevance": "根据时延和序列长度判断适用性。",
+      "example": "依据传感器时间序列预测异常。",
+      "related_names": [
+        "卷积神经网络",
+        "生成对抗网络"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "hf_pipeline"
+      ]
+    },
+    {
+      "id": 2110,
+      "name": "生成对抗网络",
+      "aliases": [
+        "Generative Adversarial Network",
+        "GAN"
+      ],
+      "category": "MULTIMODAL",
+      "definition": "通过生成器与判别器对抗训练生成数据的方法。",
+      "mechanism": "生成器试图产出逼真样本，判别器识别真假。",
+      "when_to_use": "理解图像生成与增强路线。",
+      "when_not_to_use": "训练不稳定或模式坍塌可能限制效果。",
+      "ai_pm_relevance": "比较数据多样性和真实任务质量。",
+      "example": "生成商品图片草稿后人工审核。",
+      "related_names": [
+        "循环神经网络",
+        "扩散模型"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "hf_pipeline"
+      ]
+    },
+    {
+      "id": 2111,
+      "name": "扩散模型",
+      "aliases": [
+        "Diffusion Model"
+      ],
+      "category": "MULTIMODAL",
+      "definition": "通过学习逐步去噪来生成数据的一类模型。",
+      "mechanism": "从噪声出发，在条件控制下迭代还原目标样本。",
+      "when_to_use": "图像等内容生成。",
+      "when_not_to_use": "推理步骤和控制方式影响质量与延迟。",
+      "ai_pm_relevance": "评测生成成本、编辑可控性与一致性。",
+      "example": "根据产品描述生成一张海报草稿。",
+      "related_names": [
+        "生成对抗网络",
+        "视觉 Transformer"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "hf_pipeline"
+      ]
+    },
+    {
+      "id": 2112,
+      "name": "视觉 Transformer",
+      "aliases": [
+        "Vision Transformer",
+        "ViT"
+      ],
+      "category": "MULTIMODAL",
+      "definition": "把图像块当作序列进行处理的 Transformer 架构。",
+      "mechanism": "将图像切为 patch 并用注意力整合全局信息。",
+      "when_to_use": "理解视觉模型的技术路线。",
+      "when_not_to_use": "架构名称不能直接预测场景效果。",
+      "ai_pm_relevance": "用领域图片测试泛化表现。",
+      "example": "将商品图片分类到对应品类。",
+      "related_names": [
+        "扩散模型",
+        "图文对比学习"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "hf_pipeline"
+      ]
+    },
+    {
+      "id": 2113,
+      "name": "图文对比学习",
+      "aliases": [
+        "CLIP",
+        "Contrastive Language-Image Pretraining"
+      ],
+      "category": "MULTIMODAL",
+      "definition": "通过图文配对学习共享表示的一类方法。",
+      "mechanism": "拉近对应图文向量，区分不匹配的配对。",
+      "when_to_use": "图文检索和开放词汇匹配。",
+      "when_not_to_use": "相似度不代表完整理解图像关系。",
+      "ai_pm_relevance": "测试专有类别、细节和偏差。",
+      "example": "用“红色运动鞋”检索相关商品图片。",
+      "related_names": [
+        "视觉 Transformer",
+        "光学字符识别"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "hf_pipeline"
+      ]
+    },
+    {
+      "id": 2114,
+      "name": "光学字符识别",
+      "aliases": [
+        "Optical Character Recognition",
+        "OCR"
+      ],
+      "category": "MULTIMODAL",
+      "definition": "把图像中的文字转换成机器可用文本的技术。",
+      "mechanism": "定位文字区域，再识别字符并组织输出。",
+      "when_to_use": "票据、扫描件和拍照资料。",
+      "when_not_to_use": "手写、倾斜、模糊和复杂排版可能出错。",
+      "ai_pm_relevance": "提供低质量提示与关键字段复核。",
+      "example": "把扫描合同中的日期转成文本。",
+      "related_names": [
+        "图文对比学习",
+        "自动语音识别"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "hf_pipeline"
+      ]
+    },
+    {
+      "id": 2115,
+      "name": "自动语音识别",
+      "aliases": [
+        "Automatic Speech Recognition",
+        "ASR",
+        "Speech-to-text"
+      ],
+      "category": "MULTIMODAL",
+      "definition": "把音频中的语音转换为文字的技术。",
+      "mechanism": "从声学信息估计文本，并可生成时间戳。",
+      "when_to_use": "会议转录和语音交互。",
+      "when_not_to_use": "噪声、口音与多人重叠讲话会影响准确性。",
+      "ai_pm_relevance": "按环境和语言验证转录质量。",
+      "example": "将售后通话转写为可检索文字。",
+      "related_names": [
+        "光学字符识别",
+        "语音合成"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "hf_pipeline"
+      ]
+    },
+    {
+      "id": 2116,
+      "name": "语音合成",
+      "aliases": [
+        "Text-to-speech",
+        "TTS"
+      ],
+      "category": "MULTIMODAL",
+      "definition": "把文本转换成语音输出的技术。",
+      "mechanism": "模型生成与文字和韵律条件对应的语音。",
+      "when_to_use": "朗读、语音助手和无障碍功能。",
+      "when_not_to_use": "人名读音、情绪和延迟需专门验证。",
+      "ai_pm_relevance": "设计声音许可与用户播放控制。",
+      "example": "把学习讲解朗读出来。",
+      "related_names": [
+        "自动语音识别",
+        "目标检测"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "hf_pipeline"
+      ]
+    },
+    {
+      "id": 2117,
+      "name": "目标检测",
+      "aliases": [
+        "Object Detection"
+      ],
+      "category": "MULTIMODAL",
+      "definition": "定位图像中的对象并识别其类别的任务。",
+      "mechanism": "预测边界框、类别和分数。",
+      "when_to_use": "数物体或找到对象位置。",
+      "when_not_to_use": "检测出对象不代表理解整体场景。",
+      "ai_pm_relevance": "验证小目标、遮挡和漏检影响。",
+      "example": "圈出仓库照片中的破损货箱。",
+      "related_names": [
+        "语音合成",
+        "图像分割"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "hf_pipeline"
+      ]
+    },
+    {
+      "id": 2118,
+      "name": "图像分割",
+      "aliases": [
+        "Image Segmentation",
+        "Semantic Segmentation"
+      ],
+      "category": "MULTIMODAL",
+      "definition": "给像素或图像区域赋予类别或实例归属的任务。",
+      "mechanism": "生成像素级掩码以区分对象和背景。",
+      "when_to_use": "需要精细区域边界的任务。",
+      "when_not_to_use": "边缘质量与标注成本需考虑。",
+      "ai_pm_relevance": "根据业务决定是否需要像素级精度。",
+      "example": "将商品主体从背景中分离。",
+      "related_names": [
+        "目标检测",
+        "推荐系统"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "hf_pipeline"
+      ]
+    },
+    {
+      "id": 2119,
+      "name": "推荐系统",
+      "aliases": [
+        "Recommendation System",
+        "Recommender"
+      ],
+      "category": "MULTIMODAL",
+      "definition": "根据用户、对象和上下文选择或排序候选内容的系统。",
+      "mechanism": "结合行为、内容和排序策略预测相关性。",
+      "when_to_use": "商品、内容或学习资源推荐。",
+      "when_not_to_use": "点击增多未必提高长期价值。",
+      "ai_pm_relevance": "同时看用户收益、多样性和长期指标。",
+      "example": "优先推荐用户尚未掌握的学习材料。",
+      "related_names": [
+        "图像分割",
+        "自然语言转 SQL"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "hf_pipeline"
+      ]
+    },
+    {
+      "id": 2120,
+      "name": "自然语言转 SQL",
+      "aliases": [
+        "Natural Language to SQL",
+        "NL2SQL",
+        "Text-to-SQL"
+      ],
+      "category": "MULTIMODAL",
+      "definition": "把自然语言数据问题转换成数据库查询的任务。",
+      "mechanism": "结合表结构生成 SQL，再校验权限和查询逻辑。",
+      "when_to_use": "结构化数据查询助手。",
+      "when_not_to_use": "语法正确仍可能算错口径或越权。",
+      "ai_pm_relevance": "限制只读权限并展示统计口径。",
+      "example": "把“本月各地区销量”转成聚合查询。",
+      "related_names": [
+        "推荐系统",
+        "对话式商业分析"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "hf_pipeline"
+      ]
+    },
+    {
+      "id": 2121,
+      "name": "对话式商业分析",
+      "aliases": [
+        "Conversational BI",
+        "ChatBI"
+      ],
+      "category": "MULTIMODAL",
+      "definition": "通过自然语言交互查询、分析和解释业务数据的应用。",
+      "mechanism": "连接指标定义、查询执行与可核验的结果展示。",
+      "when_to_use": "降低业务数据分析操作门槛。",
+      "when_not_to_use": "语言回答不能替代可靠数据与指标口径。",
+      "ai_pm_relevance": "让用户看到数据来源和计算定义。",
+      "example": "业务人员询问转化下降，系统展示相关指标。",
+      "related_names": [
+        "自然语言转 SQL"
+      ],
+      "source_ids": [
+        "google_glossary",
+        "hf_pipeline"
+      ]
+    },
+    {
+      "id": 2122,
+      "name": "推理",
+      "aliases": [
+        "Inference"
+      ],
+      "category": "DEPLOYMENT",
+      "definition": "训练好的模型根据输入计算预测或生成结果的过程。",
+      "mechanism": "加载参数，运行前向计算，生成任务输出。",
+      "when_to_use": "估算线上模型服务需求。",
+      "when_not_to_use": "推理与训练的成本结构不同。",
+      "ai_pm_relevance": "比较线上质量、时延与资源开销。",
+      "example": "客服助手对一条新工单生成摘要。",
+      "related_names": [
+        "模型量化"
+      ],
+      "source_ids": [
+        "hf_quantization",
+        "hf_cache",
+        "google_mlops"
+      ]
+    },
+    {
+      "id": 2123,
+      "name": "模型量化",
+      "aliases": [
+        "Quantization"
+      ],
+      "category": "DEPLOYMENT",
+      "definition": "使用更低精度表示权重或计算数值的技术。",
+      "mechanism": "把数值映射到较低精度表示以节省资源。",
+      "when_to_use": "减小显存或改善部署效率。",
+      "when_not_to_use": "速度收益与质量损失取决于硬件和方法。",
+      "ai_pm_relevance": "用实际任务测降成本是否值得。",
+      "example": "以低比特权重在有限显存上运行模型。",
+      "related_names": [
+        "推理",
+        "知识蒸馏"
+      ],
+      "source_ids": [
+        "hf_quantization"
+      ]
+    },
+    {
+      "id": 2124,
+      "name": "知识蒸馏",
+      "aliases": [
+        "Knowledge Distillation",
+        "Distillation"
+      ],
+      "category": "DEPLOYMENT",
+      "definition": "用较强模型的输出或表示训练较小模型的方法。",
+      "mechanism": "学生模型学习教师的软标签、样例或内部表示。",
+      "when_to_use": "在资源受限环境保留部分能力。",
+      "when_not_to_use": "可能继承教师错误并丢失复杂能力。",
+      "ai_pm_relevance": "比较小模型任务质量和推理成本。",
+      "example": "用教师生成的审核样本训练工单小模型。",
+      "related_names": [
+        "模型量化",
+        "模型剪枝"
+      ],
+      "source_ids": [
+        "hf_quantization",
+        "hf_cache",
+        "google_mlops"
+      ]
+    },
+    {
+      "id": 2125,
+      "name": "模型剪枝",
+      "aliases": [
+        "Model Pruning",
+        "Pruning"
+      ],
+      "category": "DEPLOYMENT",
+      "definition": "移除部分权重或结构以减小模型的技术。",
+      "mechanism": "按重要性等准则删减参数，必要时重新训练。",
+      "when_to_use": "降低模型资源需求。",
+      "when_not_to_use": "稀疏参数不一定在所有硬件上加速。",
+      "ai_pm_relevance": "验证实际延迟而非只看参数量。",
+      "example": "删减低贡献通道后重新测图像分类质量。",
+      "related_names": [
+        "知识蒸馏",
+        "图形处理器"
+      ],
+      "source_ids": [
+        "hf_quantization",
+        "hf_cache",
+        "google_mlops"
+      ]
+    },
+    {
+      "id": 2126,
+      "name": "图形处理器",
+      "aliases": [
+        "Graphics Processing Unit",
+        "GPU"
+      ],
+      "category": "DEPLOYMENT",
+      "definition": "擅长大量并行运算、常用于 AI 计算的处理器。",
+      "mechanism": "利用并行单元执行矩阵等计算。",
+      "when_to_use": "模型训练与推理资源规划。",
+      "when_not_to_use": "显存、带宽和软件支持也会限制性能。",
+      "ai_pm_relevance": "按任务负载比较资源配置。",
+      "example": "模型权重与缓存占用 GPU 显存。",
+      "related_names": [
+        "模型剪枝",
+        "键值缓存"
+      ],
+      "source_ids": [
+        "hf_quantization",
+        "hf_cache",
+        "google_mlops"
+      ]
+    },
+    {
+      "id": 2127,
+      "name": "键值缓存",
+      "aliases": [
+        "Key-value Cache",
+        "KV Cache"
+      ],
+      "category": "DEPLOYMENT",
+      "definition": "复用已计算注意力键和值以加速自回归生成的缓存。",
+      "mechanism": "生成新 token 时复用历史状态，减少重复计算。",
+      "when_to_use": "优化语言模型生成性能。",
+      "when_not_to_use": "长上下文和高并发会增加缓存显存。",
+      "ai_pm_relevance": "估算上下文、并发与显存的关系。",
+      "example": "长会话生成时保存前文的注意力状态。",
+      "related_names": [
+        "图形处理器",
+        "批量推理"
+      ],
+      "source_ids": [
+        "hf_cache"
+      ]
+    },
+    {
+      "id": 2128,
+      "name": "批量推理",
+      "aliases": [
+        "Batch Inference",
+        "Batching"
+      ],
+      "category": "DEPLOYMENT",
+      "definition": "将多个请求或样本一起交给模型计算的方式。",
+      "mechanism": "合并计算以提高设备利用率与吞吐。",
+      "when_to_use": "离线处理或可等待的批量任务。",
+      "when_not_to_use": "等待组批可能提高单请求延迟。",
+      "ai_pm_relevance": "分别测吞吐收益和用户等待。",
+      "example": "夜间统一为一批工单生成摘要。",
+      "related_names": [
+        "键值缓存",
+        "流式输出"
+      ],
+      "source_ids": [
+        "hf_quantization",
+        "hf_cache",
+        "google_mlops"
+      ]
+    },
+    {
+      "id": 2129,
+      "name": "流式输出",
+      "aliases": [
+        "Streaming",
+        "Streaming Output"
+      ],
+      "category": "DEPLOYMENT",
+      "definition": "在完整答案生成前逐步向用户发送结果的方式。",
+      "mechanism": "把已生成的片段持续传输并更新界面。",
+      "when_to_use": "较长回答和实时交互。",
+      "when_not_to_use": "最早显示文字不等于答案更早完成。",
+      "ai_pm_relevance": "提供取消、失败和完整状态提示。",
+      "example": "助手一边生成讲解一边展示文字。",
+      "related_names": [
+        "批量推理",
+        "首 token 延迟"
+      ],
+      "source_ids": [
+        "hf_quantization",
+        "hf_cache",
+        "google_mlops"
+      ]
+    },
+    {
+      "id": 2130,
+      "name": "首 token 延迟",
+      "aliases": [
+        "Time to First Token",
+        "TTFT"
+      ],
+      "category": "DEPLOYMENT",
+      "definition": "从规定起点到收到首个输出 token 的时间。",
+      "mechanism": "计时覆盖请求排队、网络和前置计算等指定环节。",
+      "when_to_use": "流式体验与服务性能比较。",
+      "when_not_to_use": "各系统计时起点不同会影响可比性。",
+      "ai_pm_relevance": "固定测量口径并看分位数。",
+      "example": "用户发问后多久看到第一个字。",
+      "related_names": [
+        "流式输出",
+        "尾部延迟"
+      ],
+      "source_ids": [
+        "hf_quantization",
+        "hf_cache",
+        "google_mlops"
+      ]
+    },
+    {
+      "id": 2131,
+      "name": "尾部延迟",
+      "aliases": [
+        "Tail Latency",
+        "P95 Latency",
+        "P99 Latency"
+      ],
+      "category": "DEPLOYMENT",
+      "definition": "请求时延分布高分位的等待情况。",
+      "mechanism": "统计 P95、P99 等分位数以观察慢请求。",
+      "when_to_use": "检验高峰与复杂任务体验。",
+      "when_not_to_use": "平均时延可能掩盖少量非常慢的请求。",
+      "ai_pm_relevance": "为慢请求设计超时与降级。",
+      "example": "95% 请求在三秒内完成，但剩余请求更慢。",
+      "related_names": [
+        "首 token 延迟",
+        "吞吐量"
+      ],
+      "source_ids": [
+        "hf_quantization",
+        "hf_cache",
+        "google_mlops"
+      ]
+    },
+    {
+      "id": 2132,
+      "name": "吞吐量",
+      "aliases": [
+        "Throughput",
+        "Requests per Second",
+        "Tokens per Second"
+      ],
+      "category": "DEPLOYMENT",
+      "definition": "单位时间系统完成的请求数或 token 数等产出。",
+      "mechanism": "在明确负载与计算口径下统计处理量。",
+      "when_to_use": "容量规划与压力测试。",
+      "when_not_to_use": "系统吞吐与单用户生成速度不是一回事。",
+      "ai_pm_relevance": "结合并发、时延和质量估容量。",
+      "example": "统计高峰每分钟可完成多少工单摘要。",
+      "related_names": [
+        "尾部延迟",
+        "Token 成本"
+      ],
+      "source_ids": [
+        "hf_quantization",
+        "hf_cache",
+        "google_mlops"
+      ]
+    },
+    {
+      "id": 2133,
+      "name": "Token 成本",
+      "aliases": [
+        "Token Cost",
+        "Usage Cost"
+      ],
+      "category": "DEPLOYMENT",
+      "definition": "由输入、输出等 token 用量和计费规则形成的模型费用。",
+      "mechanism": "记录各类用量并按适用价格计算。",
+      "when_to_use": "核算单位任务成本。",
+      "when_not_to_use": "重试、工具循环和缓存规则会改变费用。",
+      "ai_pm_relevance": "按成功任务而非单次调用算账。",
+      "example": "一次调研多轮调用的费用累加到任务成本。",
+      "related_names": [
+        "吞吐量",
+        "应用缓存"
+      ],
+      "source_ids": [
+        "hf_quantization",
+        "hf_cache",
+        "google_mlops"
+      ]
+    },
+    {
+      "id": 2134,
+      "name": "应用缓存",
+      "aliases": [
+        "Application Cache",
+        "Response Cache",
+        "Caching"
+      ],
+      "category": "DEPLOYMENT",
+      "definition": "复用之前的计算或回答结果以减少重复工作的机制。",
+      "mechanism": "按请求、资料版本和用户范围生成键并设置失效。",
+      "when_to_use": "重复问题和稳定资料。",
+      "when_not_to_use": "跨用户复用或陈旧答案会产生风险。",
+      "ai_pm_relevance": "设置权限范围与资料更新失效。",
+      "example": "同版本公开政策的重复查询使用缓存。",
+      "related_names": [
+        "Token 成本",
+        "速率限制"
+      ],
+      "source_ids": [
+        "hf_quantization",
+        "hf_cache",
+        "google_mlops"
+      ]
+    },
+    {
+      "id": 2135,
+      "name": "速率限制",
+      "aliases": [
+        "Rate Limiting",
+        "Rate Limit",
+        "Quota"
+      ],
+      "category": "DEPLOYMENT",
+      "definition": "限制一定时间内请求次数或资源用量的机制。",
+      "mechanism": "通过配额、令牌桶等机制控制服务负载。",
+      "when_to_use": "处理服务配额与防止过载。",
+      "when_not_to_use": "无节制重试可能加剧拥堵。",
+      "ai_pm_relevance": "设计等待提示、退避和排队。",
+      "example": "请求超限后按退避策略重试而非立即重复。",
+      "related_names": [
+        "应用缓存",
+        "机器学习运维"
+      ],
+      "source_ids": [
+        "hf_quantization",
+        "hf_cache",
+        "google_mlops"
+      ]
+    },
+    {
+      "id": 2136,
+      "name": "机器学习运维",
+      "aliases": [
+        "Machine Learning Operations",
+        "MLOps"
+      ],
+      "category": "DEPLOYMENT",
+      "definition": "管理模型、数据、部署和监测全生命周期的工程实践。",
+      "mechanism": "通过版本、自动化流水线和监测使迭代可追踪。",
+      "when_to_use": "持续上线和维护模型服务。",
+      "when_not_to_use": "部署成功不等于质量持续稳定。",
+      "ai_pm_relevance": "定义发布门槛、监测与回滚责任。",
+      "example": "数据更新后训练、评测合格再发布新模型。",
+      "related_names": [
+        "速率限制"
+      ],
+      "source_ids": [
+        "google_mlops"
+      ]
+    },
+    {
+      "id": 2001,
+      "name": "基线方案",
+      "aliases": [
+        "Baseline",
+        "Baseline Solution"
+      ],
+      "category": "PRODUCT_SAFETY",
+      "definition": "用于比较新方案的现有方法或简单可行方案。",
+      "mechanism": "在相同任务和标准下比较质量、成本、时延与风险。",
+      "when_to_use": "判断是否值得引入新模型或复杂流程。",
+      "when_not_to_use": "不同样本和条件下的指标不能直接比较。",
+      "ai_pm_relevance": "证明 AI 带来可衡量的增量价值。",
+      "example": "用同一批工单比较人工、规则与模型。",
+      "related_names": [
+        "人在回路"
+      ],
+      "source_ids": [
+        "pair_needs"
+      ]
+    },
+    {
+      "id": 2137,
+      "name": "人在回路",
+      "aliases": [
+        "Human-in-the-loop",
+        "HITL",
+        "Human Oversight"
+      ],
+      "category": "PRODUCT_SAFETY",
+      "definition": "在人机流程的关键位置加入人的判断或确认。",
+      "mechanism": "按风险与不确定性触发审核，并把结果反馈到系统。",
+      "when_to_use": "高影响或模型难以可靠处理的任务。",
+      "when_not_to_use": "人工审查也受负荷和信息质量影响。",
+      "ai_pm_relevance": "定义触发条件、响应时间和责任。",
+      "example": "自动草拟退款方案，但实际退款需人工确认。",
+      "related_names": [
+        "基线方案",
+        "自动化偏误"
+      ],
+      "source_ids": [
+        "pair_needs",
+        "nist_rmf",
+        "owasp"
+      ]
+    },
+    {
+      "id": 2138,
+      "name": "自动化偏误",
+      "aliases": [
+        "Automation Bias"
+      ],
+      "category": "PRODUCT_SAFETY",
+      "definition": "用户过度信任自动化建议而忽略其他证据的倾向。",
+      "mechanism": "界面权威感与操作便利可能降低人的独立核查。",
+      "when_to_use": "设计 AI 建议和人工审核流程。",
+      "when_not_to_use": "加一句免责声明通常不足以解决。",
+      "ai_pm_relevance": "给审核者可核验资料与纠错入口。",
+      "example": "审核人因模型说“已核对”而跳过原始票据。",
+      "related_names": [
+        "人在回路",
+        "可解释性"
+      ],
+      "source_ids": [
+        "pair_needs",
+        "nist_rmf",
+        "owasp"
+      ]
+    },
+    {
+      "id": 2139,
+      "name": "可解释性",
+      "aliases": [
+        "Explainability",
+        "Interpretability",
+        "XAI"
+      ],
+      "category": "PRODUCT_SAFETY",
+      "definition": "帮助人理解模型结果或决策依据的能力与方法。",
+      "mechanism": "提供可核验因素、过程说明或局部解释。",
+      "when_to_use": "需要理解与申诉决策的场景。",
+      "when_not_to_use": "模型自述原因不一定反映实际因果。",
+      "ai_pm_relevance": "区分证据说明和模型机制解释。",
+      "example": "展示风控规则与相关事实供用户复核。",
+      "related_names": [
+        "自动化偏误",
+        "公平性"
+      ],
+      "source_ids": [
+        "pair_needs",
+        "nist_rmf",
+        "owasp"
+      ]
+    },
+    {
+      "id": 2140,
+      "name": "公平性",
+      "aliases": [
+        "Fairness",
+        "Algorithmic Fairness"
+      ],
+      "category": "PRODUCT_SAFETY",
+      "definition": "识别并减少 AI 对不同群体造成不合理差异的目标。",
+      "mechanism": "比较群体表现、错误率和结果影响并进行治理。",
+      "when_to_use": "涉及用户权益的预测与决策。",
+      "when_not_to_use": "不同公平指标可能冲突，需明确目标。",
+      "ai_pm_relevance": "检查数据覆盖和群体错误影响。",
+      "example": "分别检查不同语言用户的语音识别误差。",
+      "related_names": [
+        "可解释性",
+        "个人可识别信息"
+      ],
+      "source_ids": [
+        "pair_needs",
+        "nist_rmf",
+        "owasp"
+      ]
+    },
+    {
+      "id": 2141,
+      "name": "个人可识别信息",
+      "aliases": [
+        "Personally Identifiable Information",
+        "PII"
+      ],
+      "category": "PRODUCT_SAFETY",
+      "definition": "可单独或结合其他信息识别个人的数据。",
+      "mechanism": "识别、最小化采集，并控制处理、存储与访问。",
+      "when_to_use": "用户数据进入模型或日志时。",
+      "when_not_to_use": "去掉姓名不一定足以消除可识别性。",
+      "ai_pm_relevance": "设计脱敏、保留期限与访问范围。",
+      "example": "在转写日志中处理电话、地址和身份证信息。",
+      "related_names": [
+        "公平性",
+        "提示注入"
+      ],
+      "source_ids": [
+        "pair_needs",
+        "nist_rmf",
+        "owasp"
+      ]
+    },
+    {
+      "id": 2142,
+      "name": "提示注入",
+      "aliases": [
+        "Prompt Injection",
+        "Indirect Prompt Injection"
+      ],
+      "category": "PRODUCT_SAFETY",
+      "definition": "恶意输入或外部资料试图改变模型行为的攻击。",
+      "mechanism": "把不可信内容伪装成指令，诱导越权或泄露。",
+      "when_to_use": "处理网页、文件和用户文本的助手。",
+      "when_not_to_use": "仅添加“忽略恶意指令”无法彻底防御。",
+      "ai_pm_relevance": "隔离数据与指令，限制工具权限。",
+      "example": "网页藏有“发送私密文件”的指令被助手读取。",
+      "related_names": [
+        "个人可识别信息",
+        "数据投毒"
+      ],
+      "source_ids": [
+        "owasp"
+      ]
+    },
+    {
+      "id": 2143,
+      "name": "数据投毒",
+      "aliases": [
+        "Data Poisoning",
+        "Training Data Poisoning"
+      ],
+      "category": "PRODUCT_SAFETY",
+      "definition": "攻击者操纵训练或知识资料以影响模型或系统行为。",
+      "mechanism": "污染样本、标签或检索库，使输出偏向攻击目标。",
+      "when_to_use": "接受外部资料与训练数据时。",
+      "when_not_to_use": "来源可信度不能只靠文件名称判断。",
+      "ai_pm_relevance": "检查来源、变更记录与异常内容。",
+      "example": "恶意上传的政策片段诱导错误退款规则。",
+      "related_names": [
+        "提示注入",
+        "最小权限"
+      ],
+      "source_ids": [
+        "owasp"
+      ]
+    },
+    {
+      "id": 2144,
+      "name": "最小权限",
+      "aliases": [
+        "Least Privilege",
+        "Least-privilege Access"
+      ],
+      "category": "PRODUCT_SAFETY",
+      "definition": "只授予完成当前任务所必需的权限原则。",
+      "mechanism": "按角色、工具和动作限制资源范围，并默认拒绝额外访问。",
+      "when_to_use": "工具调用、数据检索与系统集成。",
+      "when_not_to_use": "模型知道工具不代表它应该有全部权限。",
+      "ai_pm_relevance": "逐个动作定义可访问资源和确认条件。",
+      "example": "查询助手可以读订单，但不能修改付款信息。",
+      "related_names": [
+        "数据投毒",
+        "沙箱"
+      ],
+      "source_ids": [
+        "pair_needs",
+        "nist_rmf",
+        "owasp"
+      ]
+    },
+    {
+      "id": 2145,
+      "name": "沙箱",
+      "aliases": [
+        "Sandbox",
+        "Sandboxing"
+      ],
+      "category": "PRODUCT_SAFETY",
+      "definition": "用受控隔离环境限制程序或工具操作影响的机制。",
+      "mechanism": "约束文件、网络、进程和资源访问范围。",
+      "when_to_use": "代码执行与不可信工具测试。",
+      "when_not_to_use": "隔离措施需正确配置，也非绝对可靠。",
+      "ai_pm_relevance": "测试资源边界与任务退出行为。",
+      "example": "生成的分析代码在隔离环境处理样例数据。",
+      "related_names": [
+        "最小权限",
+        "输出校验"
+      ],
+      "source_ids": [
+        "pair_needs",
+        "nist_rmf",
+        "owasp"
+      ]
+    },
+    {
+      "id": 2146,
+      "name": "输出校验",
+      "aliases": [
+        "Output Validation",
+        "Output Handling"
+      ],
+      "category": "PRODUCT_SAFETY",
+      "definition": "在模型结果进入界面或执行层前检查其正确性与安全性。",
+      "mechanism": "结合格式检查、业务规则和必要的人类复核。",
+      "when_to_use": "结果会执行查询、动作或被进一步解析。",
+      "when_not_to_use": "模型输出应当作为不可信输入处理。",
+      "ai_pm_relevance": "对高影响字段要求确定性校验。",
+      "example": "运行 SQL 前检查只读权限和访问表范围。",
+      "related_names": [
+        "沙箱",
+        "拒答与兜底"
+      ],
+      "source_ids": [
+        "owasp"
+      ]
+    },
+    {
+      "id": 2147,
+      "name": "拒答与兜底",
+      "aliases": [
+        "Abstention",
+        "Fallback",
+        "Escalation"
+      ],
+      "category": "PRODUCT_SAFETY",
+      "definition": "系统无法可靠完成时停止回答、降级或转交的策略。",
+      "mechanism": "根据证据不足、权限和故障状态选择后续路径。",
+      "when_to_use": "无资料、高风险或服务失败时。",
+      "when_not_to_use": "拒答过多也会使正常任务无法完成。",
+      "ai_pm_relevance": "权衡覆盖、错误风险与转人工成本。",
+      "example": "没有适用条款时说明缺失并转人工处理。",
+      "related_names": [
+        "输出校验",
+        "分布漂移监测"
+      ],
+      "source_ids": [
+        "pair_needs",
+        "nist_rmf",
+        "owasp"
+      ]
+    },
+    {
+      "id": 2148,
+      "name": "分布漂移监测",
+      "aliases": [
+        "Distribution Shift",
+        "Data Drift",
+        "Concept Drift"
+      ],
+      "category": "PRODUCT_SAFETY",
+      "definition": "发现输入分布或输入与目标关系随时间变化的监测。",
+      "mechanism": "跟踪数据统计与实际任务结果，区分数据漂移和概念漂移。",
+      "when_to_use": "长期运行且环境会变化的模型。",
+      "when_not_to_use": "输入变化不一定导致质量下降。",
+      "ai_pm_relevance": "结合质量证据决定是否重新训练。",
+      "example": "新业务上线后，工单用词和分类表现发生变化。",
+      "related_names": [
+        "拒答与兜底",
+        "任务成功率"
+      ],
+      "source_ids": [
+        "pair_needs",
+        "nist_rmf",
+        "owasp"
+      ]
+    },
+    {
+      "id": 2149,
+      "name": "任务成功率",
+      "aliases": [
+        "Task Success Rate",
+        "Completion Rate"
+      ],
+      "category": "PRODUCT_SAFETY",
+      "definition": "用户目标按明确标准成功完成的任务占比。",
+      "mechanism": "定义成功、失败与任务边界，再记录端到端结果。",
+      "when_to_use": "衡量 AI 功能的真实业务效果。",
+      "when_not_to_use": "按钮点击或回答生成不等于完成任务。",
+      "ai_pm_relevance": "同时看用户收益、成本和安全事件。",
+      "example": "摘要被用户采用且关键事项无遗漏才算成功。",
+      "related_names": [
+        "分布漂移监测",
+        "A/B 测试"
+      ],
+      "source_ids": [
+        "pair_needs",
+        "nist_rmf",
+        "owasp"
+      ]
+    },
+    {
+      "id": 2150,
+      "name": "A/B 测试",
+      "aliases": [
+        "A/B Testing",
+        "Online Experiment"
+      ],
+      "category": "PRODUCT_SAFETY",
+      "definition": "通过随机分组比较产品方案效果的实验方法。",
+      "mechanism": "分组提供不同方案，按预定指标分析差异。",
+      "when_to_use": "验证线上功能是否改善用户结果。",
+      "when_not_to_use": "样本不足、串组和多重比较可能误导。",
+      "ai_pm_relevance": "预设主指标、护栏与停止规则。",
+      "example": "比较两种助手界面对任务完成率的影响。",
+      "related_names": [
+        "任务成功率"
+      ],
+      "source_ids": [
+        "google_glossary"
+      ]
+    }
+  ]
+}

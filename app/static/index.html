@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f9fc">
+  <title>AI PM Learning · 学习工作台</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <aside class="app-sidebar" aria-label="学习工作台导航">
+    <a class="brand" href="/" aria-label="AI PM Learning 首页">
+      <svg viewBox="0 0 36 36" aria-hidden="true"><rect width="36" height="36" rx="11" fill="currentColor"/><path d="M10 10h8v15h-8zm8 0h8v15h-8" fill="none" stroke="#fff" stroke-width="1.5"/><path d="M13 14h2m6 0h2m-10 4h2m6 0h2" stroke="#bde1d1" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <span>AI PM Learning<small>产品经理的学习工作台</small></span>
+    </a>
+    <nav aria-label="主要功能">
+      <button class="tab active" data-panel="learn" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5h6l2 2 2-2h6v14h-6l-2 1.5-2-1.5H4zM12 8v12"/></svg>智能学习</button>
+      <button class="tab" data-panel="concepts" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 7 10 10M7 17 17 7"/><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="18" r="3"/></svg>概念地图</button>
+    </nav>
+    <div class="sidebar-path"><p>学习路径</p><div id="module-shortcuts" aria-label="课程模块"></div></div>
+    <div class="sidebar-note"><span class="local-dot" aria-hidden="true"></span><span>进度保存在本机<small>下次回来，接着学。</small></span></div>
+  </aside>
+  <header class="hero">
+    <div class="header-title"><h1>把理解，变成你的判断。</h1><p>AI 产品经理的知识、场景与面试表达</p></div>
+    <div class="model-toolbar">
+      <span id="status" role="status">正在连接…</span>
+      <button id="open-model-settings" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 17h16"/><circle cx="9" cy="7" r="3"/><circle cx="15" cy="17" r="3"/></svg>模型设置</button>
+      <span id="model-config-status" role="status">正在检查评分配置…</span>
+    </div>
+  </header>
+  <dialog id="model-settings-dialog" class="model-dialog" aria-labelledby="model-settings-title">
+    <div class="model-dialog-heading">
+      <h2 id="model-settings-title">模型设置 · 仅本次运行</h2>
+      <button id="close-model-settings" type="button" aria-label="关闭模型设置">关闭</button>
+    </div>
+    <p class="muted">你自己测试时，也在这里填写自己的配置。密钥只保存在本机服务内存中，不写入项目、数据库或浏览器存储；服务关闭后需重填。</p>
+    <form id="model-settings-form" autocomplete="off">
+      <label for="model-base-url">API 基础地址（HTTPS）</label>
+      <input id="model-base-url" type="url" required maxlength="2048" placeholder="https://你的供应商地址/v1" autocomplete="off">
+      <label for="model-name">模型名称</label>
+      <input id="model-name" required maxlength="200" placeholder="填写供应商提供的准确模型名称" autocomplete="off">
+      <label for="model-api-key">API 密钥</label>
+      <input id="model-api-key" type="password" required maxlength="4096" placeholder="只在此处输入，不要发到聊天里" autocomplete="off" spellcheck="false" autocapitalize="none">
+      <label class="consent-label"><input id="model-consent" type="checkbox" required>我信任该 API 地址，知晓启用后题目、教材片段与回答可能发往此供应商，开始练习和评分可能产生费用。</label>
+      <p class="muted">仅支持 OpenAI 兼容的聊天接口与 JSON 输出。保存配置不会调用模型，也不代表密钥已验证；首次请求才能确认连通性。此设置供本机使用，不是公网多用户密钥托管。</p>
+      <div class="model-actions">
+        <button id="save-model-settings" type="submit">保存到本次运行</button>
+        <button id="clear-model-settings" type="button" class="secondary">清除当前配置</button>
+      </div>
+    </form>
+    <p id="model-settings-message" role="status" aria-live="polite"></p>
+  </dialog>
+  <main>
+    <section id="learn" class="panel active">
+      <section id="catalog-view" aria-labelledby="catalog-title">
+        <section class="learning-dashboard" aria-labelledby="learning-dashboard-title">
+          <div class="resume-card"><span class="resume-label" id="resume-label">你的下一步</span><h3 id="resume-title">准备好，开始第一节。</h3><p id="resume-point">先读懂一个知识点，再用一个真实场景练习。</p><button id="resume-learning" type="button" disabled>继续学习</button><p id="progress-message" role="status" aria-live="polite"></p><svg class="resume-art" viewBox="0 0 140 150" aria-hidden="true"><path d="M24 120V32l48-12v88zM72 20l44 18v88l-44-18"/><path d="m35 49 25-6m-25 23 25-6m-25 23 25-6m24-24 20 8m-20 9 20 8m-20 9 20 8"/><circle cx="114" cy="119" r="20"/><path d="m105 119 6 6 12-13"/></svg></div>
+          <div class="dashboard-copy"><div class="progress-heading"><h2 id="learning-dashboard-title">一点点，积累你的能力</h2><span class="local-label">本机进度</span></div><div class="metric-grid"><div><strong id="metric-read">0</strong><span>已读知识点</span></div><div><strong id="metric-practiced">0</strong><span>已练习知识点</span></div><div><strong id="metric-mastery">0<small>%</small></strong><span>练习掌握度</span></div></div><progress id="course-progress" max="60" value="0" aria-label="已完成课程"></progress><p id="progress-summary" role="status">正在读取本地学习进度…</p><p class="progress-note">阅读标记和练习掌握度分别记录。</p></div>
+        </section>
+        <div class="section-head">
+          <div><h2 id="catalog-title">你的学习路径</h2><p id="curriculum-stats" class="curriculum-stats" role="status"></p></div>
+          <div class="path-key"><span>阅读知识</span><i aria-hidden="true">—</i><span>场景练习</span><i aria-hidden="true">—</i><span>反馈复盘</span></div>
+        </div>
+        <div class="catalog-tools">
+          <label class="search-label" for="lesson-search"><span class="sr-only">搜索课程</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg><input id="lesson-search" type="search" placeholder="搜索课程或知识点" aria-controls="catalog"></label>
+          <label class="career-goal" for="career-role"><span>练习方向</span><select id="career-role"><option value="general_ai_pm">通用 AI 产品经理</option><option value="ai_education_pm">AI+教育产品经理</option></select></label>
+        </div>
+        <details class="career-help"><summary>练习方向如何影响出题？</summary><p>新练习按所选方向出题，已开始的练习保留原方向。第二节有两套完整岗位案例，其他课程逐步完善。</p></details>
+        <details class="curriculum-provenance" hidden>
+          <summary>教材目录与编排说明</summary>
+          <p id="curriculum-basis"></p>
+          <ul id="curriculum-outlines"></ul>
+        </details>
+        <p id="lesson-match-count" class="muted" role="status"></p>
+        <div id="catalog" class="catalog"><p class="muted">正在载入课程…</p></div>
+      </section>
+
+      <section id="lesson-view" class="lesson-view" hidden aria-labelledby="lesson-title">
+        <button id="back-catalog" class="text-button" type="button">‹ 返回课程目录</button>
+        <div class="lesson-layout">
+          <aside class="lesson-outline" aria-label="本节知识点目录">
+            <p class="outline-heading">本节知识点</p>
+            <nav id="knowledge-point-nav" class="knowledge-point-nav"></nav>
+          </aside>
+          <article class="lesson-reader">
+            <p id="lesson-section" class="lesson-section"></p>
+            <h2 id="lesson-title"></h2>
+            <p id="reading-save-status" class="save-status" role="status" aria-live="polite"></p>
+            <section class="lesson-summary" aria-labelledby="summary-title">
+              <h3 id="summary-title">课程摘要</h3>
+              <p id="lesson-summary"></p>
+            </section>
+            <section class="lesson-plan">
+              <h3>本节学习目标</h3>
+              <ul id="lesson-objectives"></ul>
+            </section>
+            <div class="knowledge-heading">
+              <div><h3>读懂本节关键点</h3></div>
+              <span id="knowledge-point-count" class="muted"></span>
+            </div>
+            <div id="knowledge-point-list" class="knowledge-point-list"></div>
+            <section class="lesson-task">
+              <h3>本节练习任务 · 原创</h3>
+              <p id="lesson-practice-task"></p>
+            </section>
+            <div class="lesson-actions">
+              <p>读完本节内容后，再用练习检验理解。</p>
+              <button id="start-practice" type="button">开始练习</button>
+            </div>
+            <p id="practice-status" class="practice-status" role="status" aria-live="polite" hidden></p>
+          </article>
+        </div>
+      </section>
+
+      <section id="session" class="session" hidden aria-live="polite">
+        <button id="review-knowledge" class="text-button" type="button">‹ 回看本节知识点</button>
+        <p class="eyebrow" id="lesson-label"></p>
+        <h2 id="point-title"></h2>
+        <details class="practice-recap"><summary>回顾本题知识要点</summary><p id="teaching" class="teaching"></p></details>
+        <div class="question-box"><span class="badge" id="question-type"></span><h3 id="question"></h3></div>
+        <aside id="question-career" class="question-career" hidden>
+          <p id="question-career-meta"></p>
+          <details><summary>这题考什么 · 作答边界</summary>
+          <p id="question-career-why"></p>
+          <p id="question-career-boundary"></p>
+          </details>
+        </aside>
+        <form id="answer-form">
+          <label for="answer">你的回答</label>
+          <textarea id="answer" required minlength="1" maxlength="10000" rows="6" placeholder="写下你的判断和理由…"></textarea>
+          <p id="draft-save-status" class="save-status" role="status" aria-live="polite">草稿保存在本机，不会提交评分。</p>
+          <button id="submit-answer" type="submit">提交并查看反馈</button>
+        </form>
+        <div id="feedback" class="feedback" hidden></div>
+        <button id="next" class="secondary" type="button" hidden>保存进度并继续</button>
+      </section>
+    </section>
+    <section id="concepts" class="panel">
+      <div class="section-head"><div><h2>概念地图</h2></div><p id="concept-total" class="muted"></p></div>
+      <p class="concept-intro">从基础到产品落地。按主题浏览，展开卡片看原理、例子和使用边界。</p>
+      <label class="search-label concept-search-label" for="concept-search"><span class="sr-only">搜索概念</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg><input id="concept-search" type="search" placeholder="搜索概念：RAG、MCP、向量…" aria-controls="concept-list"></label>
+      <div id="concept-categories" class="concept-categories" role="group" aria-label="按主题筛选"></div>
+      <p id="concept-result-count" class="muted" role="status" aria-live="polite"></p>
+      <div id="concept-list" class="concept-grid"><p class="muted">正在载入概念…</p></div>
+      <div class="concept-pagination" aria-label="概念分页">
+        <button id="concept-prev" type="button">上一页</button>
+        <span id="concept-page" class="muted"></span>
+        <button id="concept-next" type="button">下一页</button>
+      </div>
+      <p class="concept-editorial muted">公开版自主选编 · 概念讲解与例子独立编写 · 参考阅读见卡片</p>
+    </section>
+  </main>
+  <script src="/static/progress.js" defer></script>
+  <script src="/static/app.js" defer></script>
+</body>
+</html>

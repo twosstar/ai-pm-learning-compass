@@ -10,7 +10,8 @@
 
 AI PM Learning Copilot 是一款独立、以本地运行为主的 AI 产品经理学习助手。公开首发版聚焦智能学习、概念地图、答题反馈，以及保存在本机的学习进度，课程采用公开版示例路径。
 
-使用方法：下载所有文件后，点击Start Learning Copilot.bat 即可运行
+## 使用方法
+下载所有文件后，点击Start Learning Copilot.bat 即可运行
 
 ## 项目范围与课程内容
 

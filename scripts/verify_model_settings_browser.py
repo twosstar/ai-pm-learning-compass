@@ -66,6 +66,9 @@ try:
         page.get_by_role('button', name='查看本节：工作流、模型与知识检索的组合', exact=True).click()
         page.locator('#start-practice').click()
         page.locator('#answer').fill('先做票据识别和预填，程序查重校验，员工确认后提交。超时查状态并防重。')
+        page.locator('#draft-save-status').filter(has_text='已保存到本机').wait_for()
+        page.locator('#answer').evaluate('(el) => el.blur()')
+        page.locator('#session').screenshot(path=str(ROOT / 'docs' / 'images' / 'practice-question.png'))
         page.locator('#submit-answer').click()
         page.locator('#feedback').filter(has_text='尚未完成评价 · 不计分').wait_for()
         page.locator('#open-model-settings').click()
@@ -83,6 +86,7 @@ try:
         page.locator('#submit-answer').click()
         page.locator('#feedback').filter(has_text='90 分').wait_for()
         assert calls and service.public_status()['verified']
+        page.locator('#session').screenshot(path=str(ROOT / 'docs' / 'images' / 'score-feedback.png'))
         page.locator('#open-model-settings').click()
         assert page.locator('#model-api-key').input_value() == ''
         page.set_viewport_size({'width': 375, 'height': 812})

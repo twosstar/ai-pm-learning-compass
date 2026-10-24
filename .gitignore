@@ -3,6 +3,7 @@
 !.env.example
 MEMORY.md
 .venv/
+.worktrees/
 __pycache__/
 *.py[cod]
 .pytest_cache/

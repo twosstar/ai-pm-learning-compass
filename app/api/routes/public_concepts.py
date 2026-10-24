@@ -12,6 +12,38 @@ from app.services.public_concept_library import public_concept_library
 router = APIRouter(prefix="/concepts", tags=["concept-map"])
 DbSession = Annotated[Session, Depends(get_db)]
 
+# Editorial learning order for the public concept map. The rest are IMPORTANT:
+# useful vocabulary for interviews, but not prerequisites for every beginner.
+CORE_CONCEPT_IDS = {
+    2001, 2002, 2004, 2005, 2007, 2008, 2013,
+    2019, 2020, 2021, 2022, 2031, 2034, 2039, 2041,
+    2043, 2049, 2050, 2055, 2056, 2059, 2060, 2064, 2067,
+    2069, 2073, 2077, 2078, 2079, 2080, 2082, 2083, 2084,
+    2086, 2091, 2093, 2095, 2096, 2097, 2103, 2105,
+    2122, 2129, 2130, 2133, 2137, 2141, 2142, 2144, 2146,
+    2147, 2149, 2150,
+}
+SUPPLEMENTARY_CONCEPT_IDS = {
+    2011, 2012, 2025, 2026, 2027, 2028, 2029, 2037, 2038,
+    2042, 2046, 2047, 2048, 2057, 2058, 2070, 2071,
+    2072, 2074, 2075, 2085, 2087, 2089, 2099, 2100, 2101, 2102,
+    2108, 2109, 2110, 2111, 2112, 2113, 2117, 2118, 2124, 2125,
+    2126, 2136, 2138, 2139, 2140, 2143, 2145, 2148,
+}
+
+
+def _priority_for(concept_id: int, metadata: dict) -> str:
+    # Preserve the three hand-reviewed pilot labels while consistently
+    # classifying every other public card by this editorial map.
+    existing = metadata.get("priority")
+    if existing in {"CORE", "IMPORTANT", "SUPPLEMENTARY"}:
+        return existing
+    if concept_id in CORE_CONCEPT_IDS:
+        return "CORE"
+    if concept_id in SUPPLEMENTARY_CONCEPT_IDS:
+        return "SUPPLEMENTARY"
+    return "IMPORTANT"
+
 
 @router.get("")
 def list_concepts(db: DbSession, q: str = "", category: str = "") -> dict:
@@ -75,4 +107,7 @@ def _view(item: Concept) -> dict:
         "when_not_to_use": item.when_not_to_use,
         "ai_pm_relevance": item.ai_pm_relevance,
         "example": item.example,
+        "typical_scenario": metadata.get("typical_scenario", item.example),
+        "interview_questions": metadata.get("interview_questions", []),
+        "priority": _priority_for(item.id, metadata),
     }

@@ -205,6 +205,11 @@ details > summary { cursor: pointer; }
 .concept-intro { color: #5e6f87; font-size: 14px; line-height: 1.8; margin: -8px 0 22px; }
 .concept-search-label { max-width: 580px; }
 .concept-categories { display: flex; flex-wrap: wrap; gap: 7px; margin: 21px 0 16px; }
+.concept-filter-label { margin: 14px 0 -8px; color: #53647b; font-size: 13px; font-weight: 700; }
+.concept-priorities { margin-top: 12px; }
+.concept-priorities button[data-priority="CORE"][aria-pressed="true"] { background: #dcecff; color: #174a82; border-color: #88b4e9; }
+.concept-priorities button[data-priority="IMPORTANT"][aria-pressed="true"] { background: #fff0df; color: #8b4914; border-color: #e5b26e; }
+.concept-priorities button[data-priority="SUPPLEMENTARY"][aria-pressed="true"] { background: #f0eaff; color: #62448d; border-color: #c2acec; }
 .concept-categories button { padding: 9px 12px; min-height: 38px; font-size: 12px; background: white; border-color: #e1e8f4; color: #5c6e8a; font-weight: 400; }
 .concept-categories button[aria-pressed="true"] { background: #e5efff; color: #456fa9; border-color: #c1d5f4; }
 .concept-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; gap: 17px; margin-top: 18px; }
@@ -217,6 +222,10 @@ details > summary { cursor: pointer; }
 .concept-card summary { color: #566f92; min-height: 44px; padding-top: 14px; font-size: 13px; }
 .concept-card .reading-block p { font-size: 14px; }
 .concept-example { padding: 13px; background: #f0f5fd; border-radius: 7px; }
+.concept-interview { margin-top: 16px; padding: 14px 16px; border-radius: 9px; background: #fbf6eb; }
+.concept-interview h4 { margin: 0 0 8px; color: #765521; font-size: 14px; }
+.concept-interview ul { margin: 0; padding-left: 20px; }
+.concept-interview li { margin: 6px 0; color: var(--ink); font-size: 14px; line-height: 1.7; }
 .concept-related, .concept-sources { padding-top: 12px; margin-top: 18px; border-top: 1px solid var(--line); }
 .concept-related p, .concept-sources p { font-size: 12px; }
 .concept-related button { font-size: 12px; min-height: 36px; padding: 8px 10px; margin: 0 4px 5px 0; }
@@ -232,6 +241,7 @@ details > summary { cursor: pointer; }
 #model-settings-form { display: grid; gap: 13px; }
 #model-settings-form label { display: grid; gap: 7px; font-size: 14px; font-weight: 600; }
 #model-settings-form input:not([type="checkbox"]) { min-width: 0; width: 100%; min-height: 46px; padding: 12px; border: 1px solid #cbd9ed; border-radius: 8px; color: var(--ink); background: #fff; }
+#model-settings-form select { min-width: 0; width: 100%; min-height: 46px; padding: 10px 12px; border: 1px solid #cbd9ed; border-radius: 8px; color: var(--ink); background: #fff; font: inherit; }
 #model-settings-form .consent-label { display: flex; align-items: start; gap: 9px; font-weight: 400; font-size: 13px; line-height: 1.8; }
 #model-consent { width: 18px; height: 18px; flex-shrink: 0; margin-top: 3px; accent-color: var(--teal); }
 .model-actions { display: flex; gap: 10px; flex-wrap: wrap; }
@@ -297,3 +307,49 @@ details > summary { cursor: pointer; }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; } }
 @media (forced-colors: active) { .resume-card, .dashboard-copy, .course-card, .read-marker, .concept-card { border: 1px solid CanvasText; } }
+
+/* Bright, playful learning palette with clear ink contrast and restrained color accents. */
+:root {
+  color: #202b3b;
+  --ink: #202b3b;
+  --muted: #4b586a;
+  --teal: #416ba8;
+  --teal-dark: #294d7b;
+  --teal-wash: #eaf1ff;
+  --canvas: #f4f7fc;
+  --line: #d9e2ef;
+  --amber: #a84c19;
+}
+.hero::before { background: linear-gradient(112deg, rgb(216 233 255 / 88%) 0%, rgb(235 232 255 / 72%) 52%, rgb(255 243 227 / 62%) 100%); }
+body { background: radial-gradient(ellipse at 76% 0%, #dcecff 0, transparent 36rem), linear-gradient(180deg, #f8fbff 0, var(--canvas) 480px); }
+.tab.active { color: #244a7b; background: linear-gradient(105deg, #e1efff 0%, #f0eaff 100%); }
+.tab.active::after { width: 7px; height: 7px; background: #e28a3b; }
+.resume-card { background: linear-gradient(122deg, #dceaff 0%, #e9eaff 57%, #f5e9ff 100%); color: #172d4b; border-color: #cfdbef; box-shadow: 0 12px 30px rgb(53 88 145 / 10%); }
+.resume-label { color: #294f80; font-weight: 700; }
+.resume-label::before { width: 7px; height: 7px; background: #df8135; }
+#resume-point { color: #334761; font-size: 14px; }
+#resume-learning { background: #17243b; color: #fff; min-width: 128px; padding: 11px 22px; box-shadow: 0 5px 13px rgb(23 36 59 / 22%); }
+#resume-learning:hover { background: #2a4167; }
+.metric-grid strong { color: #315b9a; font-weight: 700; }
+#course-progress { height: 8px; accent-color: #627fe5; }
+#course-progress::-webkit-progress-bar { background: #e6ebf4; }
+#course-progress::-webkit-progress-value { background: linear-gradient(90deg, #4a8fe0 0%, #7779e8 62%, #e99449 100%); }
+#course-progress::-moz-progress-bar { background: linear-gradient(90deg, #4a8fe0 0%, #7779e8 62%, #e99449 100%); }
+.module-number { background: #fff1df; border-color: #f1d4ad; color: #934b19; font-weight: 700; }
+.lesson-actions button, #submit-answer { background: #315c9c; }
+.lesson-actions button:hover, #submit-answer:hover { background: #244675; }
+.concept-categories button[aria-pressed="true"] { background: #dbe9ff; color: #244a7b; border-color: #9eb9e5; font-weight: 700; }
+.concept-card { background: #fff; border-color: #d9e2ef; border-top: 3px solid #6696db; box-shadow: 0 7px 19px rgb(54 81 125 / 7%); }
+.concept-card:nth-child(4n + 2) { border-top-color: #9a77d6; }
+.concept-card:nth-child(4n + 3) { border-top-color: #e29a4a; }
+.concept-card:hover { border-color: #9db8df; border-top-color: #416ba8; box-shadow: 0 11px 25px rgb(54 81 125 / 12%); }
+.concept-card h3 { color: #202b3b; font-size: 20px; font-weight: 750; }
+.concept-priority { margin-left: 7px; }
+.concept-priority.CORE { background: #e0ecff; color: #244a7b; }
+.concept-priority.IMPORTANT { background: #fff0df; color: #914a18; }
+.concept-priority.SUPPLEMENTARY { background: #f0eaff; color: #62448d; }
+.concept-card p { color: #39485a; }
+.concept-card summary { color: #315c9c; font-size: 14px; font-weight: 700; }
+.concept-example { background: #edf4ff; border-left: 3px solid #6696db; }
+.concept-interview { background: #fff2e2; border-left: 3px solid #e28a3b; }
+.concept-card:nth-child(4n + 2) .concept-example { background: #f3efff; border-left-color: #9a77d6; }

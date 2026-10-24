@@ -17,6 +17,12 @@ const state = {
   panelScroll: {},
 };
 const CONCEPT_PAGE_SIZE = 24;
+const MODEL_PRESETS = {
+  deepseek: { baseUrl: "https://api.deepseek.com", model: "deepseek-flash" },
+  qwen: { baseUrl: "https://dashscope.aliyuncs.com/compatible-mode/v1", model: "qwen-plus" },
+  openai: { baseUrl: "https://api.openai.com/v1", model: "gpt-4.1-mini" },
+  gemini: { baseUrl: "https://generativelanguage.googleapis.com/v1beta/openai/", model: "gemini-3.8-flash" },
+};
 
 async function api(path, options = {}) {
   const { headers = {}, ...requestOptions } = options;
@@ -42,13 +48,24 @@ async function refreshModelStatus(populateForm = false) {
     : "未配置模型 · 暂不评分";
   $("#clear-model-settings").disabled = !config.configured;
   if (populateForm) {
-    $("#model-base-url").value = config.base_url || "";
-    $("#model-name").value = config.model || "";
+    const initialPreset = MODEL_PRESETS.deepseek;
+    $("#model-base-url").value = config.base_url || initialPreset.baseUrl;
+    $("#model-name").value = config.model || initialPreset.model;
+    const provider = Object.entries(MODEL_PRESETS).find(([, preset]) =>
+      preset.baseUrl.replace(/\/$/, "") === (config.base_url || "").replace(/\/$/, ""));
+    $("#model-provider").value = config.configured ? (provider?.[0] || "custom") : "deepseek";
     $("#model-api-key").value = "";
     $("#model-consent").checked = false;
   }
   return config;
 }
+
+$("#model-provider").addEventListener?.("change", (event) => {
+  const preset = MODEL_PRESETS[event.target.value];
+  if (!preset) return;
+  $("#model-base-url").value = preset.baseUrl;
+  $("#model-name").value = preset.model;
+});
 
 async function openModelSettings() {
   $("#model-settings-message").textContent = "正在读取本地配置状态…";
@@ -603,6 +620,10 @@ function renderConcepts() {
     const category = document.createElement("span");
     category.className = "badge";
     category.textContent = concept.category_label || concept.category;
+    const priorityLabels = { CORE: "核心概念", IMPORTANT: "重要概念", SUPPLEMENTARY: "补充概念" };
+    const priority = document.createElement("span");
+    priority.className = `badge concept-priority ${concept.priority || ""}`;
+    priority.textContent = priorityLabels[concept.priority] || "";
     const title = document.createElement("h3");
     title.textContent = concept.name;
     const english = document.createElement("p");
@@ -611,14 +632,30 @@ function renderConcepts() {
     const description = document.createElement("p");
     description.textContent = concept.definition;
     const details = document.createElement("details");
+    details.open = concept.name === "检索增强生成";
     const summary = document.createElement("summary");
-    summary.textContent = "查看完整讲解";
+    summary.textContent = "查看应用方法与边界";
     details.append(summary);
     addReadingBlock(details, "它如何运作", concept.mechanism);
-    addReadingBlock(details, "适合什么场景", concept.when_to_use);
-    addReadingBlock(details, "容易误用的地方", concept.when_not_to_use);
-    addReadingBlock(details, "AI PM 要关注", concept.ai_pm_relevance);
-    addReadingBlock(details, "举个例子", concept.example, "concept-example");
+    addReadingBlock(details, "适用场景 / 什么时候用", concept.when_to_use);
+    addReadingBlock(details, "典型业务场景", concept.typical_scenario || concept.example, "concept-example");
+    addReadingBlock(details, "不适用边界 / 容易误用", concept.when_not_to_use);
+    addReadingBlock(details, "AI PM 怎么判断", concept.ai_pm_relevance);
+    if (concept.interview_questions?.length) {
+      const interview = document.createElement("div");
+      interview.className = "concept-interview";
+      const heading = document.createElement("h4");
+      heading.textContent = "面试常问";
+      interview.append(heading);
+      const list = document.createElement("ul");
+      for (const question of concept.interview_questions) {
+        const item = document.createElement("li");
+        item.textContent = question;
+        list.append(item);
+      }
+      interview.append(list);
+      details.append(interview);
+    }
     const related = document.createElement("div");
     related.className = "concept-related";
     const relatedLabel = document.createElement("p");
@@ -652,7 +689,9 @@ function renderConcepts() {
       sources.append(link);
     }
     if (concept.sources?.length) details.append(sources);
-    card.append(category, title, english, description, details);
+    card.append(category);
+    if (priority.textContent) card.append(priority);
+    card.append(title, english, description, details);
     root.append(card);
   }
 }
@@ -792,8 +831,12 @@ document.querySelectorAll(".tab").forEach((button) => button.addEventListener("c
   document.querySelectorAll(".tab").forEach(item => item.setAttribute("aria-pressed", String(item === button)));
   button.classList.add("active");
   $(`#${button.dataset.panel}`).classList.add("active");
+  if (button.dataset.view) setView(button.dataset.view);
   window.scrollTo({ top: state.panelScroll[button.dataset.panel] || 0, behavior: "instant" });
 }));
+document.querySelector("[data-open-concepts]").addEventListener("click", () => {
+  document.querySelector('.tab[data-panel="concepts"]').click();
+});
 $("#concept-search").addEventListener("input", () => {
   state.conceptPage = 1;
   renderConcepts();

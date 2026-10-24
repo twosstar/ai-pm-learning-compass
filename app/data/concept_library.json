@@ -1,7 +1,7 @@
 {
-  "version": "public150_v1",
-  "reviewed_at": "2026-10-15",
-  "editorial_note": "面向 AI 产品经理自主选编的 150 个概念。中文讲解与业务例子为公开版独立编写；参考链接用于延伸学习，不表示存在统一官方必备名单。同主题概念是阅读导航，不表示先修依赖。",
+  "version": "public150_v2",
+  "reviewed_at": "2026-10-24",
+  "editorial_note": "面向 AI 产品经理自主选编的 150 个概念。卡片补充具体业务场景与面试追问，帮助读者把原理、适用条件、误用边界和产品判断连起来。中文讲解与例子为公开版独立编写；参考链接用于延伸学习，不表示存在统一官方必备名单。同主题概念是阅读导航，不表示先修依赖。",
   "categories": [
     {
       "id": "FOUNDATION",
@@ -135,7 +135,7 @@
         "AI"
       ],
       "category": "FOUNDATION",
-      "definition": "让计算机执行识别、预测、生成或决策等需要智能能力的任务。",
+      "definition": "让电脑帮忙完成一些光靠固定步骤很难搞定的事，比如看懂文字、识别图片，或者根据情况给出建议。",
       "mechanism": "通过规则或学习模型，把输入转成任务结果。",
       "when_to_use": "判断业务是否需要智能能力。",
       "when_not_to_use": "不能把所有自动化都当作机器学习。",
@@ -146,6 +146,10 @@
       ],
       "source_ids": [
         "google_glossary"
+      ],
+      "typical_scenario": "客服团队每天收到大量自然语言咨询，固定菜单只能覆盖常见问法。AI先识别诉求并草拟回复；涉及退款、隐私或投诉升级时转人工，产品要先定清解决率和错误代价。",
+      "interview_questions": [
+        "什么情况下应该用 AI，而不是继续补充规则菜单？"
       ]
     },
     {
@@ -156,18 +160,23 @@
         "ML"
       ],
       "category": "FOUNDATION",
-      "definition": "从数据中学习规律，并用这些规律处理新样本的方法。",
-      "mechanism": "训练调整参数，推理用参数生成预测。",
-      "when_to_use": "规则难以穷举的预测任务。",
-      "when_not_to_use": "历史相关性不等于因果关系。",
-      "ai_pm_relevance": "评估数据来源和泛化能力。",
-      "example": "用历史工单预测新工单应分配的部门。",
+      "definition": "让电脑从过去的例子里找规律，再用这个规律处理没见过的新情况。",
+      "mechanism": "先给模型看带结果的历史例子，让它调整内部参数；上线后再用学到的规律做预测。",
+      "when_to_use": "同类判断反复发生、规则很难一条条写全，而且手头有一定历史数据时。",
+      "when_not_to_use": "事情很少发生、数据不可靠，或结果必须严格按固定规则决定时，先别急着上机器学习。",
+      "ai_pm_relevance": "先问历史数据能不能代表未来用户；再用没参与训练的新数据验证效果，不能只看模型在旧数据上答得好不好。",
+      "priority": "CORE",
+      "example": "比如一张新工单写着“发票一直没收到”，系统参考相似历史工单，建议分给财务支持组。",
       "related_names": [
         "人工智能",
         "深度学习"
       ],
       "source_ids": [
         "google_glossary"
+      ],
+      "typical_scenario": "客服工单每天都要分给不同团队。团队用历史工单和最终处理部门训练模型，让它推荐负责团队；客服可改派，产品要监测新业务上线后的错分。",
+      "interview_questions": [
+        "历史工单预测准确，为什么上线后仍可能分错？"
       ]
     },
     {
@@ -178,7 +187,7 @@
         "DL"
       ],
       "category": "FOUNDATION",
-      "definition": "使用多层神经网络学习复杂表示的机器学习方法。",
+      "definition": "机器学习的一种，靠很多层神经网络逐步从数据里学出复杂规律；图片识别、语音理解常会用到它。",
       "mechanism": "逐层转换输入，利用训练损失优化网络参数。",
       "when_to_use": "复杂的图像、语音和文本任务。",
       "when_not_to_use": "不是每个小数据任务都需要大网络。",
@@ -190,6 +199,10 @@
       ],
       "source_ids": [
         "google_glossary"
+      ],
+      "typical_scenario": "用户上传模糊、倾斜的票据图片，规则很难穷举各种版式。深度模型可能识别得更好，但若样本少、规则简单，产品应先比较轻量方案与人工成本。",
+      "interview_questions": [
+        "什么时候值得为图像识别引入深度学习？"
       ]
     },
     {
@@ -200,7 +213,7 @@
         "AIGC"
       ],
       "category": "FOUNDATION",
-      "definition": "根据输入条件生成文本、图像、声音等内容的技术。",
+      "definition": "你给它要求，它能接着写文字、画图或生成声音；但“能生成”不代表内容一定正确。",
       "mechanism": "学习数据分布，并根据条件产生新的输出。",
       "when_to_use": "草拟、创作和内容转换。",
       "when_not_to_use": "生成内容不天然真实或原创无风险。",
@@ -212,6 +225,10 @@
       ],
       "source_ids": [
         "google_glossary"
+      ],
+      "typical_scenario": "用户输入“帮我把这段课程讲得更易懂”，系统生成讲解草稿。它适合先产出再编辑；若内容会直接影响成绩或权益，就要加证据校验和确认环节。",
+      "interview_questions": [
+        "生成式 AI 的输出为什么不能直接当作最终业务结果？"
       ]
     },
     {
@@ -222,7 +239,7 @@
         "NLP"
       ],
       "category": "FOUNDATION",
-      "definition": "让计算机分析、理解或生成自然语言的一类任务与方法。",
+      "definition": "让电脑处理人平时说和写的话，例如读懂投诉、找出关键信息，或把回复写得更清楚。",
       "mechanism": "把语言转为机器表示，再进行分类、抽取或生成。",
       "when_to_use": "处理用户语言与文本资料。",
       "when_not_to_use": "行业术语和方言可能降低效果。",
@@ -234,6 +251,10 @@
       ],
       "source_ids": [
         "google_glossary"
+      ],
+      "typical_scenario": "用户用口语描述“昨天买的东西还没到”，系统要识别订单、时间和诉求。先限定支持的语言与意图，遇到方言、歧义或低置信度时允许追问或转人工。",
+      "interview_questions": [
+        "自然语言处理上线前，怎样界定产品的语言覆盖范围？"
       ]
     },
     {
@@ -243,7 +264,7 @@
         "Supervised Learning"
       ],
       "category": "FOUNDATION",
-      "definition": "利用具有目标标签的样本训练输入到输出的映射。",
+      "definition": "先给模型看一批“题目和正确答案”，让它学着把新的输入对应到合适的结果。",
       "mechanism": "比较预测与标签的差异，更新模型参数。",
       "when_to_use": "有可靠标签的预测任务。",
       "when_not_to_use": "错误标签会成为错误学习信号。",
@@ -255,6 +276,10 @@
       ],
       "source_ids": [
         "google_glossary"
+      ],
+      "typical_scenario": "团队希望自动识别投诉类型，手上有历史工单及人工确认的类别。先检查不同标注员是否按同一口径判断；标签不一致时，模型只会把分歧学进去。",
+      "interview_questions": [
+        "监督学习项目里，标签质量为什么会决定模型上限？"
       ]
     },
     {
@@ -264,7 +289,7 @@
         "Unsupervised Learning"
       ],
       "category": "FOUNDATION",
-      "definition": "从没有任务标签的数据中发现结构或规律。",
+      "definition": "没有人提前告诉模型每条数据属于哪一类，它就先按相似程度把数据归堆，帮人发现线索。",
       "mechanism": "通过相似性、分布或重建目标学习表示。",
       "when_to_use": "探索分群和隐藏模式。",
       "when_not_to_use": "分群结果不自动具有业务意义。",
@@ -276,6 +301,10 @@
       ],
       "source_ids": [
         "google_glossary"
+      ],
+      "typical_scenario": "产品团队还不知道用户常见的使用方式，想从行为记录里找相似群体。聚类可以帮助探索，但每组必须能解释、能对应后续行动，不能把算法分组直接当成用户画像结论。",
+      "interview_questions": [
+        "聚类结果怎样才能从“看起来有群”变成可用的产品决策？"
       ]
     },
     {
@@ -286,7 +315,7 @@
         "SSL"
       ],
       "category": "FOUNDATION",
-      "definition": "从数据本身构造监督信号来学习表示的方法。",
+      "definition": "不用人工逐条写答案，而是从原始数据里藏一个小任务让模型练习，比如遮住一句话的一部分再让它补出来。",
       "mechanism": "例如遮住部分输入，训练模型预测被遮住的内容。",
       "when_to_use": "有大量数据但缺少人工标签。",
       "when_not_to_use": "自监督表示仍需下游任务验证。",
@@ -298,6 +327,10 @@
       ],
       "source_ids": [
         "google_glossary"
+      ],
+      "typical_scenario": "有大量未标注的文本，却没有预算逐条人工分类时，可先用自监督任务学习通用表示，再用少量业务样本验证。它打好底子，不会自动理解企业自己的规则。",
+      "interview_questions": [
+        "没有人工标签时，自监督学习能解决什么、不能解决什么？"
       ]
     },
     {
@@ -308,7 +341,7 @@
         "RL"
       ],
       "category": "FOUNDATION",
-      "definition": "通过与环境交互及奖励反馈学习行动策略。",
+      "definition": "模型试着采取行动，再根据结果拿到奖励或惩罚，慢慢学会什么做法更好；它更像反复练习，不是背答案。",
       "mechanism": "执行行动、观察结果，再优化长期累计奖励。",
       "when_to_use": "需要连续决策且有可用反馈。",
       "when_not_to_use": "错误奖励可能诱导投机行为。",
@@ -320,6 +353,10 @@
       ],
       "source_ids": [
         "google_glossary"
+      ],
+      "typical_scenario": "机器人需要根据连续动作避障，并从结果得到奖励。强化学习适合能模拟、可反复试错的环境；真实业务里若错误代价高或奖励设错，探索行为可能伤害用户。",
+      "interview_questions": [
+        "什么样的业务环境才适合尝试强化学习？"
       ]
     },
     {
@@ -329,7 +366,7 @@
         "Classification"
       ],
       "category": "FOUNDATION",
-      "definition": "预测样本属于哪个类别的任务。",
+      "definition": "让模型从几个类别里选一个答案，比如判断工单是退款、物流还是售后问题。",
       "mechanism": "输出类别分数，再用阈值或规则确定类别。",
       "when_to_use": "意图识别、风控和内容分流。",
       "when_not_to_use": "概率高不代表分类一定正确。",
@@ -341,6 +378,10 @@
       ],
       "source_ids": [
         "google_glossary"
+      ],
+      "typical_scenario": "新工单需要被分到退款、物流或售后等明确类别。分类适合类别稳定、每类都有验收标准的场景；若多个标签可同时成立，应考虑多标签而非强制单选。",
+      "interview_questions": [
+        "怎样判断一个分类任务该单选还是多标签？"
       ]
     },
     {
@@ -350,7 +391,7 @@
         "Regression"
       ],
       "category": "FOUNDATION",
-      "definition": "预测连续数值而不是离散类别的任务。",
+      "definition": "不是给东西贴类别，而是估一个具体数字，比如预计要处理多久、下周大概有多少订单。",
       "mechanism": "学习输入与数值目标的关系，并最小化预测误差。",
       "when_to_use": "需求量和处理时间预测。",
       "when_not_to_use": "外推到未见范围可能失准。",
@@ -362,6 +403,10 @@
       ],
       "source_ids": [
         "google_glossary"
+      ],
+      "typical_scenario": "运营想预估每张工单的处理时长，以便排班。回归给出连续数值，但产品还要定义可接受误差，并检查极端长尾是否会让平均值失真。",
+      "interview_questions": [
+        "预测处理时长时，为什么不能只看平均误差？"
       ]
     },
     {
@@ -372,7 +417,7 @@
         "K-means"
       ],
       "category": "FOUNDATION",
-      "definition": "按相似性把数据分组，通常不依赖人工类别标签。",
+      "definition": "让系统把看起来相似的数据放在一起；它能帮你找出人群或问题类型，但分出来的组还得由业务判断有没有用。",
       "mechanism": "K-means 等方法迭代分配样本与更新群中心。",
       "when_to_use": "用户分群与资料探索。",
       "when_not_to_use": "距离定义会影响分组结果。",
@@ -384,6 +429,10 @@
       ],
       "source_ids": [
         "google_glossary"
+      ],
+      "typical_scenario": "用户反馈很多，团队想找出重复出现的投诉主题。聚类可帮助发现模式，但上线策略前要人工抽样命名、核实差异，避免把不同问题合成一类。",
+      "interview_questions": [
+        "聚类发现的用户群体，怎样验证它们确实有业务意义？"
       ]
     },
     {
@@ -393,7 +442,7 @@
         "Feature"
       ],
       "category": "FOUNDATION",
-      "definition": "模型用于预测或表示样本的输入属性。",
+      "definition": "模型拿来做判断的线索，像工单里的问题描述、订单金额或用户所在地区；线索选错了，结果也容易偏。",
       "mechanism": "把原始信息转成数值、类别或向量等输入。",
       "when_to_use": "组织预测模型的输入。",
       "when_not_to_use": "目标结果泄露为特征会使评估虚高。",
@@ -405,6 +454,10 @@
       ],
       "source_ids": [
         "google_glossary"
+      ],
+      "typical_scenario": "系统预测订单风险时，把下单金额、历史退款次数等信息交给模型。每个特征都必须在预测当下可获得；如果依赖事后才产生的数据，离线效果会虚高。",
+      "interview_questions": [
+        "产品经理如何发现特征里混入了预测时拿不到的信息？"
       ]
     },
     {
@@ -415,7 +468,7 @@
         "Target"
       ],
       "category": "FOUNDATION",
-      "definition": "监督学习中用于说明正确目标的值。",
+      "definition": "训练时告诉模型“这条样本最后是什么结果”的答案，比如这张工单最终由哪个部门解决。",
       "mechanism": "以人工标注或真实结果定义模型训练目标。",
       "when_to_use": "构建训练集和验收集。",
       "when_not_to_use": "含糊口径会造成标注分歧。",
@@ -427,6 +480,10 @@
       ],
       "source_ids": [
         "google_glossary"
+      ],
+      "typical_scenario": "要训练投诉分类器，团队先约定“物流问题”和“商品问题”的判定口径，再由标注员给工单打标签。模糊样本应有升级规则，否则不同人会教出不同答案。",
+      "interview_questions": [
+        "标注指南应如何处理一条工单同时包含多个问题的情况？"
       ]
     },
     {
@@ -436,7 +493,7 @@
         "Overfitting"
       ],
       "category": "FOUNDATION",
-      "definition": "模型记住训练细节，却难以处理新数据的现象。",
+      "definition": "模型把练习题记得很熟，换一批真实新题却不会做了；这就是它学会了细节，却没学会通用规律。",
       "mechanism": "模型容量或训练过程拟合了噪声与偶然规律。",
       "when_to_use": "训练好但验证差时排查。",
       "when_not_to_use": "训练指标高不能证明上线有效。",
@@ -447,6 +504,10 @@
       ],
       "source_ids": [
         "google_glossary"
+      ],
+      "typical_scenario": "模型在旧工单上几乎全对，一遇到新活动的表达方式就频繁误分，这可能是过拟合。产品要看跨时间、跨人群的留出样本，而不是只看训练成绩。",
+      "interview_questions": [
+        "训练集表现很好，哪些迹象说明模型可能过拟合？"
       ]
     },
     {
@@ -456,7 +517,7 @@
         "Training Set"
       ],
       "category": "TRAINING",
-      "definition": "实际用于优化模型参数的数据。",
+      "definition": "模型真正拿来练习、调整自己的那批例子。它像学生的练习册，不应该同时拿来证明考试成绩。",
       "mechanism": "模型根据训练样本与学习目标反复更新参数。",
       "when_to_use": "训练和微调模型。",
       "when_not_to_use": "训练集不能代替独立测试集。",
@@ -469,6 +530,10 @@
         "google_glossary",
         "sklearn_validation",
         "hf_lora"
+      ],
+      "typical_scenario": "团队拿过去一年的已分类工单训练路由模型。训练数据要覆盖未来会遇到的用户和业务版本，并确认授权范围；历史分布偏了，模型就会学偏。",
+      "interview_questions": [
+        "训练数据是否“够多”之外，产品还应核查什么？"
       ]
     },
     {
@@ -479,7 +544,7 @@
         "Dev Set"
       ],
       "category": "TRAINING",
-      "definition": "用于选择模型配置和调整超参数的数据。",
+      "definition": "用来比较不同模型设置、挑出较合适方案的一批数据；它参与了调参，所以不能当最终考试成绩。",
       "mechanism": "比较候选配置的验证表现，再选择较合适方案。",
       "when_to_use": "选模型、阈值与训练设置。",
       "when_not_to_use": "反复调整会逐渐适应验证集。",
@@ -493,6 +558,10 @@
         "google_glossary",
         "sklearn_validation",
         "hf_lora"
+      ],
+      "typical_scenario": "比较两种摘要模型或调整分类阈值时，用验证集选择方案。反复看测试集再改模型，会让测试集也变成调参材料，最终成绩不再客观。",
+      "interview_questions": [
+        "为什么不能把测试集当作日常调参用的验证集？"
       ]
     },
     {
@@ -503,7 +572,7 @@
         "Holdout Set"
       ],
       "category": "TRAINING",
-      "definition": "用于相对独立地检验最终模型能力的数据。",
+      "definition": "留到最后才用的一批数据，像真正的模拟考；用它检查模型能不能应对没练过的例子。",
       "mechanism": "冻结模型与判分口径后评测未用于调参的样本。",
       "when_to_use": "估计最终版本表现。",
       "when_not_to_use": "数据重叠会破坏独立性。",
@@ -517,6 +586,10 @@
         "google_glossary",
         "sklearn_validation",
         "hf_lora"
+      ],
+      "typical_scenario": "新版本准备上线前，用从未参与训练和调参的一批样本做最终检查。测试集要代表真实任务，且只在决策节点使用，避免团队反复围着它优化。",
+      "interview_questions": [
+        "测试集怎样使用，才能保持对上线效果的独立估计？"
       ]
     },
     {
@@ -526,7 +599,7 @@
         "Data Leakage"
       ],
       "category": "TRAINING",
-      "definition": "训练或评测使用了预测时不可获得的信息。",
+      "definition": "模型考试时偷偷看到了现实使用时拿不到的答案线索，所以分数虚高、上线后却失灵。",
       "mechanism": "标签、未来信息或重复样本进入特征和数据划分。",
       "when_to_use": "评测异常好时排查。",
       "when_not_to_use": "不能只按随机划分保证独立性。",
@@ -540,6 +613,10 @@
         "google_glossary",
         "sklearn_validation",
         "hf_lora"
+      ],
+      "typical_scenario": "退款预测数据里出现了“最终是否退款”字段，但预测发生在退款审批前。这个字段泄漏了答案；划分训练集时还要按用户或时间隔开近重复记录。",
+      "interview_questions": [
+        "离线分数异常高时，如何排查数据泄漏？"
       ]
     },
     {
@@ -550,7 +627,7 @@
         "Labeling"
       ],
       "category": "TRAINING",
-      "definition": "为数据赋予类别、位置或参考答案等监督信息。",
+      "definition": "人给原始数据补上模型能学习的答案或标记，比如给投诉标出问题类别；口径不一致会直接影响效果。",
       "mechanism": "制定指南、分配标注任务，再复核一致性与质量。",
       "when_to_use": "训练监督模型和构建评估集。",
       "when_not_to_use": "没有统一标准时多标也未必可靠。",
@@ -564,6 +641,10 @@
         "google_glossary",
         "sklearn_validation",
         "hf_lora"
+      ],
+      "typical_scenario": "客服对话要标注成咨询、投诉或退款申请。先写清例子、边界和争议处理，再抽样复核一致性；若多人仍常分歧，先修任务定义而非急着扩标。",
+      "interview_questions": [
+        "什么时候应暂停标注、先重写标注规范？"
       ]
     },
     {
@@ -573,7 +654,7 @@
         "Class Imbalance"
       ],
       "category": "TRAINING",
-      "definition": "不同目标类别的样本数量差异很大。",
+      "definition": "有些类别的例子特别多，另一些很少见；模型可能只学会猜常见类别，把少数但重要的问题漏掉。",
       "mechanism": "训练可能偏向多数类，需结合采样、权重和指标处理。",
       "when_to_use": "欺诈、罕见故障等任务。",
       "when_not_to_use": "高准确率可能掩盖少数类漏检。",
@@ -587,6 +668,10 @@
         "google_glossary",
         "sklearn_validation",
         "hf_lora"
+      ],
+      "typical_scenario": "风控样本里欺诈只占很少一部分，把所有交易都判正常也可能有很高准确率。要单独看欺诈召回、误拦成本和人工复核量，再决定阈值。",
+      "interview_questions": [
+        "类别极不平衡时，准确率为什么容易给人错误信心？"
       ]
     },
     {
@@ -596,7 +681,7 @@
         "Loss Function"
       ],
       "category": "TRAINING",
-      "definition": "量化模型预测与学习目标差异的函数。",
+      "definition": "训练时用来衡量“模型这次错得有多远”的分数，训练过程会努力把它降下来；它不等于用户真正关心的业务指标。",
       "mechanism": "把误差转成优化信号，指导参数更新。",
       "when_to_use": "定义训练目标。",
       "when_not_to_use": "训练损失低未必带来业务价值。",
@@ -610,6 +695,10 @@
         "google_glossary",
         "sklearn_validation",
         "hf_lora"
+      ],
+      "typical_scenario": "模型训练需要一个可计算的目标，比如对错误分类施加惩罚。损失下降只说明模型更贴近训练目标，不代表用户体验或业务结果已经变好。",
+      "interview_questions": [
+        "训练损失下降了，为什么仍要做独立的产品评估？"
       ]
     },
     {
@@ -619,7 +708,7 @@
         "Gradient Descent"
       ],
       "category": "TRAINING",
-      "definition": "沿着损失下降方向调整模型参数的优化方法。",
+      "definition": "模型根据当前错误一点点调整内部参数，尽量让下一次错得更少；可以把它想成边做题边订正。",
       "mechanism": "计算或估计梯度，再按学习率更新参数。",
       "when_to_use": "理解模型如何训练。",
       "when_not_to_use": "复杂损失面不保证找到全局最优。",
@@ -633,6 +722,10 @@
         "google_glossary",
         "sklearn_validation",
         "hf_lora"
+      ],
+      "typical_scenario": "训练模型时，梯度下降根据误差方向一点点调整参数。产品经理不必手算梯度，但要知道数据、目标或学习率变化会让训练效果和稳定性改变。",
+      "interview_questions": [
+        "训练曲线不稳定时，产品经理应和算法同学确认哪些因素？"
       ]
     },
     {
@@ -642,7 +735,7 @@
         "Learning Rate"
       ],
       "category": "TRAINING",
-      "definition": "控制一次参数更新幅度的训练超参数。",
+      "definition": "控制模型每次改多少的设置：步子太大容易改过头，太小又会学得很慢。",
       "mechanism": "学习率与梯度共同决定参数移动的距离。",
       "when_to_use": "训练收敛与稳定性调试。",
       "when_not_to_use": "过大可能震荡，过小可能学习慢。",
@@ -656,6 +749,10 @@
         "google_glossary",
         "sklearn_validation",
         "hf_lora"
+      ],
+      "typical_scenario": "微调模型时，学习率决定每次参数更新的幅度。太大可能破坏原有能力，太小则训练很慢；应由算法团队结合验证集逐步试，而非追求某个固定值。",
+      "interview_questions": [
+        "学习率调得过大或过小，分别可能造成什么问题？"
       ]
     },
     {
@@ -665,7 +762,7 @@
         "Epoch"
       ],
       "category": "TRAINING",
-      "definition": "训练集被完整遍历一次所对应的训练单位。",
+      "definition": "模型把整批训练例子从头到尾看一遍，叫完成一轮；看得更多不一定更好，也可能开始死记硬背。",
       "mechanism": "多轮训练让模型反复从样本中更新参数。",
       "when_to_use": "控制训练时长与停止时机。",
       "when_not_to_use": "轮次越多不一定越好。",
@@ -679,6 +776,10 @@
         "google_glossary",
         "sklearn_validation",
         "hf_lora"
+      ],
+      "typical_scenario": "模型训练多轮后，训练集分数继续上升、验证集分数却开始下降，说明继续训练未必有益。产品要要求按验证表现选模型，而不是把训练轮数当成绩。",
+      "interview_questions": [
+        "如何利用训练集和验证集的变化判断何时停止训练？"
       ]
     },
     {
@@ -688,7 +789,7 @@
         "Batch Size"
       ],
       "category": "TRAINING",
-      "definition": "每次参数更新共同处理的训练样本数量。",
+      "definition": "模型每次拿多少个例子一起计算再更新。批次大小会影响训练速度、显存占用和训练稳定性。",
       "mechanism": "聚合一批样本的梯度后执行更新。",
       "when_to_use": "权衡训练吞吐、显存与稳定性。",
       "when_not_to_use": "更大的批次不保证效果更好。",
@@ -702,6 +803,10 @@
         "google_glossary",
         "sklearn_validation",
         "hf_lora"
+      ],
+      "typical_scenario": "训练大模型显存不够时，减小批大小可能让任务跑起来，但也可能降低硬件利用率或影响训练稳定性。上线前要由研发评估时间和资源预算。",
+      "interview_questions": [
+        "批大小会怎样影响训练资源和效果，产品侧需要关注什么？"
       ]
     },
     {
@@ -711,7 +816,7 @@
         "Regularization"
       ],
       "category": "TRAINING",
-      "definition": "限制模型复杂度或训练行为以减少过拟合的方法。",
+      "definition": "给模型的学习加些约束，别让它把练习里的偶然细节都当规律，从而更能应付新数据。",
       "mechanism": "通过参数惩罚、随机失活等约束学习过程。",
       "when_to_use": "训练好而验证差的场景。",
       "when_not_to_use": "过强约束也可能导致欠拟合。",
@@ -725,6 +830,10 @@
         "google_glossary",
         "sklearn_validation",
         "hf_lora"
+      ],
+      "typical_scenario": "模型记住训练工单里的偶然措辞，换一批工单就失效时，可用正则化限制模型过度贴合样本。它可能牺牲部分训练表现，最终仍以未见样本效果判断。",
+      "interview_questions": [
+        "正则化带来的训练分数下降，什么时候反而是好信号？"
       ]
     },
     {
@@ -735,7 +844,7 @@
         "Finetuning"
       ],
       "category": "TRAINING",
-      "definition": "在预训练模型上继续训练，使其适应特定任务或数据。",
+      "definition": "拿一个已经学过通用知识的模型，再用特定任务的例子继续训练，让它更适合某类工作。",
       "mechanism": "以新样本和训练目标更新全部或部分参数。",
       "when_to_use": "稳定的格式、风格或任务适配。",
       "when_not_to_use": "动态事实通常不能只靠微调维护。",
@@ -749,6 +858,10 @@
         "google_glossary",
         "sklearn_validation",
         "hf_lora"
+      ],
+      "typical_scenario": "模型总把企业简称写错，团队已有大量修正样例，可以评估微调；如果只是要查最新政策，检索通常更合适。先用提示词、规则或 RAG 做基线再决定投入。",
+      "interview_questions": [
+        "风格问题和知识更新问题，分别更适合怎样解决？"
       ]
     },
     {
@@ -759,7 +872,7 @@
         "SFT"
       ],
       "category": "TRAINING",
-      "definition": "用输入与期望输出样本进行的模型微调。",
+      "definition": "把“用户这样问、理想答案应该这样写”的成对例子给模型练习，让它学会按目标方式回答。",
       "mechanism": "让模型学习示例答案的生成模式。",
       "when_to_use": "明确任务和高质量示例充足时。",
       "when_not_to_use": "错误或单一答案会固化偏差。",
@@ -773,6 +886,10 @@
         "google_glossary",
         "sklearn_validation",
         "hf_lora"
+      ],
+      "typical_scenario": "团队积累了经审核的客服摘要，希望模型稳定输出“诉求、处理、待办”格式。监督微调可学习示范，但示例必须覆盖异常和边界情况，还要防止把旧流程固化进去。",
+      "interview_questions": [
+        "用监督微调固定输出格式前，训练样例要覆盖哪些情况？"
       ]
     },
     {
@@ -784,7 +901,7 @@
         "PEFT"
       ],
       "category": "TRAINING",
-      "definition": "以低秩可训练矩阵适配模型的参数高效微调方法。",
+      "definition": "不必重练模型的全部参数，而是加一小组可训练参数来适配任务；通常更省资源，但效果仍要用真实任务验证。",
       "mechanism": "通常冻结基础权重，只训练较少的增量参数。",
       "when_to_use": "降低微调显存和存储开销。",
       "when_not_to_use": "省参数不保证达到全量微调效果。",
@@ -795,6 +912,10 @@
       ],
       "source_ids": [
         "hf_lora"
+      ],
+      "typical_scenario": "小团队想适配一个开源模型，但显存和存储预算有限，可以试 LoRA 训练少量增量参数。需要比较它与提示词方案在真实任务上的质量、维护和部署成本。",
+      "interview_questions": [
+        "LoRA 节省训练资源后，为什么还不能直接认定它更划算？"
       ]
     },
     {
@@ -805,7 +926,7 @@
         "LLM"
       ],
       "category": "LLM",
-      "definition": "以大量语言数据训练、具有语言理解和生成能力的模型。",
+      "definition": "读过大量文字、能理解问题并生成回答的模型。它擅长语言任务，但仍可能答错、编造或误解业务规则。",
       "mechanism": "常见生成式 LLM 根据上下文预测后续 token。",
       "when_to_use": "语言理解、归纳和生成任务。",
       "when_not_to_use": "语言流畅不能证明事实准确。",
@@ -817,6 +938,10 @@
       "source_ids": [
         "google_glossary",
         "hf_course"
+      ],
+      "typical_scenario": "员工把会议记录交给助手，希望整理出决定、负责人和截止日。大语言模型能理解并生成语言，但不会自动掌握最新内部事实，关键内容需要来源或人工确认。",
+      "interview_questions": [
+        "怎样把“回答流畅”与“大语言模型回答可信”区分开？"
       ]
     },
     {
@@ -826,7 +951,7 @@
         "Foundation Model"
       ],
       "category": "LLM",
-      "definition": "通过广泛数据预训练、可适配多类下游任务的模型。",
+      "definition": "先用大量数据学出通用能力，再根据不同产品任务继续适配的“大底座”模型。",
       "mechanism": "先学习通用表示，再通过提示、检索或训练适配。",
       "when_to_use": "复用模型能力构建多个应用。",
       "when_not_to_use": "通用能力不等于领域可靠性。",
@@ -839,6 +964,10 @@
       "source_ids": [
         "google_glossary",
         "hf_course"
+      ],
+      "typical_scenario": "公司计划做多个文本助手，可选一个基础模型再通过提示、检索或微调适配。比较时要核实商用许可、中文和行业任务效果，以及迁移或自托管成本。",
+      "interview_questions": [
+        "基础模型选型时，产品经理为什么要同时看许可和适配成本？"
       ]
     },
     {
@@ -848,7 +977,7 @@
         "Transformer"
       ],
       "category": "LLM",
-      "definition": "以注意力机制组织序列信息的神经网络架构。",
+      "definition": "一种处理文字、声音等序列的模型结构，能判断当前这部分内容该重点参考前面哪些信息。",
       "mechanism": "多个注意力与前馈模块逐层更新 token 表示。",
       "when_to_use": "理解主流语言模型的基础。",
       "when_not_to_use": "不是所有 Transformer 都是聊天模型。",
@@ -861,6 +990,10 @@
       "source_ids": [
         "google_glossary",
         "hf_course"
+      ],
+      "typical_scenario": "合同中的定义可能在前文，问题却出现在后文。Transformer 通过注意力等结构处理序列关系；长文输入还受上下文和算力约束，要做分段或检索设计。",
+      "interview_questions": [
+        "Transformer 能处理上下文，为什么长文档仍可能需要检索？"
       ]
     },
     {
@@ -870,7 +1003,7 @@
         "Attention"
       ],
       "category": "LLM",
-      "definition": "根据任务上下文为不同输入位置分配权重的机制。",
+      "definition": "模型读一段内容时，会给不同部分分配不同关注度；这让它能把重点放在更相关的信息上。",
       "mechanism": "比较查询与键，按权重聚合值表示。",
       "when_to_use": "理解模型如何利用上下文。",
       "when_not_to_use": "注意力权重不等于可靠的因果解释。",
@@ -883,6 +1016,10 @@
       "source_ids": [
         "google_glossary",
         "hf_course"
+      ],
+      "typical_scenario": "模型生成答案时会给上下文不同部分分配计算权重。注意力权重能帮助研究模型行为，但它不是天然可靠的“理由”，用户解释应展示可核验依据。",
+      "interview_questions": [
+        "为什么不能直接把注意力权重展示给用户当作模型解释？"
       ]
     },
     {
@@ -892,7 +1029,7 @@
         "Self-attention"
       ],
       "category": "LLM",
-      "definition": "在同一序列内部建立各位置之间联系的注意力。",
+      "definition": "一段文字里的每个词都可以参考同一段中的其他词，判断彼此有什么关系。",
       "mechanism": "序列本身提供查询、键和值来更新表示。",
       "when_to_use": "理解上下文关系建模。",
       "when_not_to_use": "全量注意力在长序列上成本较高。",
@@ -905,6 +1042,10 @@
       "source_ids": [
         "google_glossary",
         "hf_course"
+      ],
+      "typical_scenario": "一句话里“它”指向前面提到的产品，自注意力让模型结合其他词更新当前词的表示。产品无需向用户解释内部公式，但要测试指代和长句理解。",
+      "interview_questions": [
+        "自注意力对语言理解有什么帮助，产品上应怎样验收？"
       ]
     },
     {
@@ -914,7 +1055,7 @@
         "Token"
       ],
       "category": "LLM",
-      "definition": "模型处理文本时使用的离散单位，可以是字、子词或符号。",
+      "definition": "模型读文字时切分出来的小单位，可能是一个字、半个词或标点；所以看起来字数不多，也可能占不少 Token。",
       "mechanism": "分词器把文本映射为 token ID，模型逐步处理。",
       "when_to_use": "估算长度、计费和上下文容量。",
       "when_not_to_use": "一个 token 不固定等于一个汉字或词。",
@@ -927,6 +1068,10 @@
       "source_ids": [
         "google_glossary",
         "hf_course"
+      ],
+      "typical_scenario": "一段中文被模型切成多少 token，取决于具体词表和分词器。上下文、计费或限长功能不能按汉字数估算，需用目标模型实测。",
+      "interview_questions": [
+        "为什么同样长度的中文，在不同模型上费用和长度可能不同？"
       ]
     },
     {
@@ -937,7 +1082,7 @@
         "Tokenization"
       ],
       "category": "LLM",
-      "definition": "把文本转换为 token 序列及反向解码的组件。",
+      "definition": "把人写的文字切成模型认识的 Token，模型生成后再把 Token 拼回文字的工具。",
       "mechanism": "按词表和切分规则生成 ID，输出时再解码。",
       "when_to_use": "处理长度、语言覆盖和特殊符号。",
       "when_not_to_use": "不同分词器的统计不能直接互换。",
@@ -950,6 +1095,10 @@
       "source_ids": [
         "google_glossary",
         "hf_course"
+      ],
+      "typical_scenario": "客服常用的型号、简称被切得很碎时，可能影响输入长度和识别效果。更换分词器通常牵涉模型训练和兼容性，产品应先验证真实专有词表现。",
+      "interview_questions": [
+        "遇到专有名词总被拆碎，产品经理可以先验证什么？"
       ]
     },
     {
@@ -960,7 +1109,7 @@
         "Embeddings"
       ],
       "category": "LLM",
-      "definition": "将文本或其他对象映射为可计算相似性的稠密向量。",
+      "definition": "把一句话或一段资料变成一串数字，让系统能按含义相近程度找到相关内容。",
       "mechanism": "模型学习表示，让相关对象在向量空间较接近。",
       "when_to_use": "语义检索、聚类与推荐。",
       "when_not_to_use": "相似不等于事实相同或逻辑等价。",
@@ -973,6 +1122,10 @@
       "source_ids": [
         "google_glossary",
         "hf_course"
+      ],
+      "typical_scenario": "员工问“差旅住宿能报多少”，资料写的是“住宿费用标准”，向量嵌入可帮助检索措辞不同但意思相近的内容。是否相关仍要用真实问题标注评测。",
+      "interview_questions": [
+        "向量相似不等于业务相关，怎样建立检索验收样本？"
       ]
     },
     {
@@ -983,7 +1136,7 @@
         "RoPE"
       ],
       "category": "LLM",
-      "definition": "向模型提供序列位置和顺序信息的表示方法。",
+      "definition": "告诉模型词语在句子里的先后位置；没有顺序线索，“先付款再发货”和“先发货再付款”就难区分。",
       "mechanism": "将位置信息加入表示或注意力计算。",
       "when_to_use": "理解模型对顺序和长文本的处理。",
       "when_not_to_use": "扩展位置范围不自动保证长文本质量。",
@@ -996,6 +1149,10 @@
       "source_ids": [
         "google_glossary",
         "hf_course"
+      ],
+      "typical_scenario": "一份手册里同一条款前后顺序不同，模型理解可能不同；位置编码把顺序信息带入处理过程。长文本里靠后内容是否仍能被用到，要通过位置测试验证。",
+      "interview_questions": [
+        "长上下文测试为什么要把证据放在不同位置？"
       ]
     },
     {
@@ -1005,7 +1162,7 @@
         "Context Window"
       ],
       "category": "LLM",
-      "definition": "一次模型调用可处理的上下文容量上限。",
+      "definition": "模型单次能“放在眼前一起考虑”的文字和资料总量；超出后要删减、分段或先检索重点。",
       "mechanism": "输入资料、对话与输出预算受模型具体限制。",
       "when_to_use": "设计长文输入和多轮会话。",
       "when_not_to_use": "容量大不代表每处信息都能有效利用。",
@@ -1018,6 +1175,10 @@
       "source_ids": [
         "google_glossary",
         "hf_course"
+      ],
+      "typical_scenario": "用户上传一份超长合同，模型可见内容受上下文窗口限制。除了核对容量，还需为系统指令、检索资料和回答预留空间，必要时分段处理。",
+      "interview_questions": [
+        "设计长文档问答时，为什么不能把窗口额度全部塞满资料？"
       ]
     },
     {
@@ -1027,7 +1188,7 @@
         "Pre-training"
       ],
       "category": "LLM",
-      "definition": "在大规模数据上学习通用能力的初始训练阶段。",
+      "definition": "模型先读大量通用数据打基础的阶段，像正式学专业前先积累语言和知识能力。",
       "mechanism": "以自监督等目标优化模型参数。",
       "when_to_use": "理解模型知识与能力来源。",
       "when_not_to_use": "预训练知识可能过时或不适用。",
@@ -1040,6 +1201,10 @@
       "source_ids": [
         "google_glossary",
         "hf_course"
+      ],
+      "typical_scenario": "基础模型在上线前通过预训练从大量数据学习语言和通用模式。它可能有一般常识，却不保证知道企业新制度；产品要区分模型能力与应用提供的知识。",
+      "interview_questions": [
+        "预训练带来的通用知识，为什么不能替代企业知识库？"
       ]
     },
     {
@@ -1050,7 +1215,7 @@
         "GPT"
       ],
       "category": "LLM",
-      "definition": "采用 Transformer 和生成式预训练思路的一类语言模型。",
+      "definition": "一类先读大量文本、再根据前文接着生成内容的语言模型；GPT 是这一思路的代表名称。",
       "mechanism": "常见形式按已有序列自回归预测后续 token。",
       "when_to_use": "理解 GPT 类模型的生成方式。",
       "when_not_to_use": "架构名称不能代替版本能力评测。",
@@ -1063,6 +1228,10 @@
       "source_ids": [
         "google_glossary",
         "hf_course"
+      ],
+      "typical_scenario": "GPT 类模型通常根据前文逐个预测后续 token，因此容易生成连贯文本，也可能把不确定内容接着编下去。应用要给它证据和校验，而不是只看流畅度。",
+      "interview_questions": [
+        "自回归生成为什么会出现连贯但无依据的回答？"
       ]
     },
     {
@@ -1073,7 +1242,7 @@
         "MoE"
       ],
       "category": "LLM",
-      "definition": "让不同专家子网络处理输入的模型架构。",
+      "definition": "模型里有多个擅长不同内容的“专家”，每次只叫其中一部分处理问题，以控制计算量。",
       "mechanism": "路由器通常只激活部分专家参与一次计算。",
       "when_to_use": "理解稀疏模型的参数和计算量。",
       "when_not_to_use": "总参数量不等于每次激活参数量。",
@@ -1086,6 +1255,10 @@
       "source_ids": [
         "google_glossary",
         "hf_course"
+      ],
+      "typical_scenario": "模型每次只调用部分专家网络，可能降低单次计算量，但部署仍要考虑总参数、显存、服务可用性和供应商限制。产品要看端到端实测而非只看参数宣传。",
+      "interview_questions": [
+        "混合专家模型参数很多，为什么推理成本不一定按总参数简单计算？"
       ]
     },
     {
@@ -1096,7 +1269,7 @@
         "RLHF"
       ],
       "category": "LLM",
-      "definition": "利用人类偏好反馈改进模型行为的训练路线。",
+      "definition": "让人比较不同答案哪个更符合要求，再用这些偏好反馈训练模型，让它更愿意给出人认可的回答。",
       "mechanism": "典型流程学习奖励模型，再优化生成策略。",
       "when_to_use": "提升回答偏好和指令遵循。",
       "when_not_to_use": "偏好高分不一定代表事实正确。",
@@ -1109,6 +1282,10 @@
       "source_ids": [
         "google_glossary",
         "hf_course"
+      ],
+      "typical_scenario": "标注员比较两个客服回答哪个更有帮助，再用反馈调整模型偏好。满意度提升不等于事实更准确，评估还要单独覆盖错误、偏见和拒答。",
+      "interview_questions": [
+        "人类偏好训练之后，哪些质量指标仍需独立监测？"
       ]
     },
     {
@@ -1119,7 +1296,7 @@
         "DPO"
       ],
       "category": "LLM",
-      "definition": "直接利用偏好回答对优化模型的训练方法。",
+      "definition": "把“这个回答比那个更好”的样本直接用于调整模型，让模型学会偏向更好的回答。",
       "mechanism": "通过偏好损失提高被选答案相对概率，常约束参考模型。",
       "when_to_use": "有成对偏好数据的行为适配。",
       "when_not_to_use": "依赖偏好数据质量与覆盖。",
@@ -1130,6 +1307,10 @@
       ],
       "source_ids": [
         "hf_dpo"
+      ],
+      "typical_scenario": "同一问题有“更好”和“较差”的回答时，可用 DPO 直接学习偏好。若偏好样本只代表一种口吻，模型可能变得讨喜却遗漏事实或拒绝有用请求。",
+      "interview_questions": [
+        "DPO 的偏好数据有偏时，产品表现可能出现什么变化？"
       ]
     },
     {
@@ -1140,7 +1321,7 @@
         "Prompt"
       ],
       "category": "PROMPT",
-      "definition": "设计模型输入，使其更可靠地完成目标任务的方法。",
+      "definition": "把问题、背景、要求和输出格式交代清楚，让模型更容易给出可用结果；它不能替代产品流程和质量验证。",
       "mechanism": "明确任务、上下文、示例、约束与验收方式。",
       "when_to_use": "快速适配模型到具体任务。",
       "when_not_to_use": "提示词不能保证权限或事实安全。",
@@ -1153,6 +1334,10 @@
         "google_glossary",
         "hf_course",
         "anthropic_agents"
+      ],
+      "typical_scenario": "客服助手需要按“结论、依据、下一步”回答，提示词可先写清任务、信息来源、格式和不能做的事。每次改动都应用固定问题集回归，防止修好一处又破坏别处。",
+      "interview_questions": [
+        "提示词改完后，为什么要用固定评测集做回归？"
       ]
     },
     {
@@ -1163,7 +1348,7 @@
         "System Message"
       ],
       "category": "PROMPT",
-      "definition": "在应用中设置模型角色和总体行为要求的提示信息。",
+      "definition": "产品预先给模型设定的长期规则，比如“你是报销助手，只解释制度，不替员工提交申请”。",
       "mechanism": "与用户请求一起进入上下文，优先级由平台规则定义。",
       "when_to_use": "设置全局任务边界和语气。",
       "when_not_to_use": "它不代替实际权限校验。",
@@ -1177,6 +1362,10 @@
         "google_glossary",
         "hf_course",
         "anthropic_agents"
+      ],
+      "typical_scenario": "系统提示词可以规定助手角色、回答风格和任务边界，但不能替代后端权限检查。涉及退款、删数据等动作，必须由业务系统校验并按风险确认。",
+      "interview_questions": [
+        "哪些控制不能只靠系统提示词来保证？"
       ]
     },
     {
@@ -1186,7 +1375,7 @@
         "Zero-shot Prompting"
       ],
       "category": "PROMPT",
-      "definition": "没有任务示例，仅凭任务描述要求模型完成任务。",
+      "definition": "只告诉模型要做什么，不给它参考例子；适合任务简单、要求说得清楚的情况。",
       "mechanism": "模型利用已有能力理解指令并输出结果。",
       "when_to_use": "明确且模型熟悉的简单任务。",
       "when_not_to_use": "复杂口径可能需要更多说明。",
@@ -1200,6 +1389,10 @@
         "google_glossary",
         "hf_course",
         "anthropic_agents"
+      ],
+      "typical_scenario": "用户只需让模型把一条工单分成“咨询、投诉、退款”，零样本提示可作为快速基线。若标签口径含糊或模型常混淆，再补充示例或改规则。",
+      "interview_questions": [
+        "什么时候零样本提示已经够用，什么时候该加示例？"
       ]
     },
     {
@@ -1210,7 +1403,7 @@
         "Few-Shot"
       ],
       "category": "PROMPT",
-      "definition": "在提示中提供少量示例来展示任务格式与标准。",
+      "definition": "先给模型看几组“输入—理想输出”的例子，再让它照着处理新内容，帮助它理解格式和口径。",
       "mechanism": "示例影响当前上下文中的输出模式。",
       "when_to_use": "格式或分类口径不够明确时。",
       "when_not_to_use": "示例偏差会影响未见输入。",
@@ -1224,6 +1417,10 @@
         "google_glossary",
         "hf_course",
         "anthropic_agents"
+      ],
+      "typical_scenario": "多个团队对“紧急投诉”的定义不同，少样本提示可提供各类边界例子让口径更清楚。例子要覆盖易混类别，不能只挑最典型的简单样本。",
+      "interview_questions": [
+        "少样本提示里的例子怎样挑，才能减少类别混淆？"
       ]
     },
     {
@@ -1234,7 +1431,7 @@
         "ICL"
       ],
       "category": "PROMPT",
-      "definition": "模型通过当前输入中的示例或说明适应任务的现象。",
+      "definition": "模型不更新自己的参数，只根据这次对话里给的说明和例子临时调整做法。",
       "mechanism": "通常不更新权重，而是在本次上下文中改变行为。",
       "when_to_use": "临时任务和格式适配。",
       "when_not_to_use": "不是一次对话就永久学会。",
@@ -1248,6 +1445,10 @@
         "google_glossary",
         "hf_course",
         "anthropic_agents"
+      ],
+      "typical_scenario": "新活动临时增加一个工单类别，团队把定义和几条例子放入本次请求，模型按当前上下文完成分类。它不会因此永久记住新规则，后续请求要重新提供。",
+      "interview_questions": [
+        "上下文学习和模型微调在“记住规则”上有什么区别？"
       ]
     },
     {
@@ -1258,7 +1459,7 @@
         "CoT"
       ],
       "category": "PROMPT",
-      "definition": "通过中间步骤引导模型处理复杂推理的提示方式。",
+      "definition": "让模型把复杂问题分步处理的提示思路；产品通常更该验证最后结论和证据，不必展示模型的私密推理过程。",
       "mechanism": "把复杂问题分成步骤或可检查的中间结果。",
       "when_to_use": "可分解的多步任务。",
       "when_not_to_use": "生成的推理文本不保证正确，也不等于内部真实过程。",
@@ -1272,6 +1473,10 @@
         "google_glossary",
         "hf_course",
         "anthropic_agents"
+      ],
+      "typical_scenario": "把复杂任务拆成“找依据、抽取字段、核对规则”能让中间结果更容易检查。无需为了让答案看起来聪明而要求模型输出长篇隐式推理，验收应聚焦可验证结论。",
+      "interview_questions": [
+        "复杂任务该如何拆步骤，而不是只要求模型展示思维链？"
       ]
     },
     {
@@ -1281,7 +1486,7 @@
         "Context Engineering"
       ],
       "category": "PROMPT",
-      "definition": "组织模型调用所需指令、证据、状态与工具结果的方法。",
+      "definition": "一次模型调用前，把它真正需要的东西整理好：任务要求、相关资料、当前进度和工具返回结果。",
       "mechanism": "选择、压缩和排列上下文，控制来源与预算。",
       "when_to_use": "复杂助手和长流程。",
       "when_not_to_use": "更多上下文可能带来干扰与成本。",
@@ -1295,6 +1500,10 @@
         "google_glossary",
         "hf_course",
         "anthropic_agents"
+      ],
+      "typical_scenario": "助手要回答报销问题时，可把用户部门、当前制度版本和相关条款一起放入上下文。无关聊天记录既浪费预算也可能泄露数据，应按任务筛选并控制来源。",
+      "interview_questions": [
+        "上下文工程要在相关性、成本和隐私之间怎样取舍？"
       ]
     },
     {
@@ -1305,7 +1514,7 @@
         "JSON Output"
       ],
       "category": "PROMPT",
-      "definition": "让模型按预定字段和数据结构生成结果。",
+      "definition": "要求模型按固定字段交答案，比如输出姓名、日期、金额三个字段，方便程序读取；字段合法还不代表内容正确。",
       "mechanism": "用格式约束、模式或后处理检查输出结构。",
       "when_to_use": "系统要继续解析模型结果。",
       "when_not_to_use": "结构合法不代表字段值正确。",
@@ -1319,6 +1528,10 @@
         "google_glossary",
         "hf_course",
         "anthropic_agents"
+      ],
+      "typical_scenario": "模型要把工单变成含类别、摘要和优先级的 JSON，结构模式能减少解析错误。字段格式正确不代表值合理，金额、类别和权限还需业务规则校验。",
+      "interview_questions": [
+        "结构化输出通过格式校验后，为什么还需要业务校验？"
       ]
     },
     {
@@ -1328,7 +1541,7 @@
         "Temperature"
       ],
       "category": "PROMPT",
-      "definition": "控制生成采样分布平滑程度的参数。",
+      "definition": "影响模型回答有多稳定或多发散的设置。调高可能更有变化，调低通常更稳定，但不能靠它保证事实正确。",
       "mechanism": "常通过缩放 logits 调整候选 token 的概率差距。",
       "when_to_use": "比较稳定输出与创作多样性。",
       "when_not_to_use": "低温度不能消除幻觉或完全保证复现。",
@@ -1342,6 +1555,10 @@
         "google_glossary",
         "hf_course",
         "anthropic_agents"
+      ],
+      "typical_scenario": "重复生成客服摘要时希望内容稳定，温度可调低；创意标题则允许更多变化。它并非“准确度旋钮”，应固定其他条件，用真实任务比较输出质量。",
+      "interview_questions": [
+        "温度降低是否一定会让答案更准确？如何验证？"
       ]
     },
     {
@@ -1352,7 +1569,7 @@
         "Nucleus Sampling"
       ],
       "category": "PROMPT",
-      "definition": "从累计概率达到指定范围的候选 token 中采样。",
+      "definition": "先把最可能的候选词排起来，只从累计概率范围内的候选里挑一个继续生成。",
       "mechanism": "动态截取高概率候选集合再采样。",
       "when_to_use": "调整生成内容的多样性。",
       "when_not_to_use": "参数与温度可能相互影响。",
@@ -1366,6 +1583,10 @@
         "google_glossary",
         "hf_course",
         "anthropic_agents"
+      ],
+      "typical_scenario": "创意助手要在稳定表达和新颖措辞间找平衡，可调整核采样范围。需要一次只改一个参数，并同时看多样性、跑题率和用户编辑量。",
+      "interview_questions": [
+        "调核采样参数时，怎样判断多样性增加是否值得？"
       ]
     },
     {
@@ -1375,7 +1596,7 @@
         "Hallucination"
       ],
       "category": "PROMPT",
-      "definition": "模型生成看似合理却缺乏依据或事实错误的内容。",
+      "definition": "模型把不确定的事说得像真的一样，甚至编造细节；听起来流畅，不能当作事实证明。",
       "mechanism": "生成模式和证据约束不足可能产生无依据断言。",
       "when_to_use": "设计事实可靠性控制。",
       "when_not_to_use": "检索和低温度都不能保证完全消除。",
@@ -1389,6 +1610,10 @@
         "google_glossary",
         "hf_course",
         "anthropic_agents"
+      ],
+      "typical_scenario": "助手根据过期制度编出一条看似真实的退款政策，这就是无依据生成的风险。产品要测事实错误率、伤害级别和纠错路径，并在证据不足时允许明确说不知道。",
+      "interview_questions": [
+        "如何区分普通表达瑕疵和高风险幻觉？"
       ]
     },
     {
@@ -1398,7 +1623,7 @@
         "Grounding"
       ],
       "category": "PROMPT",
-      "definition": "让回答建立在可核验资料或环境事实上的设计。",
+      "definition": "要求答案能对照到真实资料或系统状态，而不是让模型凭印象补内容；引用也要检查是否真的支持结论。",
       "mechanism": "为生成提供证据，并校验答案与证据是否一致。",
       "when_to_use": "事实性问答与企业知识助手。",
       "when_not_to_use": "有来源链接也可能曲解资料。",
@@ -1412,6 +1637,10 @@
         "google_glossary",
         "hf_course",
         "anthropic_agents"
+      ],
+      "typical_scenario": "员工问“这笔费用能报吗”，系统应找到适用条款、核对日期与人群，再说明结论和出处。没有证据或条款冲突时应提示不确定，而不是硬答。",
+      "interview_questions": [
+        "怎样判断生成答案确实受到资料依据约束？"
       ]
     },
     {
@@ -1421,7 +1650,7 @@
         "Long-context Processing"
       ],
       "category": "PROMPT",
-      "definition": "在较长输入中提取和使用相关信息的能力与策略。",
+      "definition": "面对很多页资料时仍能找到关键内容。资料越长不一定越好，重点可能被淹没，也可能超过上下文容量。",
       "mechanism": "组织资料、分段检索或摘要后组合关键上下文。",
       "when_to_use": "合同、长报告和多轮任务。",
       "when_not_to_use": "关键内容可能在长输入中被忽略。",
@@ -1435,6 +1664,10 @@
         "google_glossary",
         "hf_course",
         "anthropic_agents"
+      ],
+      "typical_scenario": "合同问答不仅要把长文放进模型，还要防止关键信息被截断或忽略。用同一组问题把证据放在开头、中间和末尾，检查召回、冲突处理和总成本。",
+      "interview_questions": [
+        "长上下文评测应覆盖哪些位置与冲突情况？"
       ]
     },
     {
@@ -1444,7 +1677,7 @@
         "Prompt Chaining"
       ],
       "category": "PROMPT",
-      "definition": "把任务拆成预定顺序的多次模型调用。",
+      "definition": "把一件事拆成几次有顺序的模型处理，比如先提取信息、再核对、最后整理成报告。",
       "mechanism": "前一步输出成为后一步输入，并设置中间检查。",
       "when_to_use": "可清晰拆分的固定任务。",
       "when_not_to_use": "错误可能沿链条传递，调用也增加延迟。",
@@ -1458,6 +1691,10 @@
         "google_glossary",
         "hf_course",
         "anthropic_agents"
+      ],
+      "typical_scenario": "报告生成可拆成“抽事实、归类风险、生成摘要、核对来源”几步，每步都有输入输出检查。若拆分没有提高准确率或可控性，就不值得增加调用和延迟。",
+      "interview_questions": [
+        "提示词链每多一步，都应该用什么证据证明它有价值？"
       ]
     },
     {
@@ -1467,7 +1704,7 @@
         "Prompt Versioning"
       ],
       "category": "PROMPT",
-      "definition": "记录提示词及其配置变更并追踪效果的实践。",
+      "definition": "给提示词记版本、改动原因和测试结果；这样效果变差时，团队能知道是哪次改动造成的。",
       "mechanism": "每个发布版本关联模板、模型、评测结果和回滚点。",
       "when_to_use": "持续迭代线上 AI 功能。",
       "when_not_to_use": "只改文案不留记录难以解释效果变化。",
@@ -1480,6 +1717,10 @@
         "google_glossary",
         "hf_course",
         "anthropic_agents"
+      ],
+      "typical_scenario": "提示词修改后，线上摘要突然漏掉负责人，团队需要知道是哪版模板和模型造成的。版本应关联评测结果、灰度范围和回滚点，不能只把提示词散落在代码里。",
+      "interview_questions": [
+        "线上效果退化时，提示词版本管理能帮助快速定位什么？"
       ]
     },
     {
@@ -1490,17 +1731,31 @@
         "RAG"
       ],
       "category": "RAG",
-      "definition": "先检索外部资料，再让模型基于相关资料生成答案的方式。",
-      "mechanism": "资料索引、检索和上下文组装组成生成前的证据流程。",
-      "when_to_use": "回答依赖动态或私有资料时。",
-      "when_not_to_use": "检索错误会传入答案，仍需核验。",
-      "ai_pm_relevance": "设计资料更新、权限和无答案路径。",
-      "example": "制度助手先查最新版报销条款再回答。",
+      "definition": "先从资料里找出相关内容，再让模型照着找到的内容回答。",
+      "mechanism": "资料先整理入库；用户提问后系统找相关片段，连同问题一起交给模型组织答案。",
+      "when_to_use": "答案要根据公司制度、产品资料等会更新或不适合写死在模型里的内容来回答时。",
+      "when_not_to_use": "如果只是固定规则计算、简单闲聊，或没有可靠资料可查，RAG 不一定有帮助；找错资料还会让模型答得更像真的。",
+      "ai_pm_relevance": "产品经理要确认资料谁来更新、用户能看哪些资料、查不到时怎么办，以及答案是否真的被引用内容支持。",
+      "priority": "CORE",
+      "example": "员工问报销条件，助手先找当前有效的制度条款，再用通俗的话解释并给出出处。",
       "related_names": [
-        "文本分块"
+        "文本分块",
+        "分块重叠",
+        "向量数据库",
+        "语义搜索",
+        "BM25 词法检索",
+        "混合检索",
+        "检索候选数",
+        "重排序",
+        "元数据过滤",
+        "引用与溯源"
       ],
       "source_ids": [
         "microsoft_rag"
+      ],
+      "typical_scenario": "员工询问报销规则时，助手先检索当前生效的制度条款，再基于条款回答并展示出处；找不到适用条款就说明无法确认。产品要负责资料更新、权限过滤和无答案流程。",
+      "interview_questions": [
+        "RAG 为什么适合经常变化的企业制度问答？"
       ]
     },
     {
@@ -1511,7 +1766,7 @@
         "Text Splitting"
       ],
       "category": "RAG",
-      "definition": "把资料切成适合索引和检索的小段落。",
+      "definition": "把长资料切成一小段一小段，方便系统检索和交给模型阅读；切得太碎会丢上下文，切太长又不好精准定位。",
       "mechanism": "按长度、段落或语义边界切分，并保留元数据。",
       "when_to_use": "建立长文档检索库。",
       "when_not_to_use": "块太小丢上下文，太大增加噪声。",
@@ -1523,6 +1778,10 @@
       ],
       "source_ids": [
         "microsoft_rag"
+      ],
+      "typical_scenario": "知识库把一份长制度切成段落时，若切得太碎，“适用对象”和“例外条件”可能分开。先拿真实问题测不同切法是否能把完整证据一起召回。",
+      "interview_questions": [
+        "分块策略应优先优化块大小，还是保证语义完整？"
       ]
     },
     {
@@ -1532,7 +1791,7 @@
         "Chunk Overlap"
       ],
       "category": "RAG",
-      "definition": "让相邻文本块共享一部分内容的分块策略。",
+      "definition": "切分资料时让前后两段留一点重复内容，避免一句话刚好被切断；重复太多则会增加成本和重复答案。",
       "mechanism": "保留边界附近的信息以减少切分造成的断裂。",
       "when_to_use": "证据容易跨块边界时。",
       "when_not_to_use": "重叠过多造成冗余和索引成本。",
@@ -1544,6 +1803,10 @@
       ],
       "source_ids": [
         "microsoft_rag"
+      ],
+      "typical_scenario": "合同条款的条件常写在前一段、例外写在后一段，分块重叠能让边界信息同时出现在相邻块。重叠太多会带来重复检索和 token 浪费，要用评测确定幅度。",
+      "interview_questions": [
+        "分块重叠减少边界遗漏的同时会带来什么代价？"
       ]
     },
     {
@@ -1554,7 +1817,7 @@
         "Vector Store"
       ],
       "category": "RAG",
-      "definition": "存储向量并支持近邻检索的数据库或存储系统。",
+      "definition": "专门保存文字向量、按相似含义找资料的存储工具；是否需要它，要看数据规模、更新方式和现有数据库能力。",
       "mechanism": "建立向量索引，按相似度寻找候选对象。",
       "when_to_use": "大规模语义检索。",
       "when_not_to_use": "它不自动解决资料质量和权限问题。",
@@ -1566,6 +1829,10 @@
       ],
       "source_ids": [
         "microsoft_rag"
+      ],
+      "typical_scenario": "企业知识从几千段增长到数百万段后，向量数据库可帮助快速找相似内容。选型还要看权限过滤、更新删除、备份和运维，而不只是搜索演示效果。",
+      "interview_questions": [
+        "什么时候需要向量数据库，什么时候普通搜索已足够？"
       ]
     },
     {
@@ -1576,7 +1843,7 @@
         "Dense Retrieval"
       ],
       "category": "RAG",
-      "definition": "按含义相似程度检索资料，而非只按字面匹配。",
+      "definition": "用户换了说法也能找到意思相近的资料；但产品名、编号这类精确词，有时还是字面检索更靠谱。",
       "mechanism": "把问题和资料转成表示，再比较相似度。",
       "when_to_use": "用户措辞与资料用词不同。",
       "when_not_to_use": "精确编号和专有词可能更适合词法检索。",
@@ -1588,6 +1855,10 @@
       ],
       "source_ids": [
         "microsoft_rag"
+      ],
+      "typical_scenario": "用户搜“退款多久到账”，资料写“退回原支付账户的处理周期”，语义搜索可能找到意思相近的段落。精确编号、产品型号仍需关键词检索补足。",
+      "interview_questions": [
+        "语义搜索对哪些问法有帮助，对哪些关键词可能不够好？"
       ]
     },
     {
@@ -1599,7 +1870,7 @@
         "Sparse Retrieval"
       ],
       "category": "RAG",
-      "definition": "根据词频、逆文档频率和长度等因素排序文档的方法。",
+      "definition": "一种老牌文字搜索方法：用户搜到的关键词在资料里越有辨识度、匹配越充分，资料排名通常越靠前。",
       "mechanism": "估计关键词对查询的重要性并计算相关分数。",
       "when_to_use": "精确术语、名称与编号检索。",
       "when_not_to_use": "同义改写可能没有字面交集。",
@@ -1611,6 +1882,10 @@
       ],
       "source_ids": [
         "microsoft_rag"
+      ],
+      "typical_scenario": "客服要按商品型号“AB-120”找说明书时，BM25 等词法检索能利用精确词匹配。用户换一种说法时它可能漏检，通常可与语义检索互补。",
+      "interview_questions": [
+        "为什么型号、编号查询往往需要保留词法检索？"
       ]
     },
     {
@@ -1621,7 +1896,7 @@
         "Hybrid Retrieval"
       ],
       "category": "RAG",
-      "definition": "结合词法与向量等多种检索结果的方式。",
+      "definition": "把关键词搜索和语义搜索的结果合起来，既照顾精确词，也照顾近义表达；上线后还得比较它有没有真的提高命中率。",
       "mechanism": "分别召回候选，再融合分数或排名。",
       "when_to_use": "同时存在精确词与语义改写。",
       "when_not_to_use": "多路结果融合后仍需评估排序。",
@@ -1633,6 +1908,10 @@
       ],
       "source_ids": [
         "microsoft_rag"
+      ],
+      "typical_scenario": "制度问答既有“差旅报销”这种语义问法，也有“制度 3.2.1”这样的精确编号。混合检索同时取两类候选，再看融合后是否减少漏召和噪声。",
+      "interview_questions": [
+        "怎样用真实问题判断混合检索是否比单一路径更好？"
       ]
     },
     {
@@ -1642,7 +1921,7 @@
         "Cosine Similarity"
       ],
       "category": "RAG",
-      "definition": "通过向量夹角衡量方向接近程度的指标。",
+      "definition": "比较两个向量方向有多接近，常被用来估算两段文字的含义像不像；分数高不一定就与业务问题有关。",
       "mechanism": "计算点积与向量长度的比值。",
       "when_to_use": "比较适用嵌入模型的表示。",
       "when_not_to_use": "不同模型分数与阈值不能直接通用。",
@@ -1654,6 +1933,10 @@
       ],
       "source_ids": [
         "microsoft_rag"
+      ],
+      "typical_scenario": "向量库按余弦相似度排列问题和资料的接近程度，但分数高并不保证资料真的回答问题。产品要用人工标注的相关性样本定阈值，不能把相似度当置信度。",
+      "interview_questions": [
+        "相似度分数能否直接作为答案可信度？为什么？"
       ]
     },
     {
@@ -1664,7 +1947,7 @@
         "ANN"
       ],
       "category": "RAG",
-      "definition": "以一定精度取舍加速大规模近邻搜索的方法。",
+      "definition": "数据很多时，为了更快找相似向量，允许搜索结果不一定是数学上最完美的那一个。",
       "mechanism": "利用索引结构减少需要比较的向量数量。",
       "when_to_use": "向量集合很大且需低延迟。",
       "when_not_to_use": "近似算法可能漏掉真实近邻。",
@@ -1676,6 +1959,10 @@
       ],
       "source_ids": [
         "microsoft_rag"
+      ],
+      "typical_scenario": "知识片段很多时，近似近邻索引能少比一些向量、加快查询，但可能漏掉少量最相近内容。需在目标规模下比较召回率、延迟和资源开销。",
+      "interview_questions": [
+        "近似检索提升速度后，产品要重点防范什么质量损失？"
       ]
     },
     {
@@ -1687,7 +1974,7 @@
         "Retrieval"
       ],
       "category": "RAG",
-      "definition": "指定检索阶段返回多少个候选结果的设置。",
+      "definition": "先从资料库里拿多少条候选内容给后续步骤挑；拿少了可能漏掉关键证据，拿多了会拖慢速度、增加费用。",
       "mechanism": "先取得若干候选，再按排序和上下文预算筛选。",
       "when_to_use": "调整检索覆盖与处理成本。",
       "when_not_to_use": "它与生成采样的 top-k 含义不同。",
@@ -1699,6 +1986,10 @@
       ],
       "source_ids": [
         "microsoft_rag"
+      ],
+      "typical_scenario": "问答先召回 30 段再让模型筛选，可能提高找全证据的机会，也增加噪声、延迟和上下文费用。要分问题类型调候选数，而不是全站套同一数字。",
+      "interview_questions": [
+        "候选数增加后，为什么答案质量不一定持续提高？"
       ]
     },
     {
@@ -1709,7 +2000,7 @@
         "Rerank"
       ],
       "category": "RAG",
-      "definition": "对初步检索候选进行更精细的相关性排序。",
+      "definition": "先粗略找出一批资料，再用更细的判断重新排顺序，把最相关的内容放前面。",
       "mechanism": "用重排模型等方法联合比较问题和候选内容。",
       "when_to_use": "初步召回够但排序不理想。",
       "when_not_to_use": "无法恢复初始召回里不存在的证据。",
@@ -1721,6 +2012,10 @@
       ],
       "source_ids": [
         "microsoft_rag"
+      ],
+      "typical_scenario": "向量或关键词检索先取回几十段，重排序模型再逐条判断哪段最能回答问题。若最相关证据没被初次召回，重排也救不回来，先查召回再加重排。",
+      "interview_questions": [
+        "什么时候应该优化初次召回，什么时候才值得加重排？"
       ]
     },
     {
@@ -1730,7 +2025,7 @@
         "Query Rewriting"
       ],
       "category": "RAG",
-      "definition": "将用户问题改成更适合检索的表达。",
+      "definition": "把用户口语化的问题整理成更容易搜到资料的关键词或问题；要防止改写时把用户原意带偏。",
       "mechanism": "补全指代、拆开复合问题或增加明确实体。",
       "when_to_use": "多轮省略和模糊问法。",
       "when_not_to_use": "改写可能误解原意或编造条件。",
@@ -1742,6 +2037,10 @@
       ],
       "source_ids": [
         "microsoft_rag"
+      ],
+      "typical_scenario": "用户追问“那多久到账”，系统可结合上一轮补成“这笔退款预计多久到账”再检索。改写若擅自补错订单或地区，反而会把系统带偏，需允许用户确认关键实体。",
+      "interview_questions": [
+        "查询改写怎样避免把用户没有说过的条件补进去？"
       ]
     },
     {
@@ -1751,7 +2050,7 @@
         "Multi-query Retrieval"
       ],
       "category": "RAG",
-      "definition": "为同一需求生成多个查询以扩大检索覆盖。",
+      "definition": "用几种不同说法同时搜索同一个问题，争取找到漏掉的资料；搜索次数变多，也会增加响应时间和成本。",
       "mechanism": "不同措辞或子问题分别检索，再合并去重。",
       "when_to_use": "一个问题包含多个角度。",
       "when_not_to_use": "额外查询增加成本，也可能引入噪声。",
@@ -1763,6 +2062,10 @@
       ],
       "source_ids": [
         "microsoft_rag"
+      ],
+      "typical_scenario": "“报销需要什么、多久到账、哪些票据不能报”包含多个子问题，多查询检索可分别找证据再汇总。系统要检查每个子问题是否有来源，避免覆盖一项却漏掉另一项。",
+      "interview_questions": [
+        "多查询拆分后怎样保证最终回答没有漏答子问题？"
       ]
     },
     {
@@ -1772,7 +2075,7 @@
         "Metadata Filtering"
       ],
       "category": "RAG",
-      "definition": "用版本、日期、部门或权限等属性限制检索范围。",
+      "definition": "先按日期、版本、部门或用户权限筛掉不能看的资料，再做搜索；权限过滤必须可靠，不能让模型自己猜。",
       "mechanism": "在检索前后施加结构化条件筛选候选资料。",
       "when_to_use": "资料有时效或访问范围要求。",
       "when_not_to_use": "过滤条件错误可能漏证据或越权。",
@@ -1784,6 +2087,10 @@
       ],
       "source_ids": [
         "microsoft_rag"
+      ],
+      "typical_scenario": "同一知识库含不同地区、部门和生效日期的制度，检索必须先按用户权限和适用范围过滤。过滤条件错了可能泄露资料或拿旧规则回答，须做权限测试。",
+      "interview_questions": [
+        "元数据过滤为什么既是检索质量问题，也是安全控制？"
       ]
     },
     {
@@ -1795,7 +2102,7 @@
         "Source Attribution"
       ],
       "category": "RAG",
-      "definition": "展示答案来源并追踪证据形成路径的机制。",
+      "definition": "让用户看得到答案依据哪份资料、哪一段内容；链接要能定位到真实证据，不能只装饰一个“来源”按钮。",
       "mechanism": "把答案中的结论关联到资料位置与版本。",
       "when_to_use": "用户需要核查依据时。",
       "when_not_to_use": "附链接不代表结论确由资料支持。",
@@ -1806,6 +2113,10 @@
       ],
       "source_ids": [
         "microsoft_rag"
+      ],
+      "typical_scenario": "答案说“住宿上限为 500 元”时，引用应指向具体制度版本和条款，而不是只挂一个首页链接。还要检查用户是否有权打开来源，以及引用是否支持这句话。",
+      "interview_questions": [
+        "怎样验收 AI 答案中的引用不是“看起来有出处”而已？"
       ]
     },
     {
@@ -1817,7 +2128,7 @@
         "Agentic AI"
       ],
       "category": "AGENT",
-      "definition": "根据目标和环境反馈规划并执行行动的 AI 系统。",
+      "definition": "不只回答一句话，还会为目标安排步骤、调用工具并根据结果继续处理的系统；步骤越自由，风险和测试成本也越高。",
       "mechanism": "模型选择下一步，工具执行动作，结果回到循环中。",
       "when_to_use": "路径难以预先穷举的多步任务。",
       "when_not_to_use": "自治程度高会增加错误、成本与延迟。",
@@ -1829,6 +2140,10 @@
       "source_ids": [
         "anthropic_agents",
         "mcp_intro"
+      ],
+      "typical_scenario": "用户要查库存、比较型号并下单，助手会按结果决定下一步并调用工具。若只是固定的三步审批，工作流更容易控；Agent 必须限制权限、预算和停止条件。",
+      "interview_questions": [
+        "什么时候用 Agent 比固定工作流更有必要？"
       ]
     },
     {
@@ -1839,7 +2154,7 @@
         "AI Workflow"
       ],
       "category": "AGENT",
-      "definition": "按预先定义的步骤、条件和依赖完成任务的流程。",
+      "definition": "团队提前把步骤、条件和先后顺序定好，系统照着走；规则清楚的任务通常先用工作流更容易测试和追责。",
       "mechanism": "程序控制顺序和分支，必要环节调用模型。",
       "when_to_use": "过程稳定、可明确编排的任务。",
       "when_not_to_use": "固定流程对未知路径缺乏灵活性。",
@@ -1852,6 +2167,10 @@
       "source_ids": [
         "anthropic_agents",
         "mcp_intro"
+      ],
+      "typical_scenario": "报销流程总是“上传票据、识别字段、规则校验、员工确认、提交”，直接用工作流编排更易测试和追责。模型只参与识别或解释，不接管审批规则。",
+      "interview_questions": [
+        "如何把模型能力放进工作流，同时保留业务规则？"
       ]
     },
     {
@@ -1862,7 +2181,7 @@
         "Function Calling"
       ],
       "category": "AGENT",
-      "definition": "模型请求由外部程序执行特定功能的机制。",
+      "definition": "模型提出“查一下订单”或“创建一张工单”，真正访问系统并执行操作的是外部工具，不是模型自己。",
       "mechanism": "模型生成工具名和参数，系统校验执行并回传结果。",
       "when_to_use": "获取实时信息或执行动作。",
       "when_not_to_use": "模型提出调用不代表具备执行权限。",
@@ -1875,6 +2194,10 @@
       "source_ids": [
         "anthropic_agents",
         "mcp_intro"
+      ],
+      "typical_scenario": "助手查询物流或创建工单时，模型提出工具名和参数，程序校验权限后执行并回传结果。创建、付款等有副作用的动作应先确认，并清楚提示失败状态。",
+      "interview_questions": [
+        "工具调用链路里，哪些环节必须由程序而不是模型把关？"
       ]
     },
     {
@@ -1885,18 +2208,23 @@
         "MCP"
       ],
       "category": "AGENT",
-      "definition": "用于连接 AI 应用与工具、资源等能力的开放协议。",
-      "mechanism": "客户端与服务器通过约定接口发现和使用能力。",
-      "when_to_use": "统一接入多种外部能力。",
-      "when_not_to_use": "协议连接不等于自动授权或可信。",
-      "ai_pm_relevance": "评估连接范围、认证和权限控制。",
-      "example": "同一助手通过 MCP 接入文档与日历服务。",
+      "definition": "MCP 就像 AI 应用和外部工具之间的一种通用插头，让它们不用每接一个工具就重新定制一套连接方式。",
+      "mechanism": "AI 应用通过 MCP 发现工具或数据源能做什么，再按统一约定发起调用；具体权限仍要由应用和服务端检查。",
+      "when_to_use": "一个 AI 应用要接入多种工具、数据库或文档服务，或者多款 AI 应用需要复用同一批连接能力时。",
+      "when_not_to_use": "只有一个简单、固定的接口时，直接调用 API 可能更省事；接上 MCP 也不代表工具自动安全或用户自动有权限。",
+      "ai_pm_relevance": "先看工具接入会不会持续增加、是否需要统一管理；再确认每个工具能读什么、能改什么，失败时怎么提示和审计。",
+      "priority": "IMPORTANT",
+      "example": "比如客服问订单到哪了，AI 通过统一工具连接查询物流；若用户没有退款权限，系统仍会拦截退款操作。",
       "related_names": [
         "工具调用",
         "记忆"
       ],
       "source_ids": [
         "mcp_intro"
+      ],
+      "typical_scenario": "客服 AI 要查订单、看物流、申请退款，统一工具协议可减少每个模型单独适配的工作。若只有一个稳定 API，直接接入可能更简单；无论选哪种都要逐工具授权和审计。",
+      "interview_questions": [
+        "MCP 什么时候能减少集成成本，什么时候是多加一层？"
       ]
     },
     {
@@ -1907,7 +2235,7 @@
         "Agent Memory"
       ],
       "category": "AGENT",
-      "definition": "让系统保存并在后续任务中使用信息的能力。",
+      "definition": "把对后续任务有用的信息留下来，比如用户偏好或上次处理到哪一步；要说明保存什么、保存多久以及用户怎么删除。",
       "mechanism": "区分会话状态与跨会话记录，按需要检索或摘要。",
       "when_to_use": "连续任务与个性化体验。",
       "when_not_to_use": "记错、过期或跨用户泄露会造成风险。",
@@ -1920,6 +2248,10 @@
       "source_ids": [
         "anthropic_agents",
         "mcp_intro"
+      ],
+      "typical_scenario": "学习助手希望记住用户偏好的讲解难度，但不能把所有聊天永久保存。应让用户查看、修改和删除记忆，并区分本次会话状态与长期偏好。",
+      "interview_questions": [
+        "产品记忆要给用户哪些控制权，才能避免“记住过头”？"
       ]
     },
     {
@@ -1930,7 +2262,7 @@
         "Planning"
       ],
       "category": "AGENT",
-      "definition": "将整体目标划分为有依赖关系的可执行子任务。",
+      "definition": "把“帮我办好这件事”拆成能一步步执行的小任务，并标清先做什么、每步交付什么。",
       "mechanism": "明确每步输入、产出、工具和完成标准。",
       "when_to_use": "复杂目标需要多个动作时。",
       "when_not_to_use": "计划合理不代表工具执行一定成功。",
@@ -1943,6 +2275,10 @@
       "source_ids": [
         "anthropic_agents",
         "mcp_intro"
+      ],
+      "typical_scenario": "“准备一份竞品分析”可拆成找竞品、收集证据、对比功能和写结论。每一步都要定义可检查产物；前一步失败时重试或缩小任务，而非把错误一路传下去。",
+      "interview_questions": [
+        "复杂任务拆解时，怎样设计中间结果的验收标准？"
       ]
     },
     {
@@ -1953,7 +2289,7 @@
         "Observe Reason Act"
       ],
       "category": "AGENT",
-      "definition": "持续观察结果、选择行动并执行的运行过程。",
+      "definition": "智能体做一步、看一步结果，再决定下一步的过程；必须设置次数和时间上限，防止它一直循环。",
       "mechanism": "环境反馈更新状态，直到完成或满足停止条件。",
       "when_to_use": "任务需要试探与迭代。",
       "when_not_to_use": "缺少停止条件容易无限循环。",
@@ -1966,6 +2302,10 @@
       "source_ids": [
         "anthropic_agents",
         "mcp_intro"
+      ],
+      "typical_scenario": "助手搜资料后发现证据不足，会调整关键词再查，形成“观察结果—选择动作—执行—再检查”的循环。每轮都可能花钱或越权，必须限制次数、总时长和可执行动作。",
+      "interview_questions": [
+        "Agent 循环应设哪些上限，防止任务一直跑下去？"
       ]
     },
     {
@@ -1976,7 +2316,7 @@
         "Multi-Agent"
       ],
       "category": "AGENT",
-      "definition": "多个智能体分工或协同完成目标的系统设计。",
+      "definition": "让多个 AI 分角色配合完成一件事，比如一个查资料、一个核对；参与者增加也会带来沟通、延迟和调试成本。",
       "mechanism": "分配职责、传递结果并由协调者汇总或裁决。",
       "when_to_use": "可独立分解且需多种专长的任务。",
       "when_not_to_use": "更多 Agent 可能放大沟通成本和错误。",
@@ -1989,6 +2329,10 @@
       "source_ids": [
         "anthropic_agents",
         "mcp_intro"
+      ],
+      "typical_scenario": "市场研究可由不同角色分别搜集竞品、核对证据、汇总结论。多 Agent 只有在任务能拆开且协作减少遗漏时才有价值，还要处理重复、冲突和额外成本。",
+      "interview_questions": [
+        "怎样证明多 Agent 比一个 Agent 或工作流更有收益？"
       ]
     },
     {
@@ -1999,7 +2343,7 @@
         "Model Routing"
       ],
       "category": "AGENT",
-      "definition": "依据请求特点选择合适流程、工具或模型。",
+      "definition": "先判断用户这次要做什么，再把请求送到合适的模型、工具或处理流程；分错路会让后面全做错。",
       "mechanism": "分类器或规则把输入分配到不同处理路径。",
       "when_to_use": "任务类型和模型成本差异明显。",
       "when_not_to_use": "路由错会让下游方案不适合请求。",
@@ -2012,6 +2356,10 @@
       "source_ids": [
         "anthropic_agents",
         "mcp_intro"
+      ],
+      "typical_scenario": "简单 FAQ 用低成本路径，涉及权益或复杂分析的问题走强模型或人工。路由错了会让重要问题拿到弱答案，因此要测端到端成功率，而非只测分类准确率。",
+      "interview_questions": [
+        "路由模型选对了类别，为什么用户任务仍可能失败？"
       ]
     },
     {
@@ -2022,7 +2370,7 @@
         "Harness"
       ],
       "category": "AGENT",
-      "definition": "管理智能体运行所需状态、工具、循环和约束的软件层。",
+      "definition": "帮团队把智能体的状态、工具、调用过程和权限规则接起来的一层软件；它不能替代业务流程设计。",
       "mechanism": "组织模型调用、执行记录、错误恢复与运行预算。",
       "when_to_use": "把 Agent 稳定运行在真实环境。",
       "when_not_to_use": "术语没有唯一标准，能力需逐项核实。",
@@ -2035,6 +2383,10 @@
       "source_ids": [
         "anthropic_agents",
         "mcp_intro"
+      ],
+      "typical_scenario": "智能体运行框架负责记录每轮输入、工具结果、错误和预算，超时后能暂停或恢复。选框架时要用故障演练验证可观测、回滚和权限，而非只看 Demo。",
+      "interview_questions": [
+        "选择 Agent 框架时，产品经理应如何验证它能应对失败？"
       ]
     },
     {
@@ -2045,7 +2397,7 @@
         "API"
       ],
       "category": "AGENT",
-      "definition": "软件向其他程序开放的调用约定。",
+      "definition": "让两个软件互相请求和返回数据的一套约定。产品经理通常需要弄清楚能做什么、失败如何反馈、权限如何控制。",
       "mechanism": "按请求和响应契约交换数据或执行功能。",
       "when_to_use": "连接模型服务与业务系统。",
       "when_not_to_use": "接口可调用不等于数据可公开。",
@@ -2058,6 +2410,10 @@
       "source_ids": [
         "anthropic_agents",
         "mcp_intro"
+      ],
+      "typical_scenario": "学习应用通过模型服务 API 生成讲解，接口可能超时、限流或返回错误。产品要明确重试、状态展示、费用归属和数据传输范围，不能让用户误以为已完成。",
+      "interview_questions": [
+        "接入模型 API 前，哪些非模型体验需要先设计？"
       ]
     },
     {
@@ -2068,7 +2424,7 @@
         "CLI"
       ],
       "category": "AGENT",
-      "definition": "通过文本命令和参数操作程序的接口。",
+      "definition": "在命令窗口里输入文字指令来操作程序，适合开发和自动化任务，不一定适合普通用户使用。",
       "mechanism": "程序解析命令后执行操作，并返回输出和状态码。",
       "when_to_use": "开发、批处理和自动化运维。",
       "when_not_to_use": "模型生成的命令需受执行范围约束。",
@@ -2081,6 +2437,10 @@
       "source_ids": [
         "anthropic_agents",
         "mcp_intro"
+      ],
+      "typical_scenario": "运营用命令行批量检查课程 JSON，适合开发和自动化脚本，不适合要求普通学生记命令。任何可执行命令都要限制权限、校验参数并记录结果。",
+      "interview_questions": [
+        "为什么 CLI 适合内部自动化，却通常不应直接作为大众产品界面？"
       ]
     },
     {
@@ -2090,7 +2450,7 @@
         "JSON Schema"
       ],
       "category": "AGENT",
-      "definition": "描述 JSON 字段、类型及约束的结构规范。",
+      "definition": "提前规定 JSON 里必须有哪些字段、各自是什么类型；这能检查格式，不能证明模型填的业务内容是对的。",
       "mechanism": "定义必填字段、枚举和格式，再校验数据。",
       "when_to_use": "验证工具参数和结构化结果。",
       "when_not_to_use": "类型正确仍可能越权或语义错误。",
@@ -2102,6 +2462,10 @@
       ],
       "source_ids": [
         "json_schema"
+      ],
+      "typical_scenario": "助手要调用退款工具，先按 JSON 模式生成订单号、金额和理由，再由程序校验字段类型与业务范围。格式正确并不代表订单存在或用户有退款权限。",
+      "interview_questions": [
+        "JSON 格式合法后，还必须做哪些业务校验？"
       ]
     },
     {
@@ -2111,7 +2475,7 @@
         "Idempotency"
       ],
       "category": "AGENT",
-      "definition": "重复执行同一请求不会造成额外业务副作用的性质。",
+      "definition": "同一个请求就算因为超时被重发，系统也只办一次，不会多扣一次钱或多建一笔单。",
       "mechanism": "用幂等键或状态判断识别已经处理的请求。",
       "when_to_use": "网络重试、付款和任务恢复。",
       "when_not_to_use": "并非所有操作天然具备幂等性。",
@@ -2123,6 +2487,10 @@
       ],
       "source_ids": [
         "mdn_idempotency"
+      ],
+      "typical_scenario": "员工提交报销时网络超时，前端再次发送请求可能重复创建申请。用幂等键让服务端识别同一次操作，并先查询原单状态再重试，避免重复扣款或报销。",
+      "interview_questions": [
+        "请求超时后如何重试，才能避免产生两笔相同业务操作？"
       ]
     },
     {
@@ -2133,7 +2501,7 @@
         "Stop Condition"
       ],
       "category": "AGENT",
-      "definition": "决定智能体何时完成、暂停或放弃的规则。",
+      "definition": "规定智能体什么时候该停下来：任务已完成、达到次数上限、遇到高风险，或需要人来确认。",
       "mechanism": "检查目标、预算、轮次、错误和人工确认状态。",
       "when_to_use": "所有可迭代任务。",
       "when_not_to_use": "只靠模型自行判断可能无法停止。",
@@ -2145,6 +2513,10 @@
       "source_ids": [
         "anthropic_agents",
         "mcp_intro"
+      ],
+      "typical_scenario": "助手找不到政策时不断尝试不同检索词，可能浪费时间和费用。设定证据不足、达到轮次或预算上限时停止，并告诉用户接下来找谁处理。",
+      "interview_questions": [
+        "Agent 的停止条件怎样同时保护体验、成本和安全？"
       ]
     },
     {
@@ -2156,7 +2528,7 @@
         "Task Evaluation"
       ],
       "category": "EVALUATION",
-      "definition": "用代表真实任务的样本和标准检验 AI 系统能力。",
+      "definition": "拿真实用户会遇到的任务来测系统，而不是只看几道演示题；测试前要先说清楚什么结果才算成功。",
       "mechanism": "覆盖正常、边界和失败场景，记录可复查结果。",
       "when_to_use": "比较模型与发布验收。",
       "when_not_to_use": "公开榜单成绩不等于自家场景表现。",
@@ -2169,6 +2541,10 @@
         "sklearn_metrics",
         "google_metrics",
         "code_eval"
+      ],
+      "typical_scenario": "团队比较两个客服助手时，用真实用户任务覆盖常见、边界和失败情形，记录任务是否解决、耗时和人工接管。演示问题答得好不能代替发布验收。",
+      "interview_questions": [
+        "如何把模糊的“回答质量好”变成可复现的任务评估？"
       ]
     },
     {
@@ -2179,7 +2555,7 @@
         "ACC"
       ],
       "category": "EVALUATION",
-      "definition": "分类预测正确的样本占全部样本的比例。",
+      "definition": "所有预测里有多少答对了。类别很不均衡时，这个分数看着很高也可能掩盖少数类被漏掉的问题。",
       "mechanism": "以正确数除以样本总数计算整体命中。",
       "when_to_use": "类别较均衡的整体分类评估。",
       "when_not_to_use": "多数类占比高时可能误导判断。",
@@ -2193,6 +2569,10 @@
         "sklearn_metrics",
         "google_metrics",
         "code_eval"
+      ],
+      "typical_scenario": "分类 100 条投诉时，大多数是普通咨询，模型全猜普通类也可能有不错的准确率。应结合关键类别召回、误报成本和总体基线解释这个数字。",
+      "interview_questions": [
+        "类别分布不均时，准确率可能掩盖哪些风险？"
       ]
     },
     {
@@ -2202,7 +2582,7 @@
         "Precision"
       ],
       "category": "EVALUATION",
-      "definition": "预测为正的样本中真正为正的比例。",
+      "definition": "系统标成“有问题”的样本里，最后确实有问题的占多少；误报成本高时尤其要关注它。",
       "mechanism": "计算 TP／(TP＋FP)，衡量正向判断的可靠程度。",
       "when_to_use": "误报成本较高的任务。",
       "when_not_to_use": "高精确率可能伴随大量漏检。",
@@ -2216,6 +2596,10 @@
         "sklearn_metrics",
         "google_metrics",
         "code_eval"
+      ],
+      "typical_scenario": "内容审核系统自动拦截帖子时，精确率表示被拦内容里确实违规的比例。误拦会伤害正常用户，因此上线前要比较精确率与人工复核负担。",
+      "interview_questions": [
+        "自动拦截场景里，精确率低会给用户带来什么问题？"
       ]
     },
     {
@@ -2226,7 +2610,7 @@
         "Sensitivity"
       ],
       "category": "EVALUATION",
-      "definition": "所有真实正例中被成功识别的比例。",
+      "definition": "所有真的有问题的样本中，系统找回了多少；漏掉一次很严重时，召回率通常很关键。",
       "mechanism": "计算 TP／(TP＋FN)，衡量漏检程度。",
       "when_to_use": "漏报代价较高的任务。",
       "when_not_to_use": "高召回可能引入更多误报。",
@@ -2240,6 +2624,10 @@
         "sklearn_metrics",
         "google_metrics",
         "code_eval"
+      ],
+      "typical_scenario": "欺诈识别漏掉一笔高风险交易可能损失很大，召回率表示实际风险中被识别出来的比例。阈值调高通常会增加误报，需一起评估人工处理能力。",
+      "interview_questions": [
+        "追求高召回时，产品还需要同步监控哪些代价？"
       ]
     },
     {
@@ -2250,7 +2638,7 @@
         "F1"
       ],
       "category": "EVALUATION",
-      "definition": "精确率与召回率的调和平均数。",
+      "definition": "把精确率和召回率合成一个分数看；它适合快速对比，但别因此忽略误报和漏报哪边更贵。",
       "mechanism": "计算 2PR／(P＋R)，综合两者而不直接计入真负例。",
       "when_to_use": "同时关心误报与漏报的分类。",
       "when_not_to_use": "不能代替真实的业务成本函数。",
@@ -2264,6 +2652,10 @@
         "sklearn_metrics",
         "google_metrics",
         "code_eval"
+      ],
+      "typical_scenario": "风控既怕漏掉欺诈，也怕误拦正常交易，可用 F1 汇总精确率与召回率作快速比较。它无法替代业务成本分析，最终阈值仍要按错判后果决定。",
+      "interview_questions": [
+        "F1 分数适合快速比较，但为什么不能独自决定上线阈值？"
       ]
     },
     {
@@ -2273,7 +2665,7 @@
         "Confusion Matrix"
       ],
       "category": "EVALUATION",
-      "definition": "按真实类别和预测类别交叉统计结果的表。",
+      "definition": "把模型猜的类别和真实类别摆在一起数清楚，能直接看出它常把哪类问题错认成哪类。",
       "mechanism": "呈现各类正确、误报和漏报数量。",
       "when_to_use": "定位分类错误集中在哪里。",
       "when_not_to_use": "不同类别样本数可能影响直接比较。",
@@ -2287,6 +2679,10 @@
         "sklearn_metrics",
         "google_metrics",
         "code_eval"
+      ],
+      "typical_scenario": "退款申请被模型分错时，混淆矩阵能看出它常与投诉还是物流问题混淆。按类别查看错误，才能判断是标签定义、数据不足还是业务类别需要调整。",
+      "interview_questions": [
+        "混淆矩阵比单一准确率多告诉产品经理什么？"
       ]
     },
     {
@@ -2297,7 +2693,7 @@
         "Area under ROC"
       ],
       "category": "EVALUATION",
-      "definition": "衡量跨阈值区分正负样本能力的排序指标。",
+      "definition": "看不同判断门槛下，模型能不能把正例排在负例前面；正例很少时，它可能显得过于乐观。",
       "mechanism": "以假正例率和真正例率形成 ROC 曲线并计算面积。",
       "when_to_use": "比较二分类模型排序能力。",
       "when_not_to_use": "不能单独反映极不平衡场景的精确率。",
@@ -2311,6 +2707,10 @@
         "sklearn_metrics",
         "google_metrics",
         "code_eval"
+      ],
+      "typical_scenario": "两种风控模型需要比较不同阈值下区分风险的能力，可看 ROC-AUC。它不说明某个实际阈值的误报数量，也不代表线上收益，应配合成本和分布评估。",
+      "interview_questions": [
+        "ROC-AUC 高是否意味着可以直接自动拦截？为什么？"
       ]
     },
     {
@@ -2321,7 +2721,7 @@
         "Area under PR"
       ],
       "category": "EVALUATION",
-      "definition": "精确率与召回率曲线下的面积指标。",
+      "definition": "把不同判断门槛下的精确率和召回率综合起来看；正例稀少的任务里，它常比 ROC-AUC 更有参考价值。",
       "mechanism": "改变阈值得到 P-R 曲线；面积算法需明确。",
       "when_to_use": "重点关注少数正类的任务。",
       "when_not_to_use": "受正例比例影响，且不应混同所有 AP 算法。",
@@ -2335,6 +2735,10 @@
         "sklearn_metrics",
         "google_metrics",
         "code_eval"
+      ],
+      "typical_scenario": "欺诈只占全部交易的千分之一时，PR-AUC能更直接反映少数正类上的精确率和召回率变化。比较结果必须使用相同样本口径和正类定义。",
+      "interview_questions": [
+        "为什么稀有风险任务往往要额外看 PR-AUC？"
       ]
     },
     {
@@ -2345,7 +2749,7 @@
         "MRR"
       ],
       "category": "EVALUATION",
-      "definition": "衡量首个相关结果在排序中出现位置的指标。",
+      "definition": "看搜索结果里第一个有用答案排得靠不靠前；用户通常只看前几条，所以位置很重要。",
       "mechanism": "每个查询取首个相关结果排名的倒数，再求平均。",
       "when_to_use": "希望相关答案尽早出现的检索。",
       "when_not_to_use": "不充分反映多个相关结果的整体排序。",
@@ -2359,6 +2763,10 @@
         "sklearn_metrics",
         "google_metrics",
         "code_eval"
+      ],
+      "typical_scenario": "搜索“差旅住宿标准”时，用户希望最相关的政策尽早出现。平均倒数排名只看第一个相关结果，适合衡量首条命中，不反映后续结果是否也有用。",
+      "interview_questions": [
+        "MRR 关注结果列表的哪一部分，它忽略了什么？"
       ]
     },
     {
@@ -2369,7 +2777,7 @@
         "NDCG"
       ],
       "category": "EVALUATION",
-      "definition": "考虑位置折损与分级相关性的排序质量指标。",
+      "definition": "不只看搜没搜到，还看越相关的资料有没有排在前面；排得越靠前，对用户越有帮助。",
       "mechanism": "计算位置加权相关收益，并除以理想排序收益。",
       "when_to_use": "有多个相关等级的检索与推荐。",
       "when_not_to_use": "相关性标注与截断位置需一致。",
@@ -2383,6 +2791,10 @@
         "sklearn_metrics",
         "google_metrics",
         "code_eval"
+      ],
+      "typical_scenario": "推荐结果有“完全相关、部分相关、不相关”不同等级，NDCG会更重视排在前面的高相关内容。评分规则要统一，否则优化出来的排序没有可比性。",
+      "interview_questions": [
+        "NDCG 为什么适合多等级相关性排序，标注上有什么前提？"
       ]
     },
     {
@@ -2393,7 +2805,7 @@
         "Retrieval Recall"
       ],
       "category": "EVALUATION",
-      "definition": "前 k 个检索结果覆盖相关资料的比例。",
+      "definition": "系统拿给模型看的前几条资料中，包含了多少真正相关的内容；漏掉证据时答案再会写也没用。",
       "mechanism": "以找到的相关资料数除以已标注相关资料总数。",
       "when_to_use": "检查检索是否漏掉证据。",
       "when_not_to_use": "需要尽量完整的相关性标注。",
@@ -2407,6 +2819,10 @@
         "sklearn_metrics",
         "google_metrics",
         "code_eval"
+      ],
+      "typical_scenario": "知识库问题有四段必须支持答案的条款，系统只找回三段，检索召回率是 75%。先确保关键证据进入候选，再优化排序和生成，不要只看最终回答。",
+      "interview_questions": [
+        "最终答案错了时，检索召回率能帮你定位哪一段问题？"
       ]
     },
     {
@@ -2416,7 +2832,7 @@
         "pass@k"
       ],
       "category": "EVALUATION",
-      "definition": "在 k 个生成候选中至少一个通过测试的概率指标。",
+      "definition": "同一个问题让模型尝试多次，至少有一次通过检查的比例；它说明“能不能碰巧做对”，不代表单次体验稳定。",
       "mechanism": "对多次采样结果估计至少一个正确候选的概率。",
       "when_to_use": "代码生成等有可执行验收的任务。",
       "when_not_to_use": "不代表第一次回答成功，也依赖测试充分性。",
@@ -2428,6 +2844,10 @@
       ],
       "source_ids": [
         "code_eval"
+      ],
+      "typical_scenario": "代码助手对同一需求生成多个候选，并运行测试看是否至少一个通过。多采样可能提高命中机会，但延迟、推理费用和筛选成本也会同步增加。",
+      "interview_questions": [
+        "多次生成通过率提升后，怎样判断额外采样值得上线？"
       ]
     },
     {
@@ -2438,7 +2858,7 @@
         "LLM Judge"
       ],
       "category": "EVALUATION",
-      "definition": "用语言模型按明确标准评判其他模型输出的方式。",
+      "definition": "让一个模型按评分规则检查另一个模型的答案；省人工，但要先用人工结果校准，避免评审模型也判断错。",
       "mechanism": "提供评分规则和答案，生成评分与理由，再抽样复核。",
       "when_to_use": "大规模、部分主观的质量评估。",
       "when_not_to_use": "可能有偏好、位置偏差与不稳定性。",
@@ -2452,6 +2872,10 @@
         "sklearn_metrics",
         "google_metrics",
         "code_eval"
+      ],
+      "typical_scenario": "模型评审可批量判断摘要是否遗漏关键事项，但评审模型也可能偏爱较长或更自信的答案。先让人工对一批样本打分，检查一致性和偏差再扩规模。",
+      "interview_questions": [
+        "用模型评审模型时，如何验证评审分数可信？"
       ]
     },
     {
@@ -2462,7 +2886,7 @@
         "Regression Testing"
       ],
       "category": "EVALUATION",
-      "definition": "重复检查固定代表性任务，发现版本改动造成的退步。",
+      "definition": "模型或提示词改完后，用同一批固定题再测一遍，看看以前做得好的任务有没有变差。",
       "mechanism": "冻结样本与标准，对比新旧版本通过率和失败例。",
       "when_to_use": "修改模型、提示词、检索或流程。",
       "when_not_to_use": "只测旧样本可能漏掉新需求。",
@@ -2476,6 +2900,10 @@
         "sklearn_metrics",
         "google_metrics",
         "code_eval"
+      ],
+      "typical_scenario": "模型换版本后，用固定历史问题重新测政策问答、边界拒答和常见失败场景。把退化用例作为发布门槛，避免新模型某项变好却把旧能力带坏。",
+      "interview_questions": [
+        "模型升级前的回归评估，应优先覆盖哪些类型的旧问题？"
       ]
     },
     {
@@ -2486,7 +2914,7 @@
         "Ablation"
       ],
       "category": "EVALUATION",
-      "definition": "移除或替换组件以判断其贡献的实验。",
+      "definition": "把系统里某个部分暂时关掉或换掉，再比较结果；这样能知道它到底有没有带来提升。",
       "mechanism": "控制其他条件，比较有无组件时的效果。",
       "when_to_use": "判断复杂功能是否真的有收益。",
       "when_not_to_use": "组件相互作用可能让结论不适合直接推广。",
@@ -2499,6 +2927,10 @@
         "sklearn_metrics",
         "google_metrics",
         "code_eval"
+      ],
+      "typical_scenario": "RAG 加了重排序后答案似乎更好，消融实验通过只移除该模块、其他条件不变来确认增益。若质量提升很小却明显增加延迟，就有依据考虑不引入。",
+      "interview_questions": [
+        "怎样用消融实验判断某个技术组件是否值得保留？"
       ]
     },
     {
@@ -2509,7 +2941,7 @@
         "VLM"
       ],
       "category": "MULTIMODAL",
-      "definition": "能够处理两种或更多信息模态的模型。",
+      "definition": "能同时理解或生成文字、图片、声音等不止一种信息的模型；产品仍要分别验证每种输入的效果和风险。",
       "mechanism": "编码文字、图像或音频等输入，再进行关联或生成。",
       "when_to_use": "任务同时依赖图文或声音。",
       "when_not_to_use": "支持某模态不等于在所有该类任务都可靠。",
@@ -2521,6 +2953,10 @@
       "source_ids": [
         "google_glossary",
         "hf_pipeline"
+      ],
+      "typical_scenario": "用户上传商品照片并提问“标签上的保质期是什么”，多模态模型要联合处理图像和文字。分别准备模糊图、遮挡图和不同语言问题，不能只测清晰样例。",
+      "interview_questions": [
+        "多模态功能的验收为什么要覆盖每种输入模态的失败情况？"
       ]
     },
     {
@@ -2531,7 +2967,7 @@
         "CNN"
       ],
       "category": "MULTIMODAL",
-      "definition": "通过局部卷积和共享权重提取特征的神经网络。",
+      "definition": "一种常用于看图片的神经网络，会逐块识别边缘、形状等特征，再组合起来判断画面里有什么。",
       "mechanism": "多层卷积把局部模式逐渐组合成更复杂表示。",
       "when_to_use": "理解视觉识别与局部模式建模。",
       "when_not_to_use": "复杂视觉任务也可能采用其他架构。",
@@ -2544,6 +2980,10 @@
       "source_ids": [
         "google_glossary",
         "hf_pipeline"
+      ],
+      "typical_scenario": "仓库要从照片中判断包装是否破损，可用卷积网络识别局部纹理和形状。先确认摄像条件、缺陷样本数量和误判成本，再决定是否需要复杂视觉模型。",
+      "interview_questions": [
+        "用图像模型识别瑕疵前，产品要先确认哪些业务条件？"
       ]
     },
     {
@@ -2554,7 +2994,7 @@
         "RNN"
       ],
       "category": "MULTIMODAL",
-      "definition": "通过循环状态处理序列信息的神经网络。",
+      "definition": "按顺序逐步读入文字或时间序列，并把前面读到的信息带到后面处理的模型结构。",
       "mechanism": "按顺序更新隐藏状态，传递已有输入信息。",
       "when_to_use": "理解传统序列和时序建模。",
       "when_not_to_use": "长距离依赖与并行计算可能受限。",
@@ -2567,6 +3007,10 @@
       "source_ids": [
         "google_glossary",
         "hf_pipeline"
+      ],
+      "typical_scenario": "工厂传感器每秒记录温度和振动，循环神经网络按时间顺序处理信号并预测异常。若长序列或并行效率要求高，也要比较其他结构和规则基线。",
+      "interview_questions": [
+        "时序任务选择 RNN 时，要重点核实哪些数据和性能约束？"
       ]
     },
     {
@@ -2577,7 +3021,7 @@
         "GAN"
       ],
       "category": "MULTIMODAL",
-      "definition": "通过生成器与判别器对抗训练生成数据的方法。",
+      "definition": "一个模型负责生成图片，另一个模型负责挑错，两边在训练中互相较劲，让生成结果逐渐更像真实数据。",
       "mechanism": "生成器试图产出逼真样本，判别器识别真假。",
       "when_to_use": "理解图像生成与增强路线。",
       "when_not_to_use": "训练不稳定或模式坍塌可能限制效果。",
@@ -2590,6 +3034,10 @@
       "source_ids": [
         "google_glossary",
         "hf_pipeline"
+      ],
+      "typical_scenario": "电商想为商品生成背景图，GAN可生成新图像，但训练稳定性和可控编辑可能有挑战。商用前核对商品外观是否被改、训练数据许可和人工审核成本。",
+      "interview_questions": [
+        "生成商品图时，怎样防止“看着漂亮”但改变了商品事实？"
       ]
     },
     {
@@ -2599,7 +3047,7 @@
         "Diffusion Model"
       ],
       "category": "MULTIMODAL",
-      "definition": "通过学习逐步去噪来生成数据的一类模型。",
+      "definition": "从一张充满噪点的图开始，一步步去掉噪声，最后生成清晰图像的一类模型。",
       "mechanism": "从噪声出发，在条件控制下迭代还原目标样本。",
       "when_to_use": "图像等内容生成。",
       "when_not_to_use": "推理步骤和控制方式影响质量与延迟。",
@@ -2612,6 +3060,10 @@
       "source_ids": [
         "google_glossary",
         "hf_pipeline"
+      ],
+      "typical_scenario": "营销人员用扩散模型从文字生成活动海报，再人工修正文案和品牌元素。大量迭代会增加等待和费用，还要检查商标、人物授权及生成内容是否可控。",
+      "interview_questions": [
+        "扩散模型生成内容的产品体验，除了图片质量还要评估什么？"
       ]
     },
     {
@@ -2622,7 +3074,7 @@
         "ViT"
       ],
       "category": "MULTIMODAL",
-      "definition": "把图像块当作序列进行处理的 Transformer 架构。",
+      "definition": "把图片切成许多小块，再像读一串文字那样分析这些图块之间关系的视觉模型。",
       "mechanism": "将图像切为 patch 并用注意力整合全局信息。",
       "when_to_use": "理解视觉模型的技术路线。",
       "when_not_to_use": "架构名称不能直接预测场景效果。",
@@ -2635,6 +3087,10 @@
       "source_ids": [
         "google_glossary",
         "hf_pipeline"
+      ],
+      "typical_scenario": "用户拍摄商品图后要匹配目录品类，视觉 Transformer可分析图像块之间关系。若训练图片与真实拍照角度差别大，线上效果可能下降，需用实际设备样本验证。",
+      "interview_questions": [
+        "视觉模型在公开图片集表现好，为什么仍要测真实用户照片？"
       ]
     },
     {
@@ -2645,7 +3101,7 @@
         "Contrastive Language-Image Pretraining"
       ],
       "category": "MULTIMODAL",
-      "definition": "通过图文配对学习共享表示的一类方法。",
+      "definition": "用配对的图片和文字训练模型，让它知道哪些描述对应哪些画面，便于做图文匹配或搜索。",
       "mechanism": "拉近对应图文向量，区分不匹配的配对。",
       "when_to_use": "图文检索和开放词汇匹配。",
       "when_not_to_use": "相似度不代表完整理解图像关系。",
@@ -2658,6 +3114,10 @@
       "source_ids": [
         "google_glossary",
         "hf_pipeline"
+      ],
+      "typical_scenario": "用户搜“蓝色轻便跑鞋”时，图文对比学习可以让文字和商品图映射到相近空间。颜色、款式和细节标签可能混淆，应特别评测细粒度属性。",
+      "interview_questions": [
+        "图文检索产品应如何验证颜色、型号等细节没有被忽略？"
       ]
     },
     {
@@ -2668,7 +3128,7 @@
         "OCR"
       ],
       "category": "MULTIMODAL",
-      "definition": "把图像中的文字转换成机器可用文本的技术。",
+      "definition": "把照片或扫描件里的字读出来变成文本，比如从发票照片中识别日期和金额；模糊、倾斜会影响识别。",
       "mechanism": "定位文字区域，再识别字符并组织输出。",
       "when_to_use": "票据、扫描件和拍照资料。",
       "when_not_to_use": "手写、倾斜、模糊和复杂排版可能出错。",
@@ -2681,6 +3141,10 @@
       "source_ids": [
         "google_glossary",
         "hf_pipeline"
+      ],
+      "typical_scenario": "财务上传拍照发票，OCR先把抬头、金额和日期转成文本。倾斜、模糊或印章遮挡会造成错字；金额等关键字段应让员工核对并由规则校验。",
+      "interview_questions": [
+        "OCR 识别到票据字段后，哪些内容不能直接自动提交？"
       ]
     },
     {
@@ -2692,7 +3156,7 @@
         "Speech-to-text"
       ],
       "category": "MULTIMODAL",
-      "definition": "把音频中的语音转换为文字的技术。",
+      "definition": "把录音或实时讲话转成文字；口音、噪声和专有名词都可能让转写出错。",
       "mechanism": "从声学信息估计文本，并可生成时间戳。",
       "when_to_use": "会议转录和语音交互。",
       "when_not_to_use": "噪声、口音与多人重叠讲话会影响准确性。",
@@ -2705,6 +3169,10 @@
       "source_ids": [
         "google_glossary",
         "hf_pipeline"
+      ],
+      "typical_scenario": "客服录音要转成可检索的文字，语音识别可生成转写和时间戳。噪声、口音和人名会导致错误，产品要允许播放原音、修订文本并测不同群体表现。",
+      "interview_questions": [
+        "语音转写产品如何处理专有名词和口音造成的错误？"
       ]
     },
     {
@@ -2715,7 +3183,7 @@
         "TTS"
       ],
       "category": "MULTIMODAL",
-      "definition": "把文本转换成语音输出的技术。",
+      "definition": "让系统把文字念出来；上线时还要关注发音、语速、延迟和用户是否方便打断。",
       "mechanism": "模型生成与文字和韵律条件对应的语音。",
       "when_to_use": "朗读、语音助手和无障碍功能。",
       "when_not_to_use": "人名读音、情绪和延迟需专门验证。",
@@ -2728,6 +3196,10 @@
       "source_ids": [
         "google_glossary",
         "hf_pipeline"
+      ],
+      "typical_scenario": "学习应用把讲解文字念出来，语音合成可提升通勤时的可用性。用户要能调语速、暂停和打断；合成声音的授权与是否标注 AI 也需明确。",
+      "interview_questions": [
+        "语音合成除了自然度，还会影响哪些用户控制和合规设计？"
       ]
     },
     {
@@ -2737,7 +3209,7 @@
         "Object Detection"
       ],
       "category": "MULTIMODAL",
-      "definition": "定位图像中的对象并识别其类别的任务。",
+      "definition": "不仅告诉你图片里有杯子，还能指出杯子具体在画面的哪个位置。",
       "mechanism": "预测边界框、类别和分数。",
       "when_to_use": "数物体或找到对象位置。",
       "when_not_to_use": "检测出对象不代表理解整体场景。",
@@ -2750,6 +3222,10 @@
       "source_ids": [
         "google_glossary",
         "hf_pipeline"
+      ],
+      "typical_scenario": "仓库摄像头要找出破损箱子并标出位置，目标检测提供类别、框和分数。小目标、遮挡或密集堆放时可能漏检，需按漏检后果设计人工复核。",
+      "interview_questions": [
+        "目标检测的框和置信分数，能否直接等于业务判断？"
       ]
     },
     {
@@ -2760,7 +3236,7 @@
         "Semantic Segmentation"
       ],
       "category": "MULTIMODAL",
-      "definition": "给像素或图像区域赋予类别或实例归属的任务。",
+      "definition": "把图片中的区域甚至每个像素分出来，标明哪些属于道路、商品或其他目标；通常比只认出物体更细。",
       "mechanism": "生成像素级掩码以区分对象和背景。",
       "when_to_use": "需要精细区域边界的任务。",
       "when_not_to_use": "边缘质量与标注成本需考虑。",
@@ -2773,6 +3249,10 @@
       "source_ids": [
         "google_glossary",
         "hf_pipeline"
+      ],
+      "typical_scenario": "质检系统要把商品从复杂背景中抠出来做尺寸测量，图像分割提供像素级区域。若只需判断“有没有商品”，分割可能过度复杂，应先确认精度是否带来实际收益。",
+      "interview_questions": [
+        "什么时候分类或检测已经够用，不必做图像分割？"
       ]
     },
     {
@@ -2783,7 +3263,7 @@
         "Recommender"
       ],
       "category": "MULTIMODAL",
-      "definition": "根据用户、对象和上下文选择或排序候选内容的系统。",
+      "definition": "根据用户情况和当前场景，挑出并排好他可能感兴趣的内容或商品；推荐准确不等于长期体验一定好。",
       "mechanism": "结合行为、内容和排序策略预测相关性。",
       "when_to_use": "商品、内容或学习资源推荐。",
       "when_not_to_use": "点击增多未必提高长期价值。",
@@ -2796,6 +3276,10 @@
       "source_ids": [
         "google_glossary",
         "hf_pipeline"
+      ],
+      "typical_scenario": "学习平台想给学生推荐下一项练习，可结合历史答题和知识薄弱点排序。点击率高不一定代表学会了，还要看掌握度、内容多样性和长期学习收益。",
+      "interview_questions": [
+        "教育推荐系统的主指标为什么不该只有点击率？"
       ]
     },
     {
@@ -2807,7 +3291,7 @@
         "Text-to-SQL"
       ],
       "category": "MULTIMODAL",
-      "definition": "把自然语言数据问题转换成数据库查询的任务。",
+      "definition": "用户用日常语言提问，系统把问题转成数据库查询；执行前要校验权限、查询范围和结果是否符合原意。",
       "mechanism": "结合表结构生成 SQL，再校验权限和查询逻辑。",
       "when_to_use": "结构化数据查询助手。",
       "when_not_to_use": "语法正确仍可能算错口径或越权。",
@@ -2820,6 +3304,10 @@
       "source_ids": [
         "google_glossary",
         "hf_pipeline"
+      ],
+      "typical_scenario": "分析师问“上月华东区退款金额”，自然语言转 SQL 可生成查询后读数。必须限只读表、校验用户权限，并明确时间、币种和指标口径，避免编造结果。",
+      "interview_questions": [
+        "自然语言转 SQL 如何避免执行越权或口径错误的查询？"
       ]
     },
     {
@@ -2830,7 +3318,7 @@
         "ChatBI"
       ],
       "category": "MULTIMODAL",
-      "definition": "通过自然语言交互查询、分析和解释业务数据的应用。",
+      "definition": "业务人员用对话查数、追问原因并看分析结果；它得让人核对数据口径，不能把听起来合理的解释当成因果结论。",
       "mechanism": "连接指标定义、查询执行与可核验的结果展示。",
       "when_to_use": "降低业务数据分析操作门槛。",
       "when_not_to_use": "语言回答不能替代可靠数据与指标口径。",
@@ -2842,6 +3330,10 @@
       "source_ids": [
         "google_glossary",
         "hf_pipeline"
+      ],
+      "typical_scenario": "业务人员问“本周转化为什么下降”，对话式分析要先查指标定义和数据，再展示变化拆分。系统应让用户追溯查询条件，不把相关变化说成因果结论。",
+      "interview_questions": [
+        "对话式商业分析怎样避免把相关性说成原因？"
       ]
     },
     {
@@ -2851,7 +3343,7 @@
         "Inference"
       ],
       "category": "DEPLOYMENT",
-      "definition": "训练好的模型根据输入计算预测或生成结果的过程。",
+      "definition": "模型训练好之后，真正接收用户输入并算出预测或回答的过程；用户等待的时间和实际费用都发生在这里。",
       "mechanism": "加载参数，运行前向计算，生成任务输出。",
       "when_to_use": "估算线上模型服务需求。",
       "when_not_to_use": "推理与训练的成本结构不同。",
@@ -2864,6 +3356,10 @@
         "hf_quantization",
         "hf_cache",
         "google_mlops"
+      ],
+      "typical_scenario": "员工提交一段会议录音后，模型调用运行推理服务生成摘要。产品关注的是实际任务完成时间、错误率和可用性，不能把“推理”误当成模型思考得更深。",
+      "interview_questions": [
+        "在线推理与训练有什么不同，产品侧应看哪些体验指标？"
       ]
     },
     {
@@ -2873,7 +3369,7 @@
         "Quantization"
       ],
       "category": "DEPLOYMENT",
-      "definition": "使用更低精度表示权重或计算数值的技术。",
+      "definition": "用占用更少空间的数字格式保存或运行模型，通常能省显存、提速度；但要确认效果下降是否可接受。",
       "mechanism": "把数值映射到较低精度表示以节省资源。",
       "when_to_use": "减小显存或改善部署效率。",
       "when_not_to_use": "速度收益与质量损失取决于硬件和方法。",
@@ -2885,6 +3381,10 @@
       ],
       "source_ids": [
         "hf_quantization"
+      ],
+      "typical_scenario": "公司希望把模型放进显存较小的设备，可测试低精度量化来降低占用和成本。需用真实任务对照准确性、速度和稳定性，不能只看模型文件变小。",
+      "interview_questions": [
+        "量化后模型变小，为什么仍要做完整质量回归？"
       ]
     },
     {
@@ -2895,7 +3395,7 @@
         "Distillation"
       ],
       "category": "DEPLOYMENT",
-      "definition": "用较强模型的输出或表示训练较小模型的方法。",
+      "definition": "让小模型学习大模型的答案或能力，争取用更低的运行成本完成相似任务；最终仍要在目标场景里对比。",
       "mechanism": "学生模型学习教师的软标签、样例或内部表示。",
       "when_to_use": "在资源受限环境保留部分能力。",
       "when_not_to_use": "可能继承教师错误并丢失复杂能力。",
@@ -2909,6 +3409,10 @@
         "hf_quantization",
         "hf_cache",
         "google_mlops"
+      ],
+      "typical_scenario": "边缘设备要运行轻量工单分类器，可让小模型学习大模型或教师模型的输出。蒸馏能降低部署开销，但小模型可能丢失长尾能力，需按关键类别评估。",
+      "interview_questions": [
+        "蒸馏后小模型更快了，哪些长尾风险必须检查？"
       ]
     },
     {
@@ -2919,7 +3423,7 @@
         "Pruning"
       ],
       "category": "DEPLOYMENT",
-      "definition": "移除部分权重或结构以减小模型的技术。",
+      "definition": "把模型中不太重要的部分删掉或简化，让它更轻、更快；删减后是否还够准确要实测。",
       "mechanism": "按重要性等准则删减参数，必要时重新训练。",
       "when_to_use": "降低模型资源需求。",
       "when_not_to_use": "稀疏参数不一定在所有硬件上加速。",
@@ -2933,6 +3437,10 @@
         "hf_quantization",
         "hf_cache",
         "google_mlops"
+      ],
+      "typical_scenario": "视觉模型部署太慢，团队尝试剪枝减少冗余参数。参数量下降不一定让硬件实际跑得更快，需在目标设备测延迟、准确率和维护复杂度。",
+      "interview_questions": [
+        "为什么剪枝后的参数减少不等于线上延迟一定下降？"
       ]
     },
     {
@@ -2943,7 +3451,7 @@
         "GPU"
       ],
       "category": "DEPLOYMENT",
-      "definition": "擅长大量并行运算、常用于 AI 计算的处理器。",
+      "definition": "能同时做很多计算的硬件，所以常被用来训练和运行 AI；模型越大、用户越多，算力成本越值得算清楚。",
       "mechanism": "利用并行单元执行矩阵等计算。",
       "when_to_use": "模型训练与推理资源规划。",
       "when_not_to_use": "显存、带宽和软件支持也会限制性能。",
@@ -2957,6 +3465,10 @@
         "hf_quantization",
         "hf_cache",
         "google_mlops"
+      ],
+      "typical_scenario": "生成式应用高峰时需要 GPU 处理模型计算，资源不足会排队、超时或增加云成本。产品应和研发按并发、模型大小、峰谷负载估算容量与降级方案。",
+      "interview_questions": [
+        "评估 GPU 容量时，为什么不能只看日均请求量？"
       ]
     },
     {
@@ -2967,7 +3479,7 @@
         "KV Cache"
       ],
       "category": "DEPLOYMENT",
-      "definition": "复用已计算注意力键和值以加速自回归生成的缓存。",
+      "definition": "模型逐字生成时，把前面已经算过的内容暂存起来，后续不用重复计算；回答更快，但会占用显存。",
       "mechanism": "生成新 token 时复用历史状态，减少重复计算。",
       "when_to_use": "优化语言模型生成性能。",
       "when_not_to_use": "长上下文和高并发会增加缓存显存。",
@@ -2979,6 +3491,10 @@
       ],
       "source_ids": [
         "hf_cache"
+      ],
+      "typical_scenario": "多轮对话每生成一个新词都可能重复处理前文，键值缓存可复用已算出的注意力状态。长上下文和高并发会占用显存，需要在速度与可承载会话数间取舍。",
+      "interview_questions": [
+        "KV Cache 如何同时影响响应速度和并发容量？"
       ]
     },
     {
@@ -2989,7 +3505,7 @@
         "Batching"
       ],
       "category": "DEPLOYMENT",
-      "definition": "将多个请求或样本一起交给模型计算的方式。",
+      "definition": "攒几个请求一起处理，提高硬件利用率、降低单次成本；如果等得太久才凑齐，用户会觉得慢。",
       "mechanism": "合并计算以提高设备利用率与吞吐。",
       "when_to_use": "离线处理或可等待的批量任务。",
       "when_not_to_use": "等待组批可能提高单请求延迟。",
@@ -3003,6 +3519,10 @@
         "hf_quantization",
         "hf_cache",
         "google_mlops"
+      ],
+      "typical_scenario": "夜间批量整理数万条工单时，可把请求合并执行来提高设备利用率；用户即时对话则不应为了凑批次而等待。按实时与离线任务分别设计队列。",
+      "interview_questions": [
+        "批量推理提高吞吐时，哪些用户任务不适合等待凑批？"
       ]
     },
     {
@@ -3013,7 +3533,7 @@
         "Streaming Output"
       ],
       "category": "DEPLOYMENT",
-      "definition": "在完整答案生成前逐步向用户发送结果的方式。",
+      "definition": "模型还在生成时，就把前面的文字一段段显示出来，让用户不用等整段答案完成；最终内容仍要检查。",
       "mechanism": "把已生成的片段持续传输并更新界面。",
       "when_to_use": "较长回答和实时交互。",
       "when_not_to_use": "最早显示文字不等于答案更早完成。",
@@ -3027,6 +3547,10 @@
         "hf_quantization",
         "hf_cache",
         "google_mlops"
+      ],
+      "typical_scenario": "助手生成长篇讲解时，流式输出能先展示开头，让用户更快看到响应。界面还要显示生成中、失败、取消和部分结果状态，避免用户把半句话当最终答案。",
+      "interview_questions": [
+        "流式输出如何设计才能既快又不让用户误认结果已完成？"
       ]
     },
     {
@@ -3037,7 +3561,7 @@
         "TTFT"
       ],
       "category": "DEPLOYMENT",
-      "definition": "从规定起点到收到首个输出 token 的时间。",
+      "definition": "用户发出请求后，到屏幕上看到第一个字等了多久；这通常决定用户觉得系统“有没有开始回应”。",
       "mechanism": "计时覆盖请求排队、网络和前置计算等指定环节。",
       "when_to_use": "流式体验与服务性能比较。",
       "when_not_to_use": "各系统计时起点不同会影响可比性。",
@@ -3051,6 +3575,10 @@
         "hf_quantization",
         "hf_cache",
         "google_mlops"
+      ],
+      "typical_scenario": "用户点“生成总结”后过几秒才看到第一个字，首 token 延迟会直接影响等待感。需统一起止点，并区分排队、检索和模型首字耗时。",
+      "interview_questions": [
+        "首 token 延迟过高时，产品可以先定位哪些环节？"
       ]
     },
     {
@@ -3062,7 +3590,7 @@
         "P99 Latency"
       ],
       "category": "DEPLOYMENT",
-      "definition": "请求时延分布高分位的等待情况。",
+      "definition": "关注最慢那一小部分请求要等多久，而不只看平均值；高峰时的慢请求往往最影响用户体验。",
       "mechanism": "统计 P95、P99 等分位数以观察慢请求。",
       "when_to_use": "检验高峰与复杂任务体验。",
       "when_not_to_use": "平均时延可能掩盖少量非常慢的请求。",
@@ -3076,6 +3604,10 @@
         "hf_quantization",
         "hf_cache",
         "google_mlops"
+      ],
+      "typical_scenario": "平均响应只有一秒，但少数用户等十几秒，尾部延迟会造成投诉和重试。要监测 P95/P99，并为慢请求设置超时、取消、状态查询或降级路径。",
+      "interview_questions": [
+        "平均时延正常但 P99 很差，会给用户带来什么影响？"
       ]
     },
     {
@@ -3087,7 +3619,7 @@
         "Tokens per Second"
       ],
       "category": "DEPLOYMENT",
-      "definition": "单位时间系统完成的请求数或 token 数等产出。",
+      "definition": "系统每秒或每分钟能处理多少请求、生成多少文字；高吞吐能扛更多用户，但不等于每个用户都等得短。",
       "mechanism": "在明确负载与计算口径下统计处理量。",
       "when_to_use": "容量规划与压力测试。",
       "when_not_to_use": "系统吞吐与单用户生成速度不是一回事。",
@@ -3101,6 +3633,10 @@
         "hf_quantization",
         "hf_cache",
         "google_mlops"
+      ],
+      "typical_scenario": "高峰期每分钟有多少摘要任务完成，吞吐量决定服务容量，但不能脱离并发和时延单独看。压测时要验证系统在目标负载下仍满足质量和错误率要求。",
+      "interview_questions": [
+        "吞吐量提升后，如何确认不是以用户等待或质量为代价？"
       ]
     },
     {
@@ -3111,7 +3647,7 @@
         "Usage Cost"
       ],
       "category": "DEPLOYMENT",
-      "definition": "由输入、输出等 token 用量和计费规则形成的模型费用。",
+      "definition": "模型按输入和输出 Token 计费后产生的费用；要连同重试、长上下文和真实使用量一起估。",
       "mechanism": "记录各类用量并按适用价格计算。",
       "when_to_use": "核算单位任务成本。",
       "when_not_to_use": "重试、工具循环和缓存规则会改变费用。",
@@ -3125,6 +3661,10 @@
         "hf_quantization",
         "hf_cache",
         "google_mlops"
+      ],
+      "typical_scenario": "一次问题可能触发检索、重排和多次模型调用，单次 token 价格无法代表完整任务成本。按成功解决一件工单计算成本，并纳入重试、失败与人工接管。",
+      "interview_questions": [
+        "AI 功能的单位经济账应按调用成本还是成功任务成本算？"
       ]
     },
     {
@@ -3136,7 +3676,7 @@
         "Caching"
       ],
       "category": "DEPLOYMENT",
-      "definition": "复用之前的计算或回答结果以减少重复工作的机制。",
+      "definition": "把短时间内可能重复使用的结果先存起来，下次直接取，减少等待和调用费用；资料变了要避免继续返回旧答案。",
       "mechanism": "按请求、资料版本和用户范围生成键并设置失效。",
       "when_to_use": "重复问题和稳定资料。",
       "when_not_to_use": "跨用户复用或陈旧答案会产生风险。",
@@ -3150,6 +3690,10 @@
         "hf_quantization",
         "hf_cache",
         "google_mlops"
+      ],
+      "typical_scenario": "很多用户反复查询同一版公开政策，可缓存答案或检索结果降低延迟和费用。用户权限、资料更新或个性化条件一变，缓存键和失效策略必须同步变化。",
+      "interview_questions": [
+        "缓存 AI 结果时，怎样避免把旧资料或他人数据返回给用户？"
       ]
     },
     {
@@ -3161,7 +3705,7 @@
         "Quota"
       ],
       "category": "DEPLOYMENT",
-      "definition": "限制一定时间内请求次数或资源用量的机制。",
+      "definition": "规定一段时间内最多能发多少请求或用多少资源，防止服务被打爆；触发限制时要给用户清楚的提示和重试方式。",
       "mechanism": "通过配额、令牌桶等机制控制服务负载。",
       "when_to_use": "处理服务配额与防止过载。",
       "when_not_to_use": "无节制重试可能加剧拥堵。",
@@ -3175,6 +3719,10 @@
         "hf_quantization",
         "hf_cache",
         "google_mlops"
+      ],
+      "typical_scenario": "活动期间请求超过模型服务配额，系统可能被限流。产品需展示排队或稍后重试，后台用退避策略避免请求风暴，并给高优先级任务预留容量。",
+      "interview_questions": [
+        "触发速率限制后，为什么不应让客户端立即无限重试？"
       ]
     },
     {
@@ -3185,7 +3733,7 @@
         "MLOps"
       ],
       "category": "DEPLOYMENT",
-      "definition": "管理模型、数据、部署和监测全生命周期的工程实践。",
+      "definition": "让模型从准备数据、上线到持续监控都能稳定运行的一套工程做法。",
       "mechanism": "通过版本、自动化流水线和监测使迭代可追踪。",
       "when_to_use": "持续上线和维护模型服务。",
       "when_not_to_use": "部署成功不等于质量持续稳定。",
@@ -3196,6 +3744,10 @@
       ],
       "source_ids": [
         "google_mlops"
+      ],
+      "typical_scenario": "制度更新后，知识助手效果变了，团队要能追踪资料版本、评测集和模型发布记录。机器学习运维把准备、评测、部署和监控串起来，并明确谁批准回滚。",
+      "interview_questions": [
+        "模型上线后出现质量退化，MLOps 流程应支持哪些动作？"
       ]
     },
     {
@@ -3206,7 +3758,7 @@
         "Baseline Solution"
       ],
       "category": "PRODUCT_SAFETY",
-      "definition": "用于比较新方案的现有方法或简单可行方案。",
+      "definition": "拿来做对照的“现在怎么做”或最简单方案；没有它，就很难说新 AI 功能到底有没有带来改善。",
       "mechanism": "在相同任务和标准下比较质量、成本、时延与风险。",
       "when_to_use": "判断是否值得引入新模型或复杂流程。",
       "when_not_to_use": "不同样本和条件下的指标不能直接比较。",
@@ -3217,6 +3769,10 @@
       ],
       "source_ids": [
         "pair_needs"
+      ],
+      "typical_scenario": "新 AI 助手看起来能减少客服工作，但团队不知道究竟比现有方案好多少。先记录人工、规则或现有搜索的质量、成本和时延，再用同一批任务比较增量。",
+      "interview_questions": [
+        "没有基线，为什么无法证明 AI 功能带来了价值？"
       ]
     },
     {
@@ -3228,7 +3784,7 @@
         "Human Oversight"
       ],
       "category": "PRODUCT_SAFETY",
-      "definition": "在人机流程的关键位置加入人的判断或确认。",
+      "definition": "让人在重要步骤里检查、修改或确认 AI 的结果，尤其是会花钱、影响权益或很难撤回的操作。",
       "mechanism": "按风险与不确定性触发审核，并把结果反馈到系统。",
       "when_to_use": "高影响或模型难以可靠处理的任务。",
       "when_not_to_use": "人工审查也受负荷和信息质量影响。",
@@ -3242,6 +3798,10 @@
         "pair_needs",
         "nist_rmf",
         "owasp"
+      ],
+      "typical_scenario": "报销助手识别金额后先展示字段和票据原图，让员工确认再提交；高金额或低置信度任务进入额外审核。人工环节要有明确责任、时限和拒绝后的处理。",
+      "interview_questions": [
+        "哪些动作应保留人工确认，触发标准如何制定？"
       ]
     },
     {
@@ -3251,7 +3811,7 @@
         "Automation Bias"
       ],
       "category": "PRODUCT_SAFETY",
-      "definition": "用户过度信任自动化建议而忽略其他证据的倾向。",
+      "definition": "因为系统看起来很聪明，用户就不再核对它的建议；界面要让不确定性和检查入口足够明显。",
       "mechanism": "界面权威感与操作便利可能降低人的独立核查。",
       "when_to_use": "设计 AI 建议和人工审核流程。",
       "when_not_to_use": "加一句免责声明通常不足以解决。",
@@ -3265,6 +3825,10 @@
         "pair_needs",
         "nist_rmf",
         "owasp"
+      ],
+      "typical_scenario": "审核员看到 AI 标注“低风险”后，可能不再看原始材料，这就是自动化偏误。产品要提供可核查证据、明显的不确定提示和纠正入口，并抽查人工判断。",
+      "interview_questions": [
+        "怎样设计界面，避免审核者盲目相信 AI 结论？"
       ]
     },
     {
@@ -3276,7 +3840,7 @@
         "XAI"
       ],
       "category": "PRODUCT_SAFETY",
-      "definition": "帮助人理解模型结果或决策依据的能力与方法。",
+      "definition": "让用户或运营人员看得懂系统为什么给出这个结果；说清楚依据，比展示一堆技术术语更有用。",
       "mechanism": "提供可核验因素、过程说明或局部解释。",
       "when_to_use": "需要理解与申诉决策的场景。",
       "when_not_to_use": "模型自述原因不一定反映实际因果。",
@@ -3290,6 +3854,10 @@
         "pair_needs",
         "nist_rmf",
         "owasp"
+      ],
+      "typical_scenario": "招聘筛选系统给出候选排序时，用户需要知道影响结论的关键信息并能纠错。展示证据或规则依据不等于解释模型内部机制，要避免承诺超出能力的透明度。",
+      "interview_questions": [
+        "用户需要的可解释性，和展示模型内部计算是一回事吗？"
       ]
     },
     {
@@ -3300,7 +3868,7 @@
         "Algorithmic Fairness"
       ],
       "category": "PRODUCT_SAFETY",
-      "definition": "识别并减少 AI 对不同群体造成不合理差异的目标。",
+      "definition": "检查 AI 会不会对不同人群给出不公平的结果，并在上线前设法减少这种差异。",
       "mechanism": "比较群体表现、错误率和结果影响并进行治理。",
       "when_to_use": "涉及用户权益的预测与决策。",
       "when_not_to_use": "不同公平指标可能冲突，需明确目标。",
@@ -3314,6 +3882,10 @@
         "pair_needs",
         "nist_rmf",
         "owasp"
+      ],
+      "typical_scenario": "语音助手对不同口音的识别错误率差异很大，平均分会掩盖某些群体无法使用的问题。按人群和场景拆分评测，并设计补救方式，避免把差异变成权益损害。",
+      "interview_questions": [
+        "公平性评估为什么不能只报告总体准确率？"
       ]
     },
     {
@@ -3324,7 +3896,7 @@
         "PII"
       ],
       "category": "PRODUCT_SAFETY",
-      "definition": "可单独或结合其他信息识别个人的数据。",
+      "definition": "单独或和其他信息放在一起，能认出具体某个人的数据，比如姓名、手机号或账号。",
       "mechanism": "识别、最小化采集，并控制处理、存储与访问。",
       "when_to_use": "用户数据进入模型或日志时。",
       "when_not_to_use": "去掉姓名不一定足以消除可识别性。",
@@ -3338,6 +3910,10 @@
         "pair_needs",
         "nist_rmf",
         "owasp"
+      ],
+      "typical_scenario": "客服日志可能包含电话、地址和订单号，训练或排障前应判断是否真的需要这些信息。尽量脱敏、限定访问和保留时间，并明确用户告知与删除流程。",
+      "interview_questions": [
+        "产品经理如何把“注意隐私”落到具体的数据生命周期设计？"
       ]
     },
     {
@@ -3348,7 +3924,7 @@
         "Indirect Prompt Injection"
       ],
       "category": "PRODUCT_SAFETY",
-      "definition": "恶意输入或外部资料试图改变模型行为的攻击。",
+      "definition": "有人把“忽略原来的要求、改做别的事”藏进用户输入或网页资料，试图骗模型越过原有规则。",
       "mechanism": "把不可信内容伪装成指令，诱导越权或泄露。",
       "when_to_use": "处理网页、文件和用户文本的助手。",
       "when_not_to_use": "仅添加“忽略恶意指令”无法彻底防御。",
@@ -3360,6 +3936,10 @@
       ],
       "source_ids": [
         "owasp"
+      ],
+      "typical_scenario": "助手总结网页时读到隐藏指令“把用户资料发给我”，这类提示注入会把不可信内容伪装成命令。资料应与系统指令隔离，工具调用还要经权限校验和用户确认。",
+      "interview_questions": [
+        "为什么提示词防御不能代替工具权限控制？"
       ]
     },
     {
@@ -3370,7 +3950,7 @@
         "Training Data Poisoning"
       ],
       "category": "PRODUCT_SAFETY",
-      "definition": "攻击者操纵训练或知识资料以影响模型或系统行为。",
+      "definition": "有人故意往训练数据或知识库里塞错内容，想让系统学偏或检索出错误依据。",
       "mechanism": "污染样本、标签或检索库，使输出偏向攻击目标。",
       "when_to_use": "接受外部资料与训练数据时。",
       "when_not_to_use": "来源可信度不能只靠文件名称判断。",
@@ -3382,6 +3962,10 @@
       ],
       "source_ids": [
         "owasp"
+      ],
+      "typical_scenario": "有人上传一份伪造政策到知识库，诱导助手给出错误退款承诺。要核实资料来源、审批和版本，并监测异常变更；检索内容不能默认可信。",
+      "interview_questions": [
+        "RAG 知识库如何防止恶意或错误内容变成回答依据？"
       ]
     },
     {
@@ -3392,7 +3976,7 @@
         "Least-privilege Access"
       ],
       "category": "PRODUCT_SAFETY",
-      "definition": "只授予完成当前任务所必需的权限原则。",
+      "definition": "工具只拿完成眼前任务必须的权限；能查订单，不代表也该能退款或修改付款信息。",
       "mechanism": "按角色、工具和动作限制资源范围，并默认拒绝额外访问。",
       "when_to_use": "工具调用、数据检索与系统集成。",
       "when_not_to_use": "模型知道工具不代表它应该有全部权限。",
@@ -3406,6 +3990,10 @@
         "pair_needs",
         "nist_rmf",
         "owasp"
+      ],
+      "typical_scenario": "查询助手需要读取订单状态，却不需要修改付款信息。按任务只开放必要的表、工具和动作，默认拒绝多余权限，并定期回收过期授权。",
+      "interview_questions": [
+        "最小权限如何具体应用到一个会调用业务工具的助手？"
       ]
     },
     {
@@ -3416,7 +4004,7 @@
         "Sandboxing"
       ],
       "category": "PRODUCT_SAFETY",
-      "definition": "用受控隔离环境限制程序或工具操作影响的机制。",
+      "definition": "把不太可信的程序放进受限制的环境里运行，限制它能读哪些文件、访问哪些网络或改动哪些数据。",
       "mechanism": "约束文件、网络、进程和资源访问范围。",
       "when_to_use": "代码执行与不可信工具测试。",
       "when_not_to_use": "隔离措施需正确配置，也非绝对可靠。",
@@ -3430,6 +4018,10 @@
         "pair_needs",
         "nist_rmf",
         "owasp"
+      ],
+      "typical_scenario": "模型生成的 SQL 或代码先在沙箱里运行，限制网络、文件和执行时间，避免误删数据或读取敏感目录。沙箱不是绝对安全，仍要限制输入、权限和资源。",
+      "interview_questions": [
+        "沙箱能控制哪些风险，哪些风险仍需额外措施？"
       ]
     },
     {
@@ -3440,7 +4032,7 @@
         "Output Handling"
       ],
       "category": "PRODUCT_SAFETY",
-      "definition": "在模型结果进入界面或执行层前检查其正确性与安全性。",
+      "definition": "模型答案要显示给用户或触发操作前，再用格式、权限和业务规则检查一遍；别把模型输出直接当可信命令。",
       "mechanism": "结合格式检查、业务规则和必要的人类复核。",
       "when_to_use": "结果会执行查询、动作或被进一步解析。",
       "when_not_to_use": "模型输出应当作为不可信输入处理。",
@@ -3452,6 +4044,10 @@
       ],
       "source_ids": [
         "owasp"
+      ],
+      "typical_scenario": "模型生成退款金额或 SQL 后，程序按类型、范围、用户权限和业务规则逐项校验。校验失败应阻止执行并说明可修正项，不能只检查 JSON 格式。",
+      "interview_questions": [
+        "高风险 AI 操作的输出校验至少要分哪几层？"
       ]
     },
     {
@@ -3463,7 +4059,7 @@
         "Escalation"
       ],
       "category": "PRODUCT_SAFETY",
-      "definition": "系统无法可靠完成时停止回答、降级或转交的策略。",
+      "definition": "资料不足、模型没把握或服务出错时，告诉用户当前做不到，并给出重试、换方法或找人工的路。",
       "mechanism": "根据证据不足、权限和故障状态选择后续路径。",
       "when_to_use": "无资料、高风险或服务失败时。",
       "when_not_to_use": "拒答过多也会使正常任务无法完成。",
@@ -3477,6 +4073,10 @@
         "pair_needs",
         "nist_rmf",
         "owasp"
+      ],
+      "typical_scenario": "员工问到资料里没有的政策，助手先说明查不到并提供人工咨询入口；若接口故障，则提示暂不可用而不是编造答案。拒答阈值要平衡误答和过度拒答。",
+      "interview_questions": [
+        "系统该在什么情况下拒答、追问或转人工？"
       ]
     },
     {
@@ -3488,7 +4088,7 @@
         "Concept Drift"
       ],
       "category": "PRODUCT_SAFETY",
-      "definition": "发现输入分布或输入与目标关系随时间变化的监测。",
+      "definition": "持续观察用户输入和实际结果有没有变样；业务变化后，过去好用的模型可能悄悄变差。",
       "mechanism": "跟踪数据统计与实际任务结果，区分数据漂移和概念漂移。",
       "when_to_use": "长期运行且环境会变化的模型。",
       "when_not_to_use": "输入变化不一定导致质量下降。",
@@ -3502,6 +4102,10 @@
         "pair_needs",
         "nist_rmf",
         "owasp"
+      ],
+      "typical_scenario": "新产品上线后用户问题和原训练数据不同，模型错误可能逐渐增多。监测输入分布只能提示变化，是否影响业务还要结合分场景质量抽检和人工反馈。",
+      "interview_questions": [
+        "发现数据分布变化后，为什么不能立刻自动重训？"
       ]
     },
     {
@@ -3512,7 +4116,7 @@
         "Completion Rate"
       ],
       "category": "PRODUCT_SAFETY",
-      "definition": "用户目标按明确标准成功完成的任务占比。",
+      "definition": "用户真正办成目标的任务占多少，而不是系统生成了多少回答或用户点了多少按钮。",
       "mechanism": "定义成功、失败与任务边界，再记录端到端结果。",
       "when_to_use": "衡量 AI 功能的真实业务效果。",
       "when_not_to_use": "按钮点击或回答生成不等于完成任务。",
@@ -3526,6 +4130,10 @@
         "pair_needs",
         "nist_rmf",
         "owasp"
+      ],
+      "typical_scenario": "学习助手生成答案不代表学生完成了学习任务；只有学生能继续练习并掌握知识，才接近真实成功。定义任务起点、完成条件和失败原因，再一起看成本与风险。",
+      "interview_questions": [
+        "AI 产品的任务成功率应怎样定义，才能不被点击量替代？"
       ]
     },
     {
@@ -3536,7 +4144,7 @@
         "Online Experiment"
       ],
       "category": "PRODUCT_SAFETY",
-      "definition": "通过随机分组比较产品方案效果的实验方法。",
+      "definition": "把用户随机分成几组体验不同方案，再比较预先定好的指标，判断哪种设计更有效。",
       "mechanism": "分组提供不同方案，按预定指标分析差异。",
       "when_to_use": "验证线上功能是否改善用户结果。",
       "when_not_to_use": "样本不足、串组和多重比较可能误导。",
@@ -3547,6 +4155,10 @@
       ],
       "source_ids": [
         "google_glossary"
+      ],
+      "typical_scenario": "新首页 A/B 测试比较两种继续学习入口，提前确定主指标、观察周期和护栏，避免看到短期点击上涨就宣布成功。涉及进度的用户要随机分组且避免互相污染。",
+      "interview_questions": [
+        "A/B 测试前要预先约定什么，避免结果出来后挑指标？"
       ]
     }
   ]

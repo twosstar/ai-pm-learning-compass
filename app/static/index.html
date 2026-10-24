@@ -3,25 +3,27 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f8f9fc">
-  <title>AI PM Learning · 学习工作台</title>
+  <meta name="theme-color" content="#092b50">
+  <title>AI PM 学习罗盘 · Learning Compass</title>
   <link rel="stylesheet" href="/static/styles.css">
+  <link rel="stylesheet" href="/static/brand-refresh.css?v=20261024-3">
 </head>
 <body>
   <aside class="app-sidebar" aria-label="学习工作台导航">
     <a class="brand" href="/" aria-label="AI PM Learning 首页">
-      <svg viewBox="0 0 36 36" aria-hidden="true"><rect width="36" height="36" rx="11" fill="currentColor"/><path d="M10 10h8v15h-8zm8 0h8v15h-8" fill="none" stroke="#fff" stroke-width="1.5"/><path d="M13 14h2m6 0h2m-10 4h2m6 0h2" stroke="#bde1d1" stroke-width="1.5" stroke-linecap="round"/></svg>
-      <span>AI PM Learning<small>产品经理的学习工作台</small></span>
+      <img src="/static/cloud-companion.png?v=20261024" width="43" height="43" alt="" aria-hidden="true">
+      <span>AI PM 学习罗盘<small>把知识学成判断力</small></span>
     </a>
     <nav aria-label="主要功能">
-      <button class="tab active" data-panel="learn" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5h6l2 2 2-2h6v14h-6l-2 1.5-2-1.5H4zM12 8v12"/></svg>智能学习</button>
+      <button class="tab active" data-panel="learn" data-view="catalog" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5h6l2 2 2-2h6v14h-6l-2 1.5-2-1.5H4zM12 8v12"/></svg>智能学习</button>
       <button class="tab" data-panel="concepts" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 7 10 10M7 17 17 7"/><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="18" r="3"/></svg>概念地图</button>
     </nav>
     <div class="sidebar-path"><p>学习路径</p><div id="module-shortcuts" aria-label="课程模块"></div></div>
-    <div class="sidebar-note"><span class="local-dot" aria-hidden="true"></span><span>进度保存在本机<small>下次回来，接着学。</small></span></div>
+    <div class="sidebar-note"><img class="sidebar-pet" src="/static/cloud-feedback-peek.png?v=20261024" width="48" height="48" alt="" aria-hidden="true"><span><i class="local-dot" aria-hidden="true"></i>进度保存在本机<small>下次回来，接着学。</small></span></div>
   </aside>
   <header class="hero">
-    <div class="header-title"><h1>把理解，变成你的判断。</h1><p>AI 产品经理的知识、场景与面试表达</p></div>
+    <div class="header-title"><p class="hero-kicker">AI PM 学习罗盘</p><h1>把 AI 产品知识，<br>变成你的求职底气。</h1><p>从真实的产品问题出发，找到属于你的机会与方向。</p></div>
+    <img class="hero-cloud" src="/static/cloud-companion.png?v=20261024" width="210" height="166" alt="" aria-hidden="true">
     <div class="model-toolbar">
       <span id="status" role="status">正在连接…</span>
       <button id="open-model-settings" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 17h16"/><circle cx="9" cy="7" r="3"/><circle cx="15" cy="17" r="3"/></svg>模型设置</button>
@@ -35,6 +37,14 @@
     </div>
     <p class="muted">你自己测试时，也在这里填写自己的配置。密钥只保存在本机服务内存中，不写入项目、数据库或浏览器存储；服务关闭后需重填。</p>
     <form id="model-settings-form" autocomplete="off">
+      <label for="model-provider">模型服务商</label>
+      <select id="model-provider">
+        <option value="deepseek">DeepSeek（默认）</option>
+        <option value="qwen">通义千问 Qwen（阿里云百炼）</option>
+        <option value="openai">OpenAI</option>
+        <option value="gemini">Google Gemini（兼容接口）</option>
+        <option value="custom">其他 OpenAI 兼容服务</option>
+      </select>
       <label for="model-base-url">API 基础地址（HTTPS）</label>
       <input id="model-base-url" type="url" required maxlength="2048" placeholder="https://你的供应商地址/v1" autocomplete="off">
       <label for="model-name">模型名称</label>
@@ -54,7 +64,7 @@
     <section id="learn" class="panel active">
       <section id="catalog-view" aria-labelledby="catalog-title">
         <section class="learning-dashboard" aria-labelledby="learning-dashboard-title">
-          <div class="resume-card"><span class="resume-label" id="resume-label">你的下一步</span><h3 id="resume-title">准备好，开始第一节。</h3><p id="resume-point">先读懂一个知识点，再用一个真实场景练习。</p><button id="resume-learning" type="button" disabled>继续学习</button><p id="progress-message" role="status" aria-live="polite"></p><svg class="resume-art" viewBox="0 0 140 150" aria-hidden="true"><path d="M24 120V32l48-12v88zM72 20l44 18v88l-44-18"/><path d="m35 49 25-6m-25 23 25-6m-25 23 25-6m24-24 20 8m-20 9 20 8m-20 9 20 8"/><circle cx="114" cy="119" r="20"/><path d="m105 119 6 6 12-13"/></svg></div>
+          <div class="resume-card"><span class="resume-label" id="resume-label">你的下一步</span><h3 id="resume-title">准备好，开始第一节。</h3><p id="resume-point">先读懂一个知识点，再用一个真实场景练习。</p><button id="resume-learning" type="button" disabled>继续学习</button><p id="progress-message" role="status" aria-live="polite"></p><img class="resume-cloud" src="/static/cloud-study-flight.png?v=20261024" width="160" height="107" alt="" aria-hidden="true"></div>
           <div class="dashboard-copy"><div class="progress-heading"><h2 id="learning-dashboard-title">一点点，积累你的能力</h2><span class="local-label">本机进度</span></div><div class="metric-grid"><div><strong id="metric-read">0</strong><span>已读知识点</span></div><div><strong id="metric-practiced">0</strong><span>已练习知识点</span></div><div><strong id="metric-mastery">0<small>%</small></strong><span>练习掌握度</span></div></div><progress id="course-progress" max="60" value="0" aria-label="已完成课程"></progress><p id="progress-summary" role="status">正在读取本地学习进度…</p><p class="progress-note">阅读标记和练习掌握度分别记录。</p></div>
         </section>
         <div class="section-head">
@@ -73,6 +83,11 @@
         </details>
         <p id="lesson-match-count" class="muted" role="status"></p>
         <div id="catalog" class="catalog"><p class="muted">正在载入课程…</p></div>
+        <section class="concept-teaser" aria-labelledby="concept-teaser-title">
+          <div><span class="teaser-icon" aria-hidden="true">✳</span><div><h2 id="concept-teaser-title">概念地图</h2><p>从用户问题、AI 能力到产品设计，串起一张能用在面试里的知识地图。</p></div></div>
+          <div class="teaser-flow" aria-hidden="true"><span>用户问题</span><i>→</i><span>AI 能力</span><i>→</i><span>产品设计</span><i>→</i><span>行业应用</span></div>
+          <button class="teaser-link" type="button" data-open-concepts>去逛逛概念地图 <span aria-hidden="true">↗</span></button>
+        </section>
       </section>
 
       <section id="lesson-view" class="lesson-view" hidden aria-labelledby="lesson-title">
@@ -137,9 +152,11 @@
     </section>
     <section id="concepts" class="panel">
       <div class="section-head"><div><h2>概念地图</h2></div><p id="concept-total" class="muted"></p></div>
-      <p class="concept-intro">从基础到产品落地。按主题浏览，展开卡片看原理、例子和使用边界。</p>
+      <p class="concept-intro">先按主题找到想学的方向，再按优先级安排顺序：核心先学，重要概念建立完整认知，补充概念遇到相关项目再查。</p>
       <label class="search-label concept-search-label" for="concept-search"><span class="sr-only">搜索概念</span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg><input id="concept-search" type="search" placeholder="搜索概念：RAG、MCP、向量…" aria-controls="concept-list"></label>
       <div id="concept-categories" class="concept-categories" role="group" aria-label="按主题筛选"></div>
+      <p class="concept-filter-label">按学习优先级</p>
+      <div id="concept-priorities" class="concept-categories concept-priorities" role="group" aria-label="按学习优先级筛选"></div>
       <p id="concept-result-count" class="muted" role="status" aria-live="polite"></p>
       <div id="concept-list" class="concept-grid"><p class="muted">正在载入概念…</p></div>
       <div class="concept-pagination" aria-label="概念分页">

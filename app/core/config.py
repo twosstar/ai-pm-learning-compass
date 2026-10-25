@@ -1,12 +1,17 @@
 from functools import lru_cache
 from pathlib import Path
+import sys
 
 from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
-    model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
+    model_config = SettingsConfigDict(
+        env_file=None if getattr(sys, "frozen", False) else ".env",
+        env_file_encoding="utf-8",
+        extra="ignore",
+    )
 
     app_name: str = "AI PM Learning Copilot"
     app_env: str = "development"

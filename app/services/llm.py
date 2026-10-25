@@ -10,6 +10,7 @@ import httpx
 from pydantic import BaseModel
 
 from app.core.config import get_settings
+from app.services.model_credentials import CredentialStorageError, load_api_key, load_model_preferences
 
 StructuredOutput = TypeVar("StructuredOutput", bound=BaseModel)
 logger = logging.getLogger(__name__)
@@ -26,10 +27,20 @@ class RuntimeModel:
 class LLMService:
     def __init__(self) -> None:
         settings = get_settings()
+        try:
+            preferences = load_model_preferences()
+            saved_key = load_api_key()
+        except (CredentialStorageError, RuntimeError):
+            preferences, saved_key = {}, None
+        api_key = settings.llm_api_key or saved_key or ""
+        base_url = preferences.get("base_url", settings.llm_base_url)
+        model = preferences.get("model", settings.llm_chat_model)
+        source = "environment" if settings.llm_api_key else "credential-manager" if saved_key else "none"
         self._runtime = RuntimeModel(
-            self._make_client(settings.llm_api_key, settings.llm_base_url) if settings.llm_api_key else None,
-            settings.llm_chat_model, settings.llm_base_url, 'environment' if settings.llm_api_key else 'none',
+            self._make_client(api_key, base_url) if api_key else None,
+            model, base_url, source,
         )
+        self._remembered = source == "credential-manager"
         self.last_error = ''
         self._verified = False
 
@@ -44,15 +55,18 @@ class LLMService:
     def _configured(self) -> bool:
         return self._runtime.client is not None
 
-    def configure_runtime(self, api_key: str, base_url: str, model: str) -> None:
+    def configure_runtime(self, api_key: str, base_url: str, model: str, remembered: bool = False) -> None:
         # One atomic reference change; in-flight requests keep their own snapshot.
-        self._runtime = RuntimeModel(self._make_client(api_key, base_url), model, base_url, 'session')
+        source = "credential-manager" if remembered else "session"
+        self._runtime = RuntimeModel(self._make_client(api_key, base_url), model, base_url, source)
+        self._remembered = remembered
         self.last_error = ''
         self._verified = False
 
     def clear_runtime(self) -> None:
         current = self._runtime
         self._runtime = RuntimeModel(None, current.model, current.base_url, 'none')
+        self._remembered = False
         self.last_error = ''
         self._verified = False
 
@@ -67,7 +81,8 @@ class LLMService:
         safe_url = f'{parsed.scheme}://{host}{port}{parsed.path}'
         return {'configured': runtime.client is not None, 'base_url': safe_url,
                 'model': runtime.model, 'source': runtime.source, 'last_error': self.last_error,
-                'verified': self._verified, 'storage': 'process-memory'}
+                'verified': self._verified, 'storage': runtime.source,
+                'remembered': self._remembered}
 
     @staticmethod
     def _options(runtime: RuntimeModel) -> dict:

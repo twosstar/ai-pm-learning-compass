@@ -1,5 +1,6 @@
 from contextlib import asynccontextmanager
 import hashlib
+import os
 from pathlib import Path
 
 from fastapi import FastAPI, Request
@@ -47,6 +48,10 @@ app.include_router(public_concepts.router, prefix="/api")
 app.include_router(public_study.router, prefix="/api")
 app.include_router(public_model_settings.router, prefix="/api")
 app.include_router(public_progress.router, prefix="/api")
+if os.environ.get("AI_PM_DESKTOP") == "1":
+    from app.api.routes import desktop_updates
+
+    app.include_router(desktop_updates.router, prefix="/api")
 
 
 @app.exception_handler(RequestValidationError)

@@ -104,6 +104,8 @@ nav[aria-label="主要功能"] { margin-top: 36px; gap: 7px; }
 #open-model-settings { border-color: #cbdcf2; color: #294f82; background: rgb(255 255 255 / 86%); border-radius: 10px; }
 #open-model-settings:hover { background: #fff; border-color: #8bb5ed; }
 #model-config-status { color: #526b8c; }
+.remember-device-label { display: flex !important; grid-template-columns: auto 1fr; align-items: center; gap: 9px !important; font-weight: 500 !important; }
+.remember-device-label input { width: 16px; height: 16px; margin: 2px 0 0; accent-color: #176ce5; }
 
 main { padding-bottom: 68px; }
 .panel { padding-top: 25px; }
@@ -264,4 +266,56 @@ button:focus-visible, a:focus-visible, summary:focus-visible, input:focus-visibl
   .teaser-flow { grid-column: auto; grid-row: auto; overflow-x: auto; padding: 2px 0 5px; }
   .teaser-flow span { font-size: 11px; }
   .teaser-link { justify-self: start; padding-left: 0; }
+}
+
+/* Calm desktop polish: keep the blue identity, remove oversized mascot art. */
+.hero-cloud, .resume-cloud, .sidebar-pet { display: none !important; }
+.hero {
+  min-height: 206px;
+  padding-top: 28px;
+  padding-bottom: 26px;
+}
+.hero::before {
+  background: linear-gradient(112deg, #e7f2ff 0%, #edf6ff 54%, #f7fbff 100%);
+}
+.hero::after { display: none; }
+.header-title h1 { font-size: clamp(29px, 3vw, 39px); }
+.learning-dashboard {
+  grid-template-columns: minmax(300px, .94fr) minmax(0, 1.06fr);
+  gap: 16px;
+}
+.dashboard-copy, .resume-card { min-height: 152px; }
+.dashboard-copy {
+  border-radius: 12px;
+  box-shadow: none;
+}
+.resume-card {
+  padding: 18px 21px;
+  border-radius: 12px;
+  background: #eaf3ff;
+  box-shadow: none;
+}
+.resume-card::before { display: none; }
+.resume-card h3, #resume-point { max-width: 100%; }
+.resume-card h3 { margin: 7px 0 3px; font-size: clamp(18px, 1.55vw, 21px); }
+#resume-point { margin-bottom: 9px; font-size: 12px; }
+#resume-learning { box-shadow: none; }
+.sidebar-note { padding-top: 20px; }
+.brand img { width: 36px; height: 36px; }
+.update-dialog { width: min(520px, calc(100vw - 32px)); }
+.update-dialog .model-actions { display: flex; justify-content: flex-end; margin-top: 20px; }
+.update-dialog #desktop-update-message { min-height: 1.5em; color: #526b8c; }
+.update-dialog #install-desktop-update { color: #fff; background: #176ce5; }
+
+@media (max-width: 1200px) {
+  .learning-dashboard { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 700px) {
+  .hero { min-height: 178px; padding-top: 23px; padding-bottom: 20px; }
+  .header-title { max-width: 100%; }
+  .header-title h1 { font-size: clamp(25px, 6.5vw, 32px); }
+  .header-title > p:last-child { max-width: 320px; }
+  .dashboard-copy, .resume-card { min-height: 0; }
+  .resume-card { padding: 16px 17px; }
+  .resume-card h3, #resume-point { max-width: 100%; }
 }

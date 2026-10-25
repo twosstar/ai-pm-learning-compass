@@ -17,6 +17,9 @@ const state = {
   panelScroll: {},
 };
 const CONCEPT_PAGE_SIZE = 24;
+const DESKTOP_MODE = new URLSearchParams(window.location.search).get("desktop") === "1";
+let offeredUpdateVersion = "";
+if (!DESKTOP_MODE) $(".remember-device-label").hidden = true;
 const MODEL_PRESETS = {
   deepseek: { baseUrl: "https://api.deepseek.com", model: "deepseek-flash" },
   qwen: { baseUrl: "https://dashscope.aliyuncs.com/compatible-mode/v1", model: "qwen-plus" },
@@ -55,6 +58,7 @@ async function refreshModelStatus(populateForm = false) {
       preset.baseUrl.replace(/\/$/, "") === (config.base_url || "").replace(/\/$/, ""));
     $("#model-provider").value = config.configured ? (provider?.[0] || "custom") : "deepseek";
     $("#model-api-key").value = "";
+    $("#remember-api-key").checked = Boolean(config.remembered);
     $("#model-consent").checked = false;
   }
   return config;
@@ -74,7 +78,7 @@ async function openModelSettings() {
     const config = await refreshModelStatus(true);
     $("#model-settings-message").textContent = config.last_error || (config.configured
       ? "已启用。修改配置需要重新输入密钥，页面不会读取已有密钥。"
-      : "尚未配置。填好并保存后，无需重启即可重新评价。保存本身不产生调用费用。");
+      : "尚未配置。填写并保存后，即可提交答案或重新评价；保存本身不会调用模型。");
   } catch (error) { $("#model-settings-message").textContent = error.message; }
 }
 
@@ -789,11 +793,14 @@ $("#model-settings-form").addEventListener("submit", async (event) => {
       method: "PUT",
       headers: { "X-Local-Settings-Token": state.modelSettingsToken },
       body: JSON.stringify({ base_url: $("#model-base-url").value.trim(), model: $("#model-name").value.trim(),
-        api_key: $("#model-api-key").value.trim(), allow_provider_requests: $("#model-consent").checked }),
+        api_key: $("#model-api-key").value.trim(), remember_api_key: $("#remember-api-key").checked,
+        allow_provider_requests: $("#model-consent").checked }),
     });
     $("#model-api-key").value = "";
     await refreshModelStatus();
-    $("#model-settings-message").textContent = "已保存到本次运行内存；尚未调用供应商验证。关闭此窗口后可提交或重新评价，无需重启。";
+    $("#model-settings-message").textContent = $("#remember-api-key").checked
+      ? "配置已保存，密钥已交由 Windows 凭据保险库保管；首次调用时验证连接。"
+      : "配置已保存到本次运行；密钥不会保留在设备上。首次调用时验证连接。";
   } catch (error) {
     $("#model-settings-message").textContent = error.message || "保存失败，请检查配置。";
     $("#model-api-key").value = "";
@@ -809,7 +816,8 @@ $("#clear-model-settings").addEventListener("click", async () => {
     await api("/model-settings", { method: "DELETE", headers: { "X-Local-Settings-Token": state.modelSettingsToken } });
     $("#model-api-key").value = "";
     await refreshModelStatus();
-    $("#model-settings-message").textContent = "当前运行配置已清除，后续请求不会使用该密钥。在途请求可能仍会完成；学习记录保留。";
+    $("#remember-api-key").checked = false;
+    $("#model-settings-message").textContent = "模型配置和本机保存的密钥已清除；学习记录保留。";
   } catch (error) { $("#model-settings-message").textContent = error.message; button.disabled = false; }
 });
 try {
@@ -858,3 +866,53 @@ Promise.all([api("/health"), api("/catalog"), api("/concepts")])
   })
   .catch(showError);
 refreshModelStatus().catch(() => { $("#model-config-status").textContent = "模型状态暂不可用，可打开设置重试"; });
+
+async function checkDesktopUpdate() {
+  if (!DESKTOP_MODE || !state.modelSettingsToken) return;
+  try {
+    const result = await api("/desktop-update/check", {
+      headers: { "X-Local-Settings-Token": state.modelSettingsToken },
+    });
+    if (!result.available || result.state !== "ready") return;
+    let deferredVersion = "";
+    try { deferredVersion = localStorage.getItem("desktop-update-deferred-version") || ""; } catch (_) { /* Update reminders still work without local storage. */ }
+    if (deferredVersion === result.version) return;
+    offeredUpdateVersion = result.version;
+    $("#desktop-update-copy").textContent = `版本 ${result.version} 已下载并完成校验。安装过程会显示安装向导，完成后重新打开应用。`;
+    if (!$("#desktop-update-dialog").open) $("#desktop-update-dialog").showModal();
+  } catch (_) {
+    // Updates are optional; an offline check must never interrupt learning.
+  }
+}
+
+$("#close-desktop-update").addEventListener("click", () => {
+  try { if (offeredUpdateVersion) localStorage.setItem("desktop-update-deferred-version", offeredUpdateVersion); } catch (_) { /* Optional reminder preference. */ }
+  $("#desktop-update-dialog").close();
+});
+$("#desktop-update-dialog").addEventListener("cancel", () => {
+  try { if (offeredUpdateVersion) localStorage.setItem("desktop-update-deferred-version", offeredUpdateVersion); } catch (_) { /* Optional reminder preference. */ }
+});
+$("#install-desktop-update").addEventListener("click", async (event) => {
+  const button = event.currentTarget;
+  button.disabled = true;
+  $("#desktop-update-message").textContent = "正在准备安装…";
+  try {
+    await api("/desktop-update/install", {
+      method: "POST",
+      headers: { "X-Local-Settings-Token": state.modelSettingsToken },
+    });
+    try { localStorage.removeItem("desktop-update-deferred-version"); } catch (_) { /* Optional reminder preference. */ }
+    $("#desktop-update-message").textContent = "安装程序即将打开，请保存手头内容。";
+    window.setTimeout(() => window.pywebview?.api?.close_app?.(), 500);
+  } catch (error) {
+    $("#desktop-update-message").textContent = error.message || "暂时无法安装，请稍后重试。";
+    button.disabled = false;
+  }
+});
+
+if (DESKTOP_MODE) {
+  refreshModelStatus().then(() => {
+    checkDesktopUpdate();
+    window.setInterval(checkDesktopUpdate, 6 * 60 * 60 * 1000);
+  }).catch(() => {});
+}

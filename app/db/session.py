@@ -1,4 +1,5 @@
 from pathlib import Path
+import sys
 
 from sqlalchemy import create_engine, event
 from sqlalchemy.orm import DeclarativeBase, sessionmaker
@@ -16,6 +17,8 @@ if settings.database_url.startswith("sqlite:///"):
     try:
         db_path.parent.mkdir(parents=True, exist_ok=True)
     except PermissionError:
+        if getattr(sys, "frozen", False):
+            raise RuntimeError("无法写入本机学习数据目录，请检查用户配置文件夹权限。")
         # Sandboxed/dev environments may not expose D:. Keep the configured
         # D: location as the production default, but remain runnable locally.
         fallback = Path(__file__).resolve().parents[2] / "data"

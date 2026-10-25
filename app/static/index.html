@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#092b50">
   <title>AI PM 学习罗盘 · Learning Compass</title>
   <link rel="stylesheet" href="/static/styles.css">
-  <link rel="stylesheet" href="/static/brand-refresh.css?v=20261024-3">
+  <link rel="stylesheet" href="/static/brand-refresh.css?v=20261024-5">
 </head>
 <body>
   <aside class="app-sidebar" aria-label="学习工作台导航">
@@ -19,11 +19,10 @@
       <button class="tab" data-panel="concepts" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 7 10 10M7 17 17 7"/><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="18" r="3"/></svg>概念地图</button>
     </nav>
     <div class="sidebar-path"><p>学习路径</p><div id="module-shortcuts" aria-label="课程模块"></div></div>
-    <div class="sidebar-note"><img class="sidebar-pet" src="/static/cloud-feedback-peek.png?v=20261024" width="48" height="48" alt="" aria-hidden="true"><span><i class="local-dot" aria-hidden="true"></i>进度保存在本机<small>下次回来，接着学。</small></span></div>
+    <div class="sidebar-note"><span><i class="local-dot" aria-hidden="true"></i>进度保存在本机<small>下次回来，接着学。</small></span></div>
   </aside>
   <header class="hero">
     <div class="header-title"><p class="hero-kicker">AI PM 学习罗盘</p><h1>把 AI 产品知识，<br>变成你的求职底气。</h1><p>从真实的产品问题出发，找到属于你的机会与方向。</p></div>
-    <img class="hero-cloud" src="/static/cloud-companion.png?v=20261024" width="210" height="166" alt="" aria-hidden="true">
     <div class="model-toolbar">
       <span id="status" role="status">正在连接…</span>
       <button id="open-model-settings" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 17h16"/><circle cx="9" cy="7" r="3"/><circle cx="15" cy="17" r="3"/></svg>模型设置</button>
@@ -32,10 +31,10 @@
   </header>
   <dialog id="model-settings-dialog" class="model-dialog" aria-labelledby="model-settings-title">
     <div class="model-dialog-heading">
-      <h2 id="model-settings-title">模型设置 · 仅本次运行</h2>
+      <h2 id="model-settings-title">模型设置</h2>
       <button id="close-model-settings" type="button" aria-label="关闭模型设置">关闭</button>
     </div>
-    <p class="muted">你自己测试时，也在这里填写自己的配置。密钥只保存在本机服务内存中，不写入项目、数据库或浏览器存储；服务关闭后需重填。</p>
+    <p class="muted">填写你自己的模型服务配置。API 密钥只用于本机请求，不会发给本项目。</p>
     <form id="model-settings-form" autocomplete="off">
       <label for="model-provider">模型服务商</label>
       <select id="model-provider">
@@ -51,20 +50,27 @@
       <input id="model-name" required maxlength="200" placeholder="填写供应商提供的准确模型名称" autocomplete="off">
       <label for="model-api-key">API 密钥</label>
       <input id="model-api-key" type="password" required maxlength="4096" placeholder="只在此处输入，不要发到聊天里" autocomplete="off" spellcheck="false" autocapitalize="none">
+      <label class="remember-device-label"><input id="remember-api-key" type="checkbox">记住此设备（保存在 Windows 凭据保险库）</label>
       <label class="consent-label"><input id="model-consent" type="checkbox" required>我信任该 API 地址，知晓启用后题目、教材片段与回答可能发往此供应商，开始练习和评分可能产生费用。</label>
       <p class="muted">仅支持 OpenAI 兼容的聊天接口与 JSON 输出。保存配置不会调用模型，也不代表密钥已验证；首次请求才能确认连通性。此设置供本机使用，不是公网多用户密钥托管。</p>
       <div class="model-actions">
-        <button id="save-model-settings" type="submit">保存到本次运行</button>
-        <button id="clear-model-settings" type="button" class="secondary">清除当前配置</button>
+        <button id="save-model-settings" type="submit">保存设置</button>
+        <button id="clear-model-settings" type="button" class="secondary">清除模型配置</button>
       </div>
     </form>
     <p id="model-settings-message" role="status" aria-live="polite"></p>
+  </dialog>
+  <dialog id="desktop-update-dialog" class="model-dialog update-dialog" aria-labelledby="desktop-update-title">
+    <div class="model-dialog-heading"><h2 id="desktop-update-title">发现新版本</h2><button id="close-desktop-update" type="button">稍后</button></div>
+    <p id="desktop-update-copy" class="muted">新版本已下载并完成校验。</p>
+    <div class="model-actions"><button id="install-desktop-update" type="button">安装并重启</button></div>
+    <p id="desktop-update-message" role="status" aria-live="polite"></p>
   </dialog>
   <main>
     <section id="learn" class="panel active">
       <section id="catalog-view" aria-labelledby="catalog-title">
         <section class="learning-dashboard" aria-labelledby="learning-dashboard-title">
-          <div class="resume-card"><span class="resume-label" id="resume-label">你的下一步</span><h3 id="resume-title">准备好，开始第一节。</h3><p id="resume-point">先读懂一个知识点，再用一个真实场景练习。</p><button id="resume-learning" type="button" disabled>继续学习</button><p id="progress-message" role="status" aria-live="polite"></p><img class="resume-cloud" src="/static/cloud-study-flight.png?v=20261024" width="160" height="107" alt="" aria-hidden="true"></div>
+          <div class="resume-card"><span class="resume-label" id="resume-label">你的下一步</span><h3 id="resume-title">准备好，开始第一节。</h3><p id="resume-point">先读懂一个知识点，再用一个真实场景练习。</p><button id="resume-learning" type="button" disabled>继续学习</button><p id="progress-message" role="status" aria-live="polite"></p></div>
           <div class="dashboard-copy"><div class="progress-heading"><h2 id="learning-dashboard-title">一点点，积累你的能力</h2><span class="local-label">本机进度</span></div><div class="metric-grid"><div><strong id="metric-read">0</strong><span>已读知识点</span></div><div><strong id="metric-practiced">0</strong><span>已练习知识点</span></div><div><strong id="metric-mastery">0<small>%</small></strong><span>练习掌握度</span></div></div><progress id="course-progress" max="60" value="0" aria-label="已完成课程"></progress><p id="progress-summary" role="status">正在读取本地学习进度…</p><p class="progress-note">阅读标记和练习掌握度分别记录。</p></div>
         </section>
         <div class="section-head">

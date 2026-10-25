@@ -1,0 +1,93 @@
+name: Build and publish Windows release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: windows-release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build-and-publish:
+    if: github.repository == 'twosstar/ai-pm-learning-compass'
+    runs-on: windows-latest
+    steps:
+      - name: Check out tagged source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Confirm release tag is a new version on main
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $tag = "${{ github.ref_name }}"
+          if ($tag -notmatch '^v(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$') {
+            throw "Tag must use vX.Y.Z format."
+          }
+          git fetch origin main
+          git merge-base --is-ancestor $tag origin/main
+          if ($LASTEXITCODE -ne 0) { throw "The tagged commit must be reachable from origin/main." }
+          $candidate = [version]$tag.Substring(1)
+          $latestRelease = $null
+          try {
+            $latestRelease = Invoke-RestMethod -Headers @{ Authorization = "Bearer $env:GH_TOKEN"; Accept = "application/vnd.github+json" } -Uri "https://api.github.com/repos/$env:GITHUB_REPOSITORY/releases/latest"
+          } catch {
+            if ($_.Exception.Response.StatusCode.value__ -ne 404) { throw }
+          }
+          if ($latestRelease -and $latestRelease.tag_name -match '^v(\d+\.\d+\.\d+)$') {
+            $latest = [version]$Matches[1]
+            if ($candidate -le $latest) { throw "Release version must be greater than $latest." }
+          }
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.12.16"
+          enable-cache: true
+
+      - name: Install Inno Setup
+        shell: pwsh
+        run: |
+          choco install innosetup --yes --no-progress
+          "${env:ProgramFiles(x86)}\Inno Setup 6" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+
+      - name: Install locked dependencies
+        run: uv sync --all-extras --frozen
+
+      - name: Build and audit installer
+        shell: pwsh
+        run: |
+          $version = "${{ github.ref_name }}".Substring(1)
+          uv run --frozen python scripts/build_windows.py --version $version --output dist/release
+          if ($LASTEXITCODE -ne 0) { throw "Windows build or payload audit failed." }
+
+      - name: Publish stable GitHub Release
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $tag = "${{ github.ref_name }}"
+          $version = $tag.Substring(1)
+          $installer = "dist/release/AI-PM-Learning-Compass-Setup-$version.exe"
+          $headers = @{ Authorization = "Bearer $env:GH_TOKEN"; Accept = "application/vnd.github+json"; "X-GitHub-Api-Version" = "2022-11-28" }
+          $body = @{ tag_name = $tag; name = "AI PM 学习罗盘 $tag"; body = "Windows 安装包。下载后双击安装；应用会保留本机学习进度，并在启动时和运行期间检查正式更新。"; draft = $true; prerelease = $false } | ConvertTo-Json
+          $release = Invoke-RestMethod -Method Post -Headers $headers -ContentType "application/json" -Body $body -Uri "https://api.github.com/repos/$env:GITHUB_REPOSITORY/releases"
+          $uploadRoot = $release.upload_url.Split('{')[0]
+          foreach ($asset in @($installer, "dist/release/SHA256SUMS.txt")) {
+            $name = [System.IO.Path]::GetFileName($asset)
+            Invoke-RestMethod -Method Post -Headers $headers -ContentType "application/octet-stream" -InFile $asset -Uri "$uploadRoot`?name=$([uri]::EscapeDataString($name))" | Out-Null
+          }
+          $publish = @{ draft = $false } | ConvertTo-Json
+          Invoke-RestMethod -Method Patch -Headers $headers -ContentType "application/json" -Body $publish -Uri "https://api.github.com/repos/$env:GITHUB_REPOSITORY/releases/$($release.id)" | Out-Null

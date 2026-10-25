@@ -100,17 +100,13 @@ const learningProgress = (() => {
     try {
       await flushCheckpoint();
       await flushDraft();
-      const saved = await api(`/progress/lessons/${lessonId}/resume`);
-      let course, lesson;
-      for (const candidate of state.catalog.items) {
-        const found = candidate.lessons.find(item => item.id === lessonId);
-        if (found) { course = candidate; lesson = found; break; }
-      }
-      if (!lesson) throw new Error('课程不在当前公开目录中。');
+      const saved = await api("/progress/lessons/" + lessonId + "/resume");
+      const detail = await api("/catalog/" + lessonId);
+      const { course, lesson } = detail;
       restoring = true;
       if ((forcePractice || saved.view === 'practice') && saved.practice) displayQuestion(saved.practice);
       else {
-        openLesson(course, lesson);
+        await openLesson(course, lesson);
         await new Promise(resolve => requestAnimationFrame(resolve));
         const card = document.getElementById(`knowledge-point-${saved.point_id}`);
         if (card) window.scrollTo({ top: window.scrollY + card.getBoundingClientRect().top + saved.position * card.getBoundingClientRect().height, behavior: 'instant' });
@@ -165,7 +161,7 @@ const learningProgress = (() => {
       if (data?.last_resume) resumeLesson(data.last_resume.lesson_id).catch(() => {});
       else {
         const course = state.catalog?.items?.[0];
-        if (course?.lessons[0]) openLesson(course, course.lessons[0]);
+        if (course?.lessons[0]) openLesson(course, course.lessons[0]).catch(() => {});
       }
     });
     el('#answer').addEventListener('input', captureDraft);

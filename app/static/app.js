@@ -9,6 +9,9 @@ const state = {
   conceptCategories: [],
   conceptCategory: "",
   conceptPage: 1,
+  conceptMatched: 0,
+  conceptPages: 1,
+  conceptRequest: 0,
   openModules: new Set(),
   modulesTouched: false,
   startingPractice: false,
@@ -161,7 +164,7 @@ function renderCatalog(data) {
     group.append(heading);
     for (const [moduleIndex, module] of (data.modules || []).entries()) {
       const members = course.lessons.filter((lesson) => lesson.module_id === module.id && (
-        !term || [lesson.title, lesson.section, lesson.summary, ...(lesson.knowledge_points || []).map((point) => point.name)].join(" ").toLocaleLowerCase().includes(term)
+        !term || [lesson.title, lesson.section, ...(lesson.knowledge_points || []).map((point) => point.name)].join(" ").toLocaleLowerCase().includes(term)
       ));
       if (!members.length) continue;
       visibleLessons += members.length;
@@ -207,7 +210,7 @@ function renderCatalog(data) {
         button.className = "outline-button";
         button.textContent = "查看本节";
         button.setAttribute("aria-label", `查看本节：${lesson.title}`);
-        button.addEventListener("click", () => openLesson(course, lesson));
+        button.addEventListener("click", () => openLesson(course, lesson).catch(showError));
         row.append(indexLabel, detail, button);
         chapter.append(row);
       }
@@ -275,7 +278,12 @@ function renderQuickStudy(card, quick) {
   card.append(essentials, figure, example, interview);
 }
 
-function openLesson(course, lesson) {
+async function openLesson(course, lesson) {
+  if (!lesson?.objectives || !lesson.knowledge_points?.some((point) => "core_explanation" in point)) {
+    const detail = await api(`/catalog/${lesson.id}`);
+    course = detail.course;
+    lesson = detail.lesson;
+  }
   if (typeof learningProgress !== 'undefined') learningProgress.beforeLessonOpen();
   state.activeLesson = { ...lesson, course_name: course.name };
   const pointList = lesson.knowledge_points || [];
@@ -658,6 +666,7 @@ function renderAnswerFeedback(result, submittedQuestion) {
 function initializeConcepts(data) {
   state.concepts = data.items || [];
   state.conceptCategories = data.categories || [];
+  state.conceptMatched = data.matched ?? data.total ?? 0;
   $("#concept-total").textContent = `${data.total} 个概念 · ${state.conceptCategories.length} 个主题`;
   const filters = $("#concept-categories");
   filters.replaceChildren();
@@ -670,32 +679,35 @@ function initializeConcepts(data) {
     button.addEventListener("click", () => {
       state.conceptCategory = category.id;
       state.conceptPage = 1;
-      renderConcepts();
+      renderConcepts().catch(showError);
     });
     filters.append(button);
   }
-  renderConcepts();
+  renderConcepts(data).catch(showError);
 }
 
-function renderConcepts() {
-  const term = $("#concept-search").value.trim().toLocaleLowerCase();
-  const items = state.concepts.filter((item) => {
-    const haystack = [item.name, ...(item.aliases || []), item.category_label, item.definition, item.mechanism].join(" ").toLocaleLowerCase();
-    return (!state.conceptCategory || item.category === state.conceptCategory) && (!term || haystack.includes(term));
+async function renderConcepts(initialData = null) {
+  const requestId = ++state.conceptRequest;
+  const query = new URLSearchParams({
+    q: $("#concept-search").value.trim(),
+    category: state.conceptCategory,
+    page: String(state.conceptPage),
+    page_size: String(CONCEPT_PAGE_SIZE),
   });
-  if (term) {
-    const exactMatch = (item) => [item.name, ...(item.aliases || [])].some((name) => name.toLocaleLowerCase() === term);
-    items.sort((a, b) => Number(exactMatch(b)) - Number(exactMatch(a)));
-  }
-  const pages = Math.max(1, Math.ceil(items.length / CONCEPT_PAGE_SIZE));
-  state.conceptPage = Math.min(state.conceptPage, pages);
-  const start = (state.conceptPage - 1) * CONCEPT_PAGE_SIZE;
-  $("#concept-result-count").textContent = items.length
-    ? `找到 ${items.length} 个概念，当前显示 ${start + 1}–${Math.min(start + CONCEPT_PAGE_SIZE, items.length)} 个`
+  const data = initialData || await api("/concepts?" + query);
+  if (requestId !== state.conceptRequest) return;
+  const items = data.items || [];
+  state.concepts = items;
+  state.conceptMatched = data.matched || 0;
+  state.conceptPages = data.pages || 1;
+  state.conceptPage = data.page || 1;
+  const start = items.length ? (state.conceptPage - 1) * CONCEPT_PAGE_SIZE : 0;
+  $("#concept-result-count").textContent = state.conceptMatched
+    ? "找到 " + state.conceptMatched + " 个概念，当前显示 " + (start + 1) + "–" + (start + items.length) + " 个"
     : "没有匹配的概念，试试其他中文、英文或缩写。";
-  $("#concept-page").textContent = `第 ${state.conceptPage} / ${pages} 页`;
+  $("#concept-page").textContent = "第 " + state.conceptPage + " / " + state.conceptPages + " 页";
   $("#concept-prev").disabled = state.conceptPage <= 1;
-  $("#concept-next").disabled = state.conceptPage >= pages;
+  $("#concept-next").disabled = state.conceptPage >= state.conceptPages;
   document.querySelectorAll("#concept-categories button").forEach((button) => {
     button.setAttribute("aria-pressed", String(button.dataset.category === state.conceptCategory));
   });
@@ -711,13 +723,13 @@ function renderConcepts() {
       $("#concept-search").value = "";
       state.conceptCategory = "";
       state.conceptPage = 1;
-      renderConcepts();
+      renderConcepts().catch(showError);
       $("#concept-search").focus();
     });
     empty.append(reset);
     root.append(empty);
   }
-  for (const concept of items.slice(start, start + CONCEPT_PAGE_SIZE)) {
+  for (const concept of items) {
     const card = document.createElement("article");
     card.className = "concept-card";
     const category = document.createElement("span");
@@ -772,7 +784,7 @@ function renderConcepts() {
         $("#concept-search").value = name;
         state.conceptCategory = "";
         state.conceptPage = 1;
-        renderConcepts();
+        renderConcepts().catch(showError);
         $("#concepts").scrollIntoView({ behavior: "smooth" });
       });
       related.append(link);
@@ -885,7 +897,7 @@ $("#next").addEventListener("click", async () => {
     const nextLesson = result.lesson_id && result.lesson_id !== state.activeLesson?.id;
     displayQuestion(result);
     if (nextLesson && state.activeLesson) {
-      openLesson({ name: state.activeLesson.course_name }, state.activeLesson);
+      await openLesson({ name: state.activeLesson.course_name }, state.activeLesson);
     }
   } catch (error) { showError(error); }
 });
@@ -951,7 +963,7 @@ $("#career-role").addEventListener("change", (event) => {
   try { localStorage.setItem("public-learning-target-role", state.targetRole); } catch (_) { /* Optional preference only. */ }
 });
 $("#review-knowledge").addEventListener("click", () => {
-  if (state.activeLesson) openLesson({ name: state.activeLesson.course_name }, state.activeLesson);
+  if (state.activeLesson) openLesson({ name: state.activeLesson.course_name }, state.activeLesson).catch(showError);
 });
 document.querySelectorAll(".tab").forEach((button) => button.addEventListener("click", () => {
   const previous = document.querySelector(".panel.active");
@@ -968,14 +980,17 @@ $("#refresh-mistakes").addEventListener("click", loadMistakes);
 document.querySelector("[data-open-concepts]").addEventListener("click", () => {
   document.querySelector('.tab[data-panel="concepts"]').click();
 });
+let conceptSearchTimer;
 $("#concept-search").addEventListener("input", () => {
   state.conceptPage = 1;
-  renderConcepts();
+  state.conceptRequest += 1;
+  clearTimeout(conceptSearchTimer);
+  conceptSearchTimer = setTimeout(() => renderConcepts().catch(showError), 250);
 });
 for (const [selector, step] of [["#concept-prev", -1], ["#concept-next", 1]]) {
   $(selector).addEventListener("click", () => {
     state.conceptPage += step;
-    renderConcepts();
+    renderConcepts().catch(showError);
     $("#concepts").scrollIntoView({ behavior: "smooth" });
   });
 }

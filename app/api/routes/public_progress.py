@@ -176,10 +176,9 @@ def resume(lesson_id: int, db: DbSession):
     evaluation = db.query(AnswerEvaluation).filter_by(question_attempt_id=attempt.id).first()
     saved_draft = db.get(PublicAnswerDraft, attempt.id)
     answer = saved_draft.text if saved_draft and not evaluation and stamp(saved_draft.updated_at) > stamp(attempt.answered_at) else attempt.user_answer
-    question = {name: getattr(attempt, name) for name in ('question', 'question_type', 'difficulty', 'interview_category',
-                'target_role', 'interview_value', 'interview_depth', 'why_interviewer_asks', 'unnecessary_detail')}
-    for name in ('assessment_focus', 'must_have_points', 'bonus_points'):
-        question[name] = array(getattr(attempt, name + '_json'))
+    question = {name: getattr(attempt, name) for name in (
+        'question', 'question_type', 'difficulty', 'target_role', 'interview_depth'
+    )}
     feedback = None
     if evaluation:
         feedback = {'total_score': evaluation.total_score, 'pass_label': '已保存的历史评价', 'evaluation_source': 'saved',

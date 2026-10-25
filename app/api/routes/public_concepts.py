@@ -2,7 +2,7 @@ import json
 from collections import Counter
 from typing import Annotated
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
 
 from app.db.models import Concept
@@ -46,7 +46,13 @@ def _priority_for(concept_id: int, metadata: dict) -> str:
 
 
 @router.get("")
-def list_concepts(db: DbSession, q: str = "", category: str = "") -> dict:
+def list_concepts(
+    db: DbSession,
+    q: str = Query(default="", max_length=120),
+    category: str = Query(default="", max_length=80),
+    page: int = Query(default=1, ge=1),
+    page_size: int = Query(default=24, ge=1, le=30),
+) -> dict:
     library = public_concept_library()
     query = db.query(Concept).filter(
         Concept.card_status == "READY",
@@ -69,10 +75,18 @@ def list_concepts(db: DbSession, q: str = "", category: str = "") -> dict:
         ])
     if category:
         views = [item for item in views if item["category"] == category]
+    matched = len(views)
+    pages = max(1, (matched + page_size - 1) // page_size)
+    if page > pages:
+        page = pages
+    start = (page - 1) * page_size
     return {
-        "items": views,
+        "items": views[start:start + page_size],
         "total": len(rows),
-        "matched": len(views),
+        "matched": matched,
+        "page": page,
+        "page_size": page_size,
+        "pages": pages,
         "categories": [dict(item, count=counts[item["id"]]) for item in library["categories"]],
         "version": library["version"],
         "editorial_note": library["editorial_note"],

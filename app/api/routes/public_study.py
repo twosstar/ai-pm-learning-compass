@@ -8,12 +8,12 @@ from sqlalchemy.orm import Session
 from app.db.models import AnswerEvaluation, KnowledgePoint, LearningSession, Lesson, MistakeItem, QuestionAttempt
 from app.db.repository import Repository
 from app.db.session import get_db
-from app.schemas.learning import (
-    ContinueRequest,
-    GeneratedQuestion,
-    MasteryLoopFeedback,
-    MasteryLoopStarted,
-    KnowledgePointView,
+from app.schemas.learning import ContinueRequest
+from app.schemas.public_learning import (
+    PublicContinueResponse,
+    PublicMasteryLoopFeedback,
+    PublicMasteryLoopStarted,
+    public_question,
 )
 from app.services.study import study_service
 from app.services.public_curriculum import public_curriculum
@@ -46,30 +46,17 @@ class PublicStartRequest(BaseModel):
     target_role: Literal['general_ai_pm', 'ai_education_pm'] | None = None
 
 
-class PublicContinueResponse(BaseModel):
-    completed: bool
-    session_id: int | None = None
-    lesson_id: int | None = None
-    lesson_title: str = ""
-    scope_label: str = "学习路径"
-    course_summary: str = ""
-    page_mastery: int = 0
-    page_interview_readiness: int = 0
-    knowledge_points: list[KnowledgePointView] = Field(default_factory=list)
-    current_knowledge_point: KnowledgePointView | None = None
-    question_attempt_id: int | None = None
-    question: GeneratedQuestion | None = None
-
-
-@router.post("/start", response_model=MasteryLoopStarted)
-async def start_study(payload: PublicStartRequest, db: DbSession) -> MasteryLoopStarted:
+@router.post("/start", response_model=PublicMasteryLoopStarted)
+async def start_study(payload: PublicStartRequest, db: DbSession) -> PublicMasteryLoopStarted:
     try:
         lesson = db.get(Lesson, payload.lesson_id)
         if not lesson or not (lesson.url or "").startswith("public://"):
             raise LookupError("未找到公开示例课程。")
         result = await study_service.start_mastery_loop(db, lesson_id=payload.lesson_id, target_role=payload.target_role)
         result = _include_all_lesson_points(db, result)
-        return MasteryLoopStarted(**result)
+        result = dict(result)
+        result["question"] = public_question(result.get("question"))
+        return PublicMasteryLoopStarted(**result)
     except LookupError as exc:
         raise HTTPException(status_code=404, detail=str(exc)) from exc
     except ValueError as exc:
@@ -78,8 +65,8 @@ async def start_study(payload: PublicStartRequest, db: DbSession) -> MasteryLoop
         raise HTTPException(status_code=503, detail=str(exc)) from exc
 
 
-@router.post("/answer", response_model=MasteryLoopFeedback)
-async def answer(payload: PublicAnswerRequest, db: DbSession) -> MasteryLoopFeedback:
+@router.post("/answer", response_model=PublicMasteryLoopFeedback)
+async def answer(payload: PublicAnswerRequest, db: DbSession) -> PublicMasteryLoopFeedback:
     try:
         session = db.get(LearningSession, payload.session_id)
         lesson = db.get(Lesson, session.lesson_id) if session else None
@@ -89,7 +76,14 @@ async def answer(payload: PublicAnswerRequest, db: DbSession) -> MasteryLoopFeed
             db, payload.session_id, payload.question_attempt_id, payload.answer,
             review_mode=payload.review_mode,
         )
-        return MasteryLoopFeedback(**result)
+        result = dict(result)
+        result["next_question"] = public_question(result.get("next_question")) if result.get("next_question") else None
+        remediation = result.get("remediation")
+        if remediation:
+            remediation = remediation.model_dump() if hasattr(remediation, "model_dump") else dict(remediation)
+            remediation["retest_question"] = public_question(remediation.get("retest_question"))
+            result["remediation"] = remediation
+        return PublicMasteryLoopFeedback(**result)
     except LookupError as exc:
         raise HTTPException(status_code=404, detail=str(exc)) from exc
     except ValueError as exc:
@@ -196,20 +190,13 @@ def retry_public_mistake(mistake_id: int, db: DbSession) -> dict:
         "course_summary": retry_session.course_summary,
         "current_knowledge_point": {"id": point.id, "name": point.name, "core_explanation": point.core_explanation},
         "question_attempt_id": retry_attempt.id,
-        "question": {
+        "question": public_question({
             "question": retry_attempt.question,
             "question_type": retry_attempt.question_type,
             "difficulty": retry_attempt.difficulty,
-            "assessment_focus": json.loads(retry_attempt.assessment_focus_json or "[]"),
-            "interview_category": retry_attempt.interview_category,
             "target_role": retry_attempt.target_role,
-            "interview_value": retry_attempt.interview_value,
             "interview_depth": retry_attempt.interview_depth,
-            "why_interviewer_asks": retry_attempt.why_interviewer_asks,
-            "must_have_points": json.loads(retry_attempt.must_have_points_json or "[]"),
-            "bonus_points": json.loads(retry_attempt.bonus_points_json or "[]"),
-            "unnecessary_detail": retry_attempt.unnecessary_detail,
-        },
+        }),
         "review_mode": True,
         "evaluated": False,
         "draft_answer": "",
@@ -246,11 +233,14 @@ async def continue_study(payload: ContinueRequest, db: DbSession) -> PublicConti
             result["completed"] = False
             result["lesson_id"] = next_lesson.id
             result["scope_label"] = "下一節"
+            result["question"] = public_question(result.get("question")) if result.get("question") else None
             return PublicContinueResponse(**result)
         point = result.get("current_knowledge_point")
         point_id = point.get("id") if isinstance(point, dict) else getattr(point, "id", None)
         source_point = db.get(KnowledgePoint, point_id) if point_id else None
         lesson = db.get(Lesson, source_point.lesson_id) if source_point else None
+        result = dict(result)
+        result["question"] = public_question(result.get("question")) if result.get("question") else None
         return PublicContinueResponse(
             **result,
             session_id=payload.session_id,

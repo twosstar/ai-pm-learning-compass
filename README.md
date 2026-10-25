@@ -1,4 +1,4 @@
-# AI 产品经理学习罗盘
+# AI PM 学习罗盘 V2.0
 
 面向 AI 产品经理学习者与求职者的 Windows 桌面学习工具。按课程建立知识框架，用业务场景练习判断，通过反馈和错题复盘持续改进。
 
@@ -6,9 +6,15 @@
 
 | 学习首页 | 场景练习 |
 |---|---|
-| ![学习首页](docs/images/learning-dashboard.png) | ![场景练习](docs/images/practice-question.png) |
+| [![学习首页](docs/images/learning-dashboard.png)](docs/images/learning-dashboard.png) | [![场景练习](docs/images/practice-question.png)](docs/images/practice-question.png) |
 | **答题反馈** | **概念地图** |
-| ![答题反馈](docs/images/score-feedback.png) | ![概念地图](docs/images/concept-map.png) |
+| [![答题反馈](docs/images/score-feedback.png)](docs/images/score-feedback.png) | [![概念地图](docs/images/concept-map.png)](docs/images/concept-map.png) |
+
+### 一张完整的知识卡片
+
+概念卡不只给出定义，也会说明它怎么运作、适合解决什么问题、有哪些使用边界，以及 AI 产品经理该怎么判断。
+
+[![检索增强生成（RAG）完整知识卡片](docs/images/concept-card-full.png)](docs/images/concept-card-full.png)
 
 ## 主要功能
 

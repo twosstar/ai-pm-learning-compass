@@ -54,7 +54,8 @@ def definition(lesson_id):
 def valid_sessions(db, lesson):
     ids = [point['id'] for point in lesson['knowledge_points']]
     return db.query(LearningSession).filter(LearningSession.lesson_id == lesson['id'],
-        LearningSession.current_knowledge_point_id.in_(ids)).order_by(LearningSession.updated_at.desc(), LearningSession.id.desc()).all()
+        LearningSession.current_knowledge_point_id.in_(ids), LearningSession.scope_type != 'MISTAKE_REVIEW'
+        ).order_by(LearningSession.updated_at.desc(), LearningSession.id.desc()).all()
 
 
 def touch(db, lesson_id, point_id, view='practice', position=0):

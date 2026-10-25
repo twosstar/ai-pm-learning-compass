@@ -5,6 +5,8 @@ MEMORY.md
 .venv/
 .worktrees/
 .build/
+.tools/
+/dist/
 .uv-cache/
 .uv-python/
 app_version.txt

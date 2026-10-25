@@ -307,6 +307,33 @@ button:focus-visible, a:focus-visible, summary:focus-visible, input:focus-visibl
 .update-dialog #desktop-update-message { min-height: 1.5em; color: #526b8c; }
 .update-dialog #install-desktop-update { color: #fff; background: #176ce5; }
 
+/* Mistake book: calm review cards keep the question first and the saved answers close. */
+.mistake-panel { max-width: 1120px; }
+.mistake-intro { margin: 7px 0 0; color: #526b8c; font-size: 13px; line-height: 1.7; }
+.mistake-refresh { min-width: 78px; background: #fff; border-color: #d4e2f4; color: #315b91; }
+.mistake-refresh:hover { background: #f3f8ff; }
+.mistake-summary { margin: 12px 0 16px; color: #4f6786; font-size: 13px; }
+.mistake-list { display: grid; gap: 14px; }
+.mistake-card, .mistake-empty { padding: 22px 24px; border: 1px solid #d8e5f5; border-radius: 13px; background: #fff; }
+.mistake-card { box-shadow: 0 3px 12px rgb(40 77 129 / 4%); }
+.mistake-card-head { display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+.mistake-context, .mistake-meta { margin: 0; color: #637995; font-size: 12px; line-height: 1.6; }
+.mistake-score { flex: 0 0 auto; padding: 5px 10px; border-radius: 999px; background: #fff2e6; color: #9a571d; font-size: 12px; font-weight: 700; }
+.mistake-card h3 { margin: 13px 0 8px; color: #192f50; font-size: 17px; line-height: 1.65; }
+.mistake-records { margin-top: 15px; padding: 0 14px; border-radius: 9px; background: #f5f8fd; }
+.mistake-records > summary { min-height: 43px; padding: 12px 0; color: #315c9c; font-size: 13px; font-weight: 650; cursor: pointer; }
+.mistake-answer-block { padding: 4px 0 13px; border-top: 1px solid #e4ebf5; }
+.mistake-answer-block h4 { margin: 13px 0 5px; color: #385d8b; font-size: 13px; }
+.mistake-answer-block p { margin: 0; color: #3f5066; font-size: 13px; line-height: 1.8; white-space: pre-wrap; overflow-wrap: anywhere; }
+.mistake-actions { display: flex; justify-content: flex-end; margin-top: 14px; }
+.mistake-actions button, .mistake-empty button { min-width: 112px; background: #176ce5; color: #fff; }
+.mistake-actions button:hover, .mistake-empty button:hover { background: #0c55c1; }
+.mistake-empty { padding: 48px 24px; text-align: center; }
+.mistake-empty h3 { margin: 0 0 8px; color: #1b3558; font-size: 18px; }
+.mistake-empty p { margin: 0 0 18px; color: #5c708c; font-size: 13px; }
+.mistake-review-result { margin: 16px 0 10px; color: #315c9c; font-weight: 650; }
+.mistake-return { display: block; margin-top: 8px; }
+
 @media (max-width: 1200px) {
   .learning-dashboard { grid-template-columns: minmax(0, 1fr); }
 }
@@ -318,4 +345,8 @@ button:focus-visible, a:focus-visible, summary:focus-visible, input:focus-visibl
   .dashboard-copy, .resume-card { min-height: 0; }
   .resume-card { padding: 16px 17px; }
   .resume-card h3, #resume-point { max-width: 100%; }
+  .mistake-card { padding: 17px; }
+  .mistake-card h3 { font-size: 15px; }
+  .mistake-actions { justify-content: stretch; }
+  .mistake-actions button { width: 100%; }
 }

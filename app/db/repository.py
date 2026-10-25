@@ -67,9 +67,16 @@ class Repository:
         if source_type in {"SMART_LEARNING", "MOCK_INTERVIEW"}: statement = statement.where(MistakeItem.source_type == source_type)
         return list(self.db.scalars(statement.order_by(MistakeItem.dynamic_importance.desc(), MistakeItem.attempt_count.desc(), MistakeItem.last_attempt_at.desc())).all())
 
-    def backfill_mistakes(self) -> None:
+    def backfill_mistakes(self, *, lesson_ids: set[int] | None = None) -> None:
         """Import historical failed learning answers into the unified book once."""
-        rows = self.db.execute(select(QuestionAttempt, AnswerEvaluation).join(AnswerEvaluation, AnswerEvaluation.question_attempt_id == QuestionAttempt.id)).all()
+        statement = select(QuestionAttempt, AnswerEvaluation).join(
+            AnswerEvaluation, AnswerEvaluation.question_attempt_id == QuestionAttempt.id
+        )
+        if lesson_ids is not None:
+            statement = statement.join(
+                LearningSession, LearningSession.id == QuestionAttempt.learning_session_id
+            ).join(Lesson, Lesson.id == LearningSession.lesson_id).where(Lesson.id.in_(lesson_ids))
+        rows = self.db.execute(statement).all()
         for attempt, evaluation in rows:
             if evaluation.total_score < 60 or self.get_mistake(attempt.question_fingerprint_json or ""):
                 fingerprint = attempt.question_fingerprint_json or hashlib.sha256(attempt.question.encode()).hexdigest()
@@ -639,10 +646,12 @@ class Repository:
     def get_question_attempt(self, attempt_id: int) -> QuestionAttempt | None:
         return self.db.get(QuestionAttempt, attempt_id)
 
-    def clone_question_attempt(self, original: QuestionAttempt) -> QuestionAttempt:
+    def clone_question_attempt(
+        self, original: QuestionAttempt, *, learning_session_id: int | None = None
+    ) -> QuestionAttempt:
         """Create a fresh retry attempt while preserving the original rubric/config."""
         record = QuestionAttempt(
-            learning_session_id=original.learning_session_id,
+            learning_session_id=learning_session_id or original.learning_session_id,
             knowledge_point_id=original.knowledge_point_id,
             question_type=original.question_type,
             difficulty=original.difficulty,

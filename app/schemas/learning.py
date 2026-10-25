@@ -323,7 +323,7 @@ class MasteryLoopFeedback(BaseModel):
     page_mastery: int
     page_interview_readiness: int
     next_action: Literal[
-        "advance", "probe", "remediate", "interview_ready", "needs_review", "defer_and_continue", "complete", "retry_evaluation"
+        "advance", "probe", "remediate", "interview_ready", "needs_review", "defer_and_continue", "complete", "retry_evaluation", "mistake_review"
     ]
     remediation: RemediationOutput | None = None
     next_attempt_id: int | None = None

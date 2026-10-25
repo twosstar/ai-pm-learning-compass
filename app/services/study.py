@@ -1675,7 +1675,7 @@ class StudyService:
         )
 
     async def answer_mastery_question(
-        self, db: Session, session_id: int, attempt_id: int, answer: str
+        self, db: Session, session_id: int, attempt_id: int, answer: str, *, review_mode: bool = False
     ) -> dict:
         repository = Repository(db)
         old_readiness = interview_priority_service.dashboard(repository)["interview_readiness"]
@@ -1810,7 +1810,10 @@ class StudyService:
         retest_message = ""
         current_angle = ""
         pass_status = "PASS" if passed else "LEARNING"
-        if passed:
+        if review_mode:
+            next_action = "mistake_review"
+            repository.update_learning_session(session, mode="advance", increment_answers=False)
+        elif passed:
             next_action = "interview_ready"
             repository.update_learning_session(session, mode="advance", increment_answers=True)
         elif consecutive_failures < 2:

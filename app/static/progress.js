@@ -86,6 +86,7 @@ const learningProgress = (() => {
   }
 
   function practiceShown(payload) {
+    if (payload.review_mode) return;
     if (!payload.current_knowledge_point || !state.activeLesson) return;
     queueCheckpoint({ lesson_id: state.activeLesson.id, point_id: payload.current_knowledge_point.id, view: 'practice' });
     flushCheckpoint();

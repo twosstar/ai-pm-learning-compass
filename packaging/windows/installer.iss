@@ -16,6 +16,7 @@ OutputBaseFilename=AI-PM-Learning-Compass-Setup-{#AppVersion}
 Compression=lzma2
 SolidCompression=yes
 WizardStyle=modern
+SetupIconFile=assets\cloud-compass-icon.ico
 Uninstallable=yes
 CloseApplications=yes
 RestartApplications=no
@@ -65,4 +66,4 @@ begin
   end;
 end;
 
-; No uninstall deletion rules: learner data in %LOCALAPPDATA%\AI PM Learning Compass is preserved.
+// No uninstall deletion rules: learner data in %LOCALAPPDATA%\AI PM Learning Compass is preserved.

@@ -12,6 +12,7 @@ const state = {
   openModules: new Set(),
   modulesTouched: false,
   startingPractice: false,
+  mistakeRetry: false,
   targetRole: "general_ai_pm",
   modelSettingsToken: "",
   panelScroll: {},
@@ -389,6 +390,7 @@ function displayQuestion(payload) {
   }
   state.sessionId = payload.session_id;
   state.attemptId = payload.question_attempt_id;
+  state.mistakeRetry = Boolean(payload.review_mode);
   state.currentPractice = {
     ...payload,
     lesson_id: payload.lesson_id ?? state.activeLesson?.id,
@@ -413,6 +415,103 @@ function displayQuestion(payload) {
   setView("practice");
   if (typeof learningProgress !== 'undefined') learningProgress.practiceShown(payload);
   $("#session").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function formatMistakeDate(value) {
+  if (!value) return "时间未知";
+  const date = new Date(value);
+  return Number.isNaN(date.getTime()) ? "时间未知" : new Intl.DateTimeFormat("zh-CN", { dateStyle: "medium" }).format(date);
+}
+
+async function loadMistakes() {
+  const list = $("#mistake-list");
+  const summary = $("#mistake-summary");
+  summary.textContent = "正在读取本机错题…";
+  try {
+    const data = await api("/study/mistakes");
+    summary.textContent = data.total ? `待复习 ${data.total} 道 · 按最近作答排序 · 仅保存在本机` : "目前没有待复习的错题 · 答错或尚未掌握的练习会自动保存在这里";
+    list.replaceChildren();
+    if (!data.items?.length) {
+      const empty = document.createElement("div");
+      empty.className = "mistake-empty";
+      const title = document.createElement("h3");
+      title.textContent = "暂时没有需要复习的题目";
+      const copy = document.createElement("p");
+      copy.textContent = "开始一节练习后，答错或还没掌握的题会自动收进错题本。";
+      const go = document.createElement("button");
+      go.type = "button";
+      go.textContent = "去智能学习";
+      go.addEventListener("click", () => document.querySelector('.tab[data-panel="learn"]').click());
+      empty.append(title, copy, go);
+      list.append(empty);
+      return;
+    }
+    for (const item of data.items) {
+      const card = document.createElement("article");
+      card.className = "mistake-card";
+      const header = document.createElement("div");
+      header.className = "mistake-card-head";
+      const context = document.createElement("p");
+      context.className = "mistake-context";
+      context.textContent = `${item.lesson_title} · ${item.topic || "练习题"}`;
+      const score = document.createElement("span");
+      score.className = "mistake-score";
+      score.textContent = `${item.latest_score} 分`;
+      header.append(context, score);
+      const question = document.createElement("h3");
+      question.textContent = item.question;
+      const meta = document.createElement("p");
+      meta.className = "mistake-meta";
+      meta.textContent = `最近作答 ${formatMistakeDate(item.last_attempt_at)} · 已作答 ${item.attempt_count} 次 · 待复习`;
+      const records = document.createElement("details");
+      records.className = "mistake-records";
+      const summaryText = document.createElement("summary");
+      summaryText.textContent = `查看我的回答与参考答案${item.answer_history?.length > 1 ? `（${item.answer_history.length} 次记录）` : ""}`;
+      records.append(summaryText);
+      const histories = item.answer_history?.length ? item.answer_history : [{ answer: item.user_answer, score: item.latest_score, reference_answer: item.reference_answer }];
+      for (const [index, history] of histories.entries()) {
+        const block = document.createElement("section");
+        block.className = "mistake-answer-block";
+        const ownTitle = document.createElement("h4");
+        ownTitle.textContent = `我的回答 · ${history.score} 分${history.answered_at ? ` · ${formatMistakeDate(history.answered_at)}` : ""}`;
+        const ownAnswer = document.createElement("p");
+        ownAnswer.textContent = history.answer || "这次没有保存到文字回答。";
+        block.append(ownTitle, ownAnswer);
+        if (history.reference_answer || item.reference_answer) {
+          const refTitle = document.createElement("h4");
+          refTitle.textContent = "参考答案";
+          const refAnswer = document.createElement("p");
+          refAnswer.textContent = history.reference_answer || item.reference_answer;
+          block.append(refTitle, refAnswer);
+        }
+        records.append(block);
+      }
+      const actions = document.createElement("div");
+      actions.className = "mistake-actions";
+      const retry = document.createElement("button");
+      retry.type = "button";
+      retry.textContent = "重新回答";
+      retry.addEventListener("click", async () => {
+        retry.disabled = true;
+        retry.textContent = "正在准备…";
+        try {
+          const payload = await api(`/study/mistakes/${item.id}/retry`, { method: "POST", body: "{}" });
+          document.querySelector('.tab[data-panel="learn"]').click();
+          displayQuestion(payload);
+        } catch (error) {
+          showError(error);
+          retry.disabled = false;
+          retry.textContent = "重新回答";
+        }
+      });
+      actions.append(retry);
+      card.append(header, question, meta, records, actions);
+      list.append(card);
+    }
+  } catch (error) {
+    summary.textContent = `错题暂时无法读取：${error.message}`;
+    list.replaceChildren();
+  }
 }
 
 async function startPractice() {
@@ -457,7 +556,7 @@ async function startPractice() {
     const message = error.name === "AbortError"
       ? "等待练习超过 60 秒。请检查模型服务连接；请求可能仍在处理，请稍后再试。"
       : error.name === "TypeError"
-        ? "无法连接本地学习服务。请先双击 Start Learning Copilot.bat 启动服务，并保持启动窗口开启，再试一次。"
+        ? "应用连接中断。请关闭应用后，从桌面或开始菜单重新打开，再试一次。"
         : `练习启动失败：${error.message || "未知错误"}。请检查后重试。`;
     status.textContent = message;
     status.hidden = false;
@@ -713,6 +812,7 @@ $("#answer-form").addEventListener("submit", async (event) => {
         session_id: state.sessionId,
         question_attempt_id: state.attemptId,
         answer: $("#answer").value,
+        review_mode: state.mistakeRetry,
       }),
     });
     renderAnswerFeedback(result, submittedQuestion);
@@ -721,6 +821,27 @@ $("#answer-form").addEventListener("submit", async (event) => {
       button.textContent = "重新评价（保留原回答）";
       button.disabled = false;
       $("#next").hidden = true;
+      if (typeof learningProgress !== 'undefined') await learningProgress.answerHandled(result);
+      return;
+    }
+    if (state.mistakeRetry) {
+      const note = document.createElement("p");
+      note.className = "mistake-review-result";
+      note.textContent = result.pass_status === "PASS"
+        ? "这次已达到基础要求，错题本状态已更新为已掌握。"
+        : "本次评分已保存，错题仍保留在待复习列表。";
+      const back = document.createElement("button");
+      back.type = "button";
+      back.className = "secondary mistake-return";
+      back.textContent = "返回错题本";
+      back.addEventListener("click", async () => {
+        state.mistakeRetry = false;
+        document.querySelector('.tab[data-panel="mistakes"]').click();
+      });
+      $("#feedback").append(note, back);
+      $("#next").hidden = true;
+      button.textContent = "已完成评价";
+      button.disabled = true;
       if (typeof learningProgress !== 'undefined') await learningProgress.answerHandled(result);
       return;
     }
@@ -840,8 +961,10 @@ document.querySelectorAll(".tab").forEach((button) => button.addEventListener("c
   button.classList.add("active");
   $(`#${button.dataset.panel}`).classList.add("active");
   if (button.dataset.view) setView(button.dataset.view);
+  if (button.dataset.panel === "mistakes") loadMistakes();
   window.scrollTo({ top: state.panelScroll[button.dataset.panel] || 0, behavior: "instant" });
 }));
+$("#refresh-mistakes").addEventListener("click", loadMistakes);
 document.querySelector("[data-open-concepts]").addEventListener("click", () => {
   document.querySelector('.tab[data-panel="concepts"]').click();
 });

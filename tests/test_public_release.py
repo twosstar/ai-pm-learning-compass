@@ -31,13 +31,12 @@ def test_public_app_does_not_mount_private_features():
         assert route not in source
 
 
-def test_windows_launcher_preserves_env_and_prepares_first_run():
-    launcher = (ROOT / "Start Learning Copilot.bat").read_text(encoding="utf-8")
-    assert 'if not exist ".env"' in launcher
-    assert '".env.example" ".env"' in launcher
-    assert 'pip install -e .' in launcher
-    assert 'scripts\\start_local.py' in launcher
-    assert "python 3.11" in launcher.lower()
+def test_windows_distribution_uses_desktop_installer():
+    installer = (ROOT / "packaging/windows/installer.iss").read_text(encoding="utf-8")
+    assert "AI PM Learning Compass.exe" in installer
+    assert "{autodesktop}" in installer
+    assert not (ROOT / "Start Learning Copilot.bat").exists()
+    assert not (ROOT / "scripts/start_local.py").exists()
 
 
 def test_public_ui_separates_lesson_brief_from_practice():

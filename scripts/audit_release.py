@@ -79,6 +79,14 @@ def inspect_blob(path, content, known_secrets=()):
         return issues
     for kind, pattern in PATTERNS.items():
         for match in pattern.finditer(source):
+            line_number = source.count("\n", 0, match.start()) + 1
+            line_text = source.splitlines()[line_number - 1]
+            # This scanner's own deny-list deliberately contains a path pattern;
+            # it is a rule being checked, not a machine-specific path to publish.
+            if (path == "scripts/audit_installer_payload.py"
+                    and kind == "personal absolute path"
+                    and line_text.startswith("FORBIDDEN_TEXT = re.compile(")):
+                continue
             # Exact, reviewed negative-test fixture using the reserved .example domain.
             fixtures = ("https://" + "user:" + "password@" + "model.example/v1",
                         "https://model.example/v1?" + "key=secret")
@@ -86,7 +94,7 @@ def inspect_blob(path, content, known_secrets=()):
                     and kind in {"credential embedded in URL", "email address requiring review", "credential URL query"}
                     and any(fixture in source and match.group() in fixture for fixture in fixtures)):
                 continue
-            issues.append({"file": path, "line": source.count("\n", 0, match.start()) + 1, "kind": kind})
+            issues.append({"file": path, "line": line_number, "kind": kind})
     if path == ".env.example":
         for line in source.splitlines():
             if re.match(r"\s*\w*(?:API_KEY|TOKEN|PASSWORD|SECRET)\s*=\s*\S+", line, re.I):

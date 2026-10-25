@@ -34,4 +34,5 @@ exe = EXE(
     pyz, a.scripts, a.binaries, a.datas, [], name="AI PM Learning Compass",
     debug=False, bootloader_ignore_signals=False, strip=False, upx=False,
     console=False, disable_windowed_traceback=False,
+    icon=str(root / "packaging" / "windows" / "assets" / "cloud-compass-icon.ico"),
 )

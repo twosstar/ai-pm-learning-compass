@@ -17,6 +17,7 @@
     <nav aria-label="主要功能">
       <button class="tab active" data-panel="learn" data-view="catalog" aria-pressed="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5h6l2 2 2-2h6v14h-6l-2 1.5-2-1.5H4zM12 8v12"/></svg>智能学习</button>
       <button class="tab" data-panel="concepts" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 7 10 10M7 17 17 7"/><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="18" r="3"/></svg>概念地图</button>
+      <button class="tab" data-panel="mistakes" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4.5h8M8 8h8M8 11.5h5M6 3h12a2 2 0 0 1 2 2v14l-3-1.8-3 1.8-3-1.8L8 19l-4-1.8V5a2 2 0 0 1 2-2Z"/></svg>错题本</button>
     </nav>
     <div class="sidebar-path"><p>学习路径</p><div id="module-shortcuts" aria-label="课程模块"></div></div>
     <div class="sidebar-note"><span><i class="local-dot" aria-hidden="true"></i>进度保存在本机<small>下次回来，接着学。</small></span></div>
@@ -171,6 +172,11 @@
         <button id="concept-next" type="button">下一页</button>
       </div>
       <p class="concept-editorial muted">公开版自主选编 · 概念讲解与例子独立编写 · 参考阅读见卡片</p>
+    </section>
+    <section id="mistakes" class="panel mistake-panel" aria-labelledby="mistakes-title">
+      <div class="section-head"><div><h2 id="mistakes-title">错题本</h2><p class="mistake-intro">答错或还没掌握的题会保存在这台设备。重新作答后，仍按原题的标准评分。</p></div><button id="refresh-mistakes" type="button" class="mistake-refresh">刷新</button></div>
+      <div id="mistake-summary" class="mistake-summary" role="status" aria-live="polite">正在读取本机错题…</div>
+      <div id="mistake-list" class="mistake-list"><p class="muted">正在读取错题…</p></div>
     </section>
   </main>
   <script src="/static/progress.js" defer></script>

@@ -33,13 +33,6 @@
   </tr>
 </table>
 
-## 一张完整的知识卡片
-
-概念卡会把定义、工作方式、适用场景、使用边界和产品经理的判断放在一起，帮助初学者知道概念怎么用、何时不该用。
-
-<p align="center">
-  <a href="docs/images/concept-card-full.png"><img src="docs/images/concept-card-full.png" alt="检索增强生成（RAG）完整知识卡片：原理、场景、边界与产品判断" width="78%"></a>
-</p>
 
 ## 你可以用它做什么
 

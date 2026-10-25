@@ -4,6 +4,10 @@
 MEMORY.md
 .venv/
 .worktrees/
+.build/
+.uv-cache/
+.uv-python/
+app_version.txt
 __pycache__/
 *.py[cod]
 .pytest_cache/

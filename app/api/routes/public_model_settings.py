@@ -1,4 +1,4 @@
-"""Loopback-only, same-origin model configuration. No credential persistence."""
+"""Loopback-only, same-origin model configuration with optional desktop key storage."""
 import hmac
 import ipaddress
 import secrets
@@ -8,6 +8,14 @@ from fastapi import APIRouter, Depends, HTTPException, Request, Response
 from pydantic import BaseModel, SecretStr
 
 from app.services.llm import llm_service
+from app.services.model_credentials import (
+    CredentialStorageError,
+    api_key_is_saved,
+    clear_model_credentials,
+    delete_api_key,
+    save_api_key,
+    save_model_preferences,
+)
 
 router = APIRouter(prefix='/model-settings', tags=['local-model-settings'])
 _LOCAL_TOKEN = secrets.token_urlsafe(32)
@@ -37,6 +45,7 @@ class LocalModelConfiguration(BaseModel):
     base_url: str
     model: str
     api_key: SecretStr
+    remember_api_key: bool = False
     allow_provider_requests: bool = False
 
 
@@ -72,7 +81,12 @@ def validate_configuration(payload: LocalModelConfiguration) -> tuple[str, str, 
 def public_state(response: Response) -> dict:
     response.headers['Cache-Control'] = 'no-store'
     response.headers['Cross-Origin-Resource-Policy'] = 'same-origin'
-    return dict(llm_service.public_status(), settings_token=_LOCAL_TOKEN)
+    state = llm_service.public_status()
+    try:
+        state['remembered'] = api_key_is_saved() or state.get('remembered', False)
+    except CredentialStorageError:
+        state['remembered'] = False
+    return dict(state, settings_token=_LOCAL_TOKEN)
 
 
 @router.get('', dependencies=[Depends(require_local_access)])
@@ -85,11 +99,23 @@ async def configure(payload: LocalModelConfiguration, request: Request, response
     if request.headers.get('content-type', '').split(';')[0].strip().lower() != 'application/json':
         raise HTTPException(415, '请使用页面中的模型设置表单。')
     key, base_url, model = validate_configuration(payload)
-    llm_service.configure_runtime(key, base_url, model)
+    try:
+        save_model_preferences(base_url, model)
+        if payload.remember_api_key:
+            save_api_key(key)
+        else:
+            delete_api_key()
+    except (CredentialStorageError, RuntimeError) as exc:
+        raise HTTPException(503, str(exc)) from exc
+    llm_service.configure_runtime(key, base_url, model, remembered=payload.remember_api_key)
     return public_state(response)
 
 
 @router.delete('', dependencies=[Depends(require_local_access)])
 async def clear(response: Response) -> dict:
     llm_service.clear_runtime()
+    try:
+        clear_model_credentials()
+    except (CredentialStorageError, RuntimeError) as exc:
+        raise HTTPException(503, str(exc)) from exc
     return public_state(response)

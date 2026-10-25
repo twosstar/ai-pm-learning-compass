@@ -29,6 +29,10 @@ The product supports career-oriented study. It does not promise employment outco
 
 The current interface and teaching content are primarily in Chinese. This English introduction does not imply a fully localized English application or curriculum.
 
+## Windows desktop edition and updates
+
+Learners can download a Windows installer from [GitHub Releases](https://github.com/twosstar/ai-pm-learning-compass/releases). It opens in a standalone window and does not require Python. A fresh installation starts with empty learning progress, stored locally on that device. The app checks for formal releases on launch and while open; after download verification, the learner chooses whether to install and restart. No separate web-hosting subscription is needed. Model scoring still uses each learner's own API configuration and provider account.
+
 ## One connected learning journey
 
 **Choose a lesson → Study the concept → Examine its boundaries → Answer a question → Review feedback → Save progress → Continue.**

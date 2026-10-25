@@ -27,6 +27,16 @@ This is an independently authored public learning project, not a reproduction of
 
 ## Run on Windows
 
+### Desktop installer
+
+When a formal release is published, download the latest `AI-PM-Learning-Compass-Setup-X.Y.Z.exe` from [GitHub Releases](https://github.com/twosstar/ai-pm-learning-compass/releases) and follow the installer. Python and administrator access are not required. Microsoft Edge WebView2 Runtime is required; if it is missing, follow the installer's link to Microsoft's download page and run the installer again. Beta builds are currently unsigned, so Windows may show an unknown-publisher warning.
+
+A fresh install starts with empty learning records; no developer progress or API key is included. Learning data lives at `%LOCALAPPDATA%\AI PM Learning Compass\data`, and non-secret model preferences live under `%LOCALAPPDATA%\AI PM Learning Compass\config`. The API key stays in memory by default. If **Remember this device** is selected, it is stored in the current Windows user's Credential Manager. Updating or uninstalling the app leaves local learning data and saved preferences in place.
+
+The app checks for a formal release on startup and every six hours while open. After downloading and verifying an installer, it asks whether to install and restart. Installation is visible and can be postponed. The app does not check in the background while closed or force an update.
+
+### Run from source
+
 Requires **Python 3.11 or later**.
 
 1. Download or clone this repository.
@@ -39,7 +49,7 @@ By default, the app runs at [http://127.0.0.1:8001/](http://127.0.0.1:8001/). Re
 
 Open **模型设置** (Model Settings) at the top of the page. Enter a trusted provider's HTTPS OpenAI-compatible API URL, exact model name, and your own API key. Review the data-transfer and cost notice before saving. Saving makes no provider request; the first practice or retry of a pending evaluation makes the call.
 
-The key entered on the page is held only in the local server process. It is not written to files, the learning database, or browser storage, and must be entered again after a server restart. Practice and scoring may send lesson excerpts, questions, and answers to your chosen provider and may incur charges. Never share a key in chat or commit one to the repository. This edition is for trusted local use, not direct public multi-user hosting.
+By default, the key entered on the page is held only in the local server process. The desktop edition can optionally save it to the current Windows user's Credential Manager; it is never written to the ordinary preferences file, learning database, or browser storage. Practice and scoring may send lesson excerpts, questions, and answers to your chosen provider and may incur charges. Never share a key in chat or commit one to the repository. This edition is for trusted local use, not direct public multi-user hosting.
 
 ## Local data and public content
 
